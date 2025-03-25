@@ -1,5 +1,16 @@
 body {
- background-color: orange;
+ background-color: #f4f4f4;
+}
+
+header{
+ display: flex;
+ align-items: center;
+ text-align: end;
+ flex-flow: row-reverse;
+}
+
+header img{
+ width: 5rem;
 }
 
 main{
@@ -7,24 +18,26 @@ main{
  margin: auto;
 }
 
-h2{
+h1 {
+ font-size: 8rem;
  text-align: center;
  margin-top: 2rem;
+ font-family: "Cinzel Decorative", serif ;
+ font-style: italic;
+ color: rgb(255,195,0);
+ font-weight: bold;
+}
+
+button{
+ text-align: center;
+ margin-top: 4rem;
  font-size: 3rem;
- background-color: red;
+ background-color: rgb(255,195,0);
+ color: black;
  align-items: center;
  padding: 1rem;
  border: black solid;
  border-radius: 1rem;
-}
-
-#splendor-logo {
  display: block;
- margin: auto;
- width: 30%;
-}
-
-#username {
- text-align: end;
- font-size: 3rem;
+ width: 100%;
 }
