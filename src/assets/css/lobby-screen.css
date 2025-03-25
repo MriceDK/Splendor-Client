@@ -1,0 +1,40 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+main{
+    background: hotpink;
+
+}
+h2{
+    margin-top: 0;
+}
+.list h2{
+    margin: auto;
+    text-align: center;
+}
+.list p{
+    display: inline;
+}
+.users li{
+    background-color: green;
+    margin-top: 0.5rem;
+}
+
+footer{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1rem;
+    height: 6rem;
+}
+button{
+    text-align: center;
+    margin: auto;
+    vertical-align: middle;
+    font-size: 3rem;
+    width: 14rem;
+    height: 6rem;
+}
