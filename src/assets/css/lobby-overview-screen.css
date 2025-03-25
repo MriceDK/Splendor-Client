@@ -1,0 +1,105 @@
+html {
+    --main-bg-color: #f4f4f4;
+    --main-header-bg-color: #2c3e50;
+    --main-header-text-color: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--main-bg-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: var(--main-header-bg-color);
+    color: var(--main-header-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+h1 {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.username {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.username img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.625rem;
+}
+
+.lobby-overview-container {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 30rem;
+    padding: 5rem;
+}
+
+.lobby-container {
+    background-color: white;
+    padding: 1rem;
+    margin: 0.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.join-button, .spectate-button {
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+}
+
+.join-button-locked, .spectate-button-locked {
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.join-button {
+    background-color: #27ae60;
+    color: white;
+}
+
+.spectate-button {
+    background-color: #3498db;
+    color: white;
+}
+
+.errormessages p {
+    color: red;
+    text-align: center;
+    margin-top: 0.625rem;
+}
