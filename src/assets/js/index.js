@@ -4,7 +4,7 @@ import { changeUsernameText } from "./username-selector-component/renderer.js";
 
 function init() {
   testConnection();
-  document.querySelector("#username").onload(changeUsernameText);
+  document.querySelector("#username").addEventListener("load", changeUsernameText);
 }
 
 function testConnection(){
