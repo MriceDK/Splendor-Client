@@ -1,14 +1,9 @@
-function changeUsername(e){
-    e.preventDefault();
+function changeUsernameText(){
+    const username = JSON.parse(localStorage.getItem("myUsername"));
+    const usernameElement = document.querySelector("#username")
+    usernameElement.innerHTML = username;
 
-
-    
-    const $usernameForm = document.querySelector("#username-text")
-    
-    
-
-    localStorage.setItem("myUsername", JSON.stringify($usernameForm.value));
 
 }
 
-export { changeUsername }
+export { changeUsernameText }

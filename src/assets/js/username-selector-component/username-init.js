@@ -1,4 +1,4 @@
-import { changeUsername } from "./renderer.js"
+import { changeUsername } from "./handler.js"
 
 function init(){
 
