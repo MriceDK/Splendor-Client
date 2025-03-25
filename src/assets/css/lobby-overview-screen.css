@@ -41,7 +41,7 @@ h1 {
 .username {
     display: flex;
     align-items: center;
-    margin-right: 1rem;
+    padding-right: 1rem;
 }
 
 .username img {
