@@ -4,12 +4,10 @@ import { changeUsernameText } from "./username-selector-component/renderer.js";
 
 function init() {
   testConnection();
-  document.querySelector("#username").addEventListener("load", changeUsernameText);
+  changeUsernameText();
 }
 
 function testConnection(){
   CommunicationAbstractor.fetchFromServer('/gems', 'GET').then(gems => console.log(gems)).catch(ErrorHandler.handleError);
 }
-
-
 init();

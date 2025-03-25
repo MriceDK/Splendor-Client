@@ -1,7 +1,8 @@
 function changeUsernameText(){
-    const username = JSON.parse(localStorage.getItem("myUsername"));
-    const usernameElement = document.querySelector("#username")
-    usernameElement.innerText = username;
+
+    const username = JSON.parse(localStorage.getItem("myUsername")); 
+    document.querySelector("#username").innerText = username;
+
 
 
 }
