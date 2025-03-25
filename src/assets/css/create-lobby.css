@@ -1,0 +1,45 @@
+body {
+    display: grid;
+    height: 100vh;
+    font-family: "roboto", sans-serif;
+}
+
+main {
+    align-self: center;
+    justify-self: center;
+    width: 40%;
+    margin: auto;
+}
+
+.lobby-create-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lobby-create-form .submit {
+    margin-top: 3rem;
+}
+
+.submit {
+    padding: 1rem 2rem;
+    border: none;
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+}
+
+.lobby-create-form section {
+    display: flex;
+    justify-content: center;
+}
+
+.lobby-create-form .options {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-title {
+    margin-right: 2rem;
+}

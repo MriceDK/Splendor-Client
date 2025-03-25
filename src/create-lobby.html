@@ -18,7 +18,7 @@
     <!-- Lobby creation -->
     <main>
 
-        <form action="" method="">
+        <form class="lobby-create-form" action="" method="">
 
             <section>
                 <span class="form-title">Lobby name:</span>
@@ -45,28 +45,31 @@
             </section>
 
             <section>
-                <span class="form-title">Max minutes per turn:</span>
-                <input type="number" value="0" max="10" min="1">
+                <span class="form-title">Max seconds per turn:</span>
+                <input type="number" value="1" max="600" min="60">
             </section>
 
             <section>
-                <span class="form-title">Public or private lobby:</span>
+                <span class="form-title">Match type:</span>
 
-                <div class="radio-option">
-                    <input type="radio" name="public-or-private" id="public" value="public">
-                    <label for="public">Public</label>
+                <div class="options">
+                    <div class="radio-option">
+                        <input type="radio" name="public-or-private" id="public" value="public">
+                        <label for="public">Public</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="public-or-private" id="private" value="private">
+                        <label for="private">Private</label>
+                    </div>
                 </div>
-                <div class="radio-option">
-                    <input type="radio" name="public-or-private" id="private" value="private">
-                    <label for="private">Private</label>
-                </div>
+
             </section>
-            <input type="submit" value="Create game">
+            <input class="submit" type="submit" value="Create game">
         </form>
     </main>
 
-<div class="errormessages">
+<!-- <div class="errormessages">
     <p></p>
-</div>
+</div> -->
 </body>
 </html>
