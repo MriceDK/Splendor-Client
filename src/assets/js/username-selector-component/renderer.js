@@ -1,9 +1,13 @@
 function changeUsername(e){
     e.preventDefault();
 
+
+    
     const $usernameForm = document.querySelector("#username-text")
-    const $username = document.querySelector("#username");
-    $username.innerText = $usernameForm.value;
+    
+    
+
+    localStorage.setItem("myUsername", JSON.stringify($usernameForm.value));
 
 }
 
