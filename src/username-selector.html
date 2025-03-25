@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/reset.css">
 <!--  <link rel="stylesheet" href="assets/css/screen.css">-->
 
-  <script src="assets/js/index.js" type="module"></script>
+  <script src="assets/js/username-selector-component/username-init.js" type="module"></script>
   <link rel="stylesheet" href="assets/css/lobby-overview-screen.css">
 </head>
 <body>
@@ -31,9 +31,10 @@
     </div>
   </header>
   <main>
-    <form>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username"> 
+    <form id="username-changer">
+        <label for="username-text">Username: </label>
+        <input type="text" id="username-text" name="username"> 
+        <button type="submit" id="username-button">Change Username</button>
     </form>
   </main>
   <div class="errormessages">
