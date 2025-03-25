@@ -10,15 +10,36 @@
 
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
+    <link rel="stylesheet" href="assets/css/lobby-screen.css">
 </head>
 <body>
 <header>
 
 </header>
 <main>
-    <h2>{PlayerName}'s Lobby</h2>
-    <button>Play</button>
+    <section>
+        <h2>{PlayerName}'s Lobby</h2>
+        <h3>Creator</h3>
+        <ol class="users">
+            <li>Player1</li>
+            <li>Player2</li>
+            <li>Player3</li>
+            <li>Player4</li>
+        </ol>
+        <p>1/4 Players</p>
+        <p>spectators</p>
+        <p>Waiting for all players to join</p>
+    </section>
+
 </main>
+<footer>
+    <section class="buttons">
+        <button>Play</button>
+    </section>
+    <section class="buttons">
+        <button>Cancel</button>
+    </section>
+</footer>
 <div class="errormessages">
     <p></p>
 </div>
