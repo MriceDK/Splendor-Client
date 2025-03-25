@@ -1,3 +1,30 @@
 body {
- background-color: hotpink;
+ background-color: orange;
+}
+
+main{
+ width: 40%;
+ margin: auto;
+}
+
+h2{
+ text-align: center;
+ margin-top: 2rem;
+ font-size: 3rem;
+ background-color: red;
+ align-items: center;
+ padding: 1rem;
+ border: black solid;
+ border-radius: 1rem;
+}
+
+#splendor-logo {
+ display: block;
+ margin: auto;
+ width: 30%;
+}
+
+#username {
+ text-align: end;
+ font-size: 3rem;
 }
