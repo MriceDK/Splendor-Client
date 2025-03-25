@@ -1,3 +1,20 @@
 body {
- background-color: hotpink;
+ background-color: orange;
+}
+
+h2{
+ text-align: center;
+ margin-top: 5rem;
+ font-size: 3rem;
+}
+
+img {
+ display: block;
+ margin: auto;
+ width: 30%;
+}
+
+#username {
+ text-align: end;
+ font-size: 3rem;
 }
