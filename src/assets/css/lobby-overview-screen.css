@@ -1,7 +1,7 @@
 html {
     --main-bg-color: #f4f4f4;
     --main-header-bg-color: #2c3e50;
-    --main-header-text-color: white;
+    --main-white-color: white;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
 header {
     width: 100%;
     background-color: var(--main-header-bg-color);
-    color: var(--main-header-text-color);
+    color: var(--main-white-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,7 +25,7 @@ header {
 }
 
 nav a {
-    color: white;
+    color: var(--main-white-color);
     text-decoration: none;
     font-size: 2rem;
     margin-left: 1rem;
@@ -62,7 +62,7 @@ h1 {
 }
 
 .lobby-container {
-    background-color: white;
+    background-color: var(--main-white-color);
     padding: 1rem;
     margin: 0.25rem;
     border-radius: 0.5rem;
@@ -88,18 +88,12 @@ h1 {
     cursor: pointer;
 }
 
-.join-button {
+.join-button, .join-button-locked {
     background-color: #27ae60;
     color: white;
 }
 
-.spectate-button {
+.spectate-button, .spectate-button-locked {
     background-color: #3498db;
     color: white;
-}
-
-.errormessages p {
-    color: red;
-    text-align: center;
-    margin-top: 0.625rem;
 }
