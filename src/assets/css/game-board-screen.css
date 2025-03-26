@@ -1,10 +1,11 @@
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 5% 3fr 3fr;
+    grid-template-columns: 0.7fr 1.6fr 0.7fr;
+    grid-template-rows: 5% 1fr 1.75fr 1.25fr;
     height: 100vh;
     grid-template-areas:    "header header header"
-                            "username market bank-info"
+                            "username market info"
+                            "username market bank"
                             "user-info user-info history";
 }
 
@@ -33,7 +34,12 @@ header {
     background-color: darkblue;
 }
 
-.bank-info-flexcontainer {
-    grid-area: bank-info;
+.lobby-info {
+    grid-area: info;
     background-color: darkgreen;
+}
+
+.bank-flexcontainer {
+    grid-area: bank;
+    background-color: grey;
 }
