@@ -6,7 +6,7 @@ function ownPlayerCardRenderer(){
     $playerCard.querySelector("#own-prestige-points").insertAdjacentHTML("beforeend", getOwnInfo.getOwnPrestigePoints());
     $playerCard.querySelector("#nobles").insertAdjacentHTML("beforeend", getOwnInfo.getOwnNobles());
     $playerCard.querySelector("#own-gems").insertAdjacentHTML("afterbegin", getOwnInfo.getOwnGems());
-    $playerCard.querySelector("#own-bonuses").insertAdjacentElement("beforeend", getOwnInfo.getOwnBonuses());
+    $playerCard.querySelector("#own-bonuses").insertAdjacentHTML("beforeend", getOwnInfo.getOwnBonuses());
     $playerCard.querySelector("#own-reservated-cards").insertAdjacentHTML("beforeend", getOwnInfo.getOwnReservatedCards());
 
 }
