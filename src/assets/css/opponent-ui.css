@@ -5,7 +5,7 @@
 }
 
 .tokens{
-    display: inline;
+    display: inline-block;
     border-radius: 50%;
     height: 8%;
     width: 10%;
@@ -13,27 +13,57 @@
     text-align: center;
 }
 
-#white-token{
+.cards{
+    display: inline-block;
+    height: 8%;
+    width: 5%;
+    align-content: center;
+    text-align: center;
+    border: black solid;
+}
+
+#white-gem{
     background-color: white;
 }
 
-#red-token{
+#red-gem{
     background-color: red;
 }
 
-#blue-token{
+#blue-gem{
     background-color: blue;
 }
 
-#black-token{
+#black-gem{
     color: white;
     background-color: black;
 }
 
-#green-token{
+#green-gem{
     background-color: green;
 }
 
-#yellow-token{
+#yellow-gem{
     background-color: yellow;
+}
+
+#red-card{
+    background-color: red;
+}
+
+#blue-card{
+    background-color: blue;
+}
+
+#black-card{
+    color: white;
+    background-color: black;
+}
+
+#green-card{
+    background-color: green;
+}
+
+#white-card{
+    background-color: white;
 }
