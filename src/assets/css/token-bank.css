@@ -1,0 +1,49 @@
+.bank-flexcontainer section{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 12rem;
+    margin: 3rem auto auto;
+    grid-template-areas:    "red-token green-token black-token"
+                            "blue-token white-token joker-token";
+}
+
+.bank-flexcontainer button{
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    margin: 0.5rem;
+}
+
+.bank-flexcontainer .red-token{
+    background-color: red;
+    grid-area: red-token;
+}
+
+.bank-flexcontainer .green-token{
+    background-color: green;
+    grid-area: green-token;
+}
+
+.bank-flexcontainer .black-token{
+    background-color: black;
+    color: white;
+    grid-area: black-token;
+}
+
+.bank-flexcontainer .blue-token{
+    background-color: blue;
+    grid-area: blue-token;
+}
+
+.bank-flexcontainer .white-token{
+    background-color: white;
+    grid-area: white-token;
+}
+
+.bank-flexcontainer .joker-token{
+    background-color: yellow;
+    grid-area: joker-token;
+}
