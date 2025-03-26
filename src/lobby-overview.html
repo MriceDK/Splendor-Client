@@ -38,31 +38,33 @@
       <button>Search</button>
     </div>
 
-    <input type="checkbox" id="show-started">
-    <label for="show-started">Show started</label>
+    <input type="checkbox" id="show-started-filter">
+    <label for="show-started-filter">Show started</label>
 
-    <input type="checkbox" id="show-unstarted">
-    <label for="show-unstarted">Show unstarted</label>
+    <input type="checkbox" id="show-unstarted-filter">
+    <label for="show-unstarted-filter">Show unstarted</label>
 
-    <input type="checkbox" id="show-full">
-    <label for="show-full">Show full lobbies</label>
+    <input type="checkbox" id="show-full-filter">
+    <label for="show-full-filter">Show full lobbies</label>
 
-    <input type="checkbox" id="show-empty">
-    <label for="show-empty">Show empty lobbies</label>
+    <input type="checkbox" id="show-empty-filter">
+    <label for="show-empty-filter">Show joinable lobbies</label>
 
-    <input type="checkbox" id="show-public">
-    <label for="show-public">Show public lobbies</label>
+    <input type="checkbox" id="show-public-filter">
+    <label for="show-public-filter">Show public lobbies</label>
 
-    <input type="checkbox" id="show-private">
-    <label for="show-private">Show private lobbies</label>
+    <input type="checkbox" id="show-private-filter">
+    <label for="show-private-filter">Show private lobbies</label>
 
-    <label for="amount-of-players-in-lobby">Amount of players:</label>
-    <select id="amount-of-players-in-lobby">
-      <option value="isAny" selected>Any amount of players</option>
-      <option value="2">2 Players</option>
-      <option value="3">3 Players</option>
-      <option value="4">4 Players</option>
-    </select>
+    <div id="player-amount">
+      <label for="amount-of-players-in-lobby-filter">Amount of players:</label>
+      <select id="amount-of-players-in-lobby-filter">
+        <option value="isAny" selected>Any amount of players</option>
+        <option value="2">2 Players</option>
+        <option value="3">3 Players</option>
+        <option value="4">4 Players</option>
+      </select>
+    </div>
   </form>
 
   <div class="lobby-overview-container">
