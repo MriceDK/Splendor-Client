@@ -2,11 +2,13 @@ import * as getOwnInfo from "./handler.js"
 
 function ownPlayerCardRenderer(){
     const $playerCard = document.querySelector("#own-player-card");
-    $playerCard.querySelector("#own-username").insertAdjacentElement("beforeend", getOwnInfo.getOwnUsername());
-    $playerCard.querySelector("#own-prestige-points").insertAdjacentElement("beforeend", getOwnInfo.getOwnPrestigePoints());
-    $playerCard.querySelector("#nobles").insertAdjacentElement("beforeend", getOwnInfo.getOwnNobles());
-    $playerCard.querySelector("#own-gems").insertAdjacentElement("afterbegin", getOwnInfo.getOwnGems());
+    $playerCard.querySelector("#own-username").insertAdjacentHTML("beforeend", getOwnInfo.getOwnUsername());
+    $playerCard.querySelector("#own-prestige-points").insertAdjacentHTML("beforeend", getOwnInfo.getOwnPrestigePoints());
+    $playerCard.querySelector("#nobles").insertAdjacentHTML("beforeend", getOwnInfo.getOwnNobles());
+    $playerCard.querySelector("#own-gems").insertAdjacentHTML("afterbegin", getOwnInfo.getOwnGems());
     $playerCard.querySelector("#own-bonuses").insertAdjacentElement("beforeend", getOwnInfo.getOwnBonuses());
-    $playerCard.querySelector("#own-reservated-cards").insertAdjacentElement("beforeend", getOwnInfo.getOwnReservatedCards());
+    $playerCard.querySelector("#own-reservated-cards").insertAdjacentHTML("beforeend", getOwnInfo.getOwnReservatedCards());
 
 }
+
+export { ownPlayerCardRenderer }
