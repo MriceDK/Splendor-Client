@@ -1,0 +1,9 @@
+.market-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+            "noble noble noble noble noble"
+            "level dev-card dev-card dev-card dev-card"
+            "level dev-card dev-card dev-card dev-card"
+            "level dev-card dev-card dev-card dev-card";
+}
