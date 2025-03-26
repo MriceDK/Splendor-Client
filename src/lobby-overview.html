@@ -32,22 +32,26 @@
   </header>
 
   <div class="lobby-overview-container">
-    <template id="join-lobby">
-      <div class="lobby-container">
+
+    <template id="join-lobby-template">
+      <section class="lobby">
         <p class="lobbyname">John doe's Lobby</p>
         <p class="playercount">3/4</p>
-        <input type="button" value="JOIN" class="join-button">
-        <input type="button" value="SPECTATE" class="spectate-button">
-      </div>
+        <div class="buttons">
+          <button class="join-button-locked">JOIN</button>
+          <button class="spectate-button-locked">SPECTATE</button>
+        </div>
+      </section>
     </template>
 
-    <div class="lobby-container locked">
+    <div class="lobby locked">
       <p class="lobbyname">Jane doe's Lobby</p>
       <p class="locked">🔒</p>
 <!--      TODO: Make the lock css background image-->
       <p class="playercount">2/4</p>
-      <input type="button" value="JOIN" class="join-button-locked">
-      <input type="button" value="SPECTATE" class="spectate-button-locked">
+        <button class="join-button-locked">JOIN</button>
+        <button class="spectate-button-locked">SPECTATE</button>
+
     </div>
 
   </div>

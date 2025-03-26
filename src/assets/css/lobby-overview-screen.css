@@ -25,7 +25,11 @@ h1 {
 }
 
 .lobby-overview-container {
+    width: 50%;
     margin-top: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,17 +39,26 @@ h1 {
     padding: 5rem;
 }
 
-.lobby-container {
+.lobby {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: var(--main-white-color);
     padding: 1rem;
     margin: 0.25rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
     gap: 0.75rem;
     width: 100%;
-    justify-content: space-between;
+}
+
+.buttons {
+    margin-left: auto;
+
+}
+
+.playercount {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .join-button, .spectate-button {
