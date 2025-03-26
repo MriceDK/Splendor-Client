@@ -9,46 +9,45 @@
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
 
     <link rel="stylesheet" href="assets/css/reset.css">
-    <!---<link rel="stylesheet" href="assets/css/screen.css">-->
+    <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/lobby-screen.css">
 </head>
 <body>
-<header>
-    <nav>
-        <a href="index.html">⬅</a>
-    </nav>
-    <h1>Create lobby</h1>
-    <div class="username">
-        <img src="./images/username%20logo.png">
-        <p id="username">John Doe</p>
-    </div>
-</header>
-<main>
-    <h3>Creator</h3>
-
-        <h2 class="title">{PlayerName}'s Lobby</h2>
-    <section class="middle">
-        <ol class="users">
-            <li>Player1</li>
-            <li>Player2</li>
-            <li>Player3</li>
-            <li>Player4</li>
-        </ol>
-        <div class="bottom">
-            <p>1/4 Players</p>
-            <p>spectators</p>
-            <p>Waiting for all players to join</p>
+<div class="grid">
+    <header>
+        <nav>
+            <a href="index.html">⬅</a>
+        </nav>
+        <div class="username">
+            <img src="./images/username%20logo.png">
+            <p id="username">John Doe</p>
         </div>
+    </header>
+    <main>
+        <h3>Creator</h3>
+        <h2 class="title">{PlayerName}'s Lobby</h2>
+        <section class="middle">
+            <ol class="users">
+                <li>Player1</li>
+                <li>Player2</li>
+                <li>Player3</li>
+                <li>Player4</li>
+            </ol>
+            <div class="bottom">
+                <p>1/4 Players</p>
+                <p>spectators</p>
+                <p>Waiting for all players to join</p>
+            </div>
 
-    </section>
-    <section class="play">
-        <button>Play</button>
-    </section>
-    <section class="cancel">
-        <button>Cancel</button>
-    </section>
-</main>
-
+        </section>
+        <section class="play">
+            <button>Play</button>
+        </section>
+        <section class="cancel">
+            <button>Cancel</button>
+        </section>
+    </main>
+</div>
 <div class="errormessages">
     <p></p>
 </div>

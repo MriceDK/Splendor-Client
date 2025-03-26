@@ -2,16 +2,30 @@ html, body{
     height: 100%;
     margin: 0;
 }
-
-main{
-
+.grid{
     height: 100vh;
     background: whitesmoke;
     display: grid;
     grid-template-columns: 1fr 30rem 1fr;
-    grid-template-rows: 1fr 5rem 30rem 1fr;
-
+    grid-template-rows: 10% 5rem 30rem 1fr;
 }
+header{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-content: space-between;
+}
+header img{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.625rem;
+}
+
+.username{
+    display: flex ;
+    align-items: center;
+    margin-right: 1rem;
+}
+
 
 h2{
     margin-top: 0;
