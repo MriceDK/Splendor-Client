@@ -1,26 +1,33 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import { loadFromStorage } from "../data-connector/local-storage-abstractor.js";
-
-const OWNPLAYER = fetchOwnPlayerInfo();
+import { loadFromStorage, saveToStorage } from "../data-connector/local-storage-abstractor.js";
 
 function getOwnUsername(){
+    saveToStorage("myUsername", "Bisson");
+
     return loadFromStorage("myUsername")
 }
 
 function fetchOwnPlayerInfo(){
 
-    const fetched = JSON.parse(APIAbstractor.fetchFromServer(`/games/${gameId}`,"GET"));
-    const players = fetched.players
-    players.array.forEach(player => {
+    
+    const ownPlayer = APIAbstractor.fetchFromServer("/games/1","GET").then(response => getOwnPlayerInfo(response));
+
+    return ownPlayer;
+
+
+}
+
+function getOwnPlayerInfo(gameinfo){
+    const players = gameinfo.players;
+    players.forEach(player => {
         if (player.name === getOwnUsername()){
-            return player;
+            return player
         }
-        
     });
 
     return null;
-
 }
+const OWNPLAYER = fetchOwnPlayerInfo();
 
 function getOwnPrestigePoints(){
 
@@ -46,4 +53,4 @@ function getOwnReservatedCards(){
 
 }
 
-export { getOwnUsername, getOwnPrestigePoints, getOwnBonuses, getOwnGems, getOwnNobles, getOwnReservatedCards}
+export { getOwnUsername, getOwnPrestigePoints, getOwnBonuses, getOwnGems, getOwnNobles, getOwnReservatedCards, fetchOwnPlayerInfo}
