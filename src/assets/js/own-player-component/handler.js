@@ -1,6 +1,8 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import { loadFromStorage } from "../data-connector/local-storage-abstractor.js";
 
+const OWNPLAYER = fetchOwnPlayerInfo();
+
 function getOwnUsername(){
     return loadFromStorage("myUsername")
 }
@@ -19,10 +21,27 @@ function fetchOwnPlayerInfo(){
     return null;
 
 }
+
 function getOwnPrestigePoints(){
 
-    const player = fetchOwnPlayerInfo();
-    return player.totalPrestigePoints;
+    return OWNPLAYER.totalPrestigePoints;
 
+}
+
+function getOwnNobles(){
+    return OWNPLAYER.acquiredNobles;
+}
+
+function getOwnGems(){
+    return OWNPLAYER.tokens
+}
+
+function getOwnBonuses(){
+    return OWNPLAYER.bonuses;
+}
+
+function getOwnReservatedCards(){
+
+    return OWNPLAYER.reserve
 
 }
