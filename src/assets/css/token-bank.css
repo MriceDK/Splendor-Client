@@ -1,8 +1,14 @@
+.bank-flexcontainer h2{
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 0.2rem;
+}
+
 .bank-flexcontainer .token-bank{
     width: 80%;
     display: grid;
     height: 12rem;
-    margin: 2rem auto auto;
+    margin: 1rem auto auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:    "red-token green-token black-token"
