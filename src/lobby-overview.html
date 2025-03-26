@@ -31,6 +31,40 @@
     </div>
   </header>
 
+  <form id="filter">
+    <div id="search">
+      <label for="searchbar">Search for a lobby by name</label>
+      <input type="text" placeholder="Enter lobby name" id="searchbar">
+      <button>Search</button>
+    </div>
+
+    <input type="checkbox" id="show-started">
+    <label for="show-started">Show started</label>
+
+    <input type="checkbox" id="show-unstarted">
+    <label for="show-unstarted">Show unstarted</label>
+
+    <input type="checkbox" id="show-full">
+    <label for="show-full">Show full lobbies</label>
+
+    <input type="checkbox" id="show-empty">
+    <label for="show-empty">Show empty lobbies</label>
+
+    <input type="checkbox" id="show-public">
+    <label for="show-public">Show public lobbies</label>
+
+    <input type="checkbox" id="show-private">
+    <label for="show-private">Show private lobbies</label>
+
+    <label for="amount-of-players-in-lobby">Amount of players:</label>
+    <select id="amount-of-players-in-lobby">
+      <option value="isAny" selected>Any amount of players</option>
+      <option value="2">2 Players</option>
+      <option value="3">3 Players</option>
+      <option value="4">4 Players</option>
+    </select>
+  </form>
+
   <div class="lobby-overview-container">
 
     <template id="join-lobby-template">
@@ -38,8 +72,8 @@
         <p class="lobbyname">John doe's Lobby</p>
         <p class="playercount">3/4</p>
         <div class="buttons">
-          <button class="join-button-locked">JOIN</button>
-          <button class="spectate-button-locked">SPECTATE</button>
+          <button class="join-button">JOIN</button>
+          <button class="spectate-button">SPECTATE</button>
         </div>
       </section>
     </template>
