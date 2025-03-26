@@ -1,6 +1,5 @@
 
 function renderGames(games) {
-    console.log(games);
     const $template = document.querySelector("#join-lobby-template");
     const $results = document.querySelector(".lobby-overview-container");
     $results.innerHTML = $template.outerHTML;
