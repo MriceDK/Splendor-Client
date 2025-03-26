@@ -1,0 +1,39 @@
+.username-flexcontainer{
+    display: inline-block;
+    padding-top: 2rem;
+    padding-left: 1rem;
+}
+
+.tokens{
+    display: inline;
+    border-radius: 50%;
+    height: 8%;
+    width: 10%;
+    align-content: center;
+    text-align: center;
+}
+
+#white-token{
+    background-color: white;
+}
+
+#red-token{
+    background-color: red;
+}
+
+#blue-token{
+    background-color: blue;
+}
+
+#black-token{
+    color: white;
+    background-color: black;
+}
+
+#green-token{
+    background-color: green;
+}
+
+#yellow-token{
+    background-color: yellow;
+}
