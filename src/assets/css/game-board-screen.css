@@ -1,0 +1,39 @@
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5% 3fr 3fr;
+    height: 100vh;
+    grid-template-areas:    "header header header"
+                            "username market bank-info"
+                            "user-info user-info history";
+}
+
+header {
+    grid-area: header;
+}
+
+.username-flexcontainer {
+    grid-area: username;
+    display: flex;
+    background-color: sandybrown;
+}
+
+.market-grid-container {
+    grid-area: market;
+    background-color: blueviolet;
+}
+
+.user-info-flexcontainer {
+    grid-area: user-info;
+    background-color: red;
+}
+
+.history {
+    grid-area: history;
+    background-color: darkblue;
+}
+
+.bank-info-flexcontainer {
+    grid-area: bank-info;
+    background-color: darkgreen;
+}
