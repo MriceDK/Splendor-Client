@@ -45,3 +45,5 @@ function getOwnReservatedCards(){
     return OWNPLAYER.reserve
 
 }
+
+export { getOwnUsername, getOwnPrestigePoints, getOwnBonuses, getOwnGems, getOwnNobles, getOwnReservatedCards}
