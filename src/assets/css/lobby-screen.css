@@ -6,8 +6,15 @@ html, body{
     height: 100vh;
     background: whitesmoke;
     display: grid;
-    grid-template-columns: 1fr 30rem 1fr;
-    grid-template-rows: 10% 5rem 30rem 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
+}
+main{
+    display: grid;
+    height: 100%;
+    grid-template-rows: 20% 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
 }
 header{
     grid-column-start: 1;
@@ -19,13 +26,11 @@ header img{
     height: 2.5rem;
     margin-right: 0.625rem;
 }
-
 .username{
     display: flex ;
     align-items: center;
     margin-right: 1rem;
 }
-
 
 h2{
     margin-top: 0;
@@ -33,10 +38,11 @@ h2{
     font-size: 2rem;
 }
 h3{
-    grid-row-start: 3;
+    grid-row-start: 2;
+    grid-column-start: 1;
     justify-self: end;
-    padding-top: 1rem;
-    padding-right: 1rem;
+    padding-top: 1.25rem;
+    padding-right: 1.25rem;
 }
 .list h2{
     margin: auto;
@@ -55,22 +61,23 @@ h3{
     margin-top: 0.5rem;
     padding: 0.75rem;
     align-content: center;
-
+    margin-bottom: 1rem;
 }
 .title{
     grid-column-start: 2;
-    grid-row-start: 2;
-    align-self: center;
+    grid-row-start: 1;
+    align-self: end;
+    margin-bottom: 2rem;
 }
 .middle{
     grid-column-start: 2;
-    grid-row-start: 3;
+    grid-row-start: 2;
 }
 .middle p{
-    display: inline;
-    justify-self: center;
+
 }
 .bottom{
+
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
