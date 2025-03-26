@@ -26,6 +26,12 @@ header img{
     height: 2.5rem;
     margin-right: 0.625rem;
 }
+nav a {
+    color: var(--main-white-color);
+    text-decoration: none;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
 .username{
     display: flex ;
     align-items: center;
@@ -73,9 +79,7 @@ h3{
     grid-column-start: 2;
     grid-row-start: 2;
 }
-.middle p{
 
-}
 .bottom{
 
     display: flex;
