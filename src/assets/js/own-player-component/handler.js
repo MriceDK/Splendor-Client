@@ -11,7 +11,7 @@ function fetchOwnPlayerInfo(){
     const players = fetched.players
     players.array.forEach(player => {
         if (player.name === getOwnUsername()){
-            return player
+            return player;
         }
         
     });
@@ -20,6 +20,9 @@ function fetchOwnPlayerInfo(){
 
 }
 function getOwnPrestigePoints(){
-    
+
+    const player = fetchOwnPlayerInfo();
+    return player.totalPrestigePoints;
+
 
 }
