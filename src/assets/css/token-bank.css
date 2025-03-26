@@ -1,18 +1,16 @@
-.bank-flexcontainer section{
+.bank-flexcontainer .token-bank{
     width: 80%;
     display: grid;
+    height: 12rem;
+    margin: 2rem auto auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    height: 12rem;
-    margin: 3rem auto auto;
     grid-template-areas:    "red-token green-token black-token"
                             "blue-token white-token joker-token";
 }
 
-.bank-flexcontainer button{
+.bank-flexcontainer .token-bank button{
     border-radius: 100%;
-    justify-content: center;
-    align-items: center;
     font-size: 3rem;
     margin: 0.5rem;
 }
@@ -46,4 +44,35 @@
 .bank-flexcontainer .joker-token{
     background-color: yellow;
     grid-area: joker-token;
+}
+
+.bank-flexcontainer .selected-tokens{
+    display: flex;
+    justify-content: center;
+}
+
+.bank-flexcontainer .selected-tokens button{
+    border-radius: 100%;
+    height: 2rem;
+    width: 2rem;
+    margin-top: 0.75rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+}
+
+.bank-flexcontainer .bank-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.bank-flexcontainer .bank-buttons button{
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: 40%;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.hidden{
+    display: none;
 }
