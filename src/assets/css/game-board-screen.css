@@ -26,7 +26,7 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 5% 3fr 3fr;
     height: 100vh;
-    grid-template-areas:    ". . header"
+    grid-template-areas:    "header header header"
                             "username market bank-info"
                             "user-info user-info history";
 }
