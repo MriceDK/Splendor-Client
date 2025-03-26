@@ -4,6 +4,10 @@
  --main-white-color: white;
 }
 
+* {
+ box-sizing: border-box;
+}
+
 body {
  font-family: Arial, sans-serif;
  background-color: var(--main-bg-color);
