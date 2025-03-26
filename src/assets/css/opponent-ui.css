@@ -1,69 +1,55 @@
 .username-flexcontainer{
+    display: block;
+    padding-left: 0.5rem;
+    padding-top: 1rem;
+}
+.token-container {
+    position: relative;
     display: inline-block;
-    padding-top: 2rem;
-    padding-left: 1rem;
+    margin: 0.25rem;
 }
 
-.tokens{
-    display: inline-block;
+.token {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    border: 0.1rem solid black;
+    color: black;
+}
+
+.main {
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
-    height: 8%;
-    width: 10%;
-    align-content: center;
-    text-align: center;
 }
 
-.cards{
-    display: inline-block;
-    height: 8%;
-    width: 5%;
-    align-content: center;
-    text-align: center;
-    border: black solid;
+.small {
+    width: 0.75rem;
+    height: 1rem;
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    font-size: 0.5rem;
 }
-
-#white-gem{
-    background-color: white;
+.red {
+    background: red;
+    color: black;
 }
-
-#red-gem{
-    background-color: red;
+.green {
+    background: green;
+    color: black;
 }
-
-#blue-gem{
-    background-color: blue;
-}
-
-#black-gem{
+.blue {
+    background: blue;
     color: white;
-    background-color: black;
 }
-
-#green-gem{
-    background-color: green;
-}
-
-#yellow-gem{
-    background-color: yellow;
-}
-
-#red-card{
-    background-color: red;
-}
-
-#blue-card{
-    background-color: blue;
-}
-
-#black-card{
-    color: white;
-    background-color: black;
-}
-
-#green-card{
-    background-color: green;
-}
-
-#white-card{
-    background-color: white;
-}
+.white {
+    background: white;
+    color: black; }
+.black {
+    background: black;
+    color: white; }
+.yellow {
+    background: yellow;
+    color: black; }
