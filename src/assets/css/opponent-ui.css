@@ -5,8 +5,8 @@
 }
 
 .opponent{
-    border: solid grey;
-    background-color: grey;
+    border: solid var(--main-grey-color);
+    background-color: var(--main-grey-color);
 }
 
 .inventory {
@@ -20,8 +20,8 @@
     justify-content: center;
     align-items: center;
     font-size: 0.75rem;
-    border: 0.1rem solid black;
-    color: black;
+    border: 0.1rem solid var(--main-black-color);
+    color: var(--main-black-color);
     margin-top: 0.5rem;
 }
 
@@ -50,8 +50,8 @@
 .noble {
     width: 4.9rem;  /* Square size */
     height: 3rem;
-    background-color: lightgray; /* Adjust color */
-    border: 2px solid gray; /* Border similar to the image */
+    background-color: var(--main-bg-color); /* Adjust color */
+    border: 2px solid var(--main-grey-color); /* Border similar to the image */
     border-radius: 5px; /* Optional rounded corners */
 }
 
@@ -60,27 +60,14 @@
     flex-direction: column;
     align-items: flex-end;
     padding: 0.5rem;
-    background-color: lightgray;
+    background-color: var(--main-bg-color);
     border-radius: 0.2rem;
     width: fit-content;
     gap: 0.5rem;
 }
 
-.reserved-container{
-    display: flex;
-    gap: 1rem;
-}
-
-.reserved-card{
-    width: 0.75rem;
-    height: 1rem;
-    background-color: lightgray;
-    border: solid grey;
-    border-radius: 1rem;
-}
-
 .reserved-label{
-    color: black;
+    color: var(--main-black-color);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -92,23 +79,23 @@
 
 
 .red {
-    background: red;
+    background-color: var(--main-red-color);
     color: black;
 }
 .green {
-    background: green;
+    background: var(--main-green-color);
     color: black;
 }
 .blue {
-    background: blue;
+    background: var(--main-blue-color);
     color: white;
 }
 .white {
-    background: white;
+    background: var(--main-white-color);
     color: black; }
 .black {
-    background: black;
+    background: var(--main-black-color);
     color: white; }
 .yellow {
-    background: yellow;
+    background: var(--main-yellow-color);
     color: black; }
