@@ -4,7 +4,7 @@ html, body{
 }
 .grid{
     height: 100vh;
-    background: whitesmoke;
+    background: var(--main-white-color);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 10% 1fr;
