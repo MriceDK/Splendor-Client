@@ -40,6 +40,14 @@
     padding: .5rem;
 }
 
+.development-card-title {
+    grid-column-start: 2;
+}
+
+.prestige-point {
+    grid-row-start: 1;
+}
+
 .level-3 {
     grid-row-start: 2;
 }
@@ -66,8 +74,6 @@
 }
 
 .gem-cost {
-    display: inline-block;
-    aspect-ratio: 1 / 1;
     padding: .25rem;
     background-color: white;
     border-radius: 50%;
