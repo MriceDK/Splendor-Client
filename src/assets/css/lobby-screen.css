@@ -1,0 +1,107 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+.grid{
+    height: 100vh;
+    background: var(--main-white-color);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
+}
+main{
+    display: grid;
+    height: 100%;
+    grid-template-rows: 20% 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+header{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-content: space-between;
+}
+header img{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.625rem;
+}
+nav a {
+    color: var(--main-white-color);
+    text-decoration: none;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+.username{
+    display: flex ;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+h2{
+    margin-top: 0;
+    text-align: center;
+    font-size: 2rem;
+}
+h3{
+    grid-row-start: 2;
+    grid-column-start: 1;
+    justify-self: end;
+    padding-top: 1.25rem;
+    padding-right: 1.25rem;
+}
+.list h2{
+    margin: auto;
+    text-align: center;
+}
+.list p{
+    display: inline;
+}
+.users{
+
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+.users li{
+    background-color: #bdbdbd;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    align-content: center;
+    margin-bottom: 1rem;
+}
+.title{
+    grid-column-start: 2;
+    grid-row-start: 1;
+    align-self: end;
+    margin-bottom: 2rem;
+}
+.middle{
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+.bottom{
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.play{
+    align-self: end;
+    justify-self: end;
+    grid-row-start: 4;
+    grid-column-start: -2;
+}
+.cancel{
+    align-self: end;
+    grid-row-start: 4;
+}
+button{
+    text-align: center;
+    vertical-align: middle;
+    font-size: 3rem;
+    width: 14rem;
+    height: 6rem;
+    margin: 1rem
+
+}
