@@ -1,6 +1,6 @@
 import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
 
-function lobbyName(lobbyName, username) {
+function lobbyName(lobbyName) {
 
     if (lobbyName === null || lobbyName === ""){
         let titleElement = document.querySelector("#title");

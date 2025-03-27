@@ -2,7 +2,7 @@ import * as storageAbstractor from "../data-connector/local-storage-abstractor.j
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import * as renderer from "./renderer.js";
 
-function loadJoinedGame(data){
+function loadJoinedGame(){
     //test variables
     storageAbstractor.saveToStorage("gameId", 1)
     storageAbstractor.saveToStorage("myUsername", "Alice");
@@ -18,7 +18,7 @@ function loadJoinedGame(data){
         getGameDetailsForGameId(gameId, playerToken);
     }
 }
-function getGameDetailsForGameId(gameId, playerToken) {
+function getGameDetailsForGameId(gameId) {
     APIAbstractor.fetchFromServer(`/games/${gameId}`, "GET").then(data => sendToRenderer(data));
 }
 
