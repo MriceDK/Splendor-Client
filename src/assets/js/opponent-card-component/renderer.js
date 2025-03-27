@@ -11,7 +11,11 @@ function renderOpponentStats(opponent){
     $template.querySelector(".blue>.token-text").innerText = opponent.tokens.Sapphire;
     $template.querySelector(".white>.token-text").innerText = opponent.tokens.Diamond;
     $template.querySelector(".yellow>.tokent-text").innerText = opponent.tokens.Gold;
-    
+
+    $template.querySelector("class:first-child").innerText = opponent.acquiredNobles[0].name;
+    $template.querySelector("class:nth-child(1)").innerText = opponent.acquiredNobles[1].name;
+    $template.querySelector("class:nth-child(2)").innerText = opponent.acquiredNobles[2].name;
+
 
     
 
