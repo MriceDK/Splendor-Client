@@ -1,3 +1,5 @@
+let chosenBankTokens = [];
+
 function changeButtons(){
     document.querySelector(".bank-buttons .cancel-button").classList.toggle("hidden");
     document.querySelector(".bank-buttons .cancel-button").classList.toggle("clickable");
@@ -54,17 +56,43 @@ function getChosenTokenColour(e){
 }
 
 function showChosenBankToken(colour){
-    if (document.querySelectorAll(".selected-tokens button").length < 3){
-        console.log(document.querySelectorAll(".selected-tokens button").length);
+    if (isLegalToken(colour)){
         const chosenToken = document.createElement("button");
-        chosenToken.classList.add("selected-" + colour + "-token");
+        chosenToken.classList.add(`selected-${colour}-token`);
         chosenToken.classList.add("clickable");
         document.querySelector(".selected-tokens").appendChild(chosenToken);
+        chosenBankTokens.push(colour);
     }
+}
+
+function isLegalToken(colour){
+    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
+    const TokensWithColour = countNumberOfColourInChosenTokens(colour);
+
+    if (numberOfChosenTokens < 3){
+        if (countNumberOfColourInChosenTokens(colour) < 2 && countNumberOfColourInChosenTokens(chosenBankTokens[0]) < 2){
+            if (!(numberOfChosenTokens === 2 && countNumberOfColourInChosenTokens(chosenBankTokens[0]) === TokensWithColour && countNumberOfColourInChosenTokens(chosenBankTokens[1]) === TokensWithColour)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+function countNumberOfColourInChosenTokens(colour){
+    let count = 0;
+    for (let i = 0; i < chosenBankTokens.length; i++) {
+        if (chosenBankTokens[i] === colour){
+            count++;
+        }
+    }
+    return count;
 }
 
 function removeChosenTokens(){
     document.querySelector(".selected-tokens").innerHTML = "";
+    chosenBankTokens = [];
 }
 
 export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens};
