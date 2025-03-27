@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/game-board-screen.css">
+
+    <link rel="stylesheet" href="assets/css/opponent-ui.css">
     <script src="assets/js/own-player-component/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/token-bank.css">
 </head>
@@ -18,9 +20,67 @@
         <header>
             <a href="#">Settings</a>
         </header>
-        <div class="username-flexcontainer">
-            <p>PLAYER INFO</p>
-        </div>
+            <div class="username-flexcontainer">
+                <div class="opponent">
+                    <p class="player">PLAYER 1</p>
+                    <p class="points">development points</p>
+                    <div class="reserved-section">
+                        <p class="reserved-label"><span id="reserved-count">0</span> reserved</p>
+                    </div>
+                    <div class="inventory">
+                        <div class="token gems red">
+                            <p class="token-text">3</p>
+                        </div>
+                        <div class="card red">
+                            <p class="token-text">1</p>
+                        </div>
+                    </div>
+                    <div class="inventory">
+                        <div class="gems green">
+                            <p class="token-text">3</p>
+                        </div>
+                        <div class="card green">
+                            <p class="token-text">1</p>
+                        </div>
+                    </div>
+                    <div class="inventory">
+                        <div class="gems black">
+                            <p class="token-text">3</p>
+                        </div>
+                        <div class="card black">
+                            <p class="token-text">1</p>
+                        </div>
+                    </div>
+                    <div class="inventory">
+                        <div class="gems blue">
+                            <p class="token-text">3</p>
+                        </div>
+                        <div class="card blue">
+                            <p class="token-text">1</p>
+                        </div>
+                    </div>
+                    <div class="inventory">
+                        <div class="gems white">
+                            <p class="token-text">3</p>
+                        </div>
+                        <div class="card white">
+                            <p class="token-text">1</p>
+                        </div>
+                    </div>
+                    <div class="inventory">
+                        <div class="gems yellow">
+                            <p class="token-text">3</p>
+                        </div>
+                    </div>
+
+                    <div class="nobles-container hidden">
+                        <p class="noble">noble1</p>
+                        <p class="noble">noble2</p>
+                        <p class="noble">noble3</p>
+                    </div>
+                </div>
+
+            </div>
         <div class="market-grid-container">
             <p>Development card Market</p>
         </div>
