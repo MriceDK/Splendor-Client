@@ -4,6 +4,9 @@ import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 function createLobby(e) {
     e.preventDefault();
 
+    const submitButton = document.querySelector(".submit");
+    disableSubmitButton(submitButton);
+
     const lobbyName = document.querySelector("#lobby-name").value;
     const playerAmount = document.querySelector(".radio-option input:checked").value;
     const username = loadFromStorage("myUsername");
@@ -17,6 +20,11 @@ function createLobby(e) {
     APIAbstractor.fetchFromServer("/games", "POST", body)
         .then(res => console.log(res));
 
+}
+
+function disableSubmitButton(target) {
+    target.classList.add("disabled");
+    target.setAttribute("disabled", "true");
 }
 
 export { createLobby };

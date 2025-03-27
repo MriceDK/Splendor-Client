@@ -29,6 +29,11 @@ main {
     background-color: grey;
     color: white;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 50%
 }
 
 .lobby-create-form section {
