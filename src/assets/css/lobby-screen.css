@@ -86,22 +86,6 @@ h3{
     justify-content: space-between;
     margin-top: 1rem;
 }
-.play{
-    align-self: end;
-    justify-self: end;
-    grid-row-start: 4;
-    grid-column-start: -2;
-}
-.cancel{
-    align-self: end;
-    grid-row-start: 4;
-}
-button{
-    text-align: center;
-    vertical-align: middle;
-    font-size: 3rem;
-    width: 14rem;
-    height: 6rem;
-    margin: 1rem
 
-}
+
+
