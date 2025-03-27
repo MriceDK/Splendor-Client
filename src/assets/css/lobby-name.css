@@ -1,0 +1,19 @@
+.settings{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.splendor-name{
+    font-family: "Cinzel Decorative", serif;
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#settings{
+    display: flex;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+}
