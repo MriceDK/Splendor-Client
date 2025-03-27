@@ -4,9 +4,24 @@ import { renderOpponentStats } from "./renderer.js"
 
 function getOpponentInfos(gameId){
     
-    const opponents = APIAbstractor.fetchFromServer("/games/1","GET").then(response => response.players);
-
-    opponents.forEach(opponent => renderOpponentStats(opponent));
+    APIAbstractor.fetchFromServer("/games/1","GET").then(response => loopThroughPlayers(response));
+    
 }
 
-export { getOpponentInfos };
+function loopThroughPlayers(gameInfo){
+    gameInfo.players.forEach(opponent => renderOpponentStats(opponent));
+}
+
+function getTotalReservedCards(player){
+    if (player.reserve){
+        let counter = 0;
+        player.reserve.forEach(() => counter++);
+        return counter;
+
+    } else {
+        return 0;
+    }
+
+}
+
+export { getOpponentInfos, getTotalReservedCards };
