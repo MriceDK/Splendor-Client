@@ -91,22 +91,17 @@ h3{
     justify-self: end;
     grid-row-start: 4;
     grid-column-start: -2;
-    padding-bottom: 1rem;
-    padding-right: 1rem;
 }
 .cancel{
     align-self: end;
     grid-row-start: 4;
-padding-bottom: 1rem;
-    padding-left: 1rem;
-
 }
 button{
     text-align: center;
-    margin: auto;
     vertical-align: middle;
     font-size: 3rem;
     width: 14rem;
     height: 6rem;
+    margin: 1rem
 
 }
