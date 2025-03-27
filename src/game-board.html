@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/game-board-screen.css">
-
     <link rel="stylesheet" href="assets/css/opponent-ui.css">
-    <script src="assets/js/own-player-component/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/token-bank.css">
+
+    <script src="assets/js/own-player-component/init.js" type="module"></script>
+    <script src="assets/js/bank-component/init.js" type="module"></script>
 </head>
 <body>
 
@@ -98,14 +99,14 @@
                 <button class="joker-token">1</button>
             </div>
             <div class="selected-tokens">
-                <button></button>
-                <button></button>
+                <button class="hidden"></button>
+                <button class="hidden"></button>
                 <button class="hidden"></button>
             </div>
             <div class="bank-buttons">
-                <button >Cancel</button>
-                <button class="hidden">Take Gems</button>
-                <button >Collect Gems</button>
+                <button class="cancel-button hidden">Cancel</button>
+                <button class="take-gems-button clickable">Take Gems</button>
+                <button class="collect-gems-button hidden">Collect Gems</button>
             </div>
         </section>
         <div class="user-info-flexcontainer">
