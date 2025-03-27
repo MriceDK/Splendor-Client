@@ -1,12 +1,66 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import * as errorHandler from "../data-connector/error-handler.js";
 import * as render from "./renderer.js";
+import * as helper from "./helper.js";
 
 
-function getAllGames() {
+function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
-        .then((json) => {render.renderGames(json.games)})
+        .then((json) => {handleFilters(helper.addGameNames(json.games))})
         .catch(errorHandler.handleError);
 }
 
-export { getAllGames }
+function getFilterValues() {
+    return {
+        searchValue: document.querySelector("#searchbar").value.toLowerCase(),
+        showStarted: document.querySelector("#show-started-filter").checked,
+        showUnStarted: document.querySelector("#show-unstarted-filter").checked,
+        showFull: document.querySelector("#show-full-filter").checked,
+        showJoinable: document.querySelector("#show-joinable-filter").checked,
+        showAmountOfPlayers: document.querySelector("#amount-of-players-in-lobby-filter").value
+    };
+}
+
+function matchesSearch(game, searchValue) {
+    return game.gameName.toLowerCase().includes(searchValue);
+}
+
+function matchesStartedFilter(game, showStarted, showUnStarted) {
+    if (showStarted) return game.started;
+    if (showUnStarted) return !game.started;
+    return true;
+}
+
+function matchesJoinabilityFilter(game, showFull, showJoinable) {
+    if (showFull) return game.players.length === game.numberOfPlayers;
+    if (showJoinable) return game.players.length < game.numberOfPlayers;
+    return true;
+}
+
+function matchesPlayerCountFilter(game, showAmountOfPlayers) {
+    if (showAmountOfPlayers === "isAny") return true;
+    return game.numberOfPlayers === parseInt(showAmountOfPlayers);
+}
+
+function filterGames(games, filters) {
+    return games.filter(game =>
+        matchesSearch(game, filters.searchValue) &&
+        matchesStartedFilter(game, filters.showStarted, filters.showUnStarted) &&
+        matchesJoinabilityFilter(game, filters.showFull, filters.showJoinable) &&
+        matchesPlayerCountFilter(game, filters.showAmountOfPlayers)
+    );
+}
+
+function handleFilters(games) {
+    const filters = getFilterValues();
+    const filteredGames = filterGames(games, filters);
+    render.renderGames(filteredGames);
+}
+
+
+function formSubmitPreventHandler(e) {
+    e.preventDefault();
+    getMatchingGames();
+}
+
+export { getMatchingGames, handleFilters, formSubmitPreventHandler};

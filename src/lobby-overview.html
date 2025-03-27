@@ -31,6 +31,42 @@
     </div>
   </header>
 
+  <form id="filter">
+    <div id="search">
+      <label for="searchbar">Search for a lobby by name</label>
+      <input type="text" placeholder="Enter lobby name" id="searchbar">
+      <button>Search</button>
+    </div>
+
+    <input type="checkbox" id="show-started-filter">
+    <label for="show-started-filter">Show started</label>
+
+    <input type="checkbox" id="show-unstarted-filter" checked>
+    <label for="show-unstarted-filter">Show unstarted</label>
+
+    <input type="checkbox" id="show-full-filter">
+    <label for="show-full-filter">Show full lobbies</label>
+
+    <input type="checkbox" id="show-joinable-filter" checked>
+    <label for="show-joinable-filter">Show joinable lobbies</label>
+
+<!--    <input type="checkbox" id="show-public-filter" checked>-->
+<!--    <label for="show-public-filter">Show public lobbies</label>-->
+
+<!--    <input type="checkbox" id="show-private-filter">-->
+<!--    <label for="show-private-filter">Show private lobbies</label>-->
+
+    <div id="player-amount">
+      <label for="amount-of-players-in-lobby-filter">Amount of players:</label>
+      <select id="amount-of-players-in-lobby-filter">
+        <option value="isAny" selected>Any amount of players</option>
+        <option value="2">2 Players</option>
+        <option value="3">3 Players</option>
+        <option value="4">4 Players</option>
+      </select>
+    </div>
+  </form>
+
   <div class="lobby-overview-container">
 
     <template id="join-lobby-template">
@@ -38,8 +74,8 @@
         <p class="lobbyname">John doe's Lobby</p>
         <p class="playercount">3/4</p>
         <div class="buttons">
-          <button class="join-button-locked">JOIN</button>
-          <button class="spectate-button-locked">SPECTATE</button>
+          <button class="join-button">JOIN</button>
+          <button class="spectate-button">SPECTATE</button>
         </div>
       </section>
     </template>
