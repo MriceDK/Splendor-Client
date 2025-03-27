@@ -25,7 +25,6 @@ function handleFilters(games) {
 
     const showAmountOfPlayers = document.querySelector("#amount-of-players-in-lobby-filter").value;
 
-    console.log(games)
     const filteredGames = games.filter(game => {
         let matchesFilters = true;
          matchesFilters = game.gameName.toLowerCase().includes(searchValue) && matchesFilters;
@@ -61,7 +60,6 @@ function handleFilters(games) {
         }
         return matchesFilters;
     })
-    console.log(filteredGames);
     render.renderGames(filteredGames);
 }
 
