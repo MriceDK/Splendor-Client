@@ -86,6 +86,10 @@
     align-items: center;
 }
 
+.hidden{
+    display: none;
+}
+
 
 .red {
     background: red;
