@@ -1,4 +1,4 @@
-import {changeButtons, disableTokens, enableTokens, showChosenBankToken} from "./renderer.js";
+import {changeButtons, disableTokens, enableTokens, getChosenTokenColour, removeChosenTokens} from "./renderer.js";
 
 function openBank(){
     changeButtons();
@@ -8,10 +8,11 @@ function openBank(){
 function closeBank(){
     changeButtons();
     disableTokens();
+    removeChosenTokens();
 }
 
 function chooseBankToken(e){
-    showChosenBankToken(e);
+    getChosenTokenColour(e);
 }
 
 export {openBank, closeBank, chooseBankToken};

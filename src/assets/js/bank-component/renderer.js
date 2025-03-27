@@ -34,18 +34,37 @@ function toggleTokenBorders(){
     document.querySelector(".token-bank .white-token").classList.toggle("clickable");
 }
 
-function showChosenBankToken(e){
+function getChosenTokenColour(e){
     if(e.target.classList.contains("red-token")){
         console.log("Red");
+        showChosenBankToken("red");
     } else if (e.target.classList.contains("green-token")){
         console.log("Green");
+        showChosenBankToken("green");
     } else if (e.target.classList.contains("black-token")){
         console.log("Black");
+        showChosenBankToken("black");
     } else if (e.target.classList.contains("blue-token")){
         console.log("Blue");
+        showChosenBankToken("blue");
     } else if (e.target.classList.contains("white-token")){
         console.log("White");
+        showChosenBankToken("white");
     }
 }
 
-export {changeButtons, enableTokens, disableTokens, showChosenBankToken, toggleTokenBorders};
+function showChosenBankToken(colour){
+    if (document.querySelectorAll(".selected-tokens button").length < 3){
+        console.log(document.querySelectorAll(".selected-tokens button").length);
+        const chosenToken = document.createElement("button");
+        chosenToken.classList.add("selected-" + colour + "-token");
+        chosenToken.classList.add("clickable");
+        document.querySelector(".selected-tokens").appendChild(chosenToken);
+    }
+}
+
+function removeChosenTokens(){
+    document.querySelector(".selected-tokens").innerHTML = "";
+}
+
+export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens};
