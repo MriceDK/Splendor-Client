@@ -12,20 +12,29 @@ function createLobby(e) {
     const playerAmount = document.querySelector(".radio-option input:checked").value;
     const username = loadFromStorage("myUsername");
 
-    const body = {
-        "gameName": lobbyName,
-        "numberOfPlayers": parseInt(playerAmount),
-        "playerName": username
-    }
+    const body = createBody(lobbyName, playerAmount, username);
 
     APIAbstractor.fetchFromServer("/games", "POST", body)
         .then(res => {
             saveToStorage("gameId", res.gameId);
-            saveToStorage("playerToken", res.playerToken)
+            saveToStorage("playerToken", res.playerToken);
 
             window.location.href = "./lobby.html";
         });
+}
 
+function createBody(lobbyName, playerAmount, username) {
+
+    const body = {
+        "numberOfPlayers": parseInt(playerAmount),
+        "playerName": username
+    }
+
+    if (!(lobbyName === "" || lobbyName == null)) {
+        body.gameName = lobbyName;
+    }
+
+    return body;
 }
 
 function disableSubmitButton(target) {
