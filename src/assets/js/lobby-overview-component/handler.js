@@ -1,7 +1,7 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import * as errorHandler from "../data-connector/error-handler.js";
 import * as render from "./renderer.js";
-import * as helper from "./helper.js"
+import * as helper from "./helper.js";
 
 
 function getMatchingGames() {
@@ -11,6 +11,7 @@ function getMatchingGames() {
 }
 
 function handleFilters(games) {
+
     const searchValue = document.querySelector("#searchbar").value.toLowerCase();
 
     const showStartedValue = document.querySelector("#show-started-filter").checked;
@@ -27,7 +28,7 @@ function handleFilters(games) {
     console.log(games)
     const filteredGames = games.filter(game => {
         let matchesFilters = true;
-         matchesFilters = game.gameName.includes(searchValue) && matchesFilters;
+         matchesFilters = game.gameName.toLowerCase().includes(searchValue) && matchesFilters;
         if (showStartedValue) {
             matchesFilters = game.started && matchesFilters;
         }
@@ -69,4 +70,4 @@ function formSubmitPreventHandler(e) {
     getMatchingGames();
 }
 
-export { getMatchingGames, handleFilters, formSubmitPreventHandler}
+export { getMatchingGames, handleFilters, formSubmitPreventHandler};
