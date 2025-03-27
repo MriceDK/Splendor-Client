@@ -1,6 +1,6 @@
 .settings{
     display: flex;
-    justify-content: flex-end;
+    align-content: flex-end;
 }
 
 .splendor-name{
@@ -14,6 +14,17 @@
 .lobby-name{
     text-align: center;
     margin-top: 1rem;
+}
+
+.spectators{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#spectators{
+    display: flex;
+    justify-content: right;
 }
 
 #settings{
