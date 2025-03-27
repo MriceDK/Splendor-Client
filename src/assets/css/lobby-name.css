@@ -11,6 +11,11 @@
     font-weight: bold;
 }
 
+.lobby-name{
+    text-align: center;
+    margin-top: 1rem;
+}
+
 #settings{
     display: flex;
     justify-content: center;
