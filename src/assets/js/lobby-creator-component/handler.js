@@ -1,5 +1,6 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
+import {saveToStorage} from "../data-connector/local-storage-abstractor.js";
 
 function createLobby(e) {
     e.preventDefault();
@@ -18,7 +19,12 @@ function createLobby(e) {
     }
 
     APIAbstractor.fetchFromServer("/games", "POST", body)
-        .then(res => console.log(res));
+        .then(res => {
+            saveToStorage("gameId", res.gameId);
+            saveToStorage("playerToken", res.playerToken)
+
+            window.location.href = "./lobby.html";
+        });
 
 }
 
