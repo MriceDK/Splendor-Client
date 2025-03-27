@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/css/lobby-overview-screen.css">
     <link rel="stylesheet" href="assets/css/create-lobby.css">
 
+    <script type="module" src="./assets/js/lobby-creator-component/lobby-creator.js"></script>
+
 </head>
 <body>
     <header>
@@ -27,11 +29,11 @@
     </header>
     <main>
 
-        <form class="lobby-create-form" action="#" method="GET">
+        <form id="lobby-create-form" class="lobby-create-form" action="#" method="GET">
 
             <section>
                 <h2 class="form-title">Lobby name:</h2>
-                <input name="lobby-name" type="text">
+                <input id="lobby-name" name="lobby-name" type="text">
             </section>
 
             <section>
@@ -47,7 +49,7 @@
                         <label for="player-amount-3">3</label>
                     </div>
                     <div class="radio-option">
-                        <input id="player-amount-4" name="player-amount" type="radio" value="3">
+                        <input id="player-amount-4" name="player-amount" type="radio" value="4">
                         <label for="player-amount-4">4</label>
                     </div>
                 </div>
