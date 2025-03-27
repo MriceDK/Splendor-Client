@@ -1,10 +1,17 @@
-function lobbyName(lobbyName) {
+import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
 
-    console.log(lobbyName);
+function lobbyName(lobbyName, username) {
+
+    if (lobbyName === null || lobbyName === ""){
+        let titleElement = document.querySelector("#title");
+        titleElement.textContent = storageAbstractor.loadFromStorage("myUsername") + titleElement.textContent;
+    }
+    else{
+        document.querySelector("#title").textContent = lobbyName;
+    }
 }
 function maxUserCount(amount){
 
-    console.log(amount);
 }
 function userCount(amount){
 

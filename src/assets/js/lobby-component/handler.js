@@ -4,8 +4,8 @@ import * as renderer from "./renderer.js";
 
 function loadJoinedGame(data){
     //test variables
-    storageAbstractor.saveToStorage("gameId", 17)
-    storageAbstractor.saveToStorage("myUsername", "sam");
+    storageAbstractor.saveToStorage("gameId", 1)
+    storageAbstractor.saveToStorage("myUsername", "Alice");
 
 
     const gameId = storageAbstractor.loadFromStorage("gameId")
@@ -13,20 +13,21 @@ function loadJoinedGame(data){
     const playerToken = gameId + "_" + username
     storageAbstractor.saveToStorage("playerToken", playerToken);
     loadPageFromLocalStorage(username);
+
     if (gameId !== null){
         getGameDetailsForGameId(gameId, playerToken);
-
     }
 }
 function getGameDetailsForGameId(gameId, playerToken) {
     APIAbstractor.fetchFromServer(`/games/${gameId}`, "GET").then(data => sendToRenderer(data));
 }
+
 function loadPageFromLocalStorage(name){
     renderer.userName(name)
 }
-function sendToRenderer(data){
 
-    c
+
+function sendToRenderer(data){
 
     console.log(data);
     renderer.lobbyName(data.gameName);
