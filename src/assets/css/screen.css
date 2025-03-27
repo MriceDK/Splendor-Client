@@ -2,6 +2,12 @@
  --main-bg-color: #f4f4f4;
  --main-header-bg-color: #2c3e50;
  --main-white-color: white;
+ --main-black-color: black;
+ --main-blue-color: blue;
+ --main-grey-color: grey;
+ --main-red-color: red;
+ --main-green-color: green;
+ --main-yellow-color: yellow;
 }
 
 * {
