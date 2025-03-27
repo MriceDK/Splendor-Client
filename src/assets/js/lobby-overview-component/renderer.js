@@ -11,9 +11,9 @@ function renderGames(games) {
         } else {
             $lobby.querySelector(".lobbyname").innerText = game.players[0] + "'s Lobby";
         }
-        $lobby.querySelector(".playercount").innerText = game.players.length + "/" + game.numberOfPlayers
-        $results.insertAdjacentHTML("beforeend", $lobby.outerHTML)
-    })
+        $lobby.querySelector(".playercount").innerText = `${game.players.length} / ${game.numberOfPlayers}`;
+        $results.insertAdjacentHTML("beforeend", $lobby.outerHTML);
+    });
 }
 
 

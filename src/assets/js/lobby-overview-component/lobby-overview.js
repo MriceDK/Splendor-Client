@@ -1,4 +1,4 @@
-import * as handler from "./handler.js"
+import * as handler from "./handler.js";
 
 
 
