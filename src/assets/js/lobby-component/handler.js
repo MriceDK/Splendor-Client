@@ -1,37 +1,43 @@
 import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import * as renderer from "./renderer";
+import * as renderer from "./renderer.js";
 
-
-
-function setJSon(object) {
-
-    console.log(object)
-    const gameName = object.gameName;
-    const usersInLobby = object.players;
-    const amountOfPlayers = object.numberOfPlayers;
-    const startedCheck  = object.started;
-}
-
-function getGameDetailsForGameId(gameId, playerToken) {
-    APIAbstractor.fetchFromServer(`/games/${gameId}`, "GET").then(data => setJSon(data));
-}
-
-function loadJoinedGame(){
+function loadJoinedGame(data){
     //test variables
-    storageAbstractor.saveToStorage("gameId", 6)
+    storageAbstractor.saveToStorage("gameId", 17)
     storageAbstractor.saveToStorage("myUsername", "sam");
 
 
     const gameId = storageAbstractor.loadFromStorage("gameId")
     const username = storageAbstractor.loadFromStorage("myUsername")
     const playerToken = gameId + "_" + username
-        storageAbstractor.saveToStorage("playerToken", playerToken);
+    storageAbstractor.saveToStorage("playerToken", playerToken);
+    loadPageFromLocalStorage(username);
     if (gameId !== null){
         getGameDetailsForGameId(gameId, playerToken);
-        renderer.lobbyName();
+
     }
+}
+function getGameDetailsForGameId(gameId, playerToken) {
+    APIAbstractor.fetchFromServer(`/games/${gameId}`, "GET").then(data => sendToRenderer(data));
+}
+function loadPageFromLocalStorage(name){
+    renderer.userName(name)
+}
+function sendToRenderer(data){
+
+    c
+
+    console.log(data);
+    renderer.lobbyName(data.gameName);
+    renderer.maxUserCount(data.numberOfPlayers);
+    const countPlayers = (data.players).length;
+    renderer.userCount(countPlayers);
+    renderer.started(data.started)
+
 
 }
+
+
 
 export { loadJoinedGame}
