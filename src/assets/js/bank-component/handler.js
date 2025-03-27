@@ -1,4 +1,4 @@
-import {changeButtons, disableTokens, enableTokens, getChosenTokenColour, removeChosenTokens, resetChosenTokenList, chosenBankTokens} from "./renderer.js";
+import {changeButtons, disableTokens, enableTokens, getChosenTokenColour, removeChosenTokens, chosenBankTokens} from "./renderer.js";
 
 function openBank(){
     changeButtons();
@@ -16,8 +16,9 @@ function chooseBankToken(e){
 }
 
 function removeChosenBankToken(e) {
-    chosenBankTokens.splice(chosenBankTokens.indexOf(e.target.classList[2]), 1);
+    chosenBankTokens[e.target.classList[2]]--;
     e.target.remove();
+    //TODO Code-Cleanup (remove hardcoded parts)
 }
 
 export {openBank, closeBank, chooseBankToken, removeChosenBankToken};

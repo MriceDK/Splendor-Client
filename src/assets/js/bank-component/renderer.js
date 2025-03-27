@@ -1,6 +1,12 @@
 import {removeChosenBankToken} from "./handler.js";
 
-let chosenBankTokens = [];
+const chosenBankTokens = {
+    red: 0,
+    green: 0,
+    black: 0,
+    blue: 0,
+    white: 0,
+};
 
 function changeButtons(){
     document.querySelector(".bank-buttons .cancel-button").classList.toggle("hidden");
@@ -60,17 +66,17 @@ function showChosenBankToken(colour){
         chosenToken.classList.add(colour);
         chosenToken.addEventListener("click", removeChosenBankToken);
         document.querySelector(".selected-tokens").appendChild(chosenToken);
-        chosenBankTokens.push(colour);
+        chosenBankTokens[colour]++;
+        console.log(chosenBankTokens);
     }
 }
 
 function isLegalToken(colour){
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
-    const TokensWithColour = countNumberOfColourInChosenTokens(colour);
 
     if (numberOfChosenTokens < 3){
-        if (countNumberOfColourInChosenTokens(colour) < 2 && countNumberOfColourInChosenTokens(chosenBankTokens[0]) < 2){
-            if (!(numberOfChosenTokens === 2 && countNumberOfColourInChosenTokens(chosenBankTokens[0]) === TokensWithColour && countNumberOfColourInChosenTokens(chosenBankTokens[1]) === TokensWithColour)) {
+        if (chosenBankTokens[colour] < 2 && !Object.values(chosenBankTokens).includes(2)){
+            if (!(numberOfChosenTokens === 2 && chosenBankTokens[colour] >= 1)) {
                 return true;
             }
         }
@@ -79,23 +85,9 @@ function isLegalToken(colour){
     return false;
 }
 
-function countNumberOfColourInChosenTokens(colour){
-    let count = 0;
-    for (let i = 0; i < chosenBankTokens.length; i++) {
-        if (chosenBankTokens[i] === colour){
-            count++;
-        }
-    }
-    return count;
-}
-
 function removeChosenTokens(){
     document.querySelector(".selected-tokens").innerHTML = "";
-    chosenBankTokens = [];
+    Object.keys(chosenBankTokens).forEach(colour => chosenBankTokens[colour] = 0);
 }
 
-function resetChosenTokenList(){
-    chose
-}
-
-export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, resetChosenTokenList, chosenBankTokens};
+export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, chosenBankTokens};
