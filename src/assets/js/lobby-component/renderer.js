@@ -13,17 +13,28 @@ function lobbyName(lobbyName) {
 function maxUserCount(amount){
 
 }
-function userCount(amount){
+function renderUsers(userArray){
+    const $template = document.querySelector("#player");
+    const $target = document.querySelector(".users");
 
-    console.log(amount);
+    userArray.forEach(user => {
+        const $copy = $template.content.firstElementChild.cloneNode(true);
+
+        $copy.textContent = user;
+
+        $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
+    })
+
+    console.log(userArray,amount);
 }
 function started(bool){
 
     console.log(bool);
 }
-function userName(name){
-    document.querySelector("#username").textContent = name;
+function renderOwnUserName(playerCount){
+    storageAbstractor.loadFromStorage()
+    document.querySelector("#username").textContent;
 }
 
-export { lobbyName, maxUserCount, userCount, started, userName };
+export { lobbyName, maxUserCount, renderOwnUserName, started, renderUsers };
 
