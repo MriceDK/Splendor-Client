@@ -15,7 +15,6 @@
 
 .deck {
     width: 100%;
-    font-size: .75rem;
     justify-self: stretch;
     align-self: stretch;
     background-color: grey;
@@ -26,11 +25,11 @@
     font-size: 1.5rem;
     align-self: center;
     justify-self: center;
+    text-align: center;
 }
 
 .development-card {
     width: 100%;
-    font-size: .75rem;
     justify-self: stretch;
     align-self: stretch;
     background-color: grey;
