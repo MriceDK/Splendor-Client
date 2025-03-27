@@ -10,58 +10,53 @@ function getMatchingGames() {
         .catch(errorHandler.handleError);
 }
 
+function getFilterValues() {
+    return {
+        searchValue: document.querySelector("#searchbar").value.toLowerCase(),
+        showStarted: document.querySelector("#show-started-filter").checked,
+        showUnStarted: document.querySelector("#show-unstarted-filter").checked,
+        showFull: document.querySelector("#show-full-filter").checked,
+        showJoinable: document.querySelector("#show-joinable-filter").checked,
+        showAmountOfPlayers: document.querySelector("#amount-of-players-in-lobby-filter").value
+    };
+}
+
+function matchesSearch(game, searchValue) {
+    return game.gameName.toLowerCase().includes(searchValue);
+}
+
+function matchesStartedFilter(game, showStarted, showUnStarted) {
+    if (showStarted) return game.started;
+    if (showUnStarted) return !game.started;
+    return true;
+}
+
+function matchesJoinabilityFilter(game, showFull, showJoinable) {
+    if (showFull) return game.players.length === game.numberOfPlayers;
+    if (showJoinable) return game.players.length < game.numberOfPlayers;
+    return true;
+}
+
+function matchesPlayerCountFilter(game, showAmountOfPlayers) {
+    if (showAmountOfPlayers === "isAny") return true;
+    return game.numberOfPlayers === parseInt(showAmountOfPlayers);
+}
+
+function filterGames(games, filters) {
+    return games.filter(game =>
+        matchesSearch(game, filters.searchValue) &&
+        matchesStartedFilter(game, filters.showStarted, filters.showUnStarted) &&
+        matchesJoinabilityFilter(game, filters.showFull, filters.showJoinable) &&
+        matchesPlayerCountFilter(game, filters.showAmountOfPlayers)
+    );
+}
+
 function handleFilters(games) {
-
-    const searchValue = document.querySelector("#searchbar").value.toLowerCase();
-
-    const showStartedValue = document.querySelector("#show-started-filter").checked;
-    const showUnStartedValue = document.querySelector("#show-unstarted-filter").checked;
-
-    const showFullValue = document.querySelector("#show-full-filter").checked;
-    const showJoinableValue = document.querySelector("#show-joinable-filter").checked;
-
-    // const showPublicValue = document.querySelector("#show-public-filter").checked;
-    // const showPrivateValue = document.querySelector("#show-private-filter").checked;
-
-    const showAmountOfPlayers = document.querySelector("#amount-of-players-in-lobby-filter").value;
-
-    const filteredGames = games.filter(game => {
-        let matchesFilters = true;
-         matchesFilters = game.gameName.toLowerCase().includes(searchValue) && matchesFilters;
-        if (showStartedValue) {
-            matchesFilters = game.started && matchesFilters;
-        }
-        if (showUnStartedValue) {
-            matchesFilters = !game.started && matchesFilters;
-        }
-        if (showFullValue) {
-            matchesFilters = game.players.length === game.numberOfPlayers && matchesFilters;
-        }
-        if (showJoinableValue) {
-            matchesFilters = game.players.length < game.numberOfPlayers && matchesFilters;
-        }
-        // TODO: get from the api if a lobby is public or secret. don't know how to do this yet
-        // if (showPublicValue) {
-        //     matchesFilters = true && matchesFilters;
-        // }
-        // if (showPrivateValue) {
-        //     matchesFilters = true && matchesFilters;
-        // }
-
-        if (showAmountOfPlayers === "isAny") {
-            matchesFilters = true && matchesFilters;
-        } else if (parseInt(showAmountOfPlayers) === 2) {
-            matchesFilters = game.numberOfPlayers === 2 && matchesFilters;
-        } else if (parseInt(showAmountOfPlayers) === 3) {
-            matchesFilters = game.numberOfPlayers === 3 && matchesFilters;
-        } else if (parseInt(showAmountOfPlayers) === 4) {
-            matchesFilters = game.numberOfPlayers === 4 && matchesFilters;
-
-        }
-        return matchesFilters;
-    })
+    const filters = getFilterValues();
+    const filteredGames = filterGames(games, filters);
     render.renderGames(filteredGames);
 }
+
 
 function formSubmitPreventHandler(e) {
     e.preventDefault();
