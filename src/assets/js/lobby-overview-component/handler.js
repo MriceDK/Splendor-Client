@@ -3,10 +3,21 @@ import * as errorHandler from "../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 
 
-function getAllGames() {
+function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
-        .then((json) => {render.renderGames(json.games)})
+        .then((json) => {handleFilters(json.games)})
         .catch(errorHandler.handleError);
 }
 
-export { getAllGames }
+function handleFilters(games) {
+    const searchValue = document.querySelector("#searchbar").value;
+    console.log(games)
+    // render.renderGames();
+}
+
+function formSubmitPreventHandler(e) {
+    e.preventDefault();
+    getMatchingGames();
+}
+
+export { getMatchingGames, handleFilters, formSubmitPreventHandler}
