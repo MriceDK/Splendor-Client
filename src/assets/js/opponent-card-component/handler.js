@@ -4,7 +4,7 @@ import { renderOpponentStats } from "./renderer.js"
 
 function getOpponentInfos(gameId){
     
-    APIAbstractor.fetchFromServer("/games/1","GET").then(response => loopThroughPlayers(response));
+    APIAbstractor.fetchFromServer("/games/1","GET").then(response => loopThroughPlayers(response)).catch(error => console.log(error));
     
 }
 
@@ -25,13 +25,27 @@ function getTotalReservedCards(player){
 
 }
 
+//work with object.entries to get the full object
 function tokenInPurse(player, token){
-    if(player.tokens.token){
-        return players.tokens.token;
+    console.log(player.tokens);
+    if(player.tokens){
+        return player.tokens[token];
     } else{
         return 0;
     }
 
 }
 
-export { getOpponentInfos, getTotalReservedCards, tokenInPurse };
+function checkBonuses(player, bonus){
+    if(player.bonuses){
+        if (player.bonuses[bonus]){
+            return player.bonuses[bonus];
+        } else{
+            return 0;
+        }
+        
+    } else{
+        return 0;
+    }
+}
+export { getOpponentInfos, getTotalReservedCards, tokenInPurse, checkBonuses };
