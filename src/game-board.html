@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/game-board-screen.css">
+
     <link rel="stylesheet" href="assets/css/opponent-ui.css">
+    <script src="assets/js/own-player-component/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/token-bank.css">
 </head>
 <body>
@@ -85,29 +87,37 @@
         <div class="lobby-info">
             <p>Lobby Name</p>
         </div>
-        <div class="bank-flexcontainer">
+        <section class="bank-flexcontainer">
             <h2>Bank</h2>
-            <section class="token-bank">
+            <div class="token-bank">
                 <button class="red-token">1</button>
                 <button class="green-token">1</button>
                 <button class="black-token">1</button>
                 <button class="blue-token">1</button>
                 <button class="white-token">1</button>
                 <button class="joker-token">1</button>
-            </section>
-            <section class="selected-tokens">
+            </div>
+            <div class="selected-tokens">
                 <button></button>
                 <button></button>
                 <button class="hidden"></button>
-            </section>
-            <section class="bank-buttons">
+            </div>
+            <div class="bank-buttons">
                 <button >Cancel</button>
                 <button class="hidden">Take Gems</button>
                 <button >Collect Gems</button>
-            </section>
-        </div>
+            </div>
+        </section>
         <div class="user-info-flexcontainer">
             <p>My user</p>
+            <div id="own-player-card">
+                <h2 id="own-username">Username</h2>
+                <div id="own-prestige-points"><p></p></div>
+                <div id="nobles"></div>
+                <div id="own-gems"><div id="own-bonuses"></div></div>
+                <div id="own-reservated-cards"></div>
+            </div>
+
         </div>
         <div class="history">
             <p>History</p>
