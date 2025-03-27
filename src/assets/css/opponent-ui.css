@@ -16,6 +16,12 @@
 }
 
 .token {
+}
+
+.gems {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,12 +31,6 @@
     margin-top: 0.5rem;
 }
 
-.gems {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-}
-
 .card {
     width: 0.75rem;
     height: 1rem;
@@ -38,6 +38,12 @@
     top: -0.25rem;
     right: -0.25rem;
     font-size: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.1rem solid var(--main-black-color);
+    color: var(--main-black-color);
+    margin-top: 0.5rem;
 }
 
 .nobles-container {
