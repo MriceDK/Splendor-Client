@@ -1,3 +1,5 @@
+import {removeChosenBankToken} from "./handler.js";
+
 let chosenBankTokens = [];
 
 function changeButtons(){
@@ -38,19 +40,14 @@ function toggleTokenBorders(){
 
 function getChosenTokenColour(e){
     if(e.target.classList.contains("red-token")){
-        console.log("Red");
         showChosenBankToken("red");
     } else if (e.target.classList.contains("green-token")){
-        console.log("Green");
         showChosenBankToken("green");
     } else if (e.target.classList.contains("black-token")){
-        console.log("Black");
         showChosenBankToken("black");
     } else if (e.target.classList.contains("blue-token")){
-        console.log("Blue");
         showChosenBankToken("blue");
     } else if (e.target.classList.contains("white-token")){
-        console.log("White");
         showChosenBankToken("white");
     }
 }
@@ -60,6 +57,8 @@ function showChosenBankToken(colour){
         const chosenToken = document.createElement("button");
         chosenToken.classList.add(`selected-${colour}-token`);
         chosenToken.classList.add("clickable");
+        chosenToken.classList.add(colour);
+        chosenToken.addEventListener("click", removeChosenBankToken);
         document.querySelector(".selected-tokens").appendChild(chosenToken);
         chosenBankTokens.push(colour);
     }
@@ -95,4 +94,8 @@ function removeChosenTokens(){
     chosenBankTokens = [];
 }
 
-export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens};
+function resetChosenTokenList(){
+    chose
+}
+
+export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, resetChosenTokenList, chosenBankTokens};
