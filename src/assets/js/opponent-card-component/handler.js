@@ -9,6 +9,7 @@ function getOpponentInfos(gameId){
 }
 
 function loopThroughPlayers(gameInfo){
+    console.log(gameInfo);
     gameInfo.players.forEach(opponent => renderOpponentStats(opponent));
 }
 
@@ -24,4 +25,13 @@ function getTotalReservedCards(player){
 
 }
 
-export { getOpponentInfos, getTotalReservedCards };
+function tokenInPurse(player, token){
+    if(player.tokens.token){
+        return players.tokens.token;
+    } else{
+        return 0;
+    }
+
+}
+
+export { getOpponentInfos, getTotalReservedCards, tokenInPurse };
