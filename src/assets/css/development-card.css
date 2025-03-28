@@ -2,7 +2,7 @@
     padding: 2rem 6rem;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 4rem;
+    grid-template-rows: auto;
     gap: 1rem;
 }
 
@@ -15,7 +15,6 @@
 
 .deck {
     width: 100%;
-    font-size: .75rem;
     justify-self: stretch;
     align-self: stretch;
     background-color: grey;
@@ -26,11 +25,11 @@
     font-size: 1.5rem;
     align-self: center;
     justify-self: center;
+    text-align: center;
 }
 
 .development-card {
     width: 100%;
-    font-size: .75rem;
     justify-self: stretch;
     align-self: stretch;
     background-color: grey;
@@ -97,4 +96,25 @@
 
 .onyx {
     background: #8d6830;
+    color: white;
+}
+
+.market-grid-container .noble {
+    width: auto;
+    height: auto;
+    padding: .5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.market-grid-container .bonus-costs {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.bonus-cost {
+    padding: .25rem;
 }
