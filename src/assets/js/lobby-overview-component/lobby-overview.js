@@ -1,8 +1,11 @@
-import * as handler from "./handler.js"
+import * as handler from "./handler.js";
 
-init();
+
 
 function init() {
-    handler.getAllGames();
+    handler.getMatchingGames();
+    document.querySelector("#filter").addEventListener("submit", handler.formSubmitPreventHandler);
+
 }
 
+init();
