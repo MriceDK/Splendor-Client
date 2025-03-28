@@ -7,15 +7,13 @@
 .opponent{
     border: solid var(--main-grey-color);
     background-color: var(--main-grey-color);
+    margin-bottom: 1rem;
 }
 
 .inventory {
     position: relative;
     display: inline-block;
     margin: 0.25rem;
-}
-
-.token {
 }
 
 .gems {
