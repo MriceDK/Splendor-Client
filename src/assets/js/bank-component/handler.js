@@ -1,24 +1,25 @@
-import {changeButtons, disableTokens, enableTokens, getChosenTokenColour, removeChosenTokens, chosenBankTokens} from "./renderer.js";
+import * as renderer from "./renderer.js";
 
 function openBank(){
-    changeButtons();
-    enableTokens();
+    renderer.changeButtons();
+    renderer.enableTokens();
 }
 
 function closeBank(){
-    changeButtons();
-    disableTokens();
-    removeChosenTokens();
+    renderer.changeButtons();
+    renderer.disableTokens();
+    renderer.removeChosenTokens();
 }
 
 function chooseBankToken(e){
-    getChosenTokenColour(e);
+    renderer.getChosenTokenColour(e);
 }
 
 function removeChosenBankToken(e) {
-    chosenBankTokens[e.target.classList[2]]--;
+    const classNameForRemoval = e.target.classList[2]
+
+    renderer.chosenBankTokens[classNameForRemoval]--;
     e.target.remove();
-    //TODO Code-Cleanup (remove hardcoded parts)
 }
 
 export {openBank, closeBank, chooseBankToken, removeChosenBankToken};

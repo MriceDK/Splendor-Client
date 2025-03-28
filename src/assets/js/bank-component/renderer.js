@@ -72,11 +72,14 @@ function showChosenBankToken(colour){
 }
 
 function isLegalToken(colour){
+    const maxChosenTokens = 3;
+    const maxChosenTokensSameColour = 2;
+
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
-    if (numberOfChosenTokens < 3){
-        if (chosenBankTokens[colour] < 2 && !Object.values(chosenBankTokens).includes(2)){
-            if (!(numberOfChosenTokens === 2 && chosenBankTokens[colour] >= 1)) {
+    if (numberOfChosenTokens < maxChosenTokens){
+        if (!Object.values(chosenBankTokens).includes(maxChosenTokensSameColour)){
+            if (!(numberOfChosenTokens === 2 && chosenBankTokens[colour] !== 0)) { //I use a two here to check if there are currently two tokens, doesn't matter what colour they are.
                 return true;
             }
         }
