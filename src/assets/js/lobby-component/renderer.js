@@ -1,0 +1,55 @@
+import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
+
+function dataListFromApi(data){
+
+    lobbyName(data.gameName);
+    started(data.started);
+    renderUsersLoop(data.players, data);
+    renderOwnUserName();
+}
+
+function lobbyName(lobbyName) {
+
+    if (lobbyName === null || lobbyName === ""){
+        let titleElement = document.querySelector("#title");
+        titleElement.textContent = `${storageAbstractor.loadFromStorage("myUsername")}${titleElement.textContent}`;
+    }
+    else{
+        document.querySelector("#title").textContent = lobbyName;
+    }
+}
+
+function renderLobbyAmount(currentUserCount,maxUserCount){
+
+       document.querySelector("#playerCount").textContent = `${currentUserCount}/${maxUserCount} Players`;
+}
+
+function renderUsersLoop(userArray, data){
+
+    const $template = document.querySelector("#player");
+    const $target = document.querySelector(".users");
+    $target.innerHTML = $template.outerHTML;
+
+    userArray.forEach(user => {
+        const $copy = $template.content.firstElementChild.cloneNode(true);
+
+        $copy.textContent = user;
+
+        $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
+    })
+    renderLobbyAmount(userArray.length, data.numberOfPlayers);
+}
+
+function started(isStarted){
+
+    if(isStarted === true){
+        window.location.assign("./game-board.html");
+    }
+}
+
+function renderOwnUserName(){
+    document.querySelector("#username").textContent = storageAbstractor.loadFromStorage("myUsername");
+}
+
+export { lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi };
+
