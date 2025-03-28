@@ -82,8 +82,7 @@ function formSubmitPreventHandler(e) {
 function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
-
-        localStorageAbstractor.saveToStorage("gameId", parseInt(e.target.closest(".lobby").getAttribute("data-gameId")))
+        localStorageAbstractor.saveToStorage("gameId", joinGameId);
         addPlayerToGame(joinGameId);
     }
 
