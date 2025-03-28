@@ -84,6 +84,7 @@ function handleLobbyJoinClick(e) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
         localStorageAbstractor.saveToStorage("gameId", joinGameId);
         addPlayerToGame(joinGameId);
+        window.location.assign("../../../lobby.html");
     }
 
 }
