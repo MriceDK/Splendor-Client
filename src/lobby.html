@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/lobby-screen.css">
+    <script type="module" src="assets/js/lobby-component/lobby.js"></script>
 </head>
 <body>
 <div class="grid">
@@ -21,24 +22,20 @@
         </div>
     </header>
     <main>
-        <h3>Creator</h3>
-        <h2 class="title">'s Lobby</h2>
-        <div class="middle">
+        <h2>Creator</h2>
+        <h1 id="title">'s Lobby</h1>
+        <section class="middle">
             <ol class="users">
-                <li id="creator">Player1</li>
-                <li id="user2">Player2</li>
-                <li id="user3">Player3</li>
-                <li id="user4">Player4</li>
+                <template id="player">
+                    <li id="creator">Player1</li>
+                </template>
             </ol>
             <div class="bottom">
-                <p>1/4 Players</p>
-                <p>Spectators</p>
+                <p id="playerCount">1/4 Players</p>
+                <p id="specators">Spectators</p>
                 <p>Waiting for all players to join</p>
             </div>
-
-        </div>
-            <button class="play">Play</button>
-            <button class="cancel">Cancel</button>
+        </section>
     </main>
 </div>
 <div class="errormessages">
