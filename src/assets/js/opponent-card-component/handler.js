@@ -9,7 +9,6 @@ function getOpponentInfos(gameId){
 }
 
 function loopThroughPlayers(gameInfo){
-    console.log(gameInfo);
     gameInfo.players.forEach(opponent => renderOpponentStats(opponent));
 }
 
