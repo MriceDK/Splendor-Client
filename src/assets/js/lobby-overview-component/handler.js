@@ -77,6 +77,8 @@ function formSubmitPreventHandler(e) {
     getMatchingGames();
 }
 
+
+
 function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
@@ -90,6 +92,17 @@ function handleLobbyJoinClick(e) {
 function addPlayerToGame(joinGameId) {
     const playerName = localStorageAbstractor.loadFromStorage("myUsername")
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
+        .then(res => {
+            localStorageAbstractor.saveToStorage("playerToken", res.playerToken)
+        })
+        .catch(errorHandler.handleError);
+
+    // TODO: Remove const response. Temp value for template
+    const response = {
+        "gameId": 23,
+        "playerName": "Anna",
+        "playerToken": "23_Anna"
+    }
 }
 
 export { getMatchingGames, handleFilters, formSubmitPreventHandler, handleLobbyJoinClick};
