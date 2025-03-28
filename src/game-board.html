@@ -12,6 +12,9 @@
     <script src="assets/js/own-player-component/init.js" type="module"></script>
     <script src="assets/js/opponent-card-component/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/token-bank.css">
+
+    <script src="assets/js/own-player-component/init.js" type="module"></script>
+    <script src="assets/js/bank-component/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
     <link rel="stylesheet" href="assets/css/confirmation-popup.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
@@ -82,7 +85,7 @@
                                 <p class="token-text"></p>
                             </div>
                         </div>
-    
+
                         <div class="nobles-container hidden">
                             <p class="noble">noble1</p>
                             <p class="noble">noble2</p>
@@ -367,15 +370,11 @@
                 <button class="white-token">1</button>
                 <button class="joker-token">1</button>
             </div>
-            <div class="selected-tokens">
-                <button></button>
-                <button></button>
-                <button class="hidden"></button>
-            </div>
+            <div class="selected-tokens"></div>
             <div class="bank-buttons">
-                <button >Cancel</button>
-                <button class="hidden">Take Gems</button>
-                <button >Collect Gems</button>
+                <button class="hidden cancel-button" >Cancel</button>
+                <button class="clickable take-gems-button">Take Gems</button>
+                <button class="hidden collect-gems-button">Collect Gems</button>
             </div>
         </section>
         <div class="user-info-flexcontainer">
