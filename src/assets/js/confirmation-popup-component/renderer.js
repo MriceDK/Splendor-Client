@@ -26,6 +26,8 @@ function renderReserveDevelopmentCardPopup(){
 function renderBuyAndReserveDevelopmentCardPopUp(){
 
     $template.querySelector("#title-popup").innerText = `Buy or Reserve {cardName}?`;
+
+    $template.querySelector("#cancel").classList.add("reserve");
     $template.querySelector("#cancel").innerText = `Reserve`;
     $template.querySelector("#confirm").innerText = `Buy`;
 
