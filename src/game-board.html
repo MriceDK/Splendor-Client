@@ -13,6 +13,8 @@
 
     <script src="assets/js/own-player-component/init.js" type="module"></script>
     <script src="assets/js/bank-component/init.js" type="module"></script>
+    <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -21,7 +23,9 @@
 <!--        2 Rows-->
 
         <header>
-            <a href="#">Settings</a>
+            <div class="settings">
+                <button id="settings"><img src="images/settings-icon.png" alt="settings icon" title="settings icon"></button>
+            </div>
         </header>
             <div class="username-flexcontainer">
                 <div class="opponent">
@@ -272,7 +276,11 @@
 
         </div>
         <div class="lobby-info">
-            <p>Lobby Name</p>
+            <h1 class="splendor-name">Splendor</h1>
+            <h2 class="lobby-name">Lobby Name</h2>
+            <div class="spectators">
+            <p id="spectators">spectators:</p>
+            </div>
         </div>
         <section class="bank-flexcontainer">
             <h2>Bank</h2>
