@@ -1,21 +1,3 @@
-import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import { renderOpponentStats } from "./renderer.js"
-
-
-function getOpponentInfos(gameId){
-    
-    APIAbstractor.fetchFromServer(`/games/${gameid}`,"GET").then(response => loopThroughPlayers(response));
-    
-}
-
-function loopThroughPlayers(gameInfo){
-    gameInfo.players.forEach(opponent => renderOpponentStats(opponent));
-}
-
-function getTotalReservedCards(player){
-    return player.reserve.length;
-}
-
 function tokenInPurse(player, token, bonus = true){
 
     if (bonus){
@@ -33,9 +15,7 @@ function tokenInPurse(player, token, bonus = true){
             return 0;
         }
 
-
-
     }
     
 }
-export { getOpponentInfos, getTotalReservedCards, tokenInPurse };
+export { tokenInPurse };
