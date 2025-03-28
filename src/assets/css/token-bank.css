@@ -79,6 +79,22 @@
     font-size: 1.25rem;
 }
 
-.hidden{
-    display: none;
+.bank-flexcontainer .selected-tokens .selected-red-token{
+    background-color: red;
+}
+
+.bank-flexcontainer .selected-tokens .selected-green-token{
+    background-color: green;
+}
+
+.bank-flexcontainer .selected-tokens .selected-black-token{
+    background-color: black;
+}
+
+.bank-flexcontainer .selected-tokens .selected-blue-token{
+    background-color: blue;
+}
+
+.bank-flexcontainer .selected-tokens .selected-white-token{
+    background-color: white;
 }
