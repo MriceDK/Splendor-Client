@@ -1,12 +1,12 @@
-function hookUpEventListenerToButton(button, action){
-    button.addEventlistener("onclick", eventDiverter(action, button));
+function hookUpEventListenerToButton(button){
+    button.addEventlistener("onclick", eventDiverter(button));
     
 }
 
 function eventDiverter(action, button){
     if (e.target.closest("#confirm")){
 
-        confirmAction(action);
+        confirmAction(button);
 
     } else if (e.target.closest("#cancel")){
         closePopUp(button);
@@ -14,7 +14,14 @@ function eventDiverter(action, button){
     }
 }
 
-function confirmAction(action){
+function confirmAction(button){
+
+    if (button.classList.contains("buy")){
+        buyCard(cardToBuy);
+    } else if (button.classList.contains("reserve")){
+        reserveCardConfirmation(cardToReserve);
+
+    }
 
 }
 
