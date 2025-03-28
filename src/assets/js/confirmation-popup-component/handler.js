@@ -6,6 +6,8 @@ things that need confirmation
 - reserve confirmation
 */
 
+// TODO: THIS IS GLUE, order for it to work it needs to be glued to other function which are contained in other issues
+
 import {renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, renderBuyAndReserveDevelopmentCardPopUp } from "./renderer.js";
 
 function getClickForPopUpOrigin(e){
