@@ -6,7 +6,8 @@ import * as helper from "./helper.js";
 
 function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
-        .then((json) => {handleFilters(helper.addGameNames(json.games))})
+        .then((json) => {handleFilters(helper.addGameNames(json.games))
+        setTimeout(getMatchingGames, 2000)})
         .catch(errorHandler.handleError);
 }
 
