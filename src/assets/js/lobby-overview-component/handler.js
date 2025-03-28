@@ -2,6 +2,7 @@ import * as APIAbstractor from "../data-connector/api-communication-abstractor.j
 import * as errorHandler from "../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
+import * as localStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 
 
 function getMatchingGames() {
@@ -77,3 +78,13 @@ function formSubmitPreventHandler(e) {
 }
 
 export { getMatchingGames, handleFilters, formSubmitPreventHandler};
+function handleLobbyJoinClick(e) {
+    if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
+        localStorageAbstractor.saveToStorage("gameId", parseInt(e.target.closest(".lobby").getAttribute("data-gameId")))
+    }
+
+}
+
+}
+
+export { getMatchingGames, handleFilters, formSubmitPreventHandler, handleLobbyJoinClick};
