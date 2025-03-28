@@ -2,6 +2,7 @@ import * as APIAbstractor from "../data-connector/api-communication-abstractor.j
 import * as errorHandler from "../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
+import * as localStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 
 
 function getMatchingGames() {
@@ -76,4 +77,32 @@ function formSubmitPreventHandler(e) {
     getMatchingGames();
 }
 
-export { getMatchingGames, handleFilters, formSubmitPreventHandler};
+
+
+function handleLobbyJoinClick(e) {
+    if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
+        const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
+        localStorageAbstractor.saveToStorage("gameId", joinGameId);
+        addPlayerToGame(joinGameId);
+    }
+
+}
+
+function addPlayerToGame(joinGameId) {
+    const playerName = localStorageAbstractor.loadFromStorage("myUsername")
+    APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
+        .then(res => {
+            localStorageAbstractor.saveToStorage("playerToken", res["playerToken"])
+            window.location.assign("./lobby.html");
+        })
+        .catch(errorHandler.handleError);
+
+    // TODO: Remove const response. Temp value for template
+    const response = {
+        "gameId": 23,
+        "playerName": "Anna",
+        "playerToken": "23_Anna"
+    }
+}
+
+export { getMatchingGames, handleFilters, formSubmitPreventHandler, handleLobbyJoinClick};
