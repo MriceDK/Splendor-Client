@@ -18,15 +18,16 @@
     <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/settings-screen.css">
+    <script src="assets/js/settings-popup/init.js" type="module"></script>
 </head>
 <body>
-    <div class="popup-container">
-        <div class="popup">
+    <div class="popup-container hidden">
+        <div class="popup hidden">
             <button id="forfeit">Forfeit</button>
-            <button id="close">Close</button>
-            <div class="forfeit-popup">
+            <button class="close">Close</button>
+            <div class="forfeit-popup hidden">
                 <p>Do you want to forfeit?</p>
-                <button id="forfeit-yes">Yes</button>
+                <button id="forfeit-yes"><a href="index.html">Yes</a></button>
                 <button id="forfeit-no">No</button>
             </div>
         </div>
@@ -37,7 +38,7 @@
 
         <header>
             <div class="settings">
-                <button id="settings"><img src="images/settings-icon.png" alt="settings icon" title="settings icon"></button>
+                <button id="settings">Settings</button>
             </div>
         </header>
             <div class="username-flexcontainer">

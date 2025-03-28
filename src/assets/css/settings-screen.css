@@ -22,3 +22,7 @@ body{
 #close{
     justify-content: right;
 }
+
+.popup-container.hidden{
+    display: none;
+}
