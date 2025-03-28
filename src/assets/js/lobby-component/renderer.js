@@ -12,7 +12,7 @@ function lobbyName(lobbyName) {
 
     if (lobbyName === null || lobbyName === ""){
         let titleElement = document.querySelector("#title");
-        titleElement.textContent = storageAbstractor.loadFromStorage("myUsername") + titleElement.textContent;
+        titleElement.textContent = `${storageAbstractor.loadFromStorage("myUsername")}${titleElement.textContent}`;
     }
     else{
         document.querySelector("#title").textContent = lobbyName;
