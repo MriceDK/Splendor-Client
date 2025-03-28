@@ -1,11 +1,7 @@
 
-function renderConfirmationOverlay(){
-
-
-    //$template.querySelector("#title-popup").innerText =;
-    //$template.querySelector("#cancel").innerText=;
-    //$template.querySelector("#confirm").innerText=;
-}
+//$template.querySelector("#title-popup").innerText =;    
+//$template.querySelector("#cancel").innerText=;
+//$template.querySelector("#confirm").innerText=;
 
 const $template = document.querySelector("#confirmation-popup-template").textContent.firstElementChild.cloneNode(true);
 const $target = document.querySelector(".market-grid-container");
@@ -32,5 +28,7 @@ function renderBuyAndReserveDevelopmentCardPopUp(){
     $template.querySelector("#title-popup").innerText = `Buy or Reserve {cardName}?`;
     $template.querySelector("#cancel").innerText = `Reserve`;
     $template.querySelector("#confirm").innerText = `Buy`;
+
+    $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
 }
