@@ -33,9 +33,7 @@ function tokenInPurse(player, token, bonus = true){
             return 0;
         }
 
-
-
     }
     
 }
-export { getOpponentInfos, getTotalReservedCards, tokenInPurse };
+export { tokenInPurse };

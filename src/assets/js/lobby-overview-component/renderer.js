@@ -6,6 +6,7 @@ function renderGames(games) {
     const $lobby = $template.content.firstElementChild.cloneNode(true);
 
     games.forEach((game) => {
+        $lobby.setAttribute("data-gameId", game.gameId);
         $lobby.querySelector(".lobbyname").innerText = game.gameName;
         $lobby.querySelector(".playercount").innerText = `${game.players.length} / ${game.numberOfPlayers}`;
         $results.insertAdjacentHTML("beforeend", $lobby.outerHTML);
