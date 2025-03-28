@@ -6,6 +6,8 @@ things that need confirmation
 - reserve confirmation
 */
 
+import {renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, renderBuyAndReserveDevelopmentCardPopUp } from "./renderer.js";
+
 function getClickForPopUpOrigin(e){
     e.stopPropagation();
     e.preventDefault();
