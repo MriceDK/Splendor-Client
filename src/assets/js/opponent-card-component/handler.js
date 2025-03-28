@@ -14,18 +14,9 @@ function loopThroughPlayers(gameInfo){
 }
 
 function getTotalReservedCards(player){
-    if (player.reserve){
-        let counter = 0;
-        player.reserve.forEach(() => counter++);
-        return counter;
-
-    } else {
-        return 0;
-    }
-
+    return player.reserve.length;
 }
 
-//bonus true gem false
 function tokenBonusInPurse(player, token, bonus = true){
 
     if (bonus){

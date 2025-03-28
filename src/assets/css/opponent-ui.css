@@ -77,6 +77,10 @@
     align-items: center;
 }
 
+#reserved-count{
+    margin-right: 0.25rem;
+}
+
 .hidden{
     display: none;
 }
