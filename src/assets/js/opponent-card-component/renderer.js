@@ -30,15 +30,7 @@ function fillOpponentStat($template, opponent) {
     $template.querySelector(".card.black>.token-text").innerText = tokenInPurse(opponent, "Onyx", true);
     $template.querySelector(".card.blue>.token-text").innerText = tokenInPurse(opponent, "Sapphire", true);
     $template.querySelector(".card.white>.token-text").innerText = tokenInPurse(opponent, "Diamond", true);
-
-    $target.insertAdjacentHTML("beforeend", $template.outerHTML)
-
-    
-
-
-
-
 }
 
-export {renderOpponentStats};
+export {renderOpponentsStats};
 
