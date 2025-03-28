@@ -27,8 +27,8 @@ function getTotalReservedCards(player){
 
 //work with object.entries to get the full object
 function tokenInPurse(player, token){
-    console.log(player.tokens);
-    if(player.tokens){
+    console.log(player.tokens[token]);
+    if(player.tokens.purse !== undefined){
         return player.tokens[token];
     } else{
         return 0;
@@ -37,7 +37,8 @@ function tokenInPurse(player, token){
 }
 
 function checkBonuses(player, bonus){
-    if(player.bonuses){
+    console.log(player.bonuses.purse);
+    if(player.bonuses.purse !== undefined){
         if (player.bonuses[bonus]){
             return player.bonuses[bonus];
         } else{
