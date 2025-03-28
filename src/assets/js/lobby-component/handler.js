@@ -6,12 +6,10 @@ function loadJoinedGame(){
     //test variables
     storageAbstractor.saveToStorage("gameId", 24)
     storageAbstractor.saveToStorage("myUsername", "Bob");
-
+    storageAbstractor.saveToStorage("playerToken", "24_Bob");
 
     const gameId = storageAbstractor.loadFromStorage("gameId")
-    const username = storageAbstractor.loadFromStorage("myUsername")
-    const playerToken = gameId + "_" + username
-    storageAbstractor.saveToStorage("playerToken", playerToken);
+    const playerToken = storageAbstractor.loadFromStorage("playerToken")
 
     if (gameId !== null){
         getGameDetailsForGameId(gameId, playerToken);
@@ -25,7 +23,6 @@ function sendToRenderer(data){
     console.log(data);
     renderer.lobbyName(data.gameName);
     renderer.maxUserCount(data.numberOfPlayers);
-    const countPlayers = (data.players).length;
     renderer.renderUsers(data.players);
     renderer.started(data.started)
     renderer.renderOwnUserName()
