@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/css/lobby-overview-screen.css">
     <link rel="stylesheet" href="assets/css/create-lobby.css">
 
+    <script type="module" src="./assets/js/lobby-creator-component/lobby-creator.js"></script>
+
 </head>
 <body>
     <header>
@@ -20,18 +22,18 @@
             <a href="index.html">⬅</a>
         </nav>
         <h1>Create lobby</h1>
-        <div class="username">
+        <a href="username-selector.html">
             <img src="./images/username%20logo.png" alt="username logo" title="username logo" id="profile-picture">
-            <p id="username">John Doe</p>
-        </div>
+            <span id="username">Select Username</span>
+        </a>
     </header>
     <main>
 
-        <form class="lobby-create-form" action="#" method="GET">
+        <form id="lobby-create-form" class="lobby-create-form" action="#" method="GET">
 
             <section>
                 <h2 class="form-title">Lobby name:</h2>
-                <input name="lobby-name" type="text">
+                <input id="lobby-name" name="lobby-name" type="text">
             </section>
 
             <section>
@@ -39,15 +41,15 @@
 
                 <div class="options">
                     <div class="radio-option">
-                        <input id="player-amount-2" name="player-amount" type="radio" value="2">
+                        <input required id="player-amount-2" name="player-amount" type="radio" value="2">
                         <label for="player-amount-2">2</label>
                     </div>
                     <div class="radio-option">
-                        <input id="player-amount-3" name="player-amount" type="radio" value="3">
+                        <input required id="player-amount-3" name="player-amount" type="radio" value="3">
                         <label for="player-amount-3">3</label>
                     </div>
                     <div class="radio-option">
-                        <input id="player-amount-4" name="player-amount" type="radio" value="3">
+                        <input required id="player-amount-4" name="player-amount" type="radio" value="4">
                         <label for="player-amount-4">4</label>
                     </div>
                 </div>
@@ -60,7 +62,7 @@
             </section>
             -->
 
-            <section>
+            <!--<section>
                 <h2 class="form-title">Match type:</h2>
 
                 <div class="options">
@@ -74,7 +76,7 @@
                     </div>
                 </div>
 
-            </section>
+            </section>-->
             <input class="submit" type="submit" value="Create game">
         </form>
     </main>
