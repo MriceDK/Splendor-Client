@@ -5,7 +5,6 @@ import { tokenBonusInPurse } from "./handler.js";
 function renderOpponentStats(opponent){
     const $template = document.querySelector("#opponent-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".username-flexcontainer");
-    console.log(opponent);
     $template.querySelector(".player").innerText = opponent.name;
     $template.querySelector(".points").innerText = opponent.totalPrestigePoints;
     $template.querySelector("#reserved-count").innerText = getTotalReservedCards(opponent);
