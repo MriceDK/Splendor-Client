@@ -16,7 +16,7 @@ function getTotalReservedCards(player){
     return player.reserve.length;
 }
 
-function tokenBonusInPurse(player, token, bonus = true){
+function tokenInPurse(player, token, bonus = true){
 
     if (bonus){
         if(player.bonuses[token]){
@@ -38,4 +38,4 @@ function tokenBonusInPurse(player, token, bonus = true){
     }
     
 }
-export { getOpponentInfos, getTotalReservedCards, tokenBonusInPurse };
+export { getOpponentInfos, getTotalReservedCards, tokenInPurse };
