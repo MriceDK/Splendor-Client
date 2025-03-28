@@ -26,20 +26,32 @@ function matchesSearch(game, searchValue) {
 }
 
 function matchesStartedFilter(game, showStarted, showUnStarted) {
-    if (showStarted) return game.started;
-    if (showUnStarted) return !game.started;
-    return true;
+    if (showStarted && !showUnStarted) {
+        return game.started;
+
+    } else if (!showStarted && showUnStarted) {
+        return !game.started;
+    } else {
+        return true;
+    }
 }
 
 function matchesJoinabilityFilter(game, showFull, showJoinable) {
-    if (showFull) return game.players.length === game.numberOfPlayers;
-    if (showJoinable) return game.players.length < game.numberOfPlayers;
-    return true;
+    if (showFull && !showJoinable) {
+        return game.players.length === game.numberOfPlayers;
+    } else if (!showFull && showJoinable) {
+        return game.players.length < game.numberOfPlayers;
+    } else {
+        return true;
+    }
 }
 
 function matchesPlayerCountFilter(game, showAmountOfPlayers) {
-    if (showAmountOfPlayers === "isAny") return true;
-    return game.numberOfPlayers === parseInt(showAmountOfPlayers);
+    if (showAmountOfPlayers === "isAny") {
+        return true;
+    }else {
+        return game.numberOfPlayers === parseInt(showAmountOfPlayers);
+    }
 }
 
 function filterGames(games, filters) {
