@@ -25,28 +25,27 @@ function getTotalReservedCards(player){
 
 }
 
-//work with object.entries to get the full object
-function tokenInPurse(player, token){
-    console.log(player.tokens[token]);
-    if(player.tokens[token]){
-        return player.tokens[token];
-    } else{
-        return 0;
-    }
+//bonus true gem false
+function tokenBonusInPurse(player, token, bonus = true){
 
-}
+    if (bonus){
+        if(player.bonuses[token]){
+            return player.tokens[token];
+        } else {
+            return 0
+        }
 
-function checkBonuses(player, bonus){
-    console.log(player.bonuses.purse);
-    if(player.bonuses.purse !== undefined){
-        if (player.bonuses[bonus]){
-            return player.bonuses[bonus];
-        } else{
+    } else {
+
+        if(player.tokens[token]){
+            return player.tokens[token];
+        } else {
             return 0;
         }
-        
-    } else{
-        return 0;
+
+
+
     }
+    
 }
-export { getOpponentInfos, getTotalReservedCards, tokenInPurse, checkBonuses };
+export { getOpponentInfos, getTotalReservedCards, tokenBonusInPurse };
