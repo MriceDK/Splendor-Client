@@ -3,10 +3,6 @@ import * as APIAbstractor from "../data-connector/api-communication-abstractor.j
 import * as renderer from "./renderer.js";
 
 function loadJoinedGame(){
-    //test variables
-    storageAbstractor.saveToStorage("gameId", 24)
-    storageAbstractor.saveToStorage("myUsername", "Bob");
-    storageAbstractor.saveToStorage("playerToken", "24_Bob");
 
     const gameId = storageAbstractor.loadFromStorage("gameId")
     const playerToken = storageAbstractor.loadFromStorage("playerToken")
@@ -16,20 +12,9 @@ function loadJoinedGame(){
     }
 }
 function getGameDetailsForGameId(gameId) {
-    APIAbstractor.fetchFromServer(`/games/${gameId}`, "GET").then(data => sendToRenderer(data));
-}
-function sendToRenderer(data){
-
-    console.log(data);
-    renderer.lobbyName(data.gameName);
-    renderer.maxUserCount(data.numberOfPlayers);
-    renderer.renderUsers(data.players);
-    renderer.started(data.started)
-    renderer.renderOwnUserName()
-
-
+    APIAbstractor.fetchFromServer(`/games/${gameId}`, "GET")
+        .then(data => {renderer.dataListFromApi(data)
+        setTimeout(loadJoinedGame, 2000)});
 }
 
-
-
-export { loadJoinedGame}
+export { loadJoinedGame }

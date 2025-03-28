@@ -1,5 +1,13 @@
 import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
 
+function dataListFromApi(data){
+
+    lobbyName(data.gameName);
+    started(data.started);
+    renderUsersLoop(data.players, data);
+    renderOwnUserName();
+}
+
 function lobbyName(lobbyName) {
 
     if (lobbyName === null || lobbyName === ""){
@@ -10,12 +18,17 @@ function lobbyName(lobbyName) {
         document.querySelector("#title").textContent = lobbyName;
     }
 }
-function maxUserCount(amount){
 
+function renderLobbyAmount(currentUserCount,maxUserCount){
+
+       document.querySelector("#playerCount").textContent = `${currentUserCount}/${maxUserCount} Players`;
 }
-function renderUsers(userArray){
+
+function renderUsersLoop(userArray, data){
+
     const $template = document.querySelector("#player");
     const $target = document.querySelector(".users");
+    $target.innerHTML = $template.outerHTML;
 
     userArray.forEach(user => {
         const $copy = $template.content.firstElementChild.cloneNode(true);
@@ -24,17 +37,21 @@ function renderUsers(userArray){
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     })
+    started();
 
-    console.log(userArray,amount);
-}
-function started(bool){
-
-    console.log(bool);
-}
-function renderOwnUserName(playerCount){
-    storageAbstractor.loadFromStorage()
-    document.querySelector("#username").textContent;
+    renderLobbyAmount(userArray.length, data.numberOfPlayers);
 }
 
-export { lobbyName, maxUserCount, renderOwnUserName, started, renderUsers };
+function started(isStarted){
+
+    if(isStarted === true){
+        window.location.assign("./game-board.html");
+    }
+}
+
+function renderOwnUserName(){
+    document.querySelector("#username").textContent = storageAbstractor.loadFromStorage("myUsername");
+}
+
+export { lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi };
 
