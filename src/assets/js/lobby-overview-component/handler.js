@@ -77,14 +77,19 @@ function formSubmitPreventHandler(e) {
     getMatchingGames();
 }
 
-export { getMatchingGames, handleFilters, formSubmitPreventHandler};
 function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
+        const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
+
         localStorageAbstractor.saveToStorage("gameId", parseInt(e.target.closest(".lobby").getAttribute("data-gameId")))
+        addPlayerToGame(joinGameId);
     }
 
 }
 
+function addPlayerToGame(joinGameId) {
+    const playerName = localStorageAbstractor.loadFromStorage("myUsername")
+    APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
 }
 
 export { getMatchingGames, handleFilters, formSubmitPreventHandler, handleLobbyJoinClick};
