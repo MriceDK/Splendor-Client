@@ -1,4 +1,5 @@
 import {removeChosenBankToken} from "./handler.js";
+import * as handler from "./handler.js";
 
 const chosenBankTokens = {
     ruby: 0,
@@ -13,6 +14,20 @@ const currentBankTokens = {
     Onyx: 0,
     Sapphire: 0,
     Diamond: 0,
+}
+
+function renderTokenBank(gameInfo) {
+    disableTokens();
+    toggleTokenBorders();
+    setTokenMarketValues(gameInfo);
+
+    hoopUpEvents();
+}
+
+function hoopUpEvents() {
+    document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", handler.openBank);
+    document.querySelector(".bank-buttons .cancel-button").addEventListener("click", handler.closeBank);
+    document.querySelectorAll(".token-bank button").forEach(button => button.addEventListener("click", handler.chooseBankToken));
 }
 
 function changeButtons(){
@@ -126,4 +141,4 @@ function updateToken(gem, remove) {
     document.querySelector(`.token-bank .${gem.toLowerCase()} `).innerHTML = currentBankTokens[gem];
 }
 
-export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, setTokenMarketValues, updateToken, chosenBankTokens};
+export {renderTokenBank, changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, setTokenMarketValues, updateToken, chosenBankTokens};

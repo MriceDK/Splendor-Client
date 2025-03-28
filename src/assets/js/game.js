@@ -1,5 +1,6 @@
 import * as APIAbstractor from "./data-connector/api-communication-abstractor.js";
 import {renderOpponentsStats} from "./opponent-card-component/renderer.js";
+import {renderTokenBank} from "./bank-component/renderer.js";
 import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
 import * as LocalStorageAbstractor from "./data-connector/local-storage-abstractor.js";
 
@@ -16,7 +17,7 @@ function init() {
             // TODO render market:
                 // TODO render development cards
                 // TODO (not a must have) render nobles
-            // TODO render token bank
+            renderTokenBank(res);
         })
 
  }
