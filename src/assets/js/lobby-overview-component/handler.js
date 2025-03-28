@@ -84,7 +84,6 @@ function handleLobbyJoinClick(e) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
         localStorageAbstractor.saveToStorage("gameId", joinGameId);
         addPlayerToGame(joinGameId);
-        window.location.assign("../../../lobby.html");
     }
 
 }
@@ -93,7 +92,8 @@ function addPlayerToGame(joinGameId) {
     const playerName = localStorageAbstractor.loadFromStorage("myUsername")
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
         .then(res => {
-            localStorageAbstractor.saveToStorage("playerToken", res.playerToken)
+            localStorageAbstractor.saveToStorage("playerToken", res["playerToken"])
+            window.location.assign("./lobby.html");
         })
         .catch(errorHandler.handleError);
 
