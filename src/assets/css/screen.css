@@ -20,6 +20,7 @@ body {
  background-color: var(--main-bg-color);
  margin: 0;
  padding: 0;
+ height: 100vh;
 }
 
 header {
