@@ -1,11 +1,11 @@
 import {removeChosenBankToken} from "./handler.js";
 
 const chosenBankTokens = {
-    red: 0,
-    green: 0,
-    black: 0,
-    blue: 0,
-    white: 0,
+    ruby: 0,
+    emerald: 0,
+    onyx: 0,
+    sapphire: 0,
+    diamond: 0,
 };
 
 function changeButtons(){
@@ -18,60 +18,59 @@ function changeButtons(){
 }
 
 function enableTokens(){
-    document.querySelector(".token-bank .red-token").disabled = false;
-    document.querySelector(".token-bank .green-token").disabled = false;
-    document.querySelector(".token-bank .black-token").disabled = false;
-    document.querySelector(".token-bank .blue-token").disabled = false;
-    document.querySelector(".token-bank .white-token").disabled = false;
+    document.querySelector(".token-bank .ruby").disabled = false;
+    document.querySelector(".token-bank .emerald").disabled = false;
+    document.querySelector(".token-bank .onyx").disabled = false;
+    document.querySelector(".token-bank .sapphire").disabled = false;
+    document.querySelector(".token-bank .diamond").disabled = false;
     toggleTokenBorders();
 }
 
 function disableTokens(){
-    document.querySelector(".token-bank .red-token").disabled = true;
-    document.querySelector(".token-bank .green-token").disabled = true;
-    document.querySelector(".token-bank .black-token").disabled = true;
-    document.querySelector(".token-bank .blue-token").disabled = true;
-    document.querySelector(".token-bank .white-token").disabled = true;
-    document.querySelector(".token-bank .joker-token").disabled = true;
+    document.querySelector(".token-bank .ruby").disabled = true;
+    document.querySelector(".token-bank .emerald").disabled = true;
+    document.querySelector(".token-bank .onyx").disabled = true;
+    document.querySelector(".token-bank .sapphire").disabled = true;
+    document.querySelector(".token-bank .diamond").disabled = true;
+    document.querySelector(".token-bank .gold").disabled = true;
     toggleTokenBorders();
 }
 
 function toggleTokenBorders(){
-    document.querySelector(".token-bank .red-token").classList.toggle("clickable");
-    document.querySelector(".token-bank .green-token").classList.toggle("clickable");
-    document.querySelector(".token-bank .black-token").classList.toggle("clickable");
-    document.querySelector(".token-bank .blue-token").classList.toggle("clickable");
-    document.querySelector(".token-bank .white-token").classList.toggle("clickable");
+    document.querySelector(".token-bank .ruby").classList.toggle("clickable");
+    document.querySelector(".token-bank .emerald").classList.toggle("clickable");
+    document.querySelector(".token-bank .onyx").classList.toggle("clickable");
+    document.querySelector(".token-bank .sapphire").classList.toggle("clickable");
+    document.querySelector(".token-bank .diamond").classList.toggle("clickable");
 }
 
 function getChosenTokenColour(e){
-    if(e.target.classList.contains("red-token")){
-        showChosenBankToken("red");
-    } else if (e.target.classList.contains("green-token")){
-        showChosenBankToken("green");
-    } else if (e.target.classList.contains("black-token")){
-        showChosenBankToken("black");
-    } else if (e.target.classList.contains("blue-token")){
-        showChosenBankToken("blue");
-    } else if (e.target.classList.contains("white-token")){
-        showChosenBankToken("white");
+    if(e.target.classList.contains("ruby")){
+        showChosenBankToken("ruby");
+    } else if (e.target.classList.contains("emerald")){
+        showChosenBankToken("emerald");
+    } else if (e.target.classList.contains("onyx")){
+        showChosenBankToken("onyx");
+    } else if (e.target.classList.contains("sapphire")){
+        showChosenBankToken("sapphire");
+    } else if (e.target.classList.contains("diamond")){
+        showChosenBankToken("diamond");
     }
 }
 
-function showChosenBankToken(colour){
-    if (isLegalToken(colour)){
+function showChosenBankToken(gem){
+    if (isLegalToken(gem)){
         const chosenToken = document.createElement("button");
-        chosenToken.classList.add(`selected-${colour}-token`);
+        chosenToken.classList.add(`selected-${gem}-token`);
         chosenToken.classList.add("clickable");
-        chosenToken.classList.add(colour);
+        chosenToken.classList.add(gem);
         chosenToken.addEventListener("click", removeChosenBankToken);
         document.querySelector(".selected-tokens").appendChild(chosenToken);
-        chosenBankTokens[colour]++;
-        console.log(chosenBankTokens);
+        chosenBankTokens[gem]++;
     }
 }
 
-function isLegalToken(colour){
+function isLegalToken(gem){
     const maxChosenTokens = 3;
     const maxChosenTokensSameColour = 2;
 
@@ -79,7 +78,7 @@ function isLegalToken(colour){
 
     if (numberOfChosenTokens < maxChosenTokens){
         if (!Object.values(chosenBankTokens).includes(maxChosenTokensSameColour)){
-            if (!(numberOfChosenTokens === 2 && chosenBankTokens[colour] !== 0)) { //I use a two here to check if there are currently two tokens, doesn't matter what colour they are.
+            if (!(numberOfChosenTokens === 2 && chosenBankTokens[gem] !== 0)) { //I use a two here to check if there are currently two tokens, doesn't matter what colour they are.
                 return true;
             }
         }
@@ -93,4 +92,14 @@ function removeChosenTokens(){
     Object.keys(chosenBankTokens).forEach(colour => chosenBankTokens[colour] = 0);
 }
 
-export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, chosenBankTokens};
+
+function setTokenMarketValues(gameInfo){
+    document.querySelector(".token-bank .ruby").innerHTML = gameInfo.unclaimedTokens.Ruby;
+    document.querySelector(".token-bank .emerald").innerHTML = gameInfo.unclaimedTokens.Emerald;
+    document.querySelector(".token-bank .onyx").innerHTML = gameInfo.unclaimedTokens.Onyx;
+    document.querySelector(".token-bank .sapphire").innerHTML = gameInfo.unclaimedTokens.Sapphire;
+    document.querySelector(".token-bank .diamond").innerHTML = gameInfo.unclaimedTokens.Diamond;
+    document.querySelector(".token-bank .gold").innerHTML = gameInfo.unclaimedTokens.Gold;
+}
+
+export {changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, setTokenMarketValues, chosenBankTokens};

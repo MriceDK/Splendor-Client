@@ -99,6 +99,10 @@
     color: white;
 }
 
+.gold {
+    background: #ffc600;
+}
+
 .market-grid-container .noble {
     width: auto;
     height: auto;
