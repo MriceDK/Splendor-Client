@@ -14,7 +14,7 @@ const currentBankTokens = {
     Onyx: 0,
     Sapphire: 0,
     Diamond: 0,
-}
+};
 
 function renderTokenBank(gameInfo) {
     disableTokens();
@@ -128,7 +128,12 @@ function isLegalToken(gem){
 
 function removeChosenTokens(){
     document.querySelector(".selected-tokens").innerHTML = "";
-    Object.keys(chosenBankTokens).forEach(colour => chosenBankTokens[colour] = 0);
+    for (const [key, value] of Object.entries(chosenBankTokens)) {
+        for (let i = 0; i < value; i++) {
+            updateToken(key.replace(key[0], key[0].toUpperCase()), false);
+        }
+    }
+    Object.keys(chosenBankTokens).forEach(gem => chosenBankTokens[gem] = 0);
 }
 
 function updateToken(gem, remove) {
