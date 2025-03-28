@@ -14,6 +14,8 @@ function eventDiverter(action, button){
     }
 }
 
+//
+
 function confirmAction(button){
 
     if (button.classList.contains("buy")){
