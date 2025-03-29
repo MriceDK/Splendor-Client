@@ -13,11 +13,11 @@ import {renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, render
 function getClickForPopUpOrigin(e){
     e.stopPropagation();
     e.preventDefault();
-    if (e.currentTarget.getAttribute("id") === "buy-development-card"){
+    if (e.target.getAttribute("id") === "buy-development-card"){
         renderBuyDevelopmentCardPopup();
-    } else if (e.currentTarget.getAttribute("id") === "reserve-development-card"){
+    } else if (e.target.getAttribute("id") === "reserve-development-card"){
         renderReserveDevelopmentCardPopup();
-    } else if (e.currentTarget.getAttribute("id") === "buy-and-reserve-development-card"){
+    } else if (e.target.getAttribute("id") === "buy-and-reserve-development-card"){
         renderBuyAndReserveDevelopmentCardPopUp();
     }
 }
