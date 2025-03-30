@@ -18,7 +18,7 @@ function chooseBankToken(e){
 function removeChosenBankToken(e) {
     const className = e.target.classList[2]
 
-    renderer.chosenBankTokens[className]--;
+    renderer.chosenBankTokens[className.replace(className[0], className[0].toUpperCase())]--;
     e.target.remove();
     renderer.updateToken(className.replace(className[0], className[0].toUpperCase()), false);
 }

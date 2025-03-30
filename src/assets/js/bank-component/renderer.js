@@ -1,12 +1,14 @@
-import {removeChosenBankToken} from "./handler.js";
+import {openBank, removeChosenBankToken} from "./handler.js";
 import * as handler from "./handler.js";
+import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
+import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 
 const chosenBankTokens = {
-    ruby: 0,
-    emerald: 0,
-    onyx: 0,
-    sapphire: 0,
-    diamond: 0,
+    Ruby: 0,
+    Emerald: 0,
+    Onyx: 0,
+    Sapphire: 0,
+    Diamond: 0,
 };
 const currentBankTokens = {
     Ruby: 0,
@@ -17,6 +19,7 @@ const currentBankTokens = {
 };
 
 function renderTokenBank(gameInfo) {
+    enableOrDisableBank(gameInfo.currentPlayer);
     disableTokens();
     toggleTokenBorders();
     setTokenMarketValues(gameInfo);
@@ -27,6 +30,7 @@ function renderTokenBank(gameInfo) {
 function hoopUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", handler.openBank);
     document.querySelector(".bank-buttons .cancel-button").addEventListener("click", handler.closeBank);
+    document.querySelector(".bank-buttons, .collect-gems-button").addEventListener("click", collectTokens);
     document.querySelectorAll(".token-bank button").forEach(button => button.addEventListener("click", handler.chooseBankToken));
 }
 
@@ -37,6 +41,15 @@ function changeButtons(){
     document.querySelector(".bank-buttons .take-gems-button").classList.toggle("clickable");
     document.querySelector(".bank-buttons .collect-gems-button").classList.toggle("hidden");
     document.querySelector(".bank-buttons .collect-gems-button").classList.toggle("clickable");
+}
+
+function enableOrDisableBank(playerName) {
+    console.log(playerName);
+    if (playerName === loadFromStorage("myUsername")){
+        document.querySelector(".bank-buttons .take-gems-button").classList.remove("hidden");
+    } else {
+        document.querySelector(".bank-buttons .take-gems-button").classList.add("hidden");
+    }
 }
 
 function enableTokens(){
@@ -82,6 +95,18 @@ function setTokenMarketValues(gameInfo){
     document.querySelector(".token-bank .gold").innerHTML = gameInfo.unclaimedTokens.Gold;
 }
 
+function collectTokens(){
+    const gameId = loadFromStorage("gameId");
+    const playerName = loadFromStorage("myUsername");
+    const tokenData = {
+        "take": chosenBankTokens
+    }
+    console.log(playerName);
+
+
+    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData).then(result => console.log(result));
+}
+
 function getChosenTokenColour(e){
     if(e.target.classList.contains("ruby")){
         showChosenBankToken("Ruby");
@@ -105,7 +130,7 @@ function showChosenBankToken(gem){
         chosenToken.classList.add(gem.toLowerCase());
         chosenToken.addEventListener("click", removeChosenBankToken);
         document.querySelector(".selected-tokens").appendChild(chosenToken);
-        chosenBankTokens[gem.toLowerCase()]++;
+        chosenBankTokens[gem]++;
     }
 }
 
@@ -117,7 +142,7 @@ function isLegalToken(gem){
 
     if (numberOfChosenTokens < maxChosenTokens){
         if (!Object.values(chosenBankTokens).includes(maxChosenTokensSameColour)){
-            if (!(numberOfChosenTokens === 2 && chosenBankTokens[gem.toLowerCase()] !== 0)) { //I use a two here to check if there are currently two tokens, doesn't matter what colour they are.
+            if (!(numberOfChosenTokens === 2 && chosenBankTokens[gem] !== 0)) { //I use a two here to check if there are currently two tokens, doesn't matter what colour they are.
                 return true;
             }
         }
@@ -133,6 +158,7 @@ function removeChosenTokens(){
             updateToken(key.replace(key[0], key[0].toUpperCase()), false);
         }
     }
+
     Object.keys(chosenBankTokens).forEach(gem => chosenBankTokens[gem] = 0);
 }
 
