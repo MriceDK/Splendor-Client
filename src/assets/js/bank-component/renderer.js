@@ -1,4 +1,3 @@
-import {openBank, removeChosenBankToken} from "./handler.js";
 import * as handler from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
@@ -24,13 +23,15 @@ function renderTokenBank(gameInfo) {
     toggleTokenBorders();
     setTokenMarketValues(gameInfo);
 
+    console.log(gameInfo);
+
     hoopUpEvents();
 }
 
 function hoopUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", handler.openBank);
     document.querySelector(".bank-buttons .cancel-button").addEventListener("click", handler.closeBank);
-    document.querySelector(".bank-buttons, .collect-gems-button").addEventListener("click", collectTokens);
+    document.querySelector(".bank-buttons .collect-gems-button").addEventListener("click", collectTokens);
     document.querySelectorAll(".token-bank button").forEach(button => button.addEventListener("click", handler.chooseBankToken));
 }
 
@@ -79,7 +80,6 @@ function toggleTokenBorders(){
     document.querySelector(".token-bank .diamond").classList.toggle("clickable");
 }
 
-
 function setTokenMarketValues(gameInfo){
     currentBankTokens.Ruby = gameInfo.unclaimedTokens.Ruby;
     currentBankTokens.Emerald = gameInfo.unclaimedTokens.Emerald;
@@ -101,10 +101,12 @@ function collectTokens(){
     const tokenData = {
         "take": chosenBankTokens
     }
-    console.log(playerName);
 
+    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData)
+        .then(result => console.log(result));
 
-    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData).then(result => console.log(result));
+    enableOrDisableBank(playerName);
+    handler.closeBank();
 }
 
 function getChosenTokenColour(e){
@@ -128,7 +130,7 @@ function showChosenBankToken(gem){
         chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
         chosenToken.classList.add("clickable");
         chosenToken.classList.add(gem.toLowerCase());
-        chosenToken.addEventListener("click", removeChosenBankToken);
+        chosenToken.addEventListener("click", handler.removeChosenBankToken);
         document.querySelector(".selected-tokens").appendChild(chosenToken);
         chosenBankTokens[gem]++;
     }
