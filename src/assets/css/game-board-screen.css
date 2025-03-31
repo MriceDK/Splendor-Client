@@ -45,3 +45,7 @@ header {
     grid-area: bank;
     background-color: grey;
 }
+
+.current-player {
+    border: solid hotpink;
+}
