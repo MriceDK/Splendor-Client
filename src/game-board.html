@@ -9,17 +9,29 @@
     <link rel="stylesheet" href="assets/css/development-card.css">
 
     <link rel="stylesheet" href="assets/css/opponent-ui.css">
-    <script src="assets/js/own-player-component/init.js" type="module"></script>
-    <script src="assets/js/opponent-card-component/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/token-bank.css">
 
     <script src="assets/js/own-player-component/init.js" type="module"></script>
     <script src="assets/js/bank-component/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <script type="module" src="./assets/js/game.js"></script>
+    <script src="assets/js/settings-popup/init.js" type="module"></script>
+    <link rel="stylesheet" href="assets/css/settings-screen.css">
 </head>
 <body>
-
+    <div class="popup-container hidden">
+        <div class="popup hidden">
+            <button id="forfeit">Forfeit</button>
+            <button class="close">Close</button>
+            <div class="forfeit-popup hidden">
+                <p>Do you want to forfeit?</p>
+                <button id="forfeit-yes"><a href="index.html">Yes</a></button>
+                <button id="forfeit-no">No</button>
+            </div>
+        </div>
+    </div>
     <main>
 <!--        3 Columns-->
 <!--        2 Rows-->
