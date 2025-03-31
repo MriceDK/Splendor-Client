@@ -12,7 +12,6 @@ function getGameInfo() {
 }
 
 
-
 function init() {
     getGameInfo()
         .then(res => {
