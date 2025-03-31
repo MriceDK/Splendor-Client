@@ -21,4 +21,8 @@ function hideForfeitCloseButtons(){
     document.querySelector(".close").classList.add("hidden");
 }
 
-export { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons };
+function mainMenuAfterForfeit(){
+    window.location.href = "index.html"
+}
+
+export { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, mainMenuAfterForfeit };
