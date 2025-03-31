@@ -23,8 +23,8 @@ function hideForfeitCloseButtons(){
     document.querySelector(".close").classList.add("hidden");
 }
 
-function mainMenuAfterForfeit(){
+function redirectToStartScreen(){
     window.location.href = "index.html"
 }
 
-export { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, mainMenuAfterForfeit };
+export { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, redirectToStartScreen };

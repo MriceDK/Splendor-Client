@@ -1,4 +1,4 @@
-import { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, mainMenuAfterForfeit } from "./handler.js";
+import { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, redirectToStartScreen } from "./handler.js";
 
 function setUpEventlisteners() {
     document.querySelector("#settings").addEventListener("click", showSettingsScreen);
@@ -6,7 +6,7 @@ function setUpEventlisteners() {
     document.querySelector("#forfeit").addEventListener("click", showForfeitOption);
     document.querySelector("#forfeit-no").addEventListener("click", hideSettingsMenu);
     document.querySelector("#forfeit").addEventListener("click", hideForfeitCloseButtons);
-    document.querySelector("#forfeit-yes").addEventListener("click", mainMenuAfterForfeit);
+    document.querySelector("#forfeit-yes").addEventListener("click", redirectToStartScreen);
 }
 
 export { setUpEventlisteners };
