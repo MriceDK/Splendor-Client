@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="assets/css/token-bank.css">
 
     <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
+    <link rel="stylesheet" href="assets/css/confirmation-popup.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
 
+    <script src="assets/js/confirmation-popup-component/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
 </head>
 <body>
@@ -93,6 +95,20 @@
 
             </div>
         <div class="market-grid-container">
+            <template id="confirmation-popup-template">
+                <div id="confirmation-popup">
+                    <h3 id="title-popup"></h3>
+                    <button type="button">
+                        <h4 id="cancel"></h4>
+                    </button>
+                    <button type="button">
+                        <h4 id="confirm"></h4>
+                    </button>
+                    
+                </div>
+
+            </template>
+            
             <!-- <p>Development card Market</p> -->
 
             <!-- Uncomment to see the layout -->

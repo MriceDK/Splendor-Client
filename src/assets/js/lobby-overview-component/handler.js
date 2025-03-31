@@ -8,7 +8,7 @@ import * as localStorageAbstractor from "../data-connector/local-storage-abstrac
 function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
         .then((json) => {handleFilters(helper.addGameNames(json.games))
-        setTimeout(getMatchingGames, 2000)})
+        setTimeout(getMatchingGames, 1000)})
         .catch(errorHandler.handleError);
 }
 
@@ -71,14 +71,6 @@ function handleFilters(games) {
     render.renderGames(filteredGames);
 }
 
-
-function formSubmitPreventHandler(e) {
-    e.preventDefault();
-    getMatchingGames();
-}
-
-
-
 function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
@@ -105,4 +97,4 @@ function addPlayerToGame(joinGameId) {
     }
 }
 
-export { getMatchingGames, handleFilters, formSubmitPreventHandler, handleLobbyJoinClick};
+export { getMatchingGames, handleFilters, handleLobbyJoinClick};
