@@ -8,6 +8,18 @@ function getGameInfo() {
     return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`,"GET")
 }
 
+function renderActivePlayer(currentPlayerName) {
+    if (LocalStorageAbstractor.loadFromStorage("myUsername") === currentPlayerName) {
+        document.querySelector("#own-player-card").classList.add("current-player")
+    } else {
+        document.querySelectorAll(".opponent").forEach(opponent => {
+            if (opponent.querySelector(".player").innerText === currentPlayerName) {
+                opponent.classList.add("current-player");
+            }
+        })
+    }
+}
+
 function init() {
     getGameInfo()
         .then(res => {
@@ -17,6 +29,8 @@ function init() {
                 // TODO render development cards
                 // TODO (not a must have) render nobles
             // TODO render token bank
+            // TODO: Render current active player
+            renderActivePlayer(res.currentPlayer)
         })
 
  }
