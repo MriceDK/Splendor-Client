@@ -139,13 +139,14 @@ function showChosenBankToken(gem){
 function isLegalToken(gem){
     const maxChosenTokens = 3;
     const maxChosenTokensSameColour = 2;
+    const minValueTwoOfSameColourAllowed = 4;
 
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
     if (numberOfChosenTokens < maxChosenTokens){
         if (!Object.values(chosenBankTokens).includes(maxChosenTokensSameColour)){
             if (!(numberOfChosenTokens === 2 && chosenBankTokens[gem] !== 0)) { //I use a two here to check if there are currently two tokens, doesn't matter what colour they are.
-                return true;
+                return !(chosenBankTokens[gem] + currentBankTokens[gem] < minValueTwoOfSameColourAllowed && chosenBankTokens[gem] === 1);
             }
         }
     }
