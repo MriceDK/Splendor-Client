@@ -11,8 +11,6 @@ things that need confirmation
 import {renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, renderBuyAndReserveDevelopmentCardPopUp } from "./renderer.js";
 
 function getClickForPopUpOrigin(e){
-    e.stopPropagation();
-    e.preventDefault();
     if (e.target.getAttribute("id") === "buy-development-card"){
     if (e.target.classList.contains("reserved")){
         renderBuyDevelopmentCardPopup();
