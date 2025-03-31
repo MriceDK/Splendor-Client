@@ -71,14 +71,6 @@ function handleFilters(games) {
     render.renderGames(filteredGames);
 }
 
-
-function formSubmitPreventHandler(e) {
-    e.preventDefault();
-    getMatchingGames();
-}
-
-
-
 function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
@@ -105,4 +97,4 @@ function addPlayerToGame(joinGameId) {
     }
 }
 
-export { getMatchingGames, handleFilters, formSubmitPreventHandler, handleLobbyJoinClick};
+export { getMatchingGames, handleFilters, handleLobbyJoinClick};
