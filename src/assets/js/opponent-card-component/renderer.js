@@ -1,6 +1,15 @@
-import { tokenInPurse } from "./handler.js";
+import {tokenInPurse} from "./handler.js";
+import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 
-function renderOpponentsStats(opponents) {
+function removeOwnPlayerFromOpponentList(players) {
+    const ownName = loadFromStorage("myUsername")
+    return players.filter(player => {
+        return player.name !== ownName;
+    });
+}
+
+function renderOpponentsStats(players) {
+    const opponents = removeOwnPlayerFromOpponentList(players);
     opponents.forEach(opponent => renderOpponentStats(opponent));
 }
 
