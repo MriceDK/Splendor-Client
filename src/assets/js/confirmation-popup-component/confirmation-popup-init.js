@@ -13,7 +13,7 @@ things that need confirmation
 function init(){
 
     //every case (3 in total) needs an eventlistener with document.querySelector("selector").("onclick", getClickForPopUpOrigin);
-
+    document.querySelector(".market-grid-container").addEventListener("click", getClickForPopUpOrigin)
 }
 
 init();
