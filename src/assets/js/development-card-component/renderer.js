@@ -1,8 +1,8 @@
 
 function renderDevelopmentCards(cards, $target) {
     cards.forEach(card => {
-        renderDevelopmentCard(card, $target)
-    })
+        renderDevelopmentCard(card, $target);
+    });
 }
 
 function renderDevelopmentCard(card, $target) {
@@ -30,7 +30,7 @@ function renderCostGems(cost, $target) {
 }
 
 function renderCostGem(gem, amount) {
-    return `<span class="gem-cost ${gem}">${amount}</span>`
+    return `<span class="gem-cost ${gem}">${amount}</span>`;
 }
 
 export {renderDevelopmentCards};

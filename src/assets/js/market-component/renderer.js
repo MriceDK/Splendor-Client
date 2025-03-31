@@ -11,7 +11,7 @@ function renderLevelRows(market, $target) {
     market.forEach(cardRow => {
         renderLevelCard(cardRow.level, cardRow.cardStackSize, $target);
         DevelopmentCardRenderer.renderDevelopmentCards(cardRow.visibleCards, $target);
-    })
+    });
 
 }
 
@@ -22,7 +22,7 @@ function renderLevelCard(level, cardStackSize, $target) {
     $levelCard.querySelector(".level-title").innerText = level;
     $levelCard.querySelector(".card-amount").innerText = cardStackSize;
 
-    $target.insertAdjacentHTML("beforeend", $levelCard.outerHTML)
+    $target.insertAdjacentHTML("beforeend", $levelCard.outerHTML);
 }
 
 export { renderMarket };
