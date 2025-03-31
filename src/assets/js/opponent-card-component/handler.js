@@ -4,7 +4,7 @@ import { renderOpponentStats } from "./renderer.js"
 
 function getOpponentInfos(gameId){
     
-    APIAbstractor.fetchFromServer(`/games/${gameId}`,"GET").then(response => loopThroughPlayers(response));
+    APIAbstractor.fetchFromServer(`/games/${gameid}`,"GET").then(response => loopThroughPlayers(response));
     
 }
 
