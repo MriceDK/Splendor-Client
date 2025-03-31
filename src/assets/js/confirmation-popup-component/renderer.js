@@ -9,6 +9,8 @@ const $template = document.querySelector("#confirmation-popup-template").content
 let $target = document.querySelector("#confirmation-pop-up-result");
 
 function renderBuyDevelopmentCardPopup(){
+    $target.innerHTML = "";
+
     $template.querySelector("#title-popup").innerText = `Buy {cardName}?`;
     $template.querySelector("#cancel").innerText = `Cancel Purchase?`;
     $template.querySelector("#confirm").innerText = `Buy`;
@@ -18,6 +20,8 @@ function renderBuyDevelopmentCardPopup(){
 }
 
 function renderReserveDevelopmentCardPopup(){
+    $target.innerHTML = "";
+
     $template.querySelector("#title-popup").innerText = `Reserve {cardName}?`;
     $template.querySelector("#cancel").innerText = `Cancel Reservation`;
     $template.querySelector("#confirm").innerText = `Reserve {cardName}`;
@@ -27,6 +31,7 @@ function renderReserveDevelopmentCardPopup(){
 }
 function renderBuyAndReserveDevelopmentCardPopUp(){
 
+    $target.innerHTML = "";
     $template.querySelector("#title-popup").innerText = `Buy or Reserve {cardName}?`;
 
     $template.querySelector("#cancel").classList.add("reserve");
