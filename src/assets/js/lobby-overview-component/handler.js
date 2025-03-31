@@ -8,7 +8,7 @@ import * as localStorageAbstractor from "../data-connector/local-storage-abstrac
 function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
         .then((json) => {handleFilters(helper.addGameNames(json.games))
-        setTimeout(getMatchingGames, 2000)})
+        setTimeout(getMatchingGames, 1000)})
         .catch(errorHandler.handleError);
 }
 
