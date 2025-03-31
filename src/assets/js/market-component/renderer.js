@@ -1,3 +1,4 @@
+import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
 
 function renderMarket(gameInfo) {
     const $target= document.querySelector(".market-grid-container");
@@ -6,21 +7,19 @@ function renderMarket(gameInfo) {
 }
 
 function renderLevelRows(market, $target) {
-    const $devCard = document.querySelector("#development-card");
-
 
     market.forEach(cardRow => {
 
         console.log(cardRow)
         renderLevelCard(cardRow.level, cardRow.cardStackSize, $target);
 
-        /*const developmentCards = cardRow.visibleCards;
+        const developmentCards = cardRow.visibleCards;
 
-        developmentCards.forEach(developmentCard => {
+        developmentCards.forEach(card => {
 
-            renderDevelopmentCard();
+            DevelopmentCardRenderer.renderDevelopmentCard(card, $target);
 
-        })*/
+        })
 
     })
 
