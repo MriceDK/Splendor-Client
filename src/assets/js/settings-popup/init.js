@@ -1,7 +1,7 @@
-import { renderer } from "./renderer.js";
+import { setUpEventlisteners } from "./setUpEventlisteners.js";
 
 function init() {
-    renderer();
+    setUpEventlisteners();
 }
 
 init();

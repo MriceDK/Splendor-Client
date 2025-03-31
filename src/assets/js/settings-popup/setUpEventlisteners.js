@@ -1,6 +1,6 @@
 import { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, mainMenuAfterForfeit } from "./handler.js";
 
-function renderer() {
+function setUpEventlisteners() {
     document.querySelector("#settings").addEventListener("click", showSettingsScreen);
     document.querySelector(".close").addEventListener("click", hideSettingsScreen);
     document.querySelector("#forfeit").addEventListener("click", showForfeitOption);
@@ -9,4 +9,4 @@ function renderer() {
     document.querySelector("#forfeit-yes").addEventListener("click", mainMenuAfterForfeit);
 }
 
-export { renderer };
+export { setUpEventlisteners };
