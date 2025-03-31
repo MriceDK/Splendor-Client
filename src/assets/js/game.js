@@ -5,7 +5,7 @@ import {renderActivePlayer} from "./active-player-component/renderer.js";
 import * as LocalStorageAbstractor from "./data-connector/local-storage-abstractor.js";
 
 function getGameInfo() {
-    // TODO: Remove this template, stays here for now so that we can now what we get from this function.
+    // TODO: Remove this template, stays here for now so that we can know what we get from this function.
     const JSONTemplate = {
         "gameId": 0,
         "gameName": null,
