@@ -23,8 +23,6 @@ function renderTokenBank(gameInfo) {
     toggleTokenBorders();
     setTokenMarketValues(gameInfo);
 
-    console.log(gameInfo);
-
     hoopUpEvents();
 }
 
@@ -45,7 +43,6 @@ function changeButtons(){
 }
 
 function enableOrDisableBank(playerName) {
-    console.log(playerName);
     if (playerName === loadFromStorage("myUsername")){
         document.querySelector(".bank-buttons .take-gems-button").classList.remove("hidden");
     } else {
@@ -102,8 +99,7 @@ function collectTokens(){
         "take": chosenBankTokens
     }
 
-    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData)
-        .then(result => console.log(result));
+    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData).then(r => r);
 
     enableOrDisableBank(playerName);
     handler.closeBank();
@@ -191,7 +187,6 @@ function updateToken(gem, remove) {
     } else {
         currentBankTokens[gem]++;
     }
-    console.log(currentBankTokens);
     document.querySelector(`.token-bank .${gem.toLowerCase()} `).innerHTML = currentBankTokens[gem];
 }
 
