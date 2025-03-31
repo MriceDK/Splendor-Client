@@ -12,6 +12,8 @@ function getGameInfo() {
 }
 
 
+
+
 function init() {
     getGameInfo()
         .then(res => {
@@ -24,6 +26,7 @@ function init() {
             // TODO: Render current active player
             renderActivePlayer(res.currentPlayer)
             renderTokenBank(res);
+            renderActivePlayer(res.currentPlayer)
         })
 
  }
