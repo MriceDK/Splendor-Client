@@ -1,7 +1,7 @@
 import {tokenInPurse} from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 
-function removeOwnPlayerFromOpponentList(players) {
+function getOpponents(players) {
     const ownName = loadFromStorage("myUsername")
     return players.filter(player => {
         return player.name !== ownName;
@@ -9,7 +9,7 @@ function removeOwnPlayerFromOpponentList(players) {
 }
 
 function renderOpponentsStats(players) {
-    const opponents = removeOwnPlayerFromOpponentList(players);
+    const opponents = getOpponents(players);
     opponents.forEach(opponent => renderOpponentStats(opponent));
 }
 
