@@ -3,8 +3,6 @@
 //$template.querySelector("#cancel").innerText=;
 //$template.querySelector("#confirm").innerText=;
 
-const $template = document.querySelector("#confirmation-popup-template").textContent.firstElementChild.cloneNode(true);
-const $target = document.querySelector(".market-grid-container");
 const $template = document.querySelector("#confirmation-popup-template").content.firstElementChild.cloneNode(true);
 let $target = document.querySelector("#confirmation-pop-up-result");
 
