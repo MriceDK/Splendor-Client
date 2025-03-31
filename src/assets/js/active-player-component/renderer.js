@@ -1,4 +1,4 @@
-import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor";
+import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 
 function renderActivePlayer(currentPlayerName) {
     if (LocalStorageAbstractor.loadFromStorage("myUsername") === currentPlayerName) {
