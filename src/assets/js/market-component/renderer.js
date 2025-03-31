@@ -9,18 +9,8 @@ function renderMarket(gameInfo) {
 function renderLevelRows(market, $target) {
 
     market.forEach(cardRow => {
-
-        console.log(cardRow)
         renderLevelCard(cardRow.level, cardRow.cardStackSize, $target);
-
-        const developmentCards = cardRow.visibleCards;
-
-        developmentCards.forEach(card => {
-
-            DevelopmentCardRenderer.renderDevelopmentCard(card, $target);
-
-        })
-
+        DevelopmentCardRenderer.renderDevelopmentCards(cardRow.visibleCards, $target);
     })
 
 }
