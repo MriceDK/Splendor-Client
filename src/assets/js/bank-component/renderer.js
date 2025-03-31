@@ -137,21 +137,41 @@ function showChosenBankToken(gem){
 }
 
 function isLegalToken(gem){
-    const maxChosenTokens = 3;
-    const maxChosenTokensSameColour = 2;
-    const minValueTwoOfSameColourAllowed = 4;
 
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
-    if (numberOfChosenTokens < maxChosenTokens){
-        if (!Object.values(chosenBankTokens).includes(maxChosenTokensSameColour)){
-            if (!(numberOfChosenTokens === 2 && chosenBankTokens[gem] !== 0)) { //I use a two here to check if there are currently two tokens, doesn't matter what colour they are.
-                return !(chosenBankTokens[gem] + currentBankTokens[gem] < minValueTwoOfSameColourAllowed && chosenBankTokens[gem] === 1);
+    if (checkMaxThreeTokens(numberOfChosenTokens)){
+        if (checkMaxTwoOfSameColour()){
+            if (checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem)) {
+                return checkOnlyTwoOfSameColourWhenValueOfMinFour(gem);
             }
         }
     }
 
     return false;
+}
+
+function checkMaxThreeTokens(numberOfChosenTokens) {
+    const maxChosenTokens = 3;
+
+    return numberOfChosenTokens < maxChosenTokens
+}
+
+function checkMaxTwoOfSameColour(){
+    const maxChosenTokensSameColour = 2;
+
+    return !Object.values(chosenBankTokens).includes(maxChosenTokensSameColour)
+}
+
+function checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem){
+    return !(numberOfChosenTokens === 2 && chosenBankTokens[gem] !== 0);
+}
+
+function checkOnlyTwoOfSameColourWhenValueOfMinFour(gem){
+    const minValueTwoOfSameColourAllowed = 4;
+    const maxTokensOfAColourWhenColourValuesLessThanFour = 1;
+
+    return !(chosenBankTokens[gem] + currentBankTokens[gem] < minValueTwoOfSameColourAllowed && chosenBankTokens[gem] === maxTokensOfAColourWhenColourValuesLessThanFour);
 }
 
 function removeChosenTokens(){
