@@ -15,6 +15,8 @@ function tokenInPurse(player, token, bonus = true){
             return 0;
         }
 
+
+
     }
     
 }

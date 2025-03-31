@@ -79,22 +79,22 @@
     font-size: 1.25rem;
 }
 
-.bank-flexcontainer .selected-tokens .selected-red-token{
-    background-color: red;
+.bank-flexcontainer .selected-tokens .selected-ruby-token{
+    background-color: orangered;
 }
 
-.bank-flexcontainer .selected-tokens .selected-green-token{
-    background-color: green;
+.bank-flexcontainer .selected-tokens .selected-emerald-token{
+    background-color: limegreen;
 }
 
-.bank-flexcontainer .selected-tokens .selected-black-token{
-    background-color: black;
+.bank-flexcontainer .selected-tokens .selected-onyx-token{
+    background-color: #8d6830;
 }
 
-.bank-flexcontainer .selected-tokens .selected-blue-token{
-    background-color: blue;
+.bank-flexcontainer .selected-tokens .selected-sapphire-token{
+    background-color: dodgerblue;
 }
 
-.bank-flexcontainer .selected-tokens .selected-white-token{
+.bank-flexcontainer .selected-tokens .selected-diamond-token{
     background-color: white;
 }

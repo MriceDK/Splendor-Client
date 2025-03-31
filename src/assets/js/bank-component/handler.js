@@ -16,10 +16,13 @@ function chooseBankToken(e){
 }
 
 function removeChosenBankToken(e) {
-    const classNameForRemoval = e.target.classList[2]
+    const className = e.target.classList[2]
+    const classNameWithCapitalLetter = className.replace(className[0], className[0].toUpperCase());
 
-    renderer.chosenBankTokens[classNameForRemoval]--;
+    renderer.chosenBankTokens[classNameWithCapitalLetter]--;
     e.target.remove();
+    renderer.updateToken(classNameWithCapitalLetter, false);
 }
+
 
 export {openBank, closeBank, chooseBankToken, removeChosenBankToken};

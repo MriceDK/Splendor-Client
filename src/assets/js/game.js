@@ -1,5 +1,6 @@
 import * as APIAbstractor from "./data-connector/api-communication-abstractor.js";
 import {renderOpponentsStats} from "./opponent-card-component/renderer.js";
+import {renderTokenBank} from "./bank-component/renderer.js";
 import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
 import {renderMarket} from "./market-component/renderer.js";
 import {renderActivePlayer} from "./active-player-component/renderer.js";
@@ -10,6 +11,7 @@ function getGameInfo() {
     return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`,"GET")
 }
 
+
 function init() {
     getGameInfo()
         .then(res => {
@@ -18,7 +20,7 @@ function init() {
             renderMarket(res);
                 // TODO (not a must have) render nobles
             // TODO render token bank
-            // TODO: Render current active player
+            renderTokenBank(res);
             renderActivePlayer(res.currentPlayer)
         })
 
