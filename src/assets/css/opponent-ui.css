@@ -107,3 +107,7 @@
 .yellow {
     background: var(--main-yellow-color);
     color: black; }
+
+.current-player {
+    border: solid hotpink;
+}
