@@ -15,6 +15,13 @@ header img {
     width: 5rem;
 }
 
+header a{
+    display: flex;
+    text-decoration: none;
+    color: var(--main-white-color);
+    align-items: center;
+}
+
 h1 {
     font-size: 6rem;
     text-align: center;
@@ -53,8 +60,16 @@ h3 {
 }
 
 #username {
-    text-align: end;
+    text-align: center;
     font-size: 2rem;
+    height: 50%;
+    border: 0.2rem solid var(--main-white-color);
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+#username:hover {
+    background-color: var(--main-white-color);
+    color: var(--main-black-color);
 }
 
 main {
