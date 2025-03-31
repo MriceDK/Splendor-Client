@@ -20,8 +20,6 @@ function init() {
             renderMarket(res);
                 // TODO (not a must have) render nobles
             // TODO render token bank
-            // TODO: Render current active player
-            renderActivePlayer(res.currentPlayer)
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer)
         })
