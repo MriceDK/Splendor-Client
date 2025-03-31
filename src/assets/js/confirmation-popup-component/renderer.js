@@ -41,3 +41,5 @@ function renderBuyAndReserveDevelopmentCardPopUp(){
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
 }
+
+export {renderBuyAndReserveDevelopmentCardPopUp, renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup}
