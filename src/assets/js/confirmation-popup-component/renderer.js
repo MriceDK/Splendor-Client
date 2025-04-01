@@ -3,34 +3,51 @@
 //$template.querySelector("#cancel").innerText=;
 //$template.querySelector("#confirm").innerText=;
 
-const $template = document.querySelector("#confirmation-popup-template").textContent.firstElementChild.cloneNode(true);
-const $target = document.querySelector(".market-grid-container");
+const $template = document.querySelector("#confirmation-popup-template").content.firstElementChild.cloneNode(true);
+let $target = document.querySelector("#confirmation-pop-up-result");
 
-function renderBuyDevelopmentCardPopup(){
-    $template.querySelector("#title-popup").innerText = `Buy {cardName}?`;
-    $template.querySelector("#cancel").innerText = `Cancel Purchase?`;
-    $template.querySelector("#confirm").innerText = `Buy`;
+function renderBuyDevelopmentCardPopup(cardName){
+    $target.innerHTML = "";
+
+    document.querySelector(".popup-container").classList.remove("hidden");
+    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-development-card");
+    $template.querySelector("#title-popup").innerText = `Buy ${cardName}?`;
+    $template.querySelector("#cancel-pop-up-button").innerText = `Cancel Purchase?`;
+    $template.querySelector("#confirm-pop-up-button").innerText = `Buy`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
 }
 
 function renderReserveDevelopmentCardPopup(){
-    $template.querySelector("#title-popup").innerText = `Reserve {cardName}?`;
-    $template.querySelector("#cancel").innerText = `Cancel Reservation`;
-    $template.querySelector("#confirm").innerText = `Reserve {cardName}`;
+    $target.innerHTML = "";
+
+    document.querySelector(".popup-container").classList.remove("hidden");
+    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "reserve-development-card");
+
+    $template.querySelector("#title-popup").innerText = `Reserve card?`;
+    $template.querySelector("#cancel-pop-up-button").classList.add("hidden");
+    $template.querySelector("#confirm-pop-up-button").innerText = `Reserve`;
     
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
 }
-function renderBuyAndReserveDevelopmentCardPopUp(){
+function renderBuyAndReserveDevelopmentCardPopUp(cardName){
 
-    $template.querySelector("#title-popup").innerText = `Buy or Reserve {cardName}?`;
+    $target.innerHTML = "";
 
-    $template.querySelector("#cancel").classList.add("reserve");
-    $template.querySelector("#cancel").innerText = `Reserve`;
-    $template.querySelector("#confirm").innerText = `Buy`;
+    document.querySelector(".popup-container").classList.remove("hidden");
+    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-and-reserve-development-card");
+
+    $template.querySelector("#title-popup").innerText = `Buy or Reserve ${cardName}?`;
+
+    $template.querySelector("#cancel-pop-up-button").classList.add("reserve");
+    $template.querySelector("#cancel-pop-up-button").classList.remove("hidden");
+    $template.querySelector("#cancel-pop-up-button").innerText = `Reserve`;
+    $template.querySelector("#confirm-pop-up-button").innerText = `Buy`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
 }
+
+export {renderBuyAndReserveDevelopmentCardPopUp, renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup}
