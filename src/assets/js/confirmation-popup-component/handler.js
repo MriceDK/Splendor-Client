@@ -5,6 +5,7 @@ things that need confirmation
 - buy confirm after token selection (if necessary)
 - reserve confirmation
 */
+import * as render from "./renderer.js";
 
 function handleClickOnCard(e) {
 
@@ -21,4 +22,14 @@ function handleClickOnCard(e) {
     }
 }
 
-export { getClickForPopUpOrigin }
+function handlePopUpClicks(e) {
+    if (e.target.closest("#confirm-pop-up-button")) {
+        console.log("confirm");
+    } else if (e.target.closest("#cancel-pop-up-button")) {
+        console.log("cancel");
+    } else if (e.target.closest("#close-popup-button")) {
+        render.closePopUp(e.target);
+    }
+}
+
+export {handleClickOnCard, handlePopUpClicks}
