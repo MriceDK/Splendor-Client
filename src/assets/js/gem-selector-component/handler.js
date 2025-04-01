@@ -1,6 +1,7 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 import * as Utils from "../helper/utils.js";
+import * as ErrorHandler from "../data-connector/error-handler";
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -19,12 +20,13 @@ function buyDevelopmentCardRequest(body) {
     const playerName = LocalStorageAbstractor.loadFromStorage("myUsername");
 
     APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/developments`, "POST", body)
-        .then(res => {
+        .then(() => {
             Utils.hidePopupContainer();
 
         })
         .catch(err => {
             Utils.hidePopupContainer();
+            ErrorHandler.handleError(err);
         });
 }
 
