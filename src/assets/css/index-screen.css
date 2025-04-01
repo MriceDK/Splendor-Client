@@ -2,26 +2,25 @@ body {
     background-color: #f4f4f4;
     font-family: "Roboto", sans-serif;
     max-height: 100vh;
+    display: grid
 }
-
 header {
     display: flex;
     align-items: center;
     text-align: end;
     flex-flow: row-reverse;
+    height: 100%;
 }
-
 header img {
     width: 5rem;
 }
-
-header a{
-    display: flex;
-    text-decoration: none;
-    color: var(--main-white-color);
-    align-items: center;
+.grid{
+    height: 100vh;
+    background: var(--main-white-color);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
 }
-
 h1 {
     font-size: 6rem;
     text-align: center;
@@ -31,7 +30,6 @@ h1 {
     color: rgb(255, 195, 0);
     font-weight: bold;
 }
-
 h3 {
     font-size: 2rem;
     text-align: center;
@@ -40,7 +38,6 @@ h3 {
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
-
 .button-style {
     text-align: center;
     margin-top: 4rem;
@@ -54,33 +51,16 @@ h3 {
     width: 100%;
     text-decoration: none;
 }
-
 .button-style:hover {
     background-color: rgb(230, 177, 0);
 }
-
-#username {
-    text-align: center;
-    font-size: 2rem;
-    height: 50%;
-    border: 0.2rem solid var(--main-white-color);
-    border-radius: 1rem;
-    padding: 0.4rem;
-}
-#username:hover {
-    background-color: var(--main-white-color);
-    color: var(--main-black-color);
-}
-
 main {
     height: 100%;
 }
-
 .grid-container {
     display: grid;
     height: fit-content;
 }
-
 .container div {
     align-self: center;
     justify-self: center;

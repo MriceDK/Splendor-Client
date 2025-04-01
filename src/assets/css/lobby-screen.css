@@ -14,7 +14,6 @@ main{
     height: 100%;
     grid-template-rows: 20% 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-
 }
 header{
     grid-column-start: 1;
@@ -22,9 +21,7 @@ header{
     justify-content: space-between;
 }
 header img{
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-right: 0.625rem;
+    width: 5rem;
 }
 nav a {
     color: var(--main-white-color);
@@ -58,7 +55,6 @@ h2{
     display: inline;
 }
 .users{
-
     grid-column-start: 2;
     grid-row-start: 3;
 }
@@ -79,7 +75,6 @@ h2{
     grid-column-start: 2;
     grid-row-start: 2;
 }
-
 .bottom{
 
     display: flex;
