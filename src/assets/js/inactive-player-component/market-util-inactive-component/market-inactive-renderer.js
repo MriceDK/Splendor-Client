@@ -1,11 +1,11 @@
 function renderDisableCard(card){
     card.classList.remove("active-card");
-    card.classList.add("inactive-card");
+    card.classList.add("disabled");
 
 
 }
 
-function renderEnabledCard(){
-    card.classList.remove("inactive-card");
+function renderEnabledCard(card){
+    card.classList.remove("disabled");
     card.classList.add("active-card");
 }
