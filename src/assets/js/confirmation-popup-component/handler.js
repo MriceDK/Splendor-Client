@@ -28,8 +28,15 @@ function handlePopUpClicks(e) {
     } else if (e.target.closest("#cancel-pop-up-button")) {
         console.log("cancel");
     } else if (e.target.closest("#close-popup-button")) {
-        render.closePopUp(e.target);
+        closePopUp(e.target);
     }
+}
+
+function closePopUp(button){
+    document.querySelector("#confirmation-pop-up-result").classList.add("hidden");
+    document.querySelector(".popup-container").removeAttribute("data-pop-up-type");
+
+    button.outerHTML = "";
 }
 
 export {handleClickOnCard, handlePopUpClicks}
