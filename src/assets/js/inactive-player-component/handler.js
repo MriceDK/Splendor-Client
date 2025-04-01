@@ -16,3 +16,5 @@ function handleDisabledPlayerFunctionalities(currentPlayer, allPlayers){
 
 
 }
+
+export { handleDisabledPlayerFunctionalities }

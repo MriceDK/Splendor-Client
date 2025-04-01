@@ -4,13 +4,13 @@ function handleMarket(active){
     const cards = document.querySelectorAll("#market-grid-container article.deck");
     for (const card in cards){
         if (active){
-            renderDisableCard(card);
+            renderEnableCard(card);
         } else {
-            false;
+            renderDisableCard(card);
         }
         
     }
 
 }
 
-export { handleMarket}
+export { handleMarket }
