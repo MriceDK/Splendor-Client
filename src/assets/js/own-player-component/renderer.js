@@ -8,15 +8,17 @@ function ownPlayerCardRenderer(gameInfo){
     $playerCard.querySelector("#own-prestige-points").textContent = ownPlayer.totalPrestigePoints;
     $playerCard.querySelector("#nobles").insertAdjacentHTML("beforeend", ownPlayer.acquiredNobles);
     Object.entries(ownPlayer.tokens).forEach(token => renderOwnTokenValue(token));
-    $playerCard.querySelector("#own-gems").insertAdjacentHTML("afterbegin", ownPlayer.tokens);
-    $playerCard.querySelector("#own-bonuses").insertAdjacentHTML("beforeend", ownPlayer.bonuses);
+    Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
     $playerCard.querySelector("#own-reservated-cards").insertAdjacentHTML("beforeend", ownPlayer.reserve);
 
 }
 
 function renderOwnTokenValue(token){
-    console.log(token);
-    document.querySelector(`.own-inventory  .${token[0].toLowerCase()} .token-text`).innerText = token[1];
+    document.querySelector(`.own-inventory .${token[0].toLowerCase()} .token-text`).innerText = token[1];
+}
+
+function renderOwnBonusValue(bonus){
+    document.querySelector(`.own-inventory  .${bonus[0].toLowerCase()} .card-text`).innerText = bonus[1];
 }
 
 export { ownPlayerCardRenderer }
