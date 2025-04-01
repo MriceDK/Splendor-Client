@@ -1,6 +1,7 @@
 import * as handler from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
+import { UppercaseFirstLetterOfWord } from "../helper/utils.js";
 
 const chosenBankTokens = {
     Ruby: 0,
@@ -174,7 +175,8 @@ function removeChosenTokens(){
     document.querySelector(".selected-tokens").innerHTML = "";
     for (const [key, value] of Object.entries(chosenBankTokens)) {
         for (let i = 0; i < value; i++) {
-            updateToken(key.replace(key[0], key[0].toUpperCase()), false);
+            const uppercasedKey = UppercaseFirstLetterOfWord(key);
+            updateToken(uppercasedKey, false);
         }
     }
 
