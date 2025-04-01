@@ -14,6 +14,7 @@ function handleDisabledPlayerFunctionalities(currentPlayer, allPlayers){
         
     });
 
+    setTimeout(handleDisabledPlayerFunctionalities(), 2000);
 
 }
 

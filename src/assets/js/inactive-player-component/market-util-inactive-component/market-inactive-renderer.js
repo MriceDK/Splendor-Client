@@ -9,3 +9,5 @@ function renderEnabledCard(card){
     card.classList.remove("disabled");
     card.classList.add("active-card");
 }
+
+export {renderDisableCard, renderEnabledCard };

@@ -1,7 +1,9 @@
 import { handleDisabledPlayerFunctionalities } from "./handler.js";
 
 function init(){
-    document.querySelector("#inactive-player").addEventListener("load", handleDisabledPlayerFunctionalities);
+    const allPlayers = document.querySelectorAll(".player");
+    const activePlayer = document.querySelector(".current-player")
+    handleDisabledPlayerFunctionalities(activePlayer, allPlayers);
 
 }
 

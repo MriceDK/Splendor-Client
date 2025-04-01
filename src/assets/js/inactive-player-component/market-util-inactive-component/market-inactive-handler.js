@@ -4,7 +4,7 @@ function handleMarket(active){
     const cards = document.querySelectorAll("#market-grid-container article.deck");
     for (const card in cards){
         if (active){
-            renderEnableCard(card);
+            renderEnabledCard(card);
         } else {
             renderDisableCard(card);
         }
