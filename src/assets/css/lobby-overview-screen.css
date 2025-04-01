@@ -1,3 +1,14 @@
+header img {
+    width: 5rem;
+}
+
+header a{
+    display: flex;
+    text-decoration: none;
+    color: var(--main-white-color);
+    align-items: center;
+}
+
 nav a {
     color: var(--main-white-color);
     text-decoration: none;
@@ -17,11 +28,18 @@ h1 {
     align-items: center;
     margin-right: 1rem;
 }
+#username {
+    text-align: center;
+    font-size: 2rem;
+    height: 50%;
+    border: 0.2rem solid var(--main-white-color);
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
 
-.username img {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-right: 0.625rem;
+#username:hover {
+    background-color: var(--main-white-color);
+    color: var(--main-black-color);
 }
 
 #filter {
