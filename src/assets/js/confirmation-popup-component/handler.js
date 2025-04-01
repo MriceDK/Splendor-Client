@@ -33,7 +33,7 @@ function handlePopUpClicks(e) {
 }
 
 function closePopUp(button){
-    document.querySelector("#confirmation-pop-up-result").classList.add("hidden");
+    document.querySelector(".popup-container").classList.add("hidden");
     document.querySelector(".popup-container").removeAttribute("data-pop-up-type");
 
     button.outerHTML = "";
