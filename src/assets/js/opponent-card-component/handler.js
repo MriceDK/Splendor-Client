@@ -2,7 +2,7 @@ function tokenInPurse(player, token, bonus = true){
 
     if (bonus){
         if(player.bonuses[token]){
-            return player.tokens[token];
+            return player.bonuses[token];
         } else {
             return 0
         }

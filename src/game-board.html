@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/game-board-screen.css">
     <link rel="stylesheet" href="assets/css/development-card.css">
 
-    <link rel="stylesheet" href="assets/css/opponent-ui.css">
+    <link rel="stylesheet" href="assets/css/player-ui.css">
     <link rel="stylesheet" href="assets/css/token-bank.css">
 
     <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
@@ -196,42 +196,87 @@
 
         </template>
 
-    </div>
-    <div class="lobby-info">
-        <h1 class="splendor-name">Splendor</h1>
-        <h2 class="lobby-name">Lobby Name</h2>
-        <div class="spectators">
-            <p id="spectators">spectators:</p>
         </div>
-    </div>
-    <section class="bank-flexcontainer">
-        <h2>Bank</h2>
-        <div class="token-bank">
-            <button class="ruby">1</button>
-            <button class="emerald">1</button>
-            <button class="onyx">1</button>
-            <button class="sapphire">1</button>
-            <button class="diamond">1</button>
-            <button class="gold">1</button>
-        </div>
-        <div class="selected-tokens"></div>
-        <div class="bank-buttons">
-            <button class="hidden cancel-button">Cancel</button>
-            <button class="clickable take-gems-button">Take Gems</button>
-            <button class="hidden collect-gems-button">Collect Gems</button>
-        </div>
-    </section>
-    <div class="user-info-flexcontainer">
-        <p>My user</p>
-        <div id="own-player-card">
-            <h2 id="own-username">Username</h2>
-            <div id="own-prestige-points"><p></p></div>
-            <div id="nobles"></div>
-            <div id="own-gems">
-                <div id="own-bonuses"></div>
+        <div class="lobby-info">
+            <h1 class="splendor-name">Splendor</h1>
+            <h2 class="lobby-name">Lobby Name</h2>
+            <div class="spectators">
+                <p id="spectators">spectators:</p>
             </div>
-            <div id="own-reservated-cards"></div>
         </div>
+        <section class="bank-flexcontainer">
+            <h2>Bank</h2>
+            <div class="token-bank">
+                <button class="ruby">1</button>
+                <button class="emerald">1</button>
+                <button class="onyx">1</button>
+                <button class="sapphire">1</button>
+                <button class="diamond">1</button>
+                <button class="gold">1</button>
+            </div>
+            <div class="selected-tokens"></div>
+            <div class="bank-buttons">
+                <button class="hidden cancel-button" >Cancel</button>
+                <button class="clickable take-gems-button">Take Gems</button>
+                <button class="hidden collect-gems-button">Collect Gems</button>
+            </div>
+        </section>
+        <div class="user-info-flexcontainer">
+            <p>My user</p>
+            <div id="own-player-card">
+                <h2 id="own-username">Username</h2>
+                <div id="own-prestige-points"><p></p></div>
+                <div id="nobles"></div>
+                <div class="own-purse">
+                    <p>Your Purse:</p>
+                    <div class="own-inventory">
+                        <div class="gems ruby">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card ruby">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems emerald">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card emerald">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems onyx">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card onyx">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems sapphire">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card sapphire">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems diamond">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card diamond">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems gold">
+                            <p class="token-text">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="own-reservated-cards"></div>
+            </div>
 
     </div>
     <div class="history">
