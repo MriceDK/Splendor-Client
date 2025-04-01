@@ -1,7 +1,7 @@
 
 
 function renderDisabledPlayerFunctionalities(){
-    return null;
+    
 }
 
 function renderRemoveDisabledClass(){

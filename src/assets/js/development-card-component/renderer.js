@@ -5,8 +5,17 @@ function renderDevelopmentCards(cards, $target) {
     });
 }
 
-function renderDevelopmentCard(card, $target) {
+function renderDevelopmentCard(card, $target, isActive) {
     const $devCard = document.querySelector("#development-card").content.firstElementChild.cloneNode(true);
+
+    if (isActive){
+        $devCard.classList.remove("inactive");
+        $devCard.classList.add("active");
+        
+    } else {
+        $devCard.classList.remove("active");
+        $devCard.classList.add("inactive");
+    }
 
     $devCard.classList.add(`level-${card.level}`);
     $devCard.querySelector("h2").innerText = card.name;
