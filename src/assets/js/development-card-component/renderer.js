@@ -1,7 +1,7 @@
 
-function renderDevelopmentCards(cards, $target) {
+function renderDevelopmentCards(cards, $target, isActive) {
     cards.forEach(card => {
-        renderDevelopmentCard(card, $target);
+        renderDevelopmentCard(card, $target, isActive);
     });
 }
 
