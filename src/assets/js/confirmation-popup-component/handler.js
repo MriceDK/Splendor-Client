@@ -6,18 +6,18 @@ things that need confirmation
 - reserve confirmation
 */
 
-// TODO: THIS IS GLUE, order for it to work it needs to be glued to other function which are contained in other issues
+function handleClickOnCard(e) {
 
-import {renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, renderBuyAndReserveDevelopmentCardPopUp } from "./renderer.js";
+    if (e.target.classList.contains("reserved") && !e.target.classList.contains("disabled")) {
+        const cardName = e.target.dataset.cardName;
+        render.renderBuyDevelopmentCardPopup(cardName);
 
-function getClickForPopUpOrigin(e){
-    if (e.target.getAttribute("id") === "buy-development-card"){
-    if (e.target.classList.contains("reserved")){
-        renderBuyDevelopmentCardPopup();
-    } else if (e.target.classList.contains("deck")){
-        renderReserveDevelopmentCardPopup();
-    } else if (e.target.classList.contains("development-card")){
-        renderBuyAndReserveDevelopmentCardPopUp();
+    } else if (e.target.classList.contains("deck") && !e.target.classList.contains("disabled")) {
+        render.renderReserveDevelopmentCardPopup();
+
+    } else if (e.target.classList.contains("development-card") && !e.target.classList.contains("disabled")) {
+        const cardName = e.target.dataset.cardName;
+        render.renderBuyAndReserveDevelopmentCardPopUp(cardName);
     }
 }
 
