@@ -3,7 +3,6 @@ import * as Utils from "../helper/utils.js";
 
 function renderTokenSelectorForm(devCardName) {
     const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
-    devCardName = "template"; // TODO verwijder hardcoded
     Utils.showPopupContainer();
 
     const $target = document.querySelector(".popup-container");
