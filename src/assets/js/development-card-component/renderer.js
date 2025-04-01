@@ -18,6 +18,7 @@ function renderDevelopmentCard(card, $target, isActive) {
     }
 
     $devCard.classList.add(`level-${card.level}`);
+    $devCard.setAttribute("data-card-name", card.name);
     $devCard.querySelector("h2").innerText = card.name;
     $devCard.querySelector(".prestige-point").innerText = card.prestigePoints;
     $devCard.querySelector("img").setAttribute("alt", card.bonus);
