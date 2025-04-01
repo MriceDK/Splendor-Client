@@ -1,17 +1,16 @@
 import { renderDisableCard, renderEnabledCard } from "./market-inactive-renderer.js"
 
-function handleInactiveMarket(){
+function handleMarket(active){
     const cards = document.querySelectorAll("#market-grid-container article.deck");
     for (const card in cards){
-        renderDisableCard(card);
+        if (active){
+            renderDisableCard(card);
+        } else {
+            false;
+        }
+        
     }
 
 }
 
-function handleActiveMarket(){
-    const cards = document.querySelectorAll("#market-grid-container article.deck");
-    for (const card in cards){
-        renderEnabledCard(card);
-    }
-}
-export { handleInactiveMarket, handleActiveMarket }
+export { handleMarket}
