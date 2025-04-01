@@ -51,23 +51,22 @@ function enableOrDisableBank(playerName) {
     }
 }
 
-function enableTokens(){
-    document.querySelector(".token-bank .ruby").disabled = false;
-    document.querySelector(".token-bank .emerald").disabled = false;
-    document.querySelector(".token-bank .onyx").disabled = false;
-    document.querySelector(".token-bank .sapphire").disabled = false;
-    document.querySelector(".token-bank .diamond").disabled = false;
+function setDisable(boolean){
+    document.querySelector(".token-bank .ruby").disabled = boolean;
+    document.querySelector(".token-bank .emerald").disabled = boolean;
+    document.querySelector(".token-bank .onyx").disabled = boolean;
+    document.querySelector(".token-bank .sapphire").disabled = boolean;
+    document.querySelector(".token-bank .diamond").disabled = boolean;
     toggleTokenBorders();
 }
 
+function enableTokens(){
+    setDisable(false);
+}
+
 function disableTokens(){
-    document.querySelector(".token-bank .ruby").disabled = true;
-    document.querySelector(".token-bank .emerald").disabled = true;
-    document.querySelector(".token-bank .onyx").disabled = true;
-    document.querySelector(".token-bank .sapphire").disabled = true;
-    document.querySelector(".token-bank .diamond").disabled = true;
+    setDisable(true);
     document.querySelector(".token-bank .gold").disabled = true;
-    toggleTokenBorders();
 }
 
 function toggleTokenBorders(){
