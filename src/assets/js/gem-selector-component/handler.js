@@ -12,8 +12,6 @@ function buyDevelopmentCard(e) {
 
     const body = createBody(devCardName, gemCost);
     buyDevelopmentCardRequest(body);
-
-    console.log(body);
 }
 
 function buyDevelopmentCardRequest(body) {
