@@ -1,4 +1,4 @@
-import { setUpEventlisteners } from "./setUpEventlisteners.js";
+import { setUpEventlisteners } from "./set-up-eventlisteners.js";
 
 function init() {
     setUpEventlisteners();
