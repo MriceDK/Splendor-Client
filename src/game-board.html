@@ -19,6 +19,16 @@
     <script type="module" src="./assets/js/game.js"></script>
 </head>
 <body>
+ <div id="confirmation-pop-up-result" class="popup-container hidden">
+     <template id="confirmation-popup-template" class="popup">
+         <div id="confirmation-popup">
+             <h3 id="title-popup"></h3>
+             <button type="button" id="cancel-pop-up-button">Cancel</button>
+             <button type="button" id="confirm-pop-up-button">Confirm</button>
+             <button type="button" id="close-popup-button">X</button>
+         </div>
+     </template>
+ </div>
 
     <main>
 <!--        3 Columns-->
@@ -95,221 +105,6 @@
 
             </div>
         <div class="market-grid-container">
-            <template id="confirmation-popup-template">
-                <div id="confirmation-popup">
-                    <h3 id="title-popup"></h3>
-                    <button type="button">
-                        <h4 id="cancel"></h4>
-                    </button>
-                    <button type="button">
-                        <h4 id="confirm"></h4>
-                    </button>
-                    
-                </div>
-
-            </template>
-            <div id="confirmation-pop-up-result"></div>
-            
-            <!-- <p>Development card Market</p> -->
-
-            <!-- Uncomment to see the layout -->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-
-<!--            <article class="deck level-3">-->
-<!--                <h2>Level 3</h2>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-
-<!--            <article class="deck level-2">-->
-<!--                <h2>Level 2</h2>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-
-
-<!--            <article class="deck level-1">-->
-<!--                <h2>Level 1</h2>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
 
             <template id="noble">
 
