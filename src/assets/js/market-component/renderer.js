@@ -19,6 +19,7 @@ function renderLevelCard(level, cardStackSize, $target) {
     const $levelCard = document.querySelector("#level-card").content.firstElementChild.cloneNode(true);
 
     $levelCard.classList.add(`level-${level}`);
+    $levelCard.setAttribute("data-level", level);
     $levelCard.querySelector(".level-title").innerText = level;
     $levelCard.querySelector(".card-amount").innerText = cardStackSize;
 

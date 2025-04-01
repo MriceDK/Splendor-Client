@@ -5,21 +5,38 @@ things that need confirmation
 - buy confirm after token selection (if necessary)
 - reserve confirmation
 */
+import * as render from "./renderer.js";
 
-// TODO: THIS IS GLUE, order for it to work it needs to be glued to other function which are contained in other issues
+function handleClickOnCard(e) {
 
-import {renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, renderBuyAndReserveDevelopmentCardPopUp } from "./renderer.js";
+    if (e.target.classList.contains("reserved") && !e.target.classList.contains("disabled")) {
+        const cardName = e.target.dataset.cardName;
+        render.renderBuyDevelopmentCardPopup(cardName);
 
-function getClickForPopUpOrigin(e){
-    e.stopPropagation();
-    e.preventDefault();
-    if (e.target.getAttribute("id") === "buy-development-card"){
-        renderBuyDevelopmentCardPopup();
-    } else if (e.target.getAttribute("id") === "reserve-development-card"){
-        renderReserveDevelopmentCardPopup();
-    } else if (e.target.getAttribute("id") === "buy-and-reserve-development-card"){
-        renderBuyAndReserveDevelopmentCardPopUp();
+    } else if (e.target.classList.contains("deck") && !e.target.classList.contains("disabled")) {
+        render.renderReserveDevelopmentCardPopup();
+
+    } else if (e.target.classList.contains("development-card") && !e.target.classList.contains("disabled")) {
+        const cardName = e.target.dataset.cardName;
+        render.renderBuyAndReserveDevelopmentCardPopUp(cardName);
     }
 }
 
-export { getClickForPopUpOrigin }
+function handlePopUpClicks(e) {
+    if (e.target.closest("#confirm-pop-up-button")) {
+        console.log("confirm");
+    } else if (e.target.closest("#cancel-pop-up-button")) {
+        console.log("cancel");
+    } else if (e.target.closest("#close-popup-button")) {
+        closePopUp(e.target);
+    }
+}
+
+function closePopUp(button){
+    document.querySelector("#confirmation-pop-up-result").classList.add("hidden");
+    document.querySelector(".popup-container").removeAttribute("data-pop-up-type");
+
+    button.outerHTML = "";
+}
+
+export {handleClickOnCard, handlePopUpClicks}
