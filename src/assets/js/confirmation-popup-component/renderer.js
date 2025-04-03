@@ -16,7 +16,6 @@ function renderBuyDevelopmentCardPopup(cardName){
     $template.querySelector("#confirm-pop-up-button").innerText = `Buy`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
-    document.querySelector("#confirmation-popup").setAttribute("data-card-name", cardName);
 
 }
 
@@ -31,8 +30,6 @@ function renderReserveDevelopmentCardPopup(cardLevel){
     $template.querySelector("#confirm-pop-up-button").innerText = `Reserve`;
     
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
-    document.querySelector("#confirmation-popup").setAttribute("data-level", cardLevel);
-
 }
 function renderBuyAndReserveDevelopmentCardPopUp(cardName){
 
@@ -49,7 +46,6 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName){
     $template.querySelector("#confirm-pop-up-button").innerText = `Buy`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
-    document.querySelector("#confirmation-popup").setAttribute("data-card-name", cardName);
 
 }
 
