@@ -3,10 +3,11 @@
 //$template.querySelector("#cancel").innerText=;
 //$template.querySelector("#confirm").innerText=;
 
-const $template = document.querySelector("#confirmation-popup-template").content.firstElementChild.cloneNode(true);
-let $target = document.querySelector("#confirmation-pop-up-result");
+
 
 function renderBuyDevelopmentCardPopup(cardName){
+    const $template = document.querySelector("#confirmation-popup-template").content.firstElementChild.cloneNode(true);
+    let $target = document.querySelector("#confirmation-pop-up-result");
     $target.innerHTML = "";
 
     document.querySelector(".popup-container").classList.remove("hidden");
@@ -20,6 +21,8 @@ function renderBuyDevelopmentCardPopup(cardName){
 }
 
 function renderReserveDevelopmentCardPopup(cardLevel){
+    const $template = document.querySelector("#confirmation-popup-template").content.firstElementChild.cloneNode(true);
+    let $target = document.querySelector("#confirmation-pop-up-result");
     $target.innerHTML = "";
 
     document.querySelector(".popup-container").classList.remove("hidden");
@@ -32,6 +35,8 @@ function renderReserveDevelopmentCardPopup(cardLevel){
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
 function renderBuyAndReserveDevelopmentCardPopUp(cardName){
+    const $template = document.querySelector("#confirmation-popup-template").content.firstElementChild.cloneNode(true);
+    let $target = document.querySelector("#confirmation-pop-up-result");
 
     $target.innerHTML = "";
 

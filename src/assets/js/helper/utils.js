@@ -3,16 +3,10 @@ function UppercaseFirstLetterOfWord(word) {
     return word.replace(word[0], word[0].toUpperCase());
 }
 
-function hidePopupContainer() {
-    const popupContainer = document.querySelector(".popup-container");
-    popupContainer.innerHTML = "";
-    popupContainer.classList.add("hidden");
-}
-
 function showPopupContainer() {
     const popupContainer = document.querySelector(".popup-container");
-    popupContainer.innerHTML = "";
+    document.querySelector("#confirmation-pop-up-result").innerHTML = "";
     popupContainer.classList.remove("hidden");
 }
 
-export { UppercaseFirstLetterOfWord, showPopupContainer, hidePopupContainer };
+export { UppercaseFirstLetterOfWord, showPopupContainer };

@@ -10,6 +10,7 @@ import * as helper from "./helper.js";
 import {renderTokenSelectorForm} from "../gem-selector-component/renderer.js";
 
 function handleClickOnCard(e) {
+    document.querySelector("#confirmation-pop-up-result").classList.remove("hidden");
 
     if (e.target.classList.contains("reserved") && !e.target.classList.contains("disabled")) {
         const cardName = e.target.dataset.cardName;
@@ -70,7 +71,12 @@ function handlePopUpClicks(e) {
 function closePopUp(){
     document.querySelector(".popup-container").classList.add("hidden");
     document.querySelector(".popup-container").removeAttribute("data-pop-up-type");
-    document.querySelector(".popup-container").innerHTML = "";
+    document.querySelector("#confirmation-pop-up-result").innerHTML = "";
+    document.querySelector("#confirmation-pop-up-result").classList.add("hidden");
+
+    if (document.querySelector(".popup-token-selector")) {
+        document.querySelector(".popup-token-selector").outerHTML = "";
+    }
 }
 
 export {handleClickOnCard, handlePopUpClicks, closePopUp};

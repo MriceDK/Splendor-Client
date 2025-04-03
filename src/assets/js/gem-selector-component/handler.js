@@ -1,6 +1,7 @@
 import * as Utils from "../helper/utils.js";
 import * as ErrorHandler from "../data-connector/error-handler.js";
 import {buyDevelopmentCardRequest} from "../API/api.js";
+import {closePopUp} from "../confirmation-popup-component/handler.js";
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -12,10 +13,10 @@ function buyDevelopmentCard(e) {
 
     const body = createBody(devCardName, gemCost);
     buyDevelopmentCardRequest(body).then(() => {
-        Utils.hidePopupContainer();
+        closePopUp();
     })
         .catch(err => {
-            Utils.hidePopupContainer();
+            closePopUp();
             ErrorHandler.handleError(err);
         });
 }
