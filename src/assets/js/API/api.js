@@ -1,5 +1,5 @@
-import * as APIAbstractor from "../data-connector/api-communication-abstractor";
-import * as localStorageAbstractor from "../data-connector/local-storage-abstractor";
+import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
+import * as localStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 
 function reserveCard(cardNameOrLevel, level = false) {
     const body = createReserveCardBody(cardNameOrLevel, level);
