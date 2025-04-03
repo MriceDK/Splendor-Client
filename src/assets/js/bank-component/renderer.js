@@ -1,6 +1,7 @@
 import * as handler from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
+import { UppercaseFirstLetterOfWord } from "../helper/utils.js";
 
 const chosenBankTokens = {
     Ruby: 0,
@@ -50,31 +51,30 @@ function enableOrDisableBank(playerName) {
     }
 }
 
-function enableTokens(){
-    document.querySelector(".token-bank .ruby").disabled = false;
-    document.querySelector(".token-bank .emerald").disabled = false;
-    document.querySelector(".token-bank .onyx").disabled = false;
-    document.querySelector(".token-bank .sapphire").disabled = false;
-    document.querySelector(".token-bank .diamond").disabled = false;
+function setDisable(boolean){
+    document.querySelector(".token-bank .ruby").disabled = boolean;
+    document.querySelector(".token-bank .emerald").disabled = boolean;
+    document.querySelector(".token-bank .onyx").disabled = boolean;
+    document.querySelector(".token-bank .sapphire").disabled = boolean;
+    document.querySelector(".token-bank .diamond").disabled = boolean;
     toggleTokenBorders();
+}
+
+function enableTokens(){
+    setDisable(false);
 }
 
 function disableTokens(){
-    document.querySelector(".token-bank .ruby").disabled = true;
-    document.querySelector(".token-bank .emerald").disabled = true;
-    document.querySelector(".token-bank .onyx").disabled = true;
-    document.querySelector(".token-bank .sapphire").disabled = true;
-    document.querySelector(".token-bank .diamond").disabled = true;
-    document.querySelector(".token-bank .gold").disabled = true;
-    toggleTokenBorders();
+    setDisable(true);
 }
 
 function toggleTokenBorders(){
-    document.querySelector(".token-bank .ruby").classList.toggle("clickable");
-    document.querySelector(".token-bank .emerald").classList.toggle("clickable");
-    document.querySelector(".token-bank .onyx").classList.toggle("clickable");
-    document.querySelector(".token-bank .sapphire").classList.toggle("clickable");
-    document.querySelector(".token-bank .diamond").classList.toggle("clickable");
+    const $tokenBanks = document.querySelectorAll(".token-bank button");
+    $tokenBanks.forEach($tokenBank => {
+        if (!$tokenBank.classList.contains("gold")) {
+            $tokenBank.classList.toggle("clickable");
+        }
+    })
 }
 
 function setTokenMarketValues(gameInfo){
@@ -174,7 +174,8 @@ function removeChosenTokens(){
     document.querySelector(".selected-tokens").innerHTML = "";
     for (const [key, value] of Object.entries(chosenBankTokens)) {
         for (let i = 0; i < value; i++) {
-            updateToken(key.replace(key[0], key[0].toUpperCase()), false);
+            const uppercasedKey = UppercaseFirstLetterOfWord(key);
+            updateToken(uppercasedKey, false);
         }
     }
 

@@ -13,7 +13,8 @@
 
     <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
     <link rel="stylesheet" href="assets/css/confirmation-popup.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
+          rel="stylesheet">
 
     <script src="assets/js/confirmation-popup-component/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
@@ -21,19 +22,57 @@
     <link rel="stylesheet" href="assets/css/settings-screen.css">
 </head>
 <body>
+<template id="token-selector">
+    <div class="popup-token-selector">
+        <form id="token-selector-form" action="#" method="GET">
+            <input id="token-selector-dev-card" type="hidden" name="dev-card" value="">
+            <label for="token-selector-emerald">
+                Emerald
+                <input class="gem-selector-input" id="token-selector-emerald" type="number" name="emerald" value="0"
+                       min="0">
+            </label>
+            <label for="token-selector-ruby">
+                Ruby
+                <input class="gem-selector-input" id="token-selector-ruby" type="number" name="ruby" value="0" min="0">
+            </label>
+            <label for="token-selector-sapphire">
+                Sapphire
+                <input class="gem-selector-input" id="token-selector-sapphire" type="number" name="sapphire" value="0"
+                       min="0">
+            </label>
+            <label for="token-selector-diamond">
+                Diamond
+                <input class="gem-selector-input" id="token-selector-diamond" type="number" name="diamond" value="0"
+                       min="0">
+            </label>
+            <label for="token-selector-onyx">
+                Onyx
+                <input class="gem-selector-input" id="token-selector-onyx" type="number" name="onyx" value="0" min="0">
+            </label>
+            <label for="token-selector-gold">
+                Gold
+                <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0" min="0">
+            </label>
+            <button>Cancel</button>
+            <input type="submit" value="confirm-payment">
+        </form>
 
- <div id="confirmation-pop-up-result" class="popup-container hidden">
-     <template id="confirmation-popup-template" class="popup">
-         <div id="confirmation-popup">
-             <h3 id="title-popup"></h3>
-             <button type="button" id="cancel-pop-up-button">Cancel</button>
-             <button type="button" id="confirm-pop-up-button">Confirm</button>
-             <button type="button" id="close-popup-button">X</button>
-         </div>
-     </template>
- </div>
-
+    </div>
+</template>
 <div class="popup-container hidden">
+
+    <div id="confirmation-pop-up-result">
+        <template id="confirmation-popup-template" class="popup">
+            <div id="confirmation-popup">
+                <h3 id="title-popup"></h3>
+                <button type="button" id="cancel-pop-up-button">Cancel</button>
+                <button type="button" id="confirm-pop-up-button">Confirm</button>
+                <button type="button" id="close-popup-button">X</button>
+            </div>
+        </template>
+    </div>
+
+
     <div class="popup hidden">
         <button id="forfeit">Forfeit</button>
         <button class="close">Close</button>
@@ -43,116 +82,119 @@
             <button id="forfeit-no">No</button>
         </div>
     </div>
+
+
 </div>
 
-    <main>
+<main>
 
-        <header>
-            <div class="settings">
-                <button id="settings"><img src="images/settings-icon.png" alt="settings icon" title="settings icon"></button>
-            </div>
-        </header>
-            <div class="username-flexcontainer">
-                <template id="opponent-template">
-                    <div class="opponent">
-                        <p class="player"></p>
-                        <p class="points"></p>
-                        <div class="reserved-section">
-                            <p class="reserved-label"><span id="reserved-count"></span> reserved</p>
-                        </div>
-                        <div class="inventory">
-                            <div class="token gems red">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card red">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems green">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card green">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems black">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card black">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems blue">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card blue">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems white">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card white">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems yellow">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-
-                        <div class="nobles-container hidden">
-                            <p class="noble">noble1</p>
-                            <p class="noble">noble2</p>
-                            <p class="noble">noble3</p>
-                        </div>
+    <header>
+        <div class="settings">
+            <button id="settings"><img src="images/settings-icon.png" alt="settings icon" title="settings icon">
+            </button>
+        </div>
+    </header>
+    <div class="username-flexcontainer">
+        <template id="opponent-template">
+            <div class="opponent">
+                <p class="player"></p>
+                <p class="points"></p>
+                <div class="reserved-section">
+                    <p class="reserved-label"><span id="reserved-count"></span> reserved</p>
+                </div>
+                <div class="inventory">
+                    <div class="token gems red">
+                        <p class="token-text"></p>
                     </div>
-
-                </template>
-
-
-            </div>
-        <div class="market-grid-container">
-
-            <template id="noble">
-
-                <article class="noble">
-                    <h2 class="hidden">title</h2>
-                    <p class="prestige-point">1</p>
-                    <ul class="bonus-costs">
-                        <li class="bonus-cost emerald">4</li>
-                        <li class="bonus-cost ruby">4</li>
-                    </ul>
-                </article>
-
-            </template>
-
-
-            <template id="level-card">
-
-                <article class="deck">
-                    <h2>Level <span class="level-title"></span></h2>
-                    <p><span class="card-amount"></span> left</p>
-                </article>
-
-            </template>
-
-            <template id="development-card">
-
-                <article class="development-card">
-                    <h2 class="development-card-title hidden">title</h2>
-                    <span class="prestige-point">1</span>
-                    <img class="bonus" src="#" alt="bonus" >
-                    <div class="gem-costs">
+                    <div class="card red">
+                        <p class="token-text"></p>
                     </div>
-                </article>
+                </div>
+                <div class="inventory">
+                    <div class="gems green">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card green">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems black">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card black">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems blue">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card blue">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems white">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card white">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems yellow">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
 
-            </template>
+                <div class="nobles-container hidden">
+                    <p class="noble">noble1</p>
+                    <p class="noble">noble2</p>
+                    <p class="noble">noble3</p>
+                </div>
+            </div>
+
+        </template>
+
+
+    </div>
+    <div class="market-grid-container">
+
+        <template id="noble">
+
+            <article class="noble">
+                <h2 class="hidden">title</h2>
+                <p class="prestige-point">1</p>
+                <ul class="bonus-costs">
+                    <li class="bonus-cost emerald">4</li>
+                    <li class="bonus-cost ruby">4</li>
+                </ul>
+            </article>
+
+        </template>
+
+
+        <template id="level-card">
+
+            <article class="deck">
+                <h2>Level <span class="level-title"></span></h2>
+                <p><span class="card-amount"></span> left</p>
+            </article>
+
+        </template>
+
+        <template id="development-card">
+
+            <article class="development-card">
+                <h2 class="development-card-title hidden">title</h2>
+                <span class="prestige-point">1</span>
+                <img class="bonus" src="#" alt="bonus">
+                <div class="gem-costs">
+                </div>
+            </article>
+
+        </template>
 
         </div>
         <div class="lobby-info">
@@ -170,7 +212,7 @@
                 <button class="onyx">1</button>
                 <button class="sapphire">1</button>
                 <button class="diamond">1</button>
-                <button class="gold">1</button>
+                <button class="gold" disabled>1</button>
             </div>
             <div class="selected-tokens"></div>
             <div class="bank-buttons">
@@ -236,10 +278,10 @@
                 <div id="own-reservated-cards"></div>
             </div>
 
-        </div>
-        <div class="history">
-            <p>History</p>
-        </div>
-    </main>
+    </div>
+    <div class="history">
+        <p>History</p>
+    </div>
+</main>
 </body>
 </html>
