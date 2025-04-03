@@ -17,8 +17,13 @@ function buyDevelopmentCardRequest(body) {
     const playerName = LocalStorageAbstractor.loadFromStorage("myUsername");
 
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/developments`, "POST", body)
+}
 
+function buyReservedCard(cardName, body) {
+    const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
+    const playerName = LocalStorageAbstractor.loadFromStorage("myUsername");
+    return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve/${cardName}`, "DELETE", body)
 }
 
 
-export { reserveCard, buyDevelopmentCardRequest };
+export { reserveCard, buyDevelopmentCardRequest, buyReservedCard};
