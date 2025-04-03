@@ -40,25 +40,25 @@ function handlePopUpClicks(e) {
     if (e.target.closest("#confirm-pop-up-button")) {
         if (helper.checkIfPopUpIsReserveType($popupContainer)) {
             helper.reserveCardDeck(cardLevel);
-            closePopUp(e.target);
+            closePopUp();
         } else
             if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
-                closePopUp(e.target);
+                closePopUp();
                 renderTokenSelectorForm(cardName);
             } else
             if (helper.checkIfPopUpIsBuyType($popupContainer)) {
-                closePopUp(e.target);
+                closePopUp();
                 renderTokenSelectorForm(cardName);
             }
     } else if (e.target.closest("#cancel-pop-up-button")) {
         if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
             helper.reserveCard(cardName);
-            closePopUp(e.target);
+            closePopUp();
         } else if (helper.checkIfPopUpIsBuyType($popupContainer)) {
-            closePopUp(e.target);
+            closePopUp();
         }
     } else if (e.target.closest("#close-popup-button")) {
-        closePopUp(e.target);
+        closePopUp();
     }
     helper.removeSelectedCard();
 
@@ -67,11 +67,10 @@ function handlePopUpClicks(e) {
 
 
 
-function closePopUp(button){
+function closePopUp(){
     document.querySelector(".popup-container").classList.add("hidden");
     document.querySelector(".popup-container").removeAttribute("data-pop-up-type");
-
-    button.outerHTML = "";
+    document.querySelector(".popup-container").innerHTML = "";
 }
 
 export {handleClickOnCard, handlePopUpClicks, closePopUp};

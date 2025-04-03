@@ -17,7 +17,7 @@ function reserveCardDeck(cardLevel) {
     api.reserveCard(cardLevel, true)
         .then(response => {
             console.log(`Card from level ${cardLevel} reserved successfully`);
-            closePopUp(e.target);
+            closePopUp();
         })
         .catch(error => {
             console.log(error)
@@ -28,7 +28,7 @@ function reserveCard(cardName) {
     api.reserveCard(cardName, false)
         .then(response => {
             console.log(`Card from level ${cardName} reserved successfully`);
-            closePopUp(e.target);
+            closePopUp();
         })
         .catch(error => {
             console.log(error)
