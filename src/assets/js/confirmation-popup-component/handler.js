@@ -45,11 +45,11 @@ function handlePopUpClicks(e) {
         } else
             if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
                 closePopUp();
-                renderTokenSelectorForm(cardName);
+                renderTokenSelectorForm(cardName, document.querySelector(".selected-card").classList.contains("reserved"));
             } else
             if (helper.checkIfPopUpIsBuyType($popupContainer)) {
                 closePopUp();
-                renderTokenSelectorForm(cardName);
+                renderTokenSelectorForm(cardName, document.querySelector(".selected-card").classList.contains("reserved"));
             }
     } else if (e.target.closest("#cancel-pop-up-button")) {
         if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
