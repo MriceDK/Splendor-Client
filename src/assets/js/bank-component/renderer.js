@@ -66,15 +66,15 @@ function enableTokens(){
 
 function disableTokens(){
     setDisable(true);
-    document.querySelector(".token-bank .gold").disabled = true;
 }
 
 function toggleTokenBorders(){
-    document.querySelector(".token-bank .ruby").classList.toggle("clickable");
-    document.querySelector(".token-bank .emerald").classList.toggle("clickable");
-    document.querySelector(".token-bank .onyx").classList.toggle("clickable");
-    document.querySelector(".token-bank .sapphire").classList.toggle("clickable");
-    document.querySelector(".token-bank .diamond").classList.toggle("clickable");
+    const $tokenBanks = document.querySelectorAll(".token-bank button");
+    $tokenBanks.forEach($tokenBank => {
+        if (!$tokenBank.classList.contains("gold")) {
+            $tokenBank.classList.toggle("clickable");
+        }
+    })
 }
 
 function setTokenMarketValues(gameInfo){
