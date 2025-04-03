@@ -13,7 +13,7 @@ function checkIfPopUpIsBuyAndReserveType($popupContainer) {
     return $popupContainer.dataset.popUpType === "buy-and-reserve-pop-up";
 }
 
-function reserveCardDeck(cardLevel, e) {
+function reserveCardDeck(cardLevel) {
     api.reserveCard(cardLevel, true)
         .then(response => {
             console.log(`Card from level ${cardLevel} reserved successfully`);
@@ -24,7 +24,7 @@ function reserveCardDeck(cardLevel, e) {
         });
 }
 
-function reserveCard(cardName, e) {
+function reserveCard(cardName) {
     api.reserveCard(cardName, false)
         .then(response => {
             console.log(`Card from level ${cardName} reserved successfully`);
@@ -35,4 +35,9 @@ function reserveCard(cardName, e) {
         });
 }
 
-export { checkIfPopUpIsReserveType, checkIfPopUpIsBuyType, checkIfPopUpIsBuyAndReserveType, reserveCardDeck, reserveCard };
+function removeSelectedCard() {
+    const $selectedCard = document.querySelector(".selected-card");
+    $selectedCard.classList.remove("selected-card");
+}
+
+export { checkIfPopUpIsReserveType, checkIfPopUpIsBuyType, checkIfPopUpIsBuyAndReserveType, reserveCardDeck, reserveCard, removeSelectedCard };
