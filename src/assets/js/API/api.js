@@ -9,21 +9,23 @@ function reserveCard(cardNameOrLevel, level = false) {
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve`, "POST", body)
 }
 
-function createReserveCardBody(cardNameOrLevel, level) {
-    if (level) {
-        return {
-            "development": {
-                "level": cardNameOrLevel
-            }
-        }
-    } else {
-        return {
-            "development": {
-                "name": cardNameOrLevel
-            }
+
+function buyCard(cardName) {
+    const body = {
+        "development": {
+            "name": cardName
+        },
+        "payment": {
+            //TODO: add way for player to select tokens to pay with
+            "Emerald": 2,
+            "Diamond": 1,
+            "Gold": 1
         }
     }
+    const gameId = localStorageAbstractor.loadFromStorage("gameId");
+    const playerName = localStorageAbstractor.loadFromStorage("myUsername");
+    return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/developments`, "POST", body)
 }
 
 
-export { reserveCard };
+export { reserveCard, buyCard };
