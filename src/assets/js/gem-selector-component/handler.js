@@ -1,7 +1,6 @@
-import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 import * as Utils from "../helper/utils.js";
-import * as ErrorHandler from "../data-connector/error-handler";
+import * as ErrorHandler from "../data-connector/error-handler.js";
+import {buyDevelopmentCardRequest} from "../API/api.js";
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -12,18 +11,9 @@ function buyDevelopmentCard(e) {
     const gemCost = getGemCostObject($form);
 
     const body = createBody(devCardName, gemCost);
-    buyDevelopmentCardRequest(body);
-}
-
-function buyDevelopmentCardRequest(body) {
-    const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    const playerName = LocalStorageAbstractor.loadFromStorage("myUsername");
-
-    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/developments`, "POST", body)
-        .then(() => {
-            Utils.hidePopupContainer();
-
-        })
+    buyDevelopmentCardRequest(body).then(() => {
+        Utils.hidePopupContainer();
+    })
         .catch(err => {
             Utils.hidePopupContainer();
             ErrorHandler.handleError(err);
