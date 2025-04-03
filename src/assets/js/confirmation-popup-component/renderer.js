@@ -10,26 +10,28 @@ function renderBuyDevelopmentCardPopup(cardName){
     $target.innerHTML = "";
 
     document.querySelector(".popup-container").classList.remove("hidden");
-    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-development-card");
+    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-pop-up");
     $template.querySelector("#title-popup").innerText = `Buy ${cardName}?`;
     $template.querySelector("#cancel-pop-up-button").innerText = `Cancel Purchase?`;
     $template.querySelector("#confirm-pop-up-button").innerText = `Buy`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
+    document.querySelector("#confirmation-popup").setAttribute("data-card-name", cardName);
 
 }
 
-function renderReserveDevelopmentCardPopup(){
+function renderReserveDevelopmentCardPopup(cardLevel){
     $target.innerHTML = "";
 
     document.querySelector(".popup-container").classList.remove("hidden");
-    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "reserve-development-card");
+    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "reserve-pop-up");
 
-    $template.querySelector("#title-popup").innerText = `Reserve card?`;
+    $template.querySelector("#title-popup").innerText = `Reserve card from level ${cardLevel}?`;
     $template.querySelector("#cancel-pop-up-button").classList.add("hidden");
     $template.querySelector("#confirm-pop-up-button").innerText = `Reserve`;
     
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
+    document.querySelector("#confirmation-popup").setAttribute("data-level", cardLevel);
 
 }
 function renderBuyAndReserveDevelopmentCardPopUp(cardName){
@@ -37,7 +39,7 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName){
     $target.innerHTML = "";
 
     document.querySelector(".popup-container").classList.remove("hidden");
-    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-and-reserve-development-card");
+    document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-and-reserve-pop-up");
 
     $template.querySelector("#title-popup").innerText = `Buy or Reserve ${cardName}?`;
 
@@ -47,6 +49,7 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName){
     $template.querySelector("#confirm-pop-up-button").innerText = `Buy`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
+    document.querySelector("#confirmation-popup").setAttribute("data-card-name", cardName);
 
 }
 
