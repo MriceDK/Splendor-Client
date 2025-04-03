@@ -53,26 +53,23 @@
                 Gold
                 <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0" min="0">
             </label>
-            <button>Cancel</button>
+            <button type="button" id="token-selector-close-button">Cancel</button>
             <input type="submit" value="confirm-payment">
         </form>
 
     </div>
 </template>
+<template id="confirmation-popup-template" class="popup">
+    <div id="confirmation-popup">
+        <h3 id="title-popup"></h3>
+        <button type="button" id="cancel-pop-up-button">Cancel</button>
+        <button type="button" id="confirm-pop-up-button">Confirm</button>
+        <button type="button" id="close-popup-button">X</button>
+    </div>
+</template>
 <div class="popup-container hidden">
 
-    <div id="confirmation-pop-up-result">
-        <template id="confirmation-popup-template" class="popup">
-            <div id="confirmation-popup">
-                <h3 id="title-popup"></h3>
-                <button type="button" id="cancel-pop-up-button">Cancel</button>
-                <button type="button" id="confirm-pop-up-button">Confirm</button>
-                <button type="button" id="close-popup-button">X</button>
-            </div>
-        </template>
-    </div>
-
-
+    <div id="confirmation-pop-up-result"></div>
     <div class="popup hidden">
         <button id="forfeit">Forfeit</button>
         <button class="close">Close</button>
