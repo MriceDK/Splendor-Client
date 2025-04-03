@@ -1,10 +1,10 @@
-import {buyDevelopmentCard} from "./handler.js";
+import {buyDevelopmentCard, buyReservedDevelopmentCard} from "./handler.js";
 import * as Utils from "../helper/utils.js";
 import {closePopUp} from "../confirmation-popup-component/handler.js";
 
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
 
-function renderTokenSelectorForm(devCardName) {
+function renderTokenSelectorForm(devCardName, reservedCard) {
     Utils.showPopupContainer();
 
     const $target = document.querySelector(".popup-container");
@@ -12,11 +12,16 @@ function renderTokenSelectorForm(devCardName) {
     $tokenSelector.querySelector("#token-selector-dev-card").value = devCardName;
     $target.insertAdjacentHTML("beforeend", $tokenSelector.outerHTML);
 
-    hookupEventListeners();
+    hookupEventListeners(reservedCard);
 }
 
-function hookupEventListeners() {
-    document.querySelector("#token-selector-form").addEventListener("submit", buyDevelopmentCard);
+function hookupEventListeners(reservedCard) {
+    if (reservedCard) {
+        document.querySelector("#token-selector-form").addEventListener("submit", buyReservedDevelopmentCard);
+
+    } else if (!reservedCard) {
+        document.querySelector("#token-selector-form").addEventListener("submit", buyDevelopmentCard);
+    }
     document.querySelector("#token-selector-close-button").addEventListener("click", closePopUp);
 }
 
