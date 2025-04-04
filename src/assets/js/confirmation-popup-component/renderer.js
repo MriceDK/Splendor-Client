@@ -13,9 +13,9 @@ function renderBuyDevelopmentCardPopup(cardName){
     document.querySelector(".popup-container").classList.remove("hidden");
     document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-pop-up");
     $template.querySelector("#title-popup").innerText = `Buy ${cardName}?`;
-    $template.querySelector("#cancel-pop-up-button").innerText = `Cancel Purchase?`;
+    $template.querySelector("#cancel-pop-up-button").innerText = `Cancel Purchase`;
     $template.querySelector("#confirm-pop-up-button").innerText = `Buy`;
-
+    $template.querySelector("#close-popup-button").classList.add("hidden");
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
 }
