@@ -28,7 +28,7 @@ function buyReservedDevelopmentCard(e) {
     const devCardName = $form.querySelector("#token-selector-dev-card").value;
     const gemCost = getGemCostObject($form);
 
-    const body = createBuyReservedCardBody(devCardName, gemCost);
+    const body = createBuyReservedCardBody(gemCost);
     API.buyReservedCard(devCardName, body).then(() => {
         closePopUp();
     })
@@ -47,7 +47,7 @@ function createBuyCardBody(devCardName, gemCost) {
     };
 }
 
-function createBuyReservedCardBody(devCardName, gemCost) {
+function createBuyReservedCardBody(gemCost) {
     return {
         payment: gemCost
     };
