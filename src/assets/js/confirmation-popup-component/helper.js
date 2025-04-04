@@ -12,7 +12,7 @@ function checkIfPopUpIsBuyAndReserveType($popupContainer) {
     return $popupContainer.dataset.popUpType === "buy-and-reserve-pop-up";
 }
 
-function reserveCardDeck(cardLevel) {
+function reserveCardFromDeck(cardLevel) {
     api.reserveCard(cardLevel, true)
         .then(response => {
             console.log(`Card from level ${cardLevel} reserved successfully`);
@@ -39,4 +39,4 @@ function removeSelectedCard() {
     $selectedCard.classList.remove("selected-card");
 }
 
-export { checkIfPopUpIsReserveType, checkIfPopUpIsBuyType, checkIfPopUpIsBuyAndReserveType, reserveCardDeck, reserveCard, removeSelectedCard };
+export { checkIfPopUpIsReserveType, checkIfPopUpIsBuyType, checkIfPopUpIsBuyAndReserveType, reserveCardFromDeck, reserveCard, removeSelectedCard };
