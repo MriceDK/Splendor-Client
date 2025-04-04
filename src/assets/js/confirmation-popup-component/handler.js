@@ -43,11 +43,7 @@ function handlePopUpClicks(e) {
             helper.reserveCardDeck(cardLevel);
             render.closePopUp();
         } else
-            if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
-                render.closePopUp();
-                renderTokenSelectorForm(cardName, document.querySelector(".selected-card").classList.contains("reserved"));
-            } else
-            if (helper.checkIfPopUpIsBuyType($popupContainer)) {
+            if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer) || helper.checkIfPopUpIsBuyType($popupContainer)) {
                 render.closePopUp();
                 renderTokenSelectorForm(cardName, document.querySelector(".selected-card").classList.contains("reserved"));
             }
