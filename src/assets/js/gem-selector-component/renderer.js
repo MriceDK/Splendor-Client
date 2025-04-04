@@ -1,7 +1,6 @@
 import {buyDevelopmentCard, buyReservedDevelopmentCard} from "./handler.js";
 import * as Utils from "../helper/utils.js";
-import {closePopUp} from "../confirmation-popup-component/handler.js";
-
+import {closePopUp} from "../confirmation-popup-component/renderer.js";
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
 
 function renderTokenSelectorForm(devCardName, reservedCard) {

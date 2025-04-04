@@ -1,8 +1,7 @@
 import * as Utils from "../helper/utils.js";
 import * as ErrorHandler from "../data-connector/error-handler.js";
 import * as API from "../API/api.js";
-import {closePopUp} from "../confirmation-popup-component/handler.js";
-
+import {closePopUp} from "../confirmation-popup-component/renderer.js";
 function buyDevelopmentCard(e) {
     e.preventDefault();
 

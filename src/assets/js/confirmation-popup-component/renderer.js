@@ -54,4 +54,15 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName){
 
 }
 
-export {renderBuyAndReserveDevelopmentCardPopUp, renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup}
+function closePopUp(){
+    document.querySelector(".popup-container").classList.add("hidden");
+    document.querySelector(".popup-container").removeAttribute("data-pop-up-type");
+    document.querySelector("#confirmation-pop-up-result").innerHTML = "";
+    document.querySelector("#confirmation-pop-up-result").classList.add("hidden");
+
+    if (document.querySelector(".popup-token-selector")) {
+        document.querySelector(".popup-token-selector").outerHTML = "";
+    }
+}
+
+export { renderBuyAndReserveDevelopmentCardPopUp, renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, closePopUp}

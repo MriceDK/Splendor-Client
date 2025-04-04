@@ -1,6 +1,5 @@
 import * as api from "../API/api.js";
-import {closePopUp} from "./handler.js";
-
+import {closePopUp} from "./renderer.js";
 function checkIfPopUpIsReserveType($popupContainer) {
     return $popupContainer.dataset.popUpType === "reserve-pop-up";
 }
