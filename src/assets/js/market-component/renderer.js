@@ -1,6 +1,6 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
 
-function renderMarket(gameInfo) {
+function renderMarket(gameInfo, isActive) {
     const $target= document.querySelector(".market-grid-container");
 
     renderLevelRows(gameInfo.market, $target);
