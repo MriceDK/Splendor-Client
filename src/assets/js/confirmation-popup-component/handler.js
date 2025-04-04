@@ -11,7 +11,7 @@ import {renderTokenSelectorForm} from "../gem-selector-component/renderer.js";
 
 function handleClickOnCard(e) {
     document.querySelector("#confirmation-pop-up-result").classList.remove("hidden");
-
+    // TODO: make the rest of the card clickable
     if (e.target.classList.contains("reserved") && !e.target.classList.contains("disabled")) {
         const cardName = e.target.dataset.cardName;
         e.target.classList.add("selected-card");
@@ -37,20 +37,20 @@ function handlePopUpClicks(e) {
 
     const cardName = document.querySelector(".selected-card").dataset.cardName;
     const cardLevel = parseInt(document.querySelector(".selected-card").dataset.level);
+    const isReservedCard = document.querySelector(".selected-card").classList.contains("reserved")
+
 
     if (e.target.closest("#confirm-pop-up-button")) {
         if (helper.checkIfPopUpIsReserveType($popupContainer)) {
-            helper.reserveCardDeck(cardLevel);
+            helper.reserveCardFromDeck(cardLevel);
+        } else if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer) || helper.checkIfPopUpIsBuyType($popupContainer)) {
             render.closePopUp();
-        } else
-            if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer) || helper.checkIfPopUpIsBuyType($popupContainer)) {
-                render.closePopUp();
-                renderTokenSelectorForm(cardName, document.querySelector(".selected-card").classList.contains("reserved"));
-            }
+            renderTokenSelectorForm(cardName, isReservedCard);
+            console.log("buy and reserve");
+        }
     } else if (e.target.closest("#cancel-pop-up-button")) {
         if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
             helper.reserveCard(cardName);
-            render.closePopUp();
         } else if (helper.checkIfPopUpIsBuyType($popupContainer)) {
             render.closePopUp();
         }
