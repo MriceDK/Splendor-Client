@@ -1,7 +1,9 @@
 import * as api from "../API/api.js";
 import {closePopUp} from "./renderer.js";
+import {handleError} from "../data-connector/error-handler.js";
+
 function checkIfPopUpIsReserveType($popupContainer) {
-    return $popupContainer.dataset.popUpType === "reserve-pop-up";
+    return $popupContainer.dataset.popUpType === "reserve-deck-pop-up";
 }
 
 function checkIfPopUpIsBuyType($popupContainer) {
@@ -19,7 +21,7 @@ function reserveCardFromDeck(cardLevel) {
             closePopUp();
         })
         .catch(error => {
-            console.log(error)
+            handleError(error);
         });
 }
 
@@ -30,7 +32,7 @@ function reserveCard(cardName) {
             closePopUp();
         })
         .catch(error => {
-            console.log(error)
+            handleError(error);
         });
 }
 
