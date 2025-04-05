@@ -24,6 +24,9 @@
 <body>
 <template id="token-selector">
     <div class="popup-token-selector">
+        <div class="errormessages">
+            <p></p>
+        </div>
         <form id="token-selector-form" action="#" method="GET">
             <input id="token-selector-dev-card" type="hidden" name="dev-card" value="">
             <label for="token-selector-emerald">
@@ -59,17 +62,38 @@
 
     </div>
 </template>
-<template id="confirmation-popup-template" class="popup">
-    <div id="confirmation-popup">
-        <h3 id="title-popup"></h3>
-        <button type="button" id="cancel-pop-up-button">Cancel</button>
-        <button type="button" id="confirm-pop-up-button">Confirm</button>
-        <button type="button" id="close-popup-button">X</button>
+<template id="buy-popup-template" class="popup">
+    <div class="confirmation-popup">
+        <h3 class="title-popup">buy ${cardname}</h3>
+        <button type="button" class="close-pop-up-button">Cancel Purchase</button>
+        <button type="button" class="confirm-pop-up-button">Buy Card</button>
+    </div>
+</template>
+<template id="reserve-deck-popup-template" class="popup">
+
+    <div class="confirmation-popup">
+        <h3 class="title-popup">Reserve card from level ${cardname}?</h3>
+        <div class="errormessages">
+            <p></p>
+        </div>
+        <button type="button" class="close-pop-up-button">Cancel Reservation</button>
+        <button type="button" class="confirm-pop-up-button">Reserve Card</button>
+
+    </div>
+</template>
+<template id="buy-or-reserve-popup-template" class="popup">
+    <div class="confirmation-popup">
+        <h3 class="title-popup"></h3>
+        <div class="errormessages">
+            <p></p>
+        </div>
+        <button type="button" class="cancel-pop-up-button">Reserve Card</button>
+        <button type="button" class="confirm-pop-up-button">Buy Card</button>
+        <button type="button" class="close-pop-up-button">X</button>
+
     </div>
 </template>
 <div class="popup-container hidden">
-
-    <div id="confirmation-pop-up-result"></div>
     <div class="popup hidden">
         <button id="forfeit">Forfeit</button>
         <button class="close">Close</button>
