@@ -4,9 +4,9 @@ function UppercaseFirstLetterOfWord(word) {
 }
 
 function showPopupContainer() {
-    const popupContainer = document.querySelector(".popup-container");
-    document.querySelector("#confirmation-pop-up-result").innerHTML = "";
-    popupContainer.classList.remove("hidden");
+    const $popupContainer = document.querySelector(".popup-container");
+    $popupContainer.innerHTML = "";
+    $popupContainer.classList.remove("hidden");
 }
 
 export { UppercaseFirstLetterOfWord, showPopupContainer };
