@@ -21,9 +21,20 @@ function renderOwnBonusValue(bonus){
     document.querySelector(`.own-inventory  .${bonus[0].toLowerCase()} .card-text`).innerText = bonus[1];
 }
 
-function renderTooManyGemsPopUp(){
-    const $tooMuchGems = document.querySelector("#too-many-gems-pop-up-template");
+function renderTooManyGemsPopUp(playerTokens){
+    const $tooMuchGemsTemplate = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);
+    const $target = document.querySelector("#too-many-gems-pop-up-result");
+    Object.entries(playerTokens).forEach(token => putInitalValue($tooMuchGemsTemplate, token));
 
+    $target.insertAdjacentElement("beforeend", $tooMuchGemsTemplate.outerHTML);
+
+
+}
+
+function putInitalValue($tooMuchGemsTemplate, token){
+    const selector = `#token-remover-${token[0].toLowerCase()}`;
+    $tooMuchGemsTemplate.querySelector(selector).setAttribute("value", token[1]);
+    
 }
 
 export { ownPlayerCardRenderer, renderTooManyGemsPopUp }
