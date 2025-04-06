@@ -1,5 +1,5 @@
 import { renderTooManyGemsPopUp } from "../renderer.js";
-
+import * as APIAbstractor from "../../data-connector/api-communication-abstractor.js"
 function checkTooMuchGems(playersInfos, currentPlayer){
     playersInfos.forEach(player => {
         if (player.name === currentPlayer){
