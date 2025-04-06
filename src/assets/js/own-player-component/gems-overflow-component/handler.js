@@ -22,4 +22,17 @@ function checkTooMuchGemsHelp(player){
     }
 }
 
+function formGemChecker(){
+    const gemsCount = countGems();
+    
+}
+
+function countGems(){
+    const allGems = document.querySelectorAll(".gem-remover-input");
+    let count = 0;
+    allGems.forEach(gem => {
+        count += gem.getAttribute("value");
+    });
+    return count;
+}
 export { checkTooMuchGems }
