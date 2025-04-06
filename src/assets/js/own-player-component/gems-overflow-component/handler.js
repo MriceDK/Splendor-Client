@@ -44,19 +44,41 @@ function countGems(){
 }
 
 
-function updateGemsAfterTooMuch(gameId, playerName){
-
-    const body = 
+function updateGemsAfterTooMuch(gameId, playerName, players){
+    let currentPlayerObject = null;
+    players.forEach(player => {
+        if (player.name === playerName){
+            currentPlayerObject = player;
+            
+        }
+    });  
+   
+    const tokensToReturn = getDiffTokensObject(player.purse, newTokenAmount)
+    const body = returnTokensBody(tokensToReturn);
 
     APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body)
 
 
 }
 
+function getDiffTokensObject(purse){
+    const returnObject = {};
+    const $tokensForm = document.querySelectorAll(".gem-remover-input");
+    $tokensForm.forEach(token => { 
+        returnObject[token.getAttribute("name")] = purse[token.getAttribute("name")] - token.getAttribute("value");
+        
+    });
+
+    return returnObject;
+}
+
 function returnTokensBody(tokens){
     returnObj = {};
     tokens.forEach(token => {
-        returnObj[token] = tokenValue;
+        if (valueToReturn > 0){
+            returnObj[token] = valueToReturn;
+        }
+
     });
     return {
         "return": returnObj

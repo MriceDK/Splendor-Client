@@ -26,7 +26,7 @@ function init() {
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
             handleDisabledPlayerFunctionalities(res.currentPlayer, res.players);
-            document.querySelector("#too-many-gems-pop-up-form").addEventListener("submit", updateGemsAfterTooMuch(res.gameId, res.currentPlayer));
+            document.querySelector("#too-many-gems-pop-up-form").addEventListener("submit", updateGemsAfterTooMuch(res.gameId, res.currentPlayer, res.players));
 
         })
 
