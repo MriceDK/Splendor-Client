@@ -19,11 +19,18 @@ function checkTooMuchGemsHelp(player){
     });
     if (tokensOfPlayer > 10){
         renderTooManyGemsPopUp();
+        formGemChecker();
     }
 }
 
 function formGemChecker(){
     const gemsCount = countGems();
+    if (gemsCount > 10){
+        document.querySelector("#gem-remover-button").classList.add("disabled")
+        setTimeout(formGemChecker, 500);
+    } else {
+        document.querySelector("#gem-remover-button").classList.remove("disabled")
+    }
     
 }
 
