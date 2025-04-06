@@ -53,7 +53,7 @@ function updateGemsAfterTooMuch(gameId, playerName, players){
         }
     });  
    
-    const tokensToReturn = getDiffTokensObject(player.purse, newTokenAmount)
+    const tokensToReturn = getDiffTokensObject(player.tokens)
     const body = returnTokensBody(tokensToReturn);
 
     APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body)
@@ -61,7 +61,7 @@ function updateGemsAfterTooMuch(gameId, playerName, players){
 
 }
 
-function getDiffTokensObject(purse){
+function getDiffTokensObject(tokens){
     const returnObject = {};
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
     $tokensForm.forEach(token => { 
