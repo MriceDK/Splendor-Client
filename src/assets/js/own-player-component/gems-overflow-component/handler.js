@@ -42,4 +42,25 @@ function countGems(){
     });
     return count;
 }
-export { checkTooMuchGems }
+
+
+function updateGemsAfterTooMuch(gameId, playerName){
+
+    const body = 
+
+    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body)
+
+
+}
+
+function returnTokensBody(tokens){
+    returnObj = {};
+    tokens.forEach(token => {
+        returnObj[token] = tokenValue;
+    });
+    return {
+        "return": returnObj
+        
+    };
+}
+export { checkTooMuchGems, updateGemsAfterTooMuch }
