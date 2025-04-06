@@ -21,4 +21,9 @@ function renderOwnBonusValue(bonus){
     document.querySelector(`.own-inventory  .${bonus[0].toLowerCase()} .card-text`).innerText = bonus[1];
 }
 
-export { ownPlayerCardRenderer }
+function renderTooManyGemsPopUp(){
+    const $tooMuchGems = document.querySelector("#too-many-gems-pop-up-template");
+
+}
+
+export { ownPlayerCardRenderer, renderTooManyGemsPopUp }

@@ -1,3 +1,5 @@
+import { renderTooManyGemsPopUp } from "../renderer.js";
+
 function checkTooMuchGems(playersInfos, currentPlayer){
     playersInfos.forEach(player => {
         if (player.name === currentPlayer){
