@@ -40,7 +40,16 @@ function changeButtons(){
     document.querySelector(".bank-buttons .take-gems-button").classList.toggle("hidden");
     document.querySelector(".bank-buttons .take-gems-button").classList.toggle("clickable");
     document.querySelector(".bank-buttons .collect-gems-button").classList.toggle("hidden");
-    document.querySelector(".bank-buttons .collect-gems-button").classList.toggle("clickable");
+}
+
+function toggleCollectGemsButton(boolean) {
+    document.querySelector(".bank-buttons .collect-gems-button").disabled = boolean;
+
+    if (boolean) {
+        document.querySelector(".bank-buttons .collect-gems-button").classList.remove("clickable");
+    } else {
+        document.querySelector(".bank-buttons .collect-gems-button").classList.add("clickable");
+    }
 }
 
 function enableOrDisableBank(playerName) {
@@ -132,8 +141,17 @@ function showChosenBankToken(gem){
     }
 }
 
-function isLegalToken(gem){
+function checkConfirmButton() {
+    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
+    if (numberOfChosenTokens  === 3 || Object.values(chosenBankTokens).includes(2)) {
+        toggleCollectGemsButton(false);
+    } else {
+        toggleCollectGemsButton(true);
+    }
+}
+
+function isLegalToken(gem){
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
     if (checkMaxThreeTokens(numberOfChosenTokens)){
@@ -191,4 +209,4 @@ function updateToken(gem, remove) {
     document.querySelector(`.token-bank .${gem.toLowerCase()} `).innerHTML = currentBankTokens[gem];
 }
 
-export {renderTokenBank, changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, setTokenMarketValues, updateToken, chosenBankTokens};
+export {renderTokenBank, changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, setTokenMarketValues, updateToken, checkConfirmButton, chosenBankTokens};

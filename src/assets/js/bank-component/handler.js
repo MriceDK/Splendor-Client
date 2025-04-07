@@ -9,10 +9,12 @@ function closeBank(){
     renderer.changeButtons();
     renderer.disableTokens();
     renderer.removeChosenTokens();
+    renderer.checkConfirmButton();
 }
 
 function chooseBankToken(e){
     renderer.getChosenTokenColour(e);
+    renderer.checkConfirmButton();
 }
 
 function removeChosenBankToken(e) {
@@ -22,6 +24,7 @@ function removeChosenBankToken(e) {
     renderer.chosenBankTokens[classNameWithCapitalLetter]--;
     e.target.remove();
     renderer.updateToken(classNameWithCapitalLetter, false);
+    renderer.checkConfirmButton();
 }
 
 
