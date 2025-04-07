@@ -1,4 +1,3 @@
-import * as helper from "./helper.js";
 
 function renderBuyDevelopmentCardPopup(cardName){
     const $template = document.querySelector("#buy-popup-template").content.firstElementChild.cloneNode(true);
