@@ -26,10 +26,10 @@ function checkTooMuchGemsHelp(player){
 function formGemChecker(){
     const gemsCount = countGems();
     if (gemsCount > 10){
-        document.querySelector("#gem-remover-button").classList.add("disabled")
+        document.querySelector("#gem-remover-button").disabled = true;
         setTimeout(formGemChecker, 500);
     } else {
-        document.querySelector("#gem-remover-button").classList.remove("disabled")
+        document.querySelector("#gem-remover-button").disabled = false;
     }
     
 }
