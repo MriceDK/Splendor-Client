@@ -87,18 +87,15 @@ function toggleTokenBorders(){
 }
 
 function setTokenMarketValues(gameInfo){
-    currentBankTokens.Ruby = gameInfo.unclaimedTokens.Ruby;
-    currentBankTokens.Emerald = gameInfo.unclaimedTokens.Emerald;
-    currentBankTokens.Onyx = gameInfo.unclaimedTokens.Onyx;
-    currentBankTokens.Sapphire = gameInfo.unclaimedTokens.Sapphire;
-    currentBankTokens.Diamond = gameInfo.unclaimedTokens.Diamond;
+    Object.entries(gameInfo.unclaimedTokens).forEach(([token, amount]) => setTokenValue(token, amount));
+}
 
-    document.querySelector(".token-bank .ruby").innerHTML = gameInfo.unclaimedTokens.Ruby;
-    document.querySelector(".token-bank .emerald").innerHTML = gameInfo.unclaimedTokens.Emerald;
-    document.querySelector(".token-bank .onyx").innerHTML = gameInfo.unclaimedTokens.Onyx;
-    document.querySelector(".token-bank .sapphire").innerHTML = gameInfo.unclaimedTokens.Sapphire;
-    document.querySelector(".token-bank .diamond").innerHTML = gameInfo.unclaimedTokens.Diamond;
-    document.querySelector(".token-bank .gold").innerHTML = gameInfo.unclaimedTokens.Gold;
+function setTokenValue(token, amount) {
+    if (token !== "Gold") {
+        currentBankTokens[token] = amount;
+    }
+
+    document.querySelector(`.token-bank .${token.toLowerCase()} `).innerText = amount;
 }
 
 function collectTokens(){
