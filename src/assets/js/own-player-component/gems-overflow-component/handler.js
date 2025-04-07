@@ -53,10 +53,10 @@ function updateGemsAfterTooMuch(gameId, playerName, players){
         }
     });  
    
-    const tokensToReturn = getDiffTokensObject(player.tokens)
+    const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
 
-    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body)
+    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body);
 
 
 }
