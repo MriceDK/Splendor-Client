@@ -9,19 +9,21 @@ function dataListFromApi(data){
 }
 
 function lobbyName(lobbyName) {
+    let titleElement = document.querySelector("#title");
+    titleElement.innerHTML = ``;
 
     if (lobbyName === null || lobbyName === ""){
-        let titleElement = document.querySelector("#title");
-        titleElement.textContent = `${storageAbstractor.loadFromStorage("myUsername")}${titleElement.textContent}`;
+
+        titleElement.innerHTML = `${storageAbstractor.loadFromStorage("myUsername")}'s lobby`;
     }
     else{
-        document.querySelector("#title").textContent = lobbyName;
+        titleElement.innerHTML = lobbyName;
     }
 }
 
 function renderLobbyAmount(currentUserCount,maxUserCount){
 
-       document.querySelector("#playerCount").textContent = `${currentUserCount}/${maxUserCount} Players`;
+       document.querySelector("#playerCount").innerHTML = `${currentUserCount}/${maxUserCount} Players`;
 }
 
 function renderUsersLoop(userArray, data){
@@ -48,7 +50,7 @@ function started(isStarted){
 }
 
 function renderOwnUserName(){
-    document.querySelector("#username").textContent = storageAbstractor.loadFromStorage("myUsername");
+    document.querySelector("#username").innerHTML = storageAbstractor.loadFromStorage("myUsername");
 }
 
 export { lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi };
