@@ -151,10 +151,12 @@ function checkConfirmButton() {
 function isLegalToken(gem){
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
-    if (checkMaxThreeTokens(numberOfChosenTokens)){
-        if (checkMaxTwoOfSameColour()){
-            if (checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem)) {
-                return checkOnlyTwoOfSameColourWhenValueOfMinFour(gem);
+    if (currentBankTokens[gem] !== 0) {
+        if (checkMaxThreeTokens(numberOfChosenTokens)){
+            if (checkMaxTwoOfSameColour()){
+                if (checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem)) {
+                    return checkOnlyTwoOfSameColourWhenValueOfMinFour(gem);
+                }
             }
         }
     }
