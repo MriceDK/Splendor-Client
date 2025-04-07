@@ -21,7 +21,6 @@ const currentBankTokens = {
 function renderTokenBank(gameInfo) {
     enableOrDisableBank(gameInfo.currentPlayer);
     disableTokens();
-    toggleTokenBorders();
     setTokenMarketValues(gameInfo);
 
     hoopUpEvents();
@@ -66,7 +65,6 @@ function setDisable(boolean){
     document.querySelector(".token-bank .onyx").disabled = boolean;
     document.querySelector(".token-bank .sapphire").disabled = boolean;
     document.querySelector(".token-bank .diamond").disabled = boolean;
-    toggleTokenBorders();
 }
 
 function enableTokens(){
@@ -75,14 +73,13 @@ function enableTokens(){
 
 function disableTokens(){
     setDisable(true);
+    removeTokenBorders();
 }
 
-function toggleTokenBorders(){
+function removeTokenBorders(){
     const $tokenBanks = document.querySelectorAll(".token-bank button");
     $tokenBanks.forEach($tokenBank => {
-        if (!$tokenBank.classList.contains("gold")) {
-            $tokenBank.classList.toggle("clickable");
-        }
+        $tokenBank.classList.remove("clickable");
     })
 }
 
@@ -126,16 +123,14 @@ function getChosenTokenColour(e){
 }
 
 function showChosenBankToken(gem){
-    if (isLegalToken(gem)){
-        updateToken(gem, true);
-        const chosenToken = document.createElement("button");
-        chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
-        chosenToken.classList.add("clickable");
-        chosenToken.classList.add(gem.toLowerCase());
-        chosenToken.addEventListener("click", handler.removeChosenBankToken);
-        document.querySelector(".selected-tokens").appendChild(chosenToken);
-        chosenBankTokens[gem]++;
-    }
+    updateToken(gem, true);
+    const chosenToken = document.createElement("button");
+    chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
+    chosenToken.classList.add("clickable");
+    chosenToken.classList.add(gem.toLowerCase());
+    chosenToken.addEventListener("click", handler.removeChosenBankToken);
+    document.querySelector(".selected-tokens").appendChild(chosenToken);
+    chosenBankTokens[gem]++;
 }
 
 function checkConfirmButton() {
@@ -148,14 +143,29 @@ function checkConfirmButton() {
     }
 }
 
-function isLegalToken(gem){
+function checkAllowedTokens() {
+    Object.keys(currentBankTokens).forEach((token) => enableOrDisableToken(token));
+}
+
+function enableOrDisableToken(token) {
+    const $tokenButton = document.querySelector(`.token-bank .${token.toLowerCase()} `);
+    if (isLegalToken(token)) {
+        $tokenButton.disabled = false;
+        $tokenButton.classList.add("clickable");
+    } else {
+        $tokenButton.disabled = true;
+        $tokenButton.classList.remove("clickable");
+    }
+}
+
+function isLegalToken(token){
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
-    if (currentBankTokens[gem] !== 0) {
+    if (currentBankTokens[token] !== 0) {
         if (checkMaxThreeTokens(numberOfChosenTokens)){
             if (checkMaxTwoOfSameColour()){
-                if (checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem)) {
-                    return checkOnlyTwoOfSameColourWhenValueOfMinFour(gem);
+                if (checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, token)) {
+                    return checkOnlyTwoOfSameColourWhenValueOfMinFour(token);
                 }
             }
         }
@@ -208,4 +218,4 @@ function updateToken(gem, remove) {
     document.querySelector(`.token-bank .${gem.toLowerCase()} `).innerHTML = currentBankTokens[gem];
 }
 
-export {renderTokenBank, changeButtons, enableTokens, disableTokens, getChosenTokenColour, toggleTokenBorders, removeChosenTokens, setTokenMarketValues, updateToken, checkConfirmButton, chosenBankTokens};
+export {renderTokenBank, changeButtons, enableTokens, disableTokens, getChosenTokenColour, removeChosenTokens, setTokenMarketValues, updateToken, checkConfirmButton, checkAllowedTokens, chosenBankTokens};
