@@ -11,6 +11,7 @@ main {
     width: 40%;
     margin: auto;
 }
+
 header img {
     width: 5rem;
 }
@@ -21,12 +22,14 @@ header a{
     color: var(--main-white-color);
     align-items: center;
 }
+
 h1{
     margin: 0;
     flex-grow: 1;
     text-align: center;
     font-size: 1.5rem;
 }
+
 .lobby-create-form {
     display: flex;
     flex-direction: column;
@@ -60,6 +63,7 @@ h1{
     display: flex;
     gap: 1rem;
 }
+
 #username:hover {
     background-color: var(--main-white-color);
     color: var(--main-black-color);
@@ -68,6 +72,7 @@ h1{
 .form-title {
     margin-right: 2rem;
 }
+
 #username {
     text-align: center;
     font-size: 2rem;
@@ -76,6 +81,7 @@ h1{
     border-radius: 1rem;
     padding: 0.4rem;
 }
+
 nav a {
     color: var(--main-white-color);
     text-decoration: none;
