@@ -21,7 +21,12 @@ header a{
     color: var(--main-white-color);
     align-items: center;
 }
-
+h1{
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5rem;
+}
 .lobby-create-form {
     display: flex;
     flex-direction: column;
@@ -71,3 +76,10 @@ header a{
     border-radius: 1rem;
     padding: 0.4rem;
 }
+nav a {
+    color: var(--main-white-color);
+    text-decoration: none;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
