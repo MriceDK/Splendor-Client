@@ -62,6 +62,11 @@ h3 {
     background-color: rgb(230, 177, 0);
 }
 
+#playername {
+    text-align: end;
+    font-size: 2rem;
+}
+
 main {
     height: 100%;
 }

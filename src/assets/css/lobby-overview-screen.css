@@ -27,9 +27,16 @@ h1 {
     font-size: 1.5rem;
 }
 
-.username {
+.playername {
     display: flex;
     align-items: center;
+    margin-right: 1rem;
+}
+
+.playername img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.625rem;
 }
 
 #filter {

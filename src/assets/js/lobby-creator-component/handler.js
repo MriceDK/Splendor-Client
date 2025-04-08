@@ -10,7 +10,7 @@ function createLobby(e) {
 
     const lobbyName = document.querySelector("#lobby-name").value;
     const playerAmount = document.querySelector(".radio-option input:checked").value;
-    const username = loadFromStorage("myUsername");
+    const username = loadFromStorage("playerName");
 
     const body = createBody(lobbyName, playerAmount, username);
 
