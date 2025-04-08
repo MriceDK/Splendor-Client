@@ -52,7 +52,7 @@ function toggleCollectGemsButton(boolean) {
 }
 
 function enableOrDisableBank(playerName) {
-    if (playerName === loadFromStorage("myUsername")){
+    if (playerName === loadFromStorage("playerName")){
         document.querySelector(".bank-buttons .take-gems-button").classList.remove("hidden");
     } else {
         document.querySelector(".bank-buttons .take-gems-button").classList.add("hidden");
@@ -97,7 +97,7 @@ function setTokenValue(token, amount) {
 
 function collectTokens(){
     const gameId = loadFromStorage("gameId");
-    const playerName = loadFromStorage("myUsername");
+    const playerName = loadFromStorage("playerName");
     const tokenData = {
         "take": chosenBankTokens
     }

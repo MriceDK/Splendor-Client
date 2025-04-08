@@ -17,7 +17,7 @@ function buyDevelopmentCard(e) {
 
 function buyDevelopmentCardRequest(body) {
     const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    const playerName = LocalStorageAbstractor.loadFromStorage("myUsername");
+    const playerName = LocalStorageAbstractor.loadFromStorage("playerName");
 
     APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/developments`, "POST", body)
         .then(() => {
