@@ -12,377 +12,334 @@
     <link rel="stylesheet" href="assets/css/token-bank.css">
     <link rel="stylesheet" href="assets/css/lobby-name-game-board.css">
     <link rel="stylesheet" href="assets/css/confirmation-popup.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
+          rel="stylesheet">
 
     <script src="assets/js/confirmation-popup-component/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
+
+    <script type="module" src="./assets/js/inactive-player-component/inactive-init.js"></script>
+    <script src="assets/js/settings-popup/init.js" type="module"></script>
+    <link rel="stylesheet" href="assets/css/settings-screen.css">
 </head>
 <body>
+<template id="token-selector">
+    <div class="popup-token-selector">
+        <div class="errormessages">
+            <p></p>
+        </div>
+        <form id="token-selector-form" action="#" method="GET">
+            <input id="token-selector-dev-card" type="hidden" name="dev-card" value="">
+            <label for="token-selector-emerald">
+                Emerald
+                <input class="gem-selector-input" id="token-selector-emerald" type="number" name="emerald" value="0"
+                       min="0">
+            </label>
+            <label for="token-selector-ruby">
+                Ruby
+                <input class="gem-selector-input" id="token-selector-ruby" type="number" name="ruby" value="0" min="0">
+            </label>
+            <label for="token-selector-sapphire">
+                Sapphire
+                <input class="gem-selector-input" id="token-selector-sapphire" type="number" name="sapphire" value="0"
+                       min="0">
+            </label>
+            <label for="token-selector-diamond">
+                Diamond
+                <input class="gem-selector-input" id="token-selector-diamond" type="number" name="diamond" value="0"
+                       min="0">
+            </label>
+            <label for="token-selector-onyx">
+                Onyx
+                <input class="gem-selector-input" id="token-selector-onyx" type="number" name="onyx" value="0" min="0">
+            </label>
+            <label for="token-selector-gold">
+                Gold
+                <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0" min="0">
+            </label>
+            <button type="button" id="token-selector-close-button">Cancel</button>
+            <input type="submit" value="confirm-payment">
+        </form>
 
-    <main>
-<!--        3 Columns-->
-<!--        2 Rows-->
+    </div>
+</template>
 
-        <header>
-            <div class="settings">
-                <button id="settings"><img src="images/settings-icon.png" alt="settings icon" title="settings icon"></button>
-            </div>
-        </header>
-            <div class="username-flexcontainer">
-                <template id="opponent-template">
-                    <div class="opponent">
-                        <p class="player"></p>
-                        <p class="points"></p>
-                        <div class="reserved-section">
-                            <p class="reserved-label"><span id="reserved-count"></span> reserved</p>
-                        </div>
-                        <div class="inventory">
-                            <div class="token gems red">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card red">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems green">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card green">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems black">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card black">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems blue">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card blue">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems white">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card white">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems yellow">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
+<template id="buy-popup-template" >
+    <div class="confirmation-popup popup">
+        <h3 class="title-popup">buy ${cardname}</h3>
+        <button type="button" class="close-pop-up-button">Cancel Purchase</button>
+        <button type="button" class="confirm-pop-up-button">Buy Card</button>
+    </div>
+</template>
+<template id="reserve-deck-popup-template">
+    <div class="confirmation-popup popup">
+        <h3 class="title-popup">Reserve card from level ${cardname}?</h3>
+        <div class="errormessages">
+            <p></p>
+        </div>
+        <button type="button" class="close-pop-up-button">Cancel Reservation</button>
+        <button type="button" class="confirm-pop-up-button">Reserve Card</button>
 
-                        <div class="nobles-container hidden">
-                            <p class="noble">noble1</p>
-                            <p class="noble">noble2</p>
-                            <p class="noble">noble3</p>
-                        </div>
+    </div>
+</template>
+<template id="buy-or-reserve-popup-template" >
+    <div class="confirmation-popup popup">
+        <h3 class="title-popup"></h3>
+        <div class="errormessages">
+            <p></p>
+        </div>
+        <button type="button" class="cancel-pop-up-button">Reserve Card</button>
+        <button type="button" class="confirm-pop-up-button">Buy Card</button>
+        <button type="button" class="close-pop-up-button">X</button>
+
+    </div>
+</template>
+<template id="too-many-gems-pop-up-template" class="popup">
+    <form id="too-many-gems-pop-up-form" action="#" method="GET">
+        <label for="token-remover-emerald">
+            Emerald
+        </label>
+        <input class="gem-remover-input" id="token-remover-emerald" type="number" name="emerald" min="0">
+
+        <label for="token-remover-ruby">
+            Ruby
+        </label>
+        <input class="gem-remover-input" id="token-remover-ruby" type="number" name="ruby" min="0">
+
+        <label for="token-remover-sapphire">
+            Sapphire
+        </label>
+        <input class="gem-remover-input" id="token-remover-sapphire" type="number" name="sapphire" min="0">
+
+        <label for="token-remover-diamond">
+            Diamond
+        </label>
+        <input class="gem-remover-input" id="token-remover-diamond" type="number" name="diamond" min="0">
+
+        <label for="token-remover-onyx">
+            Onyx
+        </label>
+        <input class="gem-remover-input" id="token-remover-onyx" type="number" name="onyx" min="0">
+
+        <label for="token-remover-gold">
+            Gold
+        </label>
+        <input class="gem-remover-input" id="token-remover-gold" type="number" name="gold" min="0">
+
+        <button type="submit" id="gem-remover-button" value="confirm-removal"></button>
+
+
+    </form>
+</template>
+
+<div class="popup-container hidden">
+    <div class="popup hidden">
+        <button id="forfeit">Forfeit</button>
+        <button class="close">Close</button>
+        <div class="forfeit-popup hidden">
+            <p>Do you want to forfeit?</p>
+            <button id="forfeit-yes"><a href="index.html">Yes</a></button>
+            <button id="forfeit-no">No</button>
+        </div>
+    </div>
+</div>
+
+<main>
+
+    <header>
+        <div class="settings">
+            <button id="settings"><img src="images/settings-icon.png" alt="settings icon" title="settings icon">
+            </button>
+        </div>
+    </header>
+    <div class="username-flexcontainer">
+        <template id="opponent-template">
+            <div class="opponent">
+                <p class="player"></p>
+                <p class="points"></p>
+                <div class="reserved-section">
+                    <p class="reserved-label"><span id="reserved-count"></span> reserved</p>
+                </div>
+                <div class="inventory">
+                    <div class="token gems red">
+                        <p class="token-text"></p>
                     </div>
-
-                </template>
-
-
-            </div>
-        <div class="market-grid-container">
-            <template id="confirmation-popup-template">
-                <div id="confirmation-popup">
-                    <h3 id="title-popup"></h3>
-                    <button type="button">
-                        <h4 id="cancel"></h4>
-                    </button>
-                    <button type="button">
-                        <h4 id="confirm"></h4>
-                    </button>
-                    
+                    <div class="card red">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems green">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card green">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems black">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card black">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems blue">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card blue">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems white">
+                        <p class="token-text"></p>
+                    </div>
+                    <div class="card white">
+                        <p class="token-text"></p>
+                    </div>
+                </div>
+                <div class="inventory">
+                    <div class="gems yellow">
+                        <p class="token-text"></p>
+                    </div>
                 </div>
 
-            </template>
-            
-            <!-- <p>Development card Market</p> -->
+                <div class="nobles-container hidden">
+                    <p class="noble">noble1</p>
+                    <p class="noble">noble2</p>
+                    <p class="noble">noble3</p>
+                </div>
+            </div>
 
-            <!-- Uncomment to see the layout -->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-<!--            <article class="noble">-->
-<!--                <h2 class="hidden">title</h2>-->
-<!--                <p class="prestige-point">1</p>-->
-<!--                <ul class="bonus-costs">-->
-<!--                    <li class="bonus-cost emerald">4</li>-->
-<!--                    <li class="bonus-cost ruby">4</li>-->
-<!--                </ul>-->
-<!--            </article>-->
-
-<!--            <article class="deck level-3">-->
-<!--                <h2>Level 3</h2>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-3">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-
-<!--            <article class="deck level-2">-->
-<!--                <h2>Level 2</h2>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-2">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
+        </template>
 
 
-<!--            <article class="deck level-1">-->
-<!--                <h2>Level 1</h2>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
-<!--            <article class="development-card level-1">-->
-<!--                <h2 class="development-card-title visually-hidden">title</h2> &lt;!&ndash; TODO hide the title &ndash;&gt;-->
-<!--                <span class="prestige-point">1</span>-->
-<!--                <img class="bonus" src="#" alt="bonus" >-->
-<!--                <div class="gem-costs">-->
-<!--                    <span class="gem-cost emerald">1</span>-->
-<!--                    <span class="gem-cost ruby">1</span>-->
-<!--                    <span class="gem-cost sapphire">1</span>-->
-<!--                    <span class="gem-cost diamond">1</span>-->
-<!--                    &lt;!&ndash; <span class="gem-cost onyx">1</span> &ndash;&gt;-->
-<!--                </div>-->
-<!--            </article>-->
+    </div>
+    <div class="market-grid-container">
 
-            <template id="noble">
+        <template id="noble">
 
-                <article class="noble">
-                    <h2 class="hidden">title</h2>
-                    <p class="prestige-point">1</p>
-                    <ul class="bonus-costs">
-                        <li class="bonus-cost emerald">4</li>
-                        <li class="bonus-cost ruby">4</li>
-                    </ul>
-                </article>
+            <article class="noble">
+                <h2 class="hidden">title</h2>
+                <p class="prestige-point">1</p>
+                <ul class="bonus-costs">
+                    <li class="bonus-cost emerald">4</li>
+                    <li class="bonus-cost ruby">4</li>
+                </ul>
+            </article>
 
-            </template>
+        </template>
 
 
-            <template id="level-card">
+        <template id="level-card">
 
-                <article class="deck">
-                    <h2>Level <span class="level-title"></span></h2>
-                    <p><span class="card-amount"></span> left</p>
-                </article>
+            <article class="deck">
+                <h2>Level <span class="level-title"></span></h2>
+                <p><span class="card-amount"></span> left</p>
+            </article>
 
-            </template>
+        </template>
 
-            <template id="development-card">
+        <template id="development-card">
 
-                <article class="development-card">
-                    <h2 class="development-card-title hidden">title</h2>
-                    <span class="prestige-point">1</span>
-                    <img class="bonus" src="#" alt="bonus" >
-                    <div class="gem-costs">
-                    </div>
-                </article>
+            <article class="development-card">
+                <h2 class="development-card-title hidden">title</h2>
+                <span class="prestige-point">1</span>
+                <img class="bonus" src="#" alt="bonus">
+                <div class="gem-costs">
+                </div>
+            </article>
 
-            </template>
+        </template>
 
         </div>
         <div class="lobby-info">
             <h1 class="splendor-name">Splendor</h1>
             <h2 class="lobby-name">Lobby Name</h2>
             <div class="spectators">
-            <p id="spectators">spectators:</p>
+                <p id="spectators">spectators:</p>
             </div>
         </div>
         <section class="bank-flexcontainer">
             <h2>Bank</h2>
             <div class="token-bank">
-                <button class="ruby">1</button>
-                <button class="emerald">1</button>
-                <button class="onyx">1</button>
-                <button class="sapphire">1</button>
-                <button class="diamond">1</button>
-                <button class="gold">1</button>
+                <button class="ruby">0</button>
+                <button class="emerald">0</button>
+                <button class="onyx">0</button>
+                <button class="sapphire">0</button>
+                <button class="diamond">0</button>
+                <button class="gold" disabled>0</button>
             </div>
             <div class="selected-tokens"></div>
             <div class="bank-buttons">
                 <button class="hidden cancel-button" >Cancel</button>
                 <button class="clickable take-gems-button">Take Gems</button>
-                <button class="hidden collect-gems-button">Collect Gems</button>
+                <button class="hidden collect-gems-button" disabled>Collect Gems</button>
             </div>
         </section>
         <div class="user-info-flexcontainer">
-            <p>My user</p>
+            <p class="player">My user</p>
             <div id="own-player-card">
                 <h2 id="own-username">Username</h2>
                 <div id="own-prestige-points"><p></p></div>
                 <div id="nobles"></div>
-                <div id="own-gems"><div id="own-bonuses"></div></div>
+                <div class="own-purse">
+                    <p>Your Purse:</p>
+                    <div class="own-inventory">
+                        <div class="gems ruby">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card ruby">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems emerald">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card emerald">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems onyx">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card onyx">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems sapphire">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card sapphire">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems diamond">
+                            <p class="token-text">0</p>
+                        </div>
+                        <div class="card diamond">
+                            <p class="card-text">0</p>
+                        </div>
+                    </div>
+                    <div class="own-inventory">
+                        <div class="gems gold">
+                            <p class="token-text">0</p>
+                        </div>
+                    </div>
+                </div>
                 <div id="own-reservated-cards"></div>
             </div>
 
-        </div>
-        <div class="history">
-            <p>History</p>
-        </div>
-    </main>
+    </div>
+    <div class="history">
+        <p>History</p>
+    </div>
+</main>
 </body>
 </html>

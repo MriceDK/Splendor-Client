@@ -2,7 +2,7 @@ import {tokenInPurse} from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 
 function getOpponents(players) {
-    const ownName = loadFromStorage("myUsername")
+    const ownName = loadFromStorage("playerName")
     return players.filter(player => {
         return player.name !== ownName;
     });
@@ -19,7 +19,7 @@ function renderOpponentStats(opponent){
 
     fillOpponentStat($template, opponent);
 
-    $target.insertAdjacentHTML("beforeend", $template.outerHTML)
+    $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
 
 function fillOpponentStat($template, opponent) {

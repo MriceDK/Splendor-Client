@@ -34,8 +34,7 @@ nav a {
     font-size: 2rem;
     margin-left: 1rem;
 }
-
-.username{
+.playername{
     display: flex ;
     align-items: center;
     margin-right: 1rem;
