@@ -1,7 +1,7 @@
-import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 import * as Utils from "../helper/utils.js";
-import * as ErrorHandler from "../data-connector/error-handler";
+import * as ErrorHandler from "../data-connector/error-handler.js";
+import * as API from "../API/api.js";
+import {closePopUp} from "../confirmation-popup-component/renderer.js";
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -11,30 +11,43 @@ function buyDevelopmentCard(e) {
     const devCardName = $form.querySelector("#token-selector-dev-card").value;
     const gemCost = getGemCostObject($form);
 
-    const body = createBody(devCardName, gemCost);
-    buyDevelopmentCardRequest(body);
-}
-
-function buyDevelopmentCardRequest(body) {
-    const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    const playerName = LocalStorageAbstractor.loadFromStorage("playerName");
-
-    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/developments`, "POST", body)
-        .then(() => {
-            Utils.hidePopupContainer();
-
-        })
+    const body = createBuyCardBody(devCardName, gemCost);
+    API.buyDevelopmentCardRequest(body).then(() => {
+        closePopUp();
+    })
         .catch(err => {
-            Utils.hidePopupContainer();
             ErrorHandler.handleError(err);
         });
 }
 
-function createBody(devCardName, gemCost) {
+function buyReservedDevelopmentCard(e) {
+    e.preventDefault();
+
+    const $form = document.querySelector("#token-selector-form");
+
+    const devCardName = $form.querySelector("#token-selector-dev-card").value;
+    const gemCost = getGemCostObject($form);
+
+    const body = createBuyReservedCardBody(gemCost);
+    API.buyReservedCard(devCardName, body).then(() => {
+        closePopUp();
+    })
+        .catch(err => {
+            ErrorHandler.handleError(err);
+        });
+}
+
+function createBuyCardBody(devCardName, gemCost) {
     return {
         development: {
             name: devCardName
         },
+        payment: gemCost
+    };
+}
+
+function createBuyReservedCardBody(gemCost) {
+    return {
         payment: gemCost
     };
 }
@@ -52,4 +65,4 @@ function getGemCostObject($form) {
     return obj;
 }
 
-export { buyDevelopmentCard };
+export { buyDevelopmentCard, buyReservedDevelopmentCard };
