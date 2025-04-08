@@ -5,6 +5,10 @@ import * as helper from "./helper.js";
 import * as localStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 
 
+function loadUserInformation() {
+    render.renderOwnUserName(localStorageAbstractor.loadFromStorage("playerName"));
+}
+
 function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
         .then((json) => {handleFilters(helper.addGameNames(json.games))
@@ -97,4 +101,4 @@ function addPlayerToGame(joinGameId) {
     }
 }
 
-export { getMatchingGames, handleFilters, handleLobbyJoinClick};
+export { getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
