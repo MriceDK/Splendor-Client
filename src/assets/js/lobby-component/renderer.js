@@ -14,7 +14,7 @@ function lobbyName(lobbyName) {
 
     if (lobbyName === null || lobbyName === ""){
 
-        titleElement.innerHTML = `${storageAbstractor.loadFromStorage("myUsername")}'s lobby`;
+        titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
     }
     else{
         titleElement.innerHTML = lobbyName;
@@ -50,7 +50,7 @@ function started(isStarted){
 }
 
 function renderOwnUserName(){
-    document.querySelector("#username").innerHTML = storageAbstractor.loadFromStorage("myUsername");
+    document.querySelector("#username").innerHTML = storageAbstractor.loadFromStorage("playerName");
 }
 
 export { lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi };
