@@ -18,7 +18,7 @@
 
     <script src="assets/js/confirmation-popup-component/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
-    
+
     <script type="module" src="./assets/js/inactive-player-component/inactive-init.js"></script>
     <script src="assets/js/settings-popup/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/settings-screen.css">
@@ -26,6 +26,9 @@
 <body>
 <template id="token-selector">
     <div class="popup-token-selector">
+        <div class="errormessages">
+            <p></p>
+        </div>
         <form id="token-selector-form" action="#" method="GET">
             <input id="token-selector-dev-card" type="hidden" name="dev-card" value="">
             <label for="token-selector-emerald">
@@ -55,26 +58,82 @@
                 Gold
                 <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0" min="0">
             </label>
-            <button>Cancel</button>
+            <button type="button" id="token-selector-close-button">Cancel</button>
             <input type="submit" value="confirm-payment">
         </form>
 
     </div>
 </template>
-<div class="popup-container hidden">
 
-    <div id="confirmation-pop-up-result">
-        <template id="confirmation-popup-template" class="popup">
-            <div id="confirmation-popup">
-                <h3 id="title-popup"></h3>
-                <button type="button" id="cancel-pop-up-button">Cancel</button>
-                <button type="button" id="confirm-pop-up-button">Confirm</button>
-                <button type="button" id="close-popup-button">X</button>
-            </div>
-        </template>
+<template id="buy-popup-template" >
+    <div class="confirmation-popup popup">
+        <h3 class="title-popup">buy ${cardname}</h3>
+        <button type="button" class="close-pop-up-button">Cancel Purchase</button>
+        <button type="button" class="confirm-pop-up-button">Buy Card</button>
     </div>
+</template>
+<template id="reserve-deck-popup-template">
+    <div class="confirmation-popup popup">
+        <h3 class="title-popup">Reserve card from level ${cardname}?</h3>
+        <div class="errormessages">
+            <p></p>
+        </div>
+        <button type="button" class="close-pop-up-button">Cancel Reservation</button>
+        <button type="button" class="confirm-pop-up-button">Reserve Card</button>
+
+    </div>
+</template>
+<template id="buy-or-reserve-popup-template" >
+    <div class="confirmation-popup popup">
+        <h3 class="title-popup"></h3>
+        <div class="errormessages">
+            <p></p>
+        </div>
+        <button type="button" class="cancel-pop-up-button">Reserve Card</button>
+        <button type="button" class="confirm-pop-up-button">Buy Card</button>
+        <button type="button" class="close-pop-up-button">X</button>
+
+    </div>
+</template>
+<template id="too-many-gems-pop-up-template" class="popup">
+    <form id="too-many-gems-pop-up-form" action="#" method="GET">
+        <label for="token-remover-emerald">
+            Emerald
+        </label>
+        <input class="gem-remover-input" id="token-remover-emerald" type="number" name="emerald" min="0">
+
+        <label for="token-remover-ruby">
+            Ruby
+        </label>
+        <input class="gem-remover-input" id="token-remover-ruby" type="number" name="ruby" min="0">
+
+        <label for="token-remover-sapphire">
+            Sapphire
+        </label>
+        <input class="gem-remover-input" id="token-remover-sapphire" type="number" name="sapphire" min="0">
+
+        <label for="token-remover-diamond">
+            Diamond
+        </label>
+        <input class="gem-remover-input" id="token-remover-diamond" type="number" name="diamond" min="0">
+
+        <label for="token-remover-onyx">
+            Onyx
+        </label>
+        <input class="gem-remover-input" id="token-remover-onyx" type="number" name="onyx" min="0">
+
+        <label for="token-remover-gold">
+            Gold
+        </label>
+        <input class="gem-remover-input" id="token-remover-gold" type="number" name="gold" min="0">
+
+        <button type="submit" id="gem-remover-button" value="confirm-removal"></button>
 
 
+    </form>
+</template>
+
+<div class="popup-container hidden">
     <div class="popup hidden">
         <button id="forfeit">Forfeit</button>
         <button class="close">Close</button>
@@ -84,8 +143,6 @@
             <button id="forfeit-no">No</button>
         </div>
     </div>
-
-
 </div>
 
 <main>
@@ -209,18 +266,18 @@
         <section class="bank-flexcontainer">
             <h2>Bank</h2>
             <div class="token-bank">
-                <button class="ruby">1</button>
-                <button class="emerald">1</button>
-                <button class="onyx">1</button>
-                <button class="sapphire">1</button>
-                <button class="diamond">1</button>
-                <button class="gold" disabled>1</button>
+                <button class="ruby">0</button>
+                <button class="emerald">0</button>
+                <button class="onyx">0</button>
+                <button class="sapphire">0</button>
+                <button class="diamond">0</button>
+                <button class="gold" disabled>0</button>
             </div>
             <div class="selected-tokens"></div>
             <div class="bank-buttons">
                 <button class="hidden cancel-button" >Cancel</button>
                 <button class="clickable take-gems-button">Take Gems</button>
-                <button class="hidden collect-gems-button">Collect Gems</button>
+                <button class="hidden collect-gems-button" disabled>Collect Gems</button>
             </div>
         </section>
         <div class="user-info-flexcontainer">

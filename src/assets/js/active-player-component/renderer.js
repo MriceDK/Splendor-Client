@@ -1,7 +1,7 @@
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 
 function renderActivePlayer(currentPlayerName) {
-    if (LocalStorageAbstractor.loadFromStorage("myUsername") === currentPlayerName) {
+    if (LocalStorageAbstractor.loadFromStorage("playerName") === currentPlayerName) {
         document.querySelector("#own-player-card").classList.add("current-player")
     } else {
         document.querySelectorAll(".opponent").forEach(opponent => {

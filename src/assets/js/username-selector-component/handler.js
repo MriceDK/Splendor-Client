@@ -5,7 +5,7 @@ function changeUsername(e){
     e.preventDefault();
     
     const $usernameForm = document.querySelector("#username-text")
-    saveToStorage("myUsername", $usernameForm.value);
+    saveToStorage("playerName", $usernameForm.value);
     changeUsernameText();
 
 }

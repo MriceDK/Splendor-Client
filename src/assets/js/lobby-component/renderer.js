@@ -50,7 +50,7 @@ function started(isStarted){
 }
 
 function renderOwnUserName(){
-    document.querySelector("#username").innerHTML = storageAbstractor.loadFromStorage("playerName");
+    document.querySelector("#playername").textContent = storageAbstractor.loadFromStorage("playerName");
 }
 
 export { lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi };

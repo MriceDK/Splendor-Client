@@ -6,37 +6,65 @@ things that need confirmation
 - reserve confirmation
 */
 import * as render from "./renderer.js";
+import * as helper from "./helper.js";
+import {renderTokenSelectorForm} from "../gem-selector-component/renderer.js";
 
 function handleClickOnCard(e) {
-
-    if (e.target.classList.contains("reserved") && !e.target.classList.contains("disabled")) {
+    document.querySelector(".popup-container").innerHTML = "";
+    // TODO: make the rest of the card clickable
+    if (e.target.classList.contains("reserved")) {
         const cardName = e.target.dataset.cardName;
+        e.target.classList.add("selected-card");
         render.renderBuyDevelopmentCardPopup(cardName);
 
-    } else if (e.target.classList.contains("deck") && !e.target.classList.contains("disabled")) {
-        render.renderReserveDevelopmentCardPopup();
+    } else if (e.target.classList.contains("deck")) {
+        const cardLevel = parseInt(e.target.dataset.level)
+        e.target.classList.add("selected-card");
+        render.renderReserveDevelopmentCardPopup(cardLevel);
 
-    } else if (e.target.classList.contains("development-card") && !e.target.classList.contains("disabled")) {
+    } else if (e.target.classList.contains("development-card")) {
         const cardName = e.target.dataset.cardName;
+        e.target.classList.add("selected-card");
         render.renderBuyAndReserveDevelopmentCardPopUp(cardName);
     }
 }
 
+// function checkIfReservedCardWasClicked(e) {
+//    TODO: Make these functions work for each type of card
+// }
+//
+// function checkIfDeckCardWasClicked(e) {
+//
+// }
+//
+// function checkIfDevelopmentCardWasClicked(e) {
+//
+// }
+
+
 function handlePopUpClicks(e) {
-    if (e.target.closest("#confirm-pop-up-button")) {
-        console.log("confirm");
-    } else if (e.target.closest("#cancel-pop-up-button")) {
-        console.log("cancel");
-    } else if (e.target.closest("#close-popup-button")) {
-        closePopUp(e.target);
+    const $popupContainer = document.querySelector(".popup-container");
+
+    if (e.target.closest(".confirm-pop-up-button")) {
+        const cardName = document.querySelector(".selected-card").dataset.cardName;
+        const cardLevel = parseInt(document.querySelector(".selected-card").dataset.level);
+        const isReservedCard = document.querySelector(".selected-card").classList.contains("reserved");
+        if (helper.checkIfPopUpIsReserveType($popupContainer)) {
+            helper.reserveCardFromDeck(cardLevel);
+        } else if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer) || helper.checkIfPopUpIsBuyType($popupContainer)) {
+            render.closePopUp();
+            renderTokenSelectorForm(cardName, isReservedCard);
+            helper.removeSelectedCard();
+        }
+    } else if (e.target.closest(".cancel-pop-up-button")) {
+        const cardName = document.querySelector(".selected-card").dataset.cardName;
+        if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
+            helper.reserveCard(cardName);
+        }
+    } else if (e.target.closest(".close-pop-up-button") || e.target.closest(".popup-container") && document.querySelector(".con")) {
+        render.closePopUp();
     }
 }
 
-function closePopUp(button){
-    document.querySelector(".popup-container").classList.add("hidden");
-    document.querySelector(".popup-container").removeAttribute("data-pop-up-type");
 
-    button.outerHTML = "";
-}
-
-export {handleClickOnCard, handlePopUpClicks}
+export {handleClickOnCard, handlePopUpClicks};
