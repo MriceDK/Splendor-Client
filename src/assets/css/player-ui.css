@@ -44,6 +44,32 @@
     margin-top: 0.5rem;
 }
 
+.own-purse>p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+.own-inventory {
+    position: relative;
+    display: inline-block;
+    margin: 0.25rem;
+}
+
+.own-inventory .gems {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+.own-inventory .card {
+    width: 1.5rem;
+    height: 2rem;
+    font-size: 1.25rem;
+    top: -0.75rem;
+    right: -0.625rem;
+}
+
 .nobles-container {
     display: flex;
     justify-content: left;
@@ -87,25 +113,25 @@
 
 
 .red {
-    background-color: var(--main-red-color);
+    background-color: orangered;
     color: black;
 }
 .green {
-    background: var(--main-green-color);
+    background: lime;
     color: black;
 }
 .blue {
-    background: var(--main-blue-color);
+    background: dodgerblue;
     color: white;
 }
 .white {
     background: var(--main-white-color);
     color: black; }
 .black {
-    background: var(--main-black-color);
+    background: #8d6830;
     color: white; }
 .yellow {
-    background: var(--main-yellow-color);
+    background: #ffc600;
     color: black; }
 
 .current-player {

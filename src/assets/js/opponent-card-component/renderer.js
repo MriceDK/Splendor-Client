@@ -19,7 +19,7 @@ function renderOpponentStats(opponent){
 
     fillOpponentStat($template, opponent);
 
-    $target.insertAdjacentHTML("beforeend", $template.outerHTML)
+    $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
 
 function fillOpponentStat($template, opponent) {

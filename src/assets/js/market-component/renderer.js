@@ -1,6 +1,6 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
 
-function renderMarket(gameInfo) {
+function renderMarket(gameInfo, isActive) {
     const $target= document.querySelector(".market-grid-container");
 
     renderLevelRows(gameInfo.market, $target);
@@ -19,6 +19,7 @@ function renderLevelCard(level, cardStackSize, $target) {
     const $levelCard = document.querySelector("#level-card").content.firstElementChild.cloneNode(true);
 
     $levelCard.classList.add(`level-${level}`);
+    $levelCard.setAttribute("data-level", level);
     $levelCard.querySelector(".level-title").innerText = level;
     $levelCard.querySelector(".card-amount").innerText = cardStackSize;
 

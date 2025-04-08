@@ -3,16 +3,21 @@ import * as renderer from "./renderer.js";
 function openBank(){
     renderer.changeButtons();
     renderer.enableTokens();
+    renderer.checkAllowedTokens();
 }
 
 function closeBank(){
     renderer.changeButtons();
-    renderer.disableTokens();
     renderer.removeChosenTokens();
+    renderer.checkConfirmButton();
+    renderer.checkAllowedTokens();
+    renderer.disableTokens();
 }
 
 function chooseBankToken(e){
     renderer.getChosenTokenColour(e);
+    renderer.checkConfirmButton();
+    renderer.checkAllowedTokens();
 }
 
 function removeChosenBankToken(e) {
@@ -21,7 +26,10 @@ function removeChosenBankToken(e) {
 
     renderer.chosenBankTokens[classNameWithCapitalLetter]--;
     e.target.remove();
+
     renderer.updateToken(classNameWithCapitalLetter, false);
+    renderer.checkConfirmButton();
+    renderer.checkAllowedTokens();
 }
 
 
