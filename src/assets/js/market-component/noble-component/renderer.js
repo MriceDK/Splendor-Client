@@ -12,6 +12,7 @@ function renderNobles(noblesAmount, nobles){
         renderBonusesInNobles(noble.neededBonuses, $template);
         
     });
+    $target.insertAdjacentElement("beforeend", $template.outerHTML);
 
 }
 
