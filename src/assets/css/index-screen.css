@@ -2,6 +2,7 @@ body {
     background-color: #f4f4f4;
     font-family: "Roboto", sans-serif;
     max-height: 100vh;
+    display: grid
 }
 
 header {
@@ -9,10 +10,19 @@ header {
     align-items: center;
     text-align: end;
     flex-flow: row-reverse;
+    height: 100%;
 }
 
 header img {
     width: 5rem;
+}
+
+.grid{
+    height: 100vh;
+    background: var(--main-white-color);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
 }
 
 h1 {

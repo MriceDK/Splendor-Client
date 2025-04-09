@@ -1,3 +1,18 @@
+header{
+    height: 10%
+}
+
+header img {
+    width: 5rem;
+}
+
+header a{
+    display: flex;
+    text-decoration: none;
+    color: var(--main-white-color);
+    align-items: center;
+}
+
 nav a {
     color: var(--main-white-color);
     text-decoration: none;

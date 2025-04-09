@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-rows: min-content auto;
+    grid-template-rows: 10%  auto;
     height: 100vh;
     font-family: "roboto", sans-serif;
 }
@@ -10,6 +10,24 @@ main {
     justify-self: center;
     width: 40%;
     margin: auto;
+}
+
+header img {
+    width: 5rem;
+}
+
+header a{
+    display: flex;
+    text-decoration: none;
+    color: var(--main-white-color);
+    align-items: center;
+}
+
+h1{
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .lobby-create-form {
@@ -46,6 +64,28 @@ main {
     gap: 1rem;
 }
 
+#username:hover {
+    background-color: var(--main-white-color);
+    color: var(--main-black-color);
+}
+
 .form-title {
     margin-right: 2rem;
 }
+
+#username {
+    text-align: center;
+    font-size: 2rem;
+    height: 50%;
+    border: 0.2rem solid var(--main-white-color);
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+nav a {
+    color: var(--main-white-color);
+    text-decoration: none;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+

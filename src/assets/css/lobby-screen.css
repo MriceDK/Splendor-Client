@@ -2,6 +2,7 @@ html, body{
     height: 100%;
     margin: 0;
 }
+
 .grid{
     height: 100vh;
     background: var(--main-white-color);
@@ -9,23 +10,24 @@ html, body{
     grid-template-columns: 1fr;
     grid-template-rows: 10% 1fr;
 }
+
 main{
     display: grid;
     height: 100%;
     grid-template-rows: 20% 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-
 }
+
 header{
     grid-column-start: 1;
     grid-column-end: 4;
     justify-content: space-between;
 }
+
 header img{
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-right: 0.625rem;
+    width: 5rem;
 }
+
 nav a {
     color: var(--main-white-color);
     text-decoration: none;
@@ -43,6 +45,7 @@ h1{
     text-align: center;
     font-size: 2rem;
 }
+
 h2{
     grid-row-start: 2;
     grid-column-start: 1;
@@ -50,18 +53,21 @@ h2{
     padding-top: 1.25rem;
     padding-right: 1.25rem;
 }
+
 .list h1{
     margin: auto;
     text-align: center;
 }
+
 .list p{
     display: inline;
 }
-.users{
 
+.users{
     grid-column-start: 2;
     grid-row-start: 3;
 }
+
 .users li{
     background-color: #bdbdbd;
     margin-top: 0.5rem;
@@ -69,12 +75,14 @@ h2{
     align-content: center;
     margin-bottom: 1rem;
 }
+
 #title{
     grid-column-start: 2;
     grid-row-start: 1;
     align-self: end;
     margin-bottom: 2rem;
 }
+
 .middle{
     grid-column-start: 2;
     grid-row-start: 2;
