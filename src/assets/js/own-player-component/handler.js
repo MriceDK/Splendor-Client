@@ -22,6 +22,10 @@ function nobleCheck(nobles, playerInfo){
     const qualifiedNobles = [];
     nobles.forEach(noble => {
         const bonusNeeded = noble.neededBonuses;
+
+        if (nobleQualification(noble.neededBonuses, playerBonuses)){
+            qualifiedNobles.push(noble);
+        }
         
     });
     
