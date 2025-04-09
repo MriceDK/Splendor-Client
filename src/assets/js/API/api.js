@@ -7,21 +7,21 @@ import * as LocalStorageAbstractor from "../data-connector/local-storage-abstrac
 function reserveCard(cardNameOrLevel, level = false) {
     const body = createReserveCardBody(cardNameOrLevel, level);
     const gameId = localStorageAbstractor.loadFromStorage("gameId");
-    const playerName = localStorageAbstractor.loadFromStorage("myUsername");
+    const playerName = localStorageAbstractor.loadFromStorage("playerName");
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve`, "POST", body)
 }
 
 
 function buyDevelopmentCardRequest(body) {
     const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    const playerName = LocalStorageAbstractor.loadFromStorage("myUsername");
+    const playerName = LocalStorageAbstractor.loadFromStorage("playerName");
 
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/developments`, "POST", body)
 }
 
 function buyReservedCard(cardName, body) {
     const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    const playerName = LocalStorageAbstractor.loadFromStorage("myUsername");
+    const playerName = LocalStorageAbstractor.loadFromStorage("playerName");
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve/${cardName}`, "DELETE", body)
 }
 

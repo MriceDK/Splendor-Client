@@ -19,6 +19,7 @@ function reserveCardFromDeck(cardLevel) {
         .then(response => {
             console.log(`Card from level ${cardLevel} reserved successfully`);
             closePopUp();
+            removeSelectedCard();
         })
         .catch(error => {
             handleError(error);
@@ -30,6 +31,7 @@ function reserveCard(cardName) {
         .then(response => {
             console.log(`Card from level ${cardName} reserved successfully`);
             closePopUp();
+            removeSelectedCard();
         })
         .catch(error => {
             handleError(error);

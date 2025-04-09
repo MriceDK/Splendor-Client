@@ -56,6 +56,7 @@ function handlePopUpClicks(e) {
         }
     } else if (e.target.closest(".close-pop-up-button") || e.target.closest(".popup-container") && document.querySelector(".con")) {
         render.closePopUp();
+        helper.removeSelectedCard();
     }
 }
 
