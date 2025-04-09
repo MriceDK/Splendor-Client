@@ -17,8 +17,6 @@
 
     <script src="assets/js/confirmation-popup-component/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
-
-    <script type="module" src="./assets/js/inactive-player-component/inactive-init.js"></script>
     <script src="assets/js/settings-popup/init.js" type="module"></script>
     <link rel="stylesheet" href="assets/css/settings-screen.css">
 </head>
@@ -64,7 +62,7 @@
     </div>
 </template>
 
-<template id="buy-popup-template" >
+<template id="buy-popup-template">
     <div class="confirmation-popup popup">
         <h3 class="title-popup">buy ${cardname}</h3>
         <button type="button" class="close-pop-up-button">Cancel Purchase</button>
@@ -82,7 +80,7 @@
 
     </div>
 </template>
-<template id="buy-or-reserve-popup-template" >
+<template id="buy-or-reserve-popup-template">
     <div class="confirmation-popup popup">
         <h3 class="title-popup"></h3>
         <div class="errormessages">
@@ -94,7 +92,7 @@
 
     </div>
 </template>
-<template id="too-many-gems-pop-up-template" class="popup">
+<template id="too-many-gems-pop-up-template">
     <form id="too-many-gems-pop-up-form" action="#" method="GET">
         <label for="token-remover-emerald">
             Emerald
@@ -254,87 +252,87 @@
 
         </template>
 
+    </div>
+    <div class="lobby-info">
+        <h1 class="splendor-name">Splendor</h1>
+        <h2 class="lobby-name">Lobby Name</h2>
+        <div class="spectators">
+            <p id="spectators">spectators:</p>
         </div>
-        <div class="lobby-info">
-            <h1 class="splendor-name">Splendor</h1>
-            <h2 class="lobby-name">Lobby Name</h2>
-            <div class="spectators">
-                <p id="spectators">spectators:</p>
-            </div>
+    </div>
+    <section class="bank-flexcontainer">
+        <h2>Bank</h2>
+        <div class="token-bank">
+            <button class="ruby">0</button>
+            <button class="emerald">0</button>
+            <button class="onyx">0</button>
+            <button class="sapphire">0</button>
+            <button class="diamond">0</button>
+            <button class="gold" disabled>0</button>
         </div>
-        <section class="bank-flexcontainer">
-            <h2>Bank</h2>
-            <div class="token-bank">
-                <button class="ruby">0</button>
-                <button class="emerald">0</button>
-                <button class="onyx">0</button>
-                <button class="sapphire">0</button>
-                <button class="diamond">0</button>
-                <button class="gold" disabled>0</button>
-            </div>
-            <div class="selected-tokens"></div>
-            <div class="bank-buttons">
-                <button class="hidden cancel-button" >Cancel</button>
-                <button class="clickable take-gems-button">Take Gems</button>
-                <button class="hidden collect-gems-button" disabled>Collect Gems</button>
-            </div>
-        </section>
-        <div class="user-info-flexcontainer">
-            <p class="player">My user</p>
-            <div id="own-player-card">
-                <h2 id="own-username">Username</h2>
-                <div id="own-prestige-points"><p></p></div>
-                <div id="nobles"></div>
-                <div class="own-purse">
-                    <p>Your Purse:</p>
-                    <div class="own-inventory">
-                        <div class="gems ruby">
-                            <p class="token-text">0</p>
-                        </div>
-                        <div class="card ruby">
-                            <p class="card-text">0</p>
-                        </div>
+        <div class="selected-tokens"></div>
+        <div class="bank-buttons">
+            <button class="hidden cancel-button">Cancel</button>
+            <button class="clickable take-gems-button">Take Gems</button>
+            <button class="hidden collect-gems-button" disabled>Collect Gems</button>
+        </div>
+    </section>
+    <div class="user-info-flexcontainer">
+        <p class="player">My user</p>
+        <div id="own-player-card">
+            <h2 id="own-username">Username</h2>
+            <div id="own-prestige-points"><p></p></div>
+            <div id="nobles"></div>
+            <div class="own-purse">
+                <p>Your Purse:</p>
+                <div class="own-inventory">
+                    <div class="gems ruby">
+                        <p class="token-text">0</p>
                     </div>
-                    <div class="own-inventory">
-                        <div class="gems emerald">
-                            <p class="token-text">0</p>
-                        </div>
-                        <div class="card emerald">
-                            <p class="card-text">0</p>
-                        </div>
-                    </div>
-                    <div class="own-inventory">
-                        <div class="gems onyx">
-                            <p class="token-text">0</p>
-                        </div>
-                        <div class="card onyx">
-                            <p class="card-text">0</p>
-                        </div>
-                    </div>
-                    <div class="own-inventory">
-                        <div class="gems sapphire">
-                            <p class="token-text">0</p>
-                        </div>
-                        <div class="card sapphire">
-                            <p class="card-text">0</p>
-                        </div>
-                    </div>
-                    <div class="own-inventory">
-                        <div class="gems diamond">
-                            <p class="token-text">0</p>
-                        </div>
-                        <div class="card diamond">
-                            <p class="card-text">0</p>
-                        </div>
-                    </div>
-                    <div class="own-inventory">
-                        <div class="gems gold">
-                            <p class="token-text">0</p>
-                        </div>
+                    <div class="card ruby">
+                        <p class="card-text">0</p>
                     </div>
                 </div>
-                <div id="own-reservated-cards"></div>
+                <div class="own-inventory">
+                    <div class="gems emerald">
+                        <p class="token-text">0</p>
+                    </div>
+                    <div class="card emerald">
+                        <p class="card-text">0</p>
+                    </div>
+                </div>
+                <div class="own-inventory">
+                    <div class="gems onyx">
+                        <p class="token-text">0</p>
+                    </div>
+                    <div class="card onyx">
+                        <p class="card-text">0</p>
+                    </div>
+                </div>
+                <div class="own-inventory">
+                    <div class="gems sapphire">
+                        <p class="token-text">0</p>
+                    </div>
+                    <div class="card sapphire">
+                        <p class="card-text">0</p>
+                    </div>
+                </div>
+                <div class="own-inventory">
+                    <div class="gems diamond">
+                        <p class="token-text">0</p>
+                    </div>
+                    <div class="card diamond">
+                        <p class="card-text">0</p>
+                    </div>
+                </div>
+                <div class="own-inventory">
+                    <div class="gems gold">
+                        <p class="token-text">0</p>
+                    </div>
+                </div>
             </div>
+            <div id="own-reserved-cards"></div>
+        </div>
 
     </div>
     <div class="history">
