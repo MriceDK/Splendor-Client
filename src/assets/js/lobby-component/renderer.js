@@ -9,15 +9,15 @@ function dataListFromApi(data){
 }
 
 function lobbyName(lobbyName) {
-    let titleElement = document.querySelector("#title");
-    titleElement.innerHTML = ``;
+    let $titleElement = document.querySelector("#title");
+    $titleElement.innerHTML = ``;
 
     if (lobbyName === null || lobbyName === ""){
 
-        titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
+        $titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
     }
     else{
-        titleElement.innerHTML = lobbyName;
+        $titleElement.innerHTML = lobbyName;
     }
 }
 
