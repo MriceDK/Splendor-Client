@@ -9,7 +9,7 @@ function ownPlayerCardRenderer(gameInfo){
     //$playerCard.querySelector("#nobles").insertAdjacentHTML("beforeend", ownPlayer.acquiredNobles);
     Object.entries(ownPlayer.tokens).forEach(token => renderOwnTokenValue(token));
     Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
-    $playerCard.querySelector("#own-reservated-cards").insertAdjacentHTML("beforeend", ownPlayer.reserve);
+    $playerCard.querySelector("#own-reserved-cards").insertAdjacentHTML("beforeend", ownPlayer.reserve);
 
 }
 
