@@ -17,4 +17,26 @@ function getOwnPlayerInfo(gameinfo){
     return null;
 }
 
+function nobleCheck(nobles, playerInfo){
+    const playerBonuses = playerInfo.bonuses;
+    const qualifiedNobles = [];
+    nobles.forEach(noble => {
+        const bonusNeeded = noble.neededBonuses;
+        
+    });
+    
+
+}
+
+function nobleQualification(nobleRequirements, playerBonuses){
+    for (const [bonus, requiredAmount] of Object.entries(nobleRequirements)){
+
+        if (playerBonuses[bonus] < requiredAmount) {
+            return false; 
+        }
+    }
+    return true; 
+
+}
+
 export { getOwnPlayerInfo};
