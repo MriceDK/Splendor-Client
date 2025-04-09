@@ -1,17 +1,25 @@
-function getAmountOfNobles(gameInfo){
-    const playerAmount = gameInfo.players.length();
-    let noblesAmount = null;
-    switch (playerAmount){
-        case playerAmount === 2:
-            noblesAmount = 3;
-            break;
-        case playerAmount === 3:
-            noblesAmount = 4;
-            break;
-        default:
-            noblesAmount = 5
-            break;
-    }
 
-    return noblesAmount;
+//must be gameInfo.unclaimedNobles for nobles
+function renderNobles(noblesAmount, nobles){
+    const $target = document.querySelector(".noble-container");
+
+    const $template = document.querySelector(".noble").content.firstElementChild.cloneNode(true);
+
+    nobles.forEach(noble => {
+
+        $template.querySelector(".noble-name").innerHTML = noble.name;
+        $template.querySelector(".prestige-points").innerHTML = noble.prestigePoints;
+        renderBonusesInNobles(noble.neededBonuses, $template);
+        
+    });
+
+}
+
+function renderBonusesInNobles(bonusesNeeded, $template){
+    bonusesNeeded.forEach(bonusNeeded => {
+        const $bonus = $template.querySelector(".bonus-cost");
+        $bonus.classList.add(bonusNeeded.toLowerCase());
+        $bonus.innerHTML = bonusesNeeded[bonusNeeded];
+    });
+
 }
