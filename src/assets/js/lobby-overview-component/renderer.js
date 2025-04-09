@@ -1,4 +1,3 @@
-
 function renderGames(games) {
     const $template = document.querySelector("#join-lobby-template");
     const $results = document.querySelector(".lobby-overview-container");
@@ -12,6 +11,9 @@ function renderGames(games) {
         $results.insertAdjacentHTML("beforeend", $lobby.outerHTML);
     });
 }
+function renderOwnUserName(name){
+    document.querySelector("#username").innerHTML = name;
+}
 
 
-export { renderGames };
+export { renderGames, renderOwnUserName };

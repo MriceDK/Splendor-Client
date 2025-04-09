@@ -9,19 +9,21 @@ function dataListFromApi(data){
 }
 
 function lobbyName(lobbyName) {
+    let titleElement = document.querySelector("#title");
+    titleElement.innerHTML = ``;
 
     if (lobbyName === null || lobbyName === ""){
-        let titleElement = document.querySelector("#title");
-        titleElement.textContent = `${storageAbstractor.loadFromStorage("playerName")}${titleElement.textContent}`;
+
+        titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
     }
     else{
-        document.querySelector("#title").textContent = lobbyName;
+        titleElement.innerHTML = lobbyName;
     }
 }
 
 function renderLobbyAmount(currentUserCount,maxUserCount){
 
-       document.querySelector("#playerCount").textContent = `${currentUserCount}/${maxUserCount} Players`;
+       document.querySelector("#playerCount").innerHTML = `${currentUserCount}/${maxUserCount} Players`;
 }
 
 function renderUsersLoop(userArray, data){
