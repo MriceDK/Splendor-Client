@@ -1,10 +1,3 @@
-/*
-things that need confirmation
-
-- buy and reserve development 
-- buy confirm after token selection (if necessary)
-- reserve confirmation
-*/
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
 import {renderTokenSelectorForm} from "../gem-selector-component/renderer.js";
@@ -12,17 +5,17 @@ import {renderTokenSelectorForm} from "../gem-selector-component/renderer.js";
 function handleClickOnCard(e) {
     document.querySelector(".popup-container").innerHTML = "";
     // TODO: make the rest of the card clickable
-    if (e.target.classList.contains("reserved")) {
+    if (e.target.classList.contains("reserved") && !e.target.classList.contains("disabled")) {
         const cardName = e.target.dataset.cardName;
         e.target.classList.add("selected-card");
         render.renderBuyDevelopmentCardPopup(cardName);
 
-    } else if (e.target.classList.contains("deck")) {
+    } else if (e.target.classList.contains("deck") && !e.target.classList.contains("disabled")) {
         const cardLevel = parseInt(e.target.dataset.level)
         e.target.classList.add("selected-card");
         render.renderReserveDevelopmentCardPopup(cardLevel);
 
-    } else if (e.target.classList.contains("development-card")) {
+    } else if (e.target.classList.contains("development-card") && !e.target.classList.contains("disabled")) {
         const cardName = e.target.dataset.cardName;
         e.target.classList.add("selected-card");
         render.renderBuyAndReserveDevelopmentCardPopUp(cardName);
