@@ -12,7 +12,7 @@ function renderGames(games) {
     });
 }
 function renderOwnUserName(name){
-    document.querySelector("#username").innerHTML = name;
+    document.querySelector("#playername").innerHTML = name;
 }
 
 
