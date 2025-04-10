@@ -37,6 +37,11 @@ function nobleQualification(nobleRequirements, playerBonuses){
 }
 
 function hookUpEventListenersOnPickableNobles(){
+    const $pickableNobles = document.querySelectorAll(".pickable-nobles");
+    $pickableNobles.forEach( pickableNoble => {
+        pickableNoble.addEventListener("click", getNobleToInventory);
+    }); 
 
 }
+
 export {nobleCheck, hookUpEventListenersOnPickableNobles}
