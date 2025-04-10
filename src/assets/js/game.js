@@ -3,6 +3,7 @@ import {renderOpponentsStats} from "./opponent-card-component/renderer.js";
 import {renderTokenBank} from "./bank-component/renderer.js";
 import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
 import {renderMarket, renderNobles} from "./market-component/renderer.js";
+import {nobleCheck} from "./market-component/handler.js";
 import {renderActivePlayer} from "./active-player-component/renderer.js";
 import { handleDisabledPlayerFunctionalities } from "./inactive-player-component/handler.js"
 import * as LocalStorageAbstractor from "./data-connector/local-storage-abstractor.js";
@@ -21,6 +22,7 @@ function init() {
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderNobles(res.unclaimedNobles);
+            nobleCheck(res.pickNobleRequired);
             checkTooMuchGems(res.players, res.currentPlayer);
             
             
