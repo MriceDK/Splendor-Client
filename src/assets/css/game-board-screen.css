@@ -23,7 +23,7 @@ header {
 
 .market-grid-container {
     grid-area: market;
-    background-color: blueviolet;
+    /*background-color: blueviolet; Dit mag inprincipe al weg*/
 }
 
 .user-info-flexcontainer {
