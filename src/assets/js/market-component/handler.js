@@ -1,6 +1,6 @@
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
     if (nobleCheck){
-        nobleVisualCheck(unclaimedNobles, )
+        nobleVisualCheck(unclaimedNobles, currentPlayerInfo)
     }
 }
 

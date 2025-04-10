@@ -24,7 +24,7 @@ function init() {
             renderMarket(res);
             renderNobles(res.unclaimedNobles);
             
-            nobleCheck(res.pickNobleRequired, res.unclaimedNobles, res.currentPlayer);
+            nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);
             checkTooMuchGems(res.players, res.currentPlayer);
             
             
