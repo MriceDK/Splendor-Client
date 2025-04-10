@@ -52,7 +52,19 @@ function renderBonusesInNobles(bonusesNeeded, $template){
 }
 
 function renderPickableNobles(nobles){
+    const $allNobles = document.querySelectorAll(".noble-container .noble-name");
+    nobles.forEach(noble => {
+        nameChecker(noble, $allNobles)
+
+    });
 
 }
 
+function nameChecker(noble, $allNobles){
+    $allNobles.forEach(aNoble => {
+        if (aNoble.innerHTML === noble.name){
+            aNoble.classList.add("pickable-noble");
+        }
+    });
+}
 export { renderMarket, renderNobles, renderPickableNobles };
