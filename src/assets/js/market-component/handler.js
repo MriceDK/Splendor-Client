@@ -58,7 +58,9 @@ function getNobleToInventory(gameId, playerName, noble){
 function removePickableFromNobles(){
     const $pickableNobles = document.querySelectorAll(".pickable-noble");
     $pickableNobles.forEach(pickableNoble => {
+        pickableNoble.removeEventListener("click", getNobleToInventory);
         pickableNoble.classList.remove("pickable-noble")
+        
     });
 }
 export {nobleCheck, hookUpEventListenersOnPickableNoble}
