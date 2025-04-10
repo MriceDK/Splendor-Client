@@ -51,4 +51,8 @@ function renderBonusesInNobles(bonusesNeeded, $template){
 
 }
 
-export { renderMarket, renderNobles };
+function renderPickableNobles(nobles){
+
+}
+
+export { renderMarket, renderNobles, renderPickableNobles };

@@ -1,6 +1,9 @@
+import renderPickableNobles from "./renderer.js";
+
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
     if (nobleCheck){
-        nobleVisualCheck(unclaimedNobles, currentPlayerInfo)
+        const pickableNobles = nobleVisualCheck(unclaimedNobles, currentPlayerInfo);
+        renderPickableNobles(pickableNobles); 
     }
 }
 
@@ -9,13 +12,14 @@ function nobleVisualCheck(nobles, playerInfo){
     const playerBonuses = playerInfo.bonuses;
     const qualifiedNobles = [];
     nobles.forEach(noble => {
-        const bonusNeeded = noble.neededBonuses;
         if (nobleQualification(noble.neededBonuses, playerBonuses)){
             qualifiedNobles.push(noble);
         }
 
         
     });
+
+    return qualifiedNobles;
     
 
 }
