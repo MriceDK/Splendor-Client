@@ -39,7 +39,7 @@ function nobleQualification(nobleRequirements, playerBonuses){
 function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
     const $pickableNobles = document.querySelectorAll(".pickable-nobles");
     $pickableNobles.forEach( pickableNoble => {
-        pickableNoble.addEventListener("click", getNobleToInventory(gameId, playerName, pickableNoble));
+        pickableNoble.addEventListener("click", getNobleToInventory(gameId, playerName, noble));
     }); 
 
 }
@@ -50,7 +50,15 @@ function getNobleToInventory(gameId, playerName, noble){
         "name": noble.name,
         "prestigePoints": noble.prestigePoints,
         "neededBonuses":noble.neededBonuses
-    }
+    };
     APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body)
+    removePickableFromNobles();
+}
+
+function removePickableFromNobles(){
+    const $pickableNobles = document.querySelectorAll(".pickable-noble");
+    $pickableNobles.forEach(pickableNoble => {
+        pickableNoble.classList.remove("pickable-noble")
+    });
 }
 export {nobleCheck, hookUpEventListenersOnPickableNoble}
