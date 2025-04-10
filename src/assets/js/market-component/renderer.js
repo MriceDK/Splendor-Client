@@ -1,4 +1,5 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
+import hookUpEventListenersOnPickableNobles from "./handler.js";
 
 function renderMarket(gameInfo, isActive) {
     const $target= document.querySelector(".market-grid-container");
@@ -66,5 +67,10 @@ function nameChecker(noble, $allNobles){
             aNoble.classList.add("pickable-noble");
         }
     });
+
+    hookUpEventListenersOnPickableNobles();
 }
+
+
+
 export { renderMarket, renderNobles, renderPickableNobles };

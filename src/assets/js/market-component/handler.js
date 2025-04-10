@@ -1,5 +1,6 @@
 import renderPickableNobles from "./renderer.js";
 
+
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
     if (nobleCheck){
         const pickableNobles = nobleVisualCheck(unclaimedNobles, currentPlayerInfo);
@@ -34,3 +35,8 @@ function nobleQualification(nobleRequirements, playerBonuses){
     return true; 
 
 }
+
+function hookUpEventListenersOnPickableNobles(){
+
+}
+export {nobleCheck, hookUpEventListenersOnPickableNobles}
