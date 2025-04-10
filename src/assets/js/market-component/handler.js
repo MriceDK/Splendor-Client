@@ -44,4 +44,13 @@ function hookUpEventListenersOnPickableNobles(){
 
 }
 
+function getNobleToInventory(gameId, playerName, noble){
+
+    const body = {
+        "name": noble.name,
+        "prestigePoints": noble.prestigePoints,
+        "neededBonuses":noble.neededBonuses
+    }
+    APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body)
+}
 export {nobleCheck, hookUpEventListenersOnPickableNobles}
