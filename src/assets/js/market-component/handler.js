@@ -36,10 +36,10 @@ function nobleQualification(nobleRequirements, playerBonuses){
 
 }
 
-function hookUpEventListenersOnPickableNobles(){
+function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
     const $pickableNobles = document.querySelectorAll(".pickable-nobles");
     $pickableNobles.forEach( pickableNoble => {
-        pickableNoble.addEventListener("click", getNobleToInventory);
+        pickableNoble.addEventListener("click", getNobleToInventory(gameId, playerName, pickableNoble));
     }); 
 
 }
@@ -53,4 +53,4 @@ function getNobleToInventory(gameId, playerName, noble){
     }
     APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body)
 }
-export {nobleCheck, hookUpEventListenersOnPickableNobles}
+export {nobleCheck, hookUpEventListenersOnPickableNoble}

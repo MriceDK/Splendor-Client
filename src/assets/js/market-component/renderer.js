@@ -1,5 +1,5 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
-import hookUpEventListenersOnPickableNobles from "./handler.js";
+import hookUpEventListenersOnPickableNoble from "./handler.js";
 
 function renderMarket(gameInfo, isActive) {
     const $target= document.querySelector(".market-grid-container");
@@ -65,10 +65,12 @@ function nameChecker(noble, $allNobles){
     $allNobles.forEach(aNoble => {
         if (aNoble.innerHTML === noble.name){
             aNoble.classList.add("pickable-noble");
+            aNoble.classList.add(`${noble.name.trim().toLowerCase().split(" ").join("-")}`);
+            hookUpEventListenersOnPickableNoble(gameId, playerName, noble);
         }
     });
 
-    hookUpEventListenersOnPickableNobles();
+    
 }
 
 
