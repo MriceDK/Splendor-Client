@@ -18,11 +18,13 @@ function getGameInfo() {
 function init() {
     getGameInfo()
         .then(res => {
+            const currentPlayer = getCurrentPlayer(res.players, res.currentPlayer);
             ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderNobles(res.unclaimedNobles);
-            nobleCheck(res.pickNobleRequired);
+            
+            nobleCheck(res.pickNobleRequired, res.unclaimedNobles, res.currentPlayer);
             checkTooMuchGems(res.players, res.currentPlayer);
             
             
@@ -35,6 +37,15 @@ function init() {
         })
 
         
+ }
+
+ function getCurrentPlayer(players, currentPlayer){
+    players.forEach(player => {
+        if (player.name === currentPlayer){
+            return player;
+        }
+        
+    });
  }
 
  init();
