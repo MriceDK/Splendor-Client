@@ -6,10 +6,20 @@ function ownPlayerCardRenderer(gameInfo){
     const $playerCard = document.querySelector("#own-player-card");
     $playerCard.querySelector("#own-username").textContent = ownPlayer.name;
     $playerCard.querySelector("#own-prestige-points").textContent = ownPlayer.totalPrestigePoints;
-    //$playerCard.querySelector("#nobles").insertAdjacentHTML("beforeend", ownPlayer.acquiredNobles);
+    Object.entries(ownPlayer.acquiredNobles).forEach(noble => renderAcquiredNoble(noble));
     Object.entries(ownPlayer.tokens).forEach(token => renderOwnTokenValue(token));
     Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
     $playerCard.querySelector("#own-reservated-cards").insertAdjacentHTML("beforeend", ownPlayer.reserve);
+
+}
+
+function renderAcquiredNoble(noble){
+    const $noblesDiv = document.querySelector("#noble");
+    const $noblesTemplate = document.querySelector(".noble-template").content.firstElementChild.cloneNode(true);
+    $noblesTemplate.querySelector(".noble-name").innerHTML = noble.name;
+    $noblesTemplate.querySelector(".noble-prestige-points-given").innerHTML = noble.prestigePoints;
+
+    $noblesDiv.insertAdjacentHTML("beforeend", $noblesTemplate.outerHTML);
 
 }
 
