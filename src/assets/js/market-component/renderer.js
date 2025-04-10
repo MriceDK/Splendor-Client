@@ -26,7 +26,7 @@ function renderLevelCard(level, cardStackSize, $target) {
     $target.insertAdjacentHTML("beforeend", $levelCard.outerHTML);
 }
 
-function renderNobles( nobles){
+function renderNobles(nobles){
     const $target = document.querySelector(".noble-container");
 
     const $template = document.querySelector(".noble").content.firstElementChild.cloneNode(true);

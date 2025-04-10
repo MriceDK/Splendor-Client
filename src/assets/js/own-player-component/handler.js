@@ -17,4 +17,4 @@ function getOwnPlayerInfo(gameinfo){
     return null;
 }
 
-export { getOwnPlayerInfo, nobleCheck};
+export {getOwnPlayerInfo};
