@@ -39,15 +39,15 @@ function renderNobles(nobles){
         renderBonusesInNobles(noble.neededBonuses, $template);
         
     });
-    $target.insertAdjacentElement("afterbegin", $template.outerHTML);
+    $target.insertAdjacentHTML("afterbegin", $template.outerHTML);
 
 }
 
 function renderBonusesInNobles(bonusesNeeded, $template){
-    bonusesNeeded.forEach(bonusNeeded => {
+    Object.entries(bonusesNeeded).forEach(([bonusNeeded, bonusValue]) => {
         const $bonus = $template.querySelector(".bonus-cost");
         $bonus.classList.add(bonusNeeded.toLowerCase());
-        $bonus.innerHTML = bonusesNeeded[bonusNeeded];
+        $bonus.innerHTML = bonusValue;
     });
 
 }
