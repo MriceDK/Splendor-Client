@@ -26,7 +26,7 @@ function countTotalTokens(allTokens) {
 }
 
 function checkTooMuchGemsHelp(player) {
-    let tokensOfPlayer = countTotalTokens(player.tokens);
+    const tokensOfPlayer = countTotalTokens(player.tokens);
     if (tokensOfPlayer > MAX_TOKENS) {
         renderTooManyGemsPopUp(player.tokens);
         formGemChecker(player);

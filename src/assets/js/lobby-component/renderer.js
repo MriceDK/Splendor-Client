@@ -9,7 +9,7 @@ function dataListFromApi(data) {
 }
 
 function lobbyName(lobbyName) {
-    let $titleElement = document.querySelector("#title");
+    const $titleElement = document.querySelector("#title");
     $titleElement.innerHTML = ``;
 
     if (lobbyName === null || lobbyName === "") {
