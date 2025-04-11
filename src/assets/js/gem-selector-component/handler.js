@@ -36,8 +36,9 @@ function buyDevelopmentCard(e) {
 
 
     }).catch(err => {
+        immediateNobleCheckAfterBuy();
         ErrorHandler.handleError(err);
-        setTimeout(immediateNobleCheckAfterBuy, 100);
+     
     });
 
 }
@@ -61,8 +62,8 @@ function buyReservedDevelopmentCard(e) {
         immediateNobleCheckAfterBuy();
 
     }).catch(err => {
+        immediateNobleCheckAfterBuy();
         ErrorHandler.handleError(err);
-        setTimeout(immediateNobleCheckAfterBuy, 100);
     });
     // TODO: Fix this implementation of the checkTooMuchGems function
 }

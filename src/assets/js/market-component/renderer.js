@@ -33,6 +33,7 @@ function renderNobles(nobles){
     const $template = document.querySelector("#noble").content.firstElementChild.cloneNode(true);
 
     nobles.forEach(noble => {
+        console.log(noble);
 
         $template.querySelector(".noble-name").innerHTML = noble.name;
         $template.querySelector(".prestige-points").innerHTML = noble.prestigePoints;
@@ -44,12 +45,13 @@ function renderNobles(nobles){
 }
 
 function renderBonusesInNobles(bonusesNeeded, $template){
-    Object.entries(bonusesNeeded).forEach(([bonusNeeded, bonusValue]) => {
-        const $bonus = $template.querySelector(".bonus-cost");
-        $bonus.classList.add(bonusNeeded.toLowerCase());
-        $bonus.innerHTML = bonusValue;
-    });
 
+    const $ul = $template.querySelector(".bonus-costs");
+    Object.entries(bonusesNeeded).forEach(([bonusNeeded, bonusValue]) =>
+        {
+            $ul.insertAdjacentHTML("beforeend", `<li class= "${bonusNeeded.toLowerCase()}">${bonusValue}</li>`);
+
+        });
 }
 
 function renderPickableNobles(nobles){
