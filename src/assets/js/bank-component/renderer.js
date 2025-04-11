@@ -2,6 +2,9 @@ import * as handler from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import { UppercaseFirstLetterOfWord } from "../helper/utils.js";
+import {checkedForTooManyGems, checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
+import {getGameInfo} from "../API/api.js";
+import { renderOwnTokenValue} from "../own-player-component/renderer.js";
 
 const chosenBankTokens = {
     Ruby: 0,
@@ -102,7 +105,17 @@ function collectTokens(){
         "take": chosenBankTokens
     }
 
-    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData).then(r => r);
+    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData).then(tokens => {
+        checkTooMuchGems(tokens);
+        Object.entries(tokens).forEach((token) => {
+            renderOwnTokenValue(token);
+
+        });
+
+    });
+
+    // TODO FIX THIS SHITT Y GKINGS CODFE WRITTEN BY MY CUTIE
+
 
     enableOrDisableBank(playerName);
     handler.closeBank();

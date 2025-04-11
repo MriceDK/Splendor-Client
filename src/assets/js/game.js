@@ -15,17 +15,12 @@ function init() {
             ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
             renderOpponentsStats(res.players);
             renderMarket(res);
-            checkTooMuchGems(res.players, res.currentPlayer);
-                // TODO (not a must have) render nobles
-            // TODO render token bank
+
+            // TODO (not a must have) render nobles
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
-            handleDisabledPlayerFunctionalities(res.currentPlayer, res.players);
-            document.querySelector("#too-many-gems-pop-up-form").addEventListener("submit", updateGemsAfterTooMuch(res.gameId, res.currentPlayer, res.players));
-
         })
 
-        
  }
 
  init();

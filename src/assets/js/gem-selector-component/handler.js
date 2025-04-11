@@ -2,6 +2,9 @@ import * as Utils from "../helper/utils.js";
 import * as ErrorHandler from "../data-connector/error-handler.js";
 import * as API from "../API/api.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";
+import {checkedForTooManyGems, checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
+import {getGameInfo} from "../API/api.js";
+import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -12,12 +15,17 @@ function buyDevelopmentCard(e) {
     const gemCost = getGemCostObject($form);
 
     const body = createBuyCardBody(devCardName, gemCost);
-    API.buyDevelopmentCardRequest(body).then(() => {
+    API.buyDevelopmentCardRequest(body).then(buyResponse => {
         closePopUp();
-    })
-        .catch(err => {
-            ErrorHandler.handleError(err);
+        checkTooMuchGems(buyResponse.tokens);
+        Object.entries(buyResponse.tokens).forEach((token) => {
+            renderOwnTokenValue(token);
         });
+
+        }).catch(err => {
+                ErrorHandler.handleError(err);
+            });
+
 }
 
 function buyReservedDevelopmentCard(e) {
@@ -31,10 +39,17 @@ function buyReservedDevelopmentCard(e) {
     const body = createBuyReservedCardBody(gemCost);
     API.buyReservedCard(devCardName, body).then(() => {
         closePopUp();
-    })
-        .catch(err => {
-            ErrorHandler.handleError(err);
-        });
+    }).catch(err => {
+        ErrorHandler.handleError(err);
+    });
+    // voordat je de actie uitvoert moeje checken of je niet te veel tokens hebt
+    // als je te veel tokens hebt moet je de pop up laten zien
+    // dan controleren of je de tokens hebt verwijderd
+    // als je de tokens hebt verwijderd moet je de actie uitvoeren
+    // als je niet te veel tokens hebt kan je de actie uitvoere
+    // dan moet je de pop up sluiten
+
+
 }
 
 function createBuyCardBody(devCardName, gemCost) {

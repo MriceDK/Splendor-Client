@@ -1,62 +1,75 @@
 import { renderTooManyGemsPopUp } from "../renderer.js";
 import * as APIAbstractor from "../../data-connector/api-communication-abstractor.js"
-function checkTooMuchGems(playersInfos, currentPlayer){
-    playersInfos.forEach(player => {
-        if (player.name === currentPlayer){
-            checkTooMuchGemsHelp(player);
+import * as LocalStorageAbstractor from "../../data-connector/local-storage-abstractor.js";
+import {UppercaseFirstLetterOfWord} from "../../helper/utils.js";
 
-        }
-        
+const MAX_TOKENS = 10;
+let CHECKED = false;
+
+// function checkTooMuchGemsHelp(playersInfos, currentPlayer){
+//     CHECKED = false;
+//     playersInfos.forEach(player => {
+//         if (player.name === currentPlayer){
+//             checkTooMuchGemsHelp(player);
+//
+//         }
+//
+//     });
+//
+// }
+// TODO: Implement this functionality later not import RN
+function countTotalTokens(allTokens) {
+    let tokensOfPlayer = 0;
+
+    Object.entries(allTokens).forEach(([key, value]) => {
+        tokensOfPlayer += parseInt(value);
     });
-    
+    return tokensOfPlayer;
 }
 
-function checkTooMuchGemsHelp(player){
-    let tokensOfPlayer = 0;
-    players.tokens.forEach(token => {
-        tokensOfPlayer += player.tokens[token];
-
-    });
-    if (tokensOfPlayer > 10){
-        renderTooManyGemsPopUp();
-        formGemChecker();
+function checkTooMuchGems(allTokens){
+    let tokensOfPlayer = countTotalTokens(allTokens);
+    if (tokensOfPlayer > MAX_TOKENS){
+        renderTooManyGemsPopUp(player.tokens);
+        formGemChecker(player);
+    } else {
+        CHECKED = true;
     }
 }
 
-function formGemChecker(){
+function formGemChecker(player){
     const gemsCount = countGems();
-    if (gemsCount > 10){
+    if (gemsCount > MAX_TOKENS){
         document.querySelector("#gem-remover-button").disabled = true;
-        setTimeout(formGemChecker, 500);
     } else {
         document.querySelector("#gem-remover-button").disabled = false;
+        document.querySelector("#too-many-gems-pop-up-form").addEventListener("submit", e => {
+            e.preventDefault();
+            updateGemsAfterTooMuch(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
+                document.querySelector("#too-many-gems-pop-up-form").remove();
+                CHECKED = true;
+            });
+        });
     }
-    
+    if (document.querySelector("#too-many-gems-pop-up-form")) {
+        setTimeout(() => formGemChecker(player), 1000);
+    }
 }
 
 function countGems(){
     const allGems = document.querySelectorAll(".gem-remover-input");
     let count = 0;
     allGems.forEach(gem => {
-        count += gem.getAttribute("value");
+        count += parseInt(gem.value);
     });
     return count;
 }
 
 
-function updateGemsAfterTooMuch(gameId, playerName, players){
-    let currentPlayerObject = null;
-    players.forEach(player => {
-        if (player.name === playerName){
-            currentPlayerObject = player;
-            
-        }
-    });  
-   
+function updateGemsAfterTooMuch(gameId, player){
     const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
-
-    APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body);
+    return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${player.name}/tokens`, "PATCH", body);
 
 
 }
@@ -64,19 +77,20 @@ function updateGemsAfterTooMuch(gameId, playerName, players){
 function getDiffTokensObject(tokens){
     const returnObject = {};
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
-    $tokensForm.forEach(token => { 
-        returnObject[token.getAttribute("name")] = purse[token.getAttribute("name")] - token.getAttribute("value");
-        
+    $tokensForm.forEach(token => {
+        const tokenName = UppercaseFirstLetterOfWord(token.getAttribute("name"));
+        returnObject[tokenName] = tokens[tokenName] - parseInt(token.value);
     });
-
     return returnObject;
 }
 
-function returnTokensBody(tokens){
-    returnObj = {};
-    tokens.forEach(token => {
-        if (valueToReturn > 0){
-            returnObj[token] = valueToReturn;
+function returnTokensBody(tokensToReturn){
+    const returnObj = {};
+    Object.entries(tokensToReturn).forEach(token => {
+        const tokenName = token[0];
+        const tokenValue = tokensToReturn[tokenName];
+        if (tokenValue > 0){
+            returnObj[tokenName.toString()] = tokenValue;
         }
 
     });
@@ -85,4 +99,8 @@ function returnTokensBody(tokens){
         
     };
 }
-export { checkTooMuchGems, updateGemsAfterTooMuch }
+
+function checkedForTooManyGems() {
+    return CHECKED;
+}
+export { checkTooMuchGems, updateGemsAfterTooMuch, checkedForTooManyGems}

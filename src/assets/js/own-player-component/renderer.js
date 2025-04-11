@@ -23,10 +23,12 @@ function renderOwnBonusValue(bonus){
 
 function renderTooManyGemsPopUp(playerTokens){
     const $tooMuchGemsTemplate = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);
-    const $target = document.querySelector("#too-many-gems-pop-up-result");
+    const $target = document.querySelector(".popup-container");
+    $target.innerHTML = "";
+    $target.classList.remove("hidden");
     Object.entries(playerTokens).forEach(token => putInitalValue($tooMuchGemsTemplate, token));
 
-    $target.insertAdjacentElement("beforeend", $tooMuchGemsTemplate.outerHTML);
+    $target.insertAdjacentHTML("beforeend", $tooMuchGemsTemplate.outerHTML);
 
 
 }
@@ -37,4 +39,4 @@ function putInitalValue($tooMuchGemsTemplate, token){
     
 }
 
-export { ownPlayerCardRenderer, renderTooManyGemsPopUp }
+export { ownPlayerCardRenderer, renderTooManyGemsPopUp, renderOwnTokenValue }
