@@ -1,21 +1,11 @@
-
-function renderDevelopmentCards(cards, $target, isActive) {
+function renderDevelopmentCards(cards, $target) {
     cards.forEach(card => {
-        renderDevelopmentCard(card, $target, isActive);
+        renderDevelopmentCard(card, $target);
     });
 }
 
-function renderDevelopmentCard(card, $target, isActive) {
+function renderDevelopmentCard(card, $target) {
     const $devCard = document.querySelector("#development-card").content.firstElementChild.cloneNode(true);
-
-    if (isActive){
-        $devCard.classList.remove("inactive");
-        $devCard.classList.add("active");
-        
-    } else {
-        $devCard.classList.remove("active");
-        $devCard.classList.add("inactive");
-    }
 
     $devCard.classList.add(`level-${card.level}`);
     $devCard.setAttribute("data-card-name", card.name);

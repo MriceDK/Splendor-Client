@@ -6,13 +6,15 @@ import * as localStorageAbstractor from "../data-connector/local-storage-abstrac
 
 
 function loadUserInformation() {
-    render.renderOwnUserName(localStorageAbstractor.loadFromStorage("playerName"));
+    render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
 
 function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
-        .then((json) => {handleFilters(helper.addGameNames(json.games))
-        setTimeout(getMatchingGames, 1000)})
+        .then((json) => {
+            handleFilters(helper.addGameNames(json.games));
+            setTimeout(getMatchingGames, 1000);
+        })
         .catch(errorHandler.handleError);
 }
 
@@ -55,7 +57,7 @@ function matchesJoinabilityFilter(game, showFull, showJoinable) {
 function matchesPlayerCountFilter(game, showAmountOfPlayers) {
     if (showAmountOfPlayers === "isAny") {
         return true;
-    }else {
+    } else {
         return game.numberOfPlayers === parseInt(showAmountOfPlayers);
     }
 }
@@ -85,20 +87,13 @@ function handleLobbyJoinClick(e) {
 }
 
 function addPlayerToGame(joinGameId) {
-    const playerName = localStorageAbstractor.loadFromStorage("playerName")
+    const playerName = localStorageAbstractor.loadFromStorage("playerName");
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
         .then(res => {
-            localStorageAbstractor.saveToStorage("playerToken", res["playerToken"])
+            localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
             window.location.assign("./lobby.html");
         })
         .catch(errorHandler.handleError);
-
-    // TODO: Remove const response. Temp value for template
-    const response = {
-        "gameId": 23,
-        "playerName": "Anna",
-        "playerToken": "23_Anna"
-    }
 }
 
-export { getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
+export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};

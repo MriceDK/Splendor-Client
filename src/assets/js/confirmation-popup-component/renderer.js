@@ -1,5 +1,4 @@
-
-function renderBuyDevelopmentCardPopup(cardName){
+function renderBuyDevelopmentCardPopup(cardName) {
     const $template = document.querySelector("#buy-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
 
@@ -10,7 +9,7 @@ function renderBuyDevelopmentCardPopup(cardName){
 
 }
 
-function renderReserveDevelopmentCardPopup(cardLevel){
+function renderReserveDevelopmentCardPopup(cardLevel) {
     const $template = document.querySelector("#reserve-deck-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
 
@@ -21,7 +20,7 @@ function renderReserveDevelopmentCardPopup(cardLevel){
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
 
-function renderBuyAndReserveDevelopmentCardPopUp(cardName){
+function renderBuyAndReserveDevelopmentCardPopUp(cardName) {
     const $template = document.querySelector("#buy-or-reserve-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
 
@@ -33,7 +32,7 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName){
 
 }
 
-function closePopUp(){
+function closePopUp() {
     const $popupContainer = document.querySelector(".popup-container");
     $popupContainer.classList.add("hidden");
     if ($popupContainer.hasAttribute("data-pop-up-type")) {
@@ -42,4 +41,9 @@ function closePopUp(){
     $popupContainer.innerHTML = "";
 }
 
-export { renderBuyAndReserveDevelopmentCardPopUp, renderBuyDevelopmentCardPopup, renderReserveDevelopmentCardPopup, closePopUp}
+export {
+    renderBuyAndReserveDevelopmentCardPopUp,
+    renderBuyDevelopmentCardPopup,
+    renderReserveDevelopmentCardPopup,
+    closePopUp
+};

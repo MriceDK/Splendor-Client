@@ -1,6 +1,5 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
-import {saveToStorage} from "../data-connector/local-storage-abstractor.js";
+import {loadFromStorage, saveToStorage} from "../data-connector/local-storage-abstractor.js";
 
 function createLobby(e) {
     e.preventDefault();
@@ -10,9 +9,9 @@ function createLobby(e) {
 
     const lobbyName = document.querySelector("#lobby-name").value;
     const playerAmount = document.querySelector(".radio-option input:checked").value;
-    const username = loadFromStorage("playerName");
+    const playername = loadFromStorage("playerName");
 
-    const body = createBody(lobbyName, playerAmount, username);
+    const body = createBody(lobbyName, playerAmount, playername);
 
     APIAbstractor.fetchFromServer("/games", "POST", body)
         .then(res => {
@@ -23,12 +22,12 @@ function createLobby(e) {
         });
 }
 
-function createBody(lobbyName, playerAmount, username) {
+function createBody(lobbyName, playerAmount, playername) {
 
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
-        "playerName": username
-    }
+        "playerName": playername
+    };
 
     if (!(lobbyName === "" || lobbyName == null)) {
         body.gameName = lobbyName;
@@ -42,4 +41,4 @@ function disableSubmitButton(target) {
     target.setAttribute("disabled", "true");
 }
 
-export { createLobby };
+export {createLobby};

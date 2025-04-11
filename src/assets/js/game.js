@@ -1,18 +1,12 @@
-import * as APIAbstractor from "./data-connector/api-communication-abstractor.js";
 import {renderOpponentsStats} from "./opponent-card-component/renderer.js";
 import {renderTokenBank} from "./bank-component/renderer.js";
 import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
 import {renderMarket, renderNobles} from "./market-component/renderer.js";
 import {nobleCheck} from "./market-component/handler.js";
 import {renderActivePlayer} from "./active-player-component/renderer.js";
-import { handleDisabledPlayerFunctionalities } from "./inactive-player-component/handler.js"
-import * as LocalStorageAbstractor from "./data-connector/local-storage-abstractor.js";
-import { checkTooMuchGems, updateGemsAfterTooMuch } from "./own-player-component/gems-overflow-component/handler.js";
+import {getGameInfo} from "./API/api.js";
 
-function getGameInfo() {
-    const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`,"GET")
-}
+// import {checkTooMuchGems} from "./own-player-component/gems-overflow-component/handler.js";
 
 
 function init() {
@@ -31,15 +25,13 @@ function init() {
             // TODO render token bank
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
-            handleDisabledPlayerFunctionalities(res.currentPlayer, res.players);
-            document.querySelector("#too-many-gems-pop-up-form").addEventListener("submit", updateGemsAfterTooMuch(res.gameId, res.currentPlayer, res.players));
+            // checkTooMuchGems(res.players, res.currentPlayer);
+            // TODO: ask how to implement this function
+        });
 
-        })
+}
 
-        
- }
-
- function getCurrentPlayer(players, currentPlayer){
+function getCurrentPlayer(players, currentPlayer){
     players.forEach(player => {
         if (player.name === currentPlayer){
             return player;
