@@ -4,14 +4,9 @@ import {renderTokenBank} from "./bank-component/renderer.js";
 import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
 import {renderMarket} from "./market-component/renderer.js";
 import {renderActivePlayer} from "./active-player-component/renderer.js";
-import { handleDisabledPlayerFunctionalities } from "./inactive-player-component/handler.js"
-import * as LocalStorageAbstractor from "./data-connector/local-storage-abstractor.js";
-import { checkTooMuchGems, updateGemsAfterTooMuch } from "./own-player-component/gems-overflow-component/handler.js";
+import {getGameInfo} from "./API/api.js";
 
-function getGameInfo() {
-    const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`,"GET")
-}
+
 
 
 function init() {

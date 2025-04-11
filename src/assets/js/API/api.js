@@ -25,5 +25,10 @@ function buyReservedCard(cardName, body) {
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve/${cardName}`, "DELETE", body)
 }
 
+function getGameInfo() {
+    const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
+    return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`,"GET")
+}
 
-export { reserveCard, buyDevelopmentCardRequest, buyReservedCard};
+
+export { reserveCard, buyDevelopmentCardRequest, buyReservedCard, getGameInfo};
