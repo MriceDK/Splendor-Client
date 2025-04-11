@@ -5,7 +5,7 @@ function showSettingsScreen() {
 
 function hideSettingsScreen() {
     document.querySelector(".popup").classList.add("hidden");
-    document.querySelector(".forfeit-popup").classList.add("hidden")
+    document.querySelector(".forfeit-popup").classList.add("hidden");
     document.querySelector(".popup-container").classList.add("hidden");
 }
 

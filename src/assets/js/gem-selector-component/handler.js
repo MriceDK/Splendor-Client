@@ -70,10 +70,10 @@ function getGemCostObject($form) {
     const obj = {};
 
     $inputs.forEach($input => {
-        const gemName = Utils.UppercaseFirstLetterOfWord($input.name);
+        const gemName = Utils.uppercaseFirstLetterOfWord($input.name);
 
         obj[gemName] = parseInt($input.value);
-    })
+    });
 
     return obj;
 }

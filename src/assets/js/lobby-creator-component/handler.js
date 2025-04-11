@@ -1,6 +1,5 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
-import {saveToStorage} from "../data-connector/local-storage-abstractor.js";
+import {loadFromStorage, saveToStorage} from "../data-connector/local-storage-abstractor.js";
 
 function createLobby(e) {
     e.preventDefault();
@@ -28,7 +27,7 @@ function createBody(lobbyName, playerAmount, username) {
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
         "playerName": username
-    }
+    };
 
     if (!(lobbyName === "" || lobbyName == null)) {
         body.gameName = lobbyName;

@@ -1,7 +1,7 @@
 import {renderTooManyGemsPopUp} from "../renderer.js";
 import * as APIAbstractor from "../../data-connector/api-communication-abstractor.js";
 import * as LocalStorageAbstractor from "../../data-connector/local-storage-abstractor.js";
-import {UppercaseFirstLetterOfWord} from "../../helper/utils.js";
+import {uppercaseFirstLetterOfWord} from "../../helper/utils.js";
 
 const MAX_TOKENS = 10;
 
@@ -73,7 +73,7 @@ function getDiffTokensObject(tokens) {
     const returnObject = {};
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
     $tokensForm.forEach(token => {
-        const tokenName = UppercaseFirstLetterOfWord(token.getAttribute("name"));
+        const tokenName = uppercaseFirstLetterOfWord(token.getAttribute("name"));
         returnObject[tokenName] = tokens[tokenName] - parseInt(token.value);
     });
     return returnObject;

@@ -1,7 +1,7 @@
 import * as handler from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import {UppercaseFirstLetterOfWord} from "../helper/utils.js";
+import {uppercaseFirstLetterOfWord} from "../helper/utils.js";
 import {checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 
@@ -82,7 +82,7 @@ function removeTokenBorders() {
     const $tokenBanks = document.querySelectorAll(".token-bank button");
     $tokenBanks.forEach($tokenBank => {
         $tokenBank.classList.remove("clickable");
-    })
+    });
 }
 
 function setTokenMarketValues(gameInfo) {
@@ -102,7 +102,7 @@ function collectTokens() {
     const playerName = loadFromStorage("playerName");
     const tokenData = {
         "take": chosenBankTokens
-    }
+    };
 
     APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData).then(tokens => {
         checkTooMuchGems(tokens);
@@ -189,13 +189,13 @@ function isLegalToken(token) {
 function checkMaxThreeTokens(numberOfChosenTokens) {
     const maxChosenTokens = 3;
 
-    return numberOfChosenTokens < maxChosenTokens
+    return numberOfChosenTokens < maxChosenTokens;
 }
 
 function checkMaxTwoOfSameColour() {
     const maxChosenTokensSameColour = 2;
 
-    return !Object.values(chosenBankTokens).includes(maxChosenTokensSameColour)
+    return !Object.values(chosenBankTokens).includes(maxChosenTokensSameColour);
 }
 
 function checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem) {
@@ -213,7 +213,7 @@ function removeChosenTokens() {
     document.querySelector(".selected-tokens").innerHTML = "";
     for (const [key, value] of Object.entries(chosenBankTokens)) {
         for (let i = 0; i < value; i++) {
-            const uppercasedKey = UppercaseFirstLetterOfWord(key);
+            const uppercasedKey = uppercaseFirstLetterOfWord(key);
             updateToken(uppercasedKey, false);
         }
     }

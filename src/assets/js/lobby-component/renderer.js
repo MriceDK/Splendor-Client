@@ -37,7 +37,7 @@ function renderUsersLoop(userArray, data) {
         $copy.textContent = user;
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
-    })
+    });
     renderLobbyAmount(userArray.length, data.numberOfPlayers);
 }
 

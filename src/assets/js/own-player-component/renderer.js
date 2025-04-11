@@ -1,4 +1,4 @@
-import * as getOwnInfo from "./handler.js"
+import * as getOwnInfo from "./handler.js";
 
 function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);

@@ -1,4 +1,4 @@
-import {changePlayerName} from "./handler.js"
+import {changePlayerName} from "./handler.js";
 
 function init() {
 
@@ -6,4 +6,4 @@ function init() {
 
 }
 
-init()
+init();

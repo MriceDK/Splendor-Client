@@ -4,8 +4,8 @@ import * as renderer from "./renderer.js";
 
 function loadJoinedGame() {
 
-    const gameId = storageAbstractor.loadFromStorage("gameId")
-    const playerToken = storageAbstractor.loadFromStorage("playerToken")
+    const gameId = storageAbstractor.loadFromStorage("gameId");
+    const playerToken = storageAbstractor.loadFromStorage("playerToken");
 
     if (gameId !== null) {
         getGameDetailsForGameId(gameId, playerToken);
