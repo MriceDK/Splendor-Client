@@ -2,7 +2,7 @@ import * as handler from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../helper/utils.js";
-import {checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
+import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 
 const chosenBankTokens = {
@@ -105,7 +105,7 @@ function collectTokens() {
     };
 
     APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", tokenData).then(tokens => {
-        checkTooMuchGems(tokens);
+        checkTooManyTokens(tokens);
         Object.entries(tokens).forEach((token) => {
             renderOwnTokenValue(token);
 

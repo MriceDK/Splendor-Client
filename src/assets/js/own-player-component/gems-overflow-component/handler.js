@@ -5,7 +5,7 @@ import {uppercaseFirstLetterOfWord} from "../../helper/utils.js";
 
 const MAX_TOKENS = 10;
 
-function checkTooMuchGems(playersInfos, currentPlayer) {
+function checkTooManyTokens(playersInfos, currentPlayer) {
     playersInfos.forEach(player => {
         if (player.name === currentPlayer) {
             checkTooMuchGemsHelp(player);
@@ -95,4 +95,4 @@ function returnTokensBody(tokensToReturn) {
     };
 }
 
-export {checkTooMuchGems, updateGemsAfterTooMuch};
+export {checkTooManyTokens, updateGemsAfterTooMuch};
