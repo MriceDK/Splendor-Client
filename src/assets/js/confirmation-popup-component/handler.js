@@ -55,7 +55,6 @@ function handlePopUpClicks(e) {
         }
     } else if (e.target.closest(".cancel-pop-up-button")) {
         const cardName = document.querySelector(".selected-card").dataset.cardName;
-        isCardLevel = false;
         if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
             helper.reserveCard(cardName, isCardLevel);
         }
