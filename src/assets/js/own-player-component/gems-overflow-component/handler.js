@@ -4,36 +4,31 @@ import * as LocalStorageAbstractor from "../../data-connector/local-storage-abst
 import {UppercaseFirstLetterOfWord} from "../../helper/utils.js";
 
 const MAX_TOKENS = 10;
-let CHECKED = false;
 
-// function checkTooMuchGemsHelp(playersInfos, currentPlayer){
-//     CHECKED = false;
-//     playersInfos.forEach(player => {
-//         if (player.name === currentPlayer){
-//             checkTooMuchGemsHelp(player);
-//
-//         }
-//
-//     });
-//
-// }
-// TODO: Implement this functionality later not import RN
+function checkTooMuchGems(playersInfos, currentPlayer){
+    playersInfos.forEach(player => {
+        if (player.name === currentPlayer){
+            checkTooMuchGemsHelp(player);
+
+        }
+    });
+
+}
+// TODO: Implement this functionality later not important RN
 function countTotalTokens(allTokens) {
     let tokensOfPlayer = 0;
 
-    Object.entries(allTokens).forEach(([key, value]) => {
+    Object.entries(allTokens).forEach(([_, value]) => {
         tokensOfPlayer += parseInt(value);
     });
     return tokensOfPlayer;
 }
 
-function checkTooMuchGems(allTokens){
-    let tokensOfPlayer = countTotalTokens(allTokens);
-    if (tokensOfPlayer > MAX_TOKENS){
+function checkTooMuchGemsHelp(player){
+    let tokensOfPlayer = countTotalTokens(player.tokens);
+    if (tokensOfPlayer > MAX_TOKENS) {
         renderTooManyGemsPopUp(player.tokens);
         formGemChecker(player);
-    } else {
-        CHECKED = true;
     }
 }
 
@@ -47,7 +42,6 @@ function formGemChecker(player){
             e.preventDefault();
             updateGemsAfterTooMuch(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
                 document.querySelector("#too-many-gems-pop-up-form").remove();
-                CHECKED = true;
             });
         });
     }
@@ -99,8 +93,4 @@ function returnTokensBody(tokensToReturn){
         
     };
 }
-
-function checkedForTooManyGems() {
-    return CHECKED;
-}
-export { checkTooMuchGems, updateGemsAfterTooMuch, checkedForTooManyGems}
+export { checkTooMuchGems, updateGemsAfterTooMuch}
