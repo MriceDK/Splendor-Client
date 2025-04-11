@@ -12,14 +12,11 @@ import {getGameInfo} from "./API/api.js";
 function init() {
     getGameInfo()
         .then(res => {
-            const currentPlayer = getCurrentPlayer(res.players, res.currentPlayer);
             ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderNobles(res.unclaimedNobles);
-            
-            nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);
-            
+
             
             // TODO render token bank
             renderTokenBank(res);
@@ -40,3 +37,5 @@ function getCurrentPlayer(players, currentPlayer){
  }
 
  init();
+
+ export {getCurrentPlayer};
