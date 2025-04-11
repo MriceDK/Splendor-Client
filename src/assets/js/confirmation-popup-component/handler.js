@@ -11,7 +11,7 @@ function handleClickOnCard(e) {
         render.renderBuyDevelopmentCardPopup(cardName);
 
     } else if (e.target.classList.contains("deck") && !e.target.classList.contains("disabled")) {
-        const cardLevel = parseInt(e.target.dataset.level)
+        const cardLevel = parseInt(e.target.dataset.level);
         e.target.classList.add("selected-card");
         render.renderReserveDevelopmentCardPopup(cardLevel);
 

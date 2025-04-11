@@ -39,4 +39,4 @@ function putInitalValue($tooMuchGemsTemplate, token) {
 
 }
 
-export {ownPlayerCardRenderer, renderTooManyGemsPopUp, renderOwnTokenValue}
+export {ownPlayerCardRenderer, renderTooManyGemsPopUp, renderOwnTokenValue};

@@ -15,9 +15,9 @@ function loadJoinedGame() {
 function getGameDetailsForGameId(gameId) {
     APIAbstractor.fetchFromServer(`/games/${gameId}`, "GET")
         .then(data => {
-            renderer.dataListFromApi(data)
-            setTimeout(loadJoinedGame, 2000)
+            renderer.dataListFromApi(data);
+            setTimeout(loadJoinedGame, 2000);
         });
 }
 
-export {loadJoinedGame}
+export {loadJoinedGame};

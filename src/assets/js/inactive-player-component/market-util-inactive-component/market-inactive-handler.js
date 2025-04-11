@@ -11,4 +11,4 @@ function handleMarketClickability(clickable) {
     });
 }
 
-export {handleMarketClickability}
+export {handleMarketClickability};

@@ -20,7 +20,7 @@ function init() {
             renderActivePlayer(res.currentPlayer);
             // checkTooMuchGems(res.players, res.currentPlayer);
             // TODO: ask how to implement this function
-        })
+        });
 
 }
 

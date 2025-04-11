@@ -1,5 +1,5 @@
 import {renderTooManyGemsPopUp} from "../renderer.js";
-import * as APIAbstractor from "../../data-connector/api-communication-abstractor.js"
+import * as APIAbstractor from "../../data-connector/api-communication-abstractor.js";
 import * as LocalStorageAbstractor from "../../data-connector/local-storage-abstractor.js";
 import {UppercaseFirstLetterOfWord} from "../../helper/utils.js";
 
@@ -95,4 +95,4 @@ function returnTokensBody(tokensToReturn) {
     };
 }
 
-export {checkTooMuchGems, updateGemsAfterTooMuch}
+export {checkTooMuchGems, updateGemsAfterTooMuch};

@@ -12,8 +12,8 @@ function loadUserInformation() {
 function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
         .then((json) => {
-            handleFilters(helper.addGameNames(json.games))
-            setTimeout(getMatchingGames, 1000)
+            handleFilters(helper.addGameNames(json.games));
+            setTimeout(getMatchingGames, 1000);
         })
         .catch(errorHandler.handleError);
 }
@@ -87,10 +87,10 @@ function handleLobbyJoinClick(e) {
 }
 
 function addPlayerToGame(joinGameId) {
-    const playerName = localStorageAbstractor.loadFromStorage("playerName")
+    const playerName = localStorageAbstractor.loadFromStorage("playerName");
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
         .then(res => {
-            localStorageAbstractor.saveToStorage("playerToken", res["playerToken"])
+            localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
             window.location.assign("./lobby.html");
         })
         .catch(errorHandler.handleError);

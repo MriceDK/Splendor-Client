@@ -31,7 +31,7 @@ function reserveCard(cardLevelorName, reserveFromLevel) {
             if (reserveFromLevel) {
                 console.log(`Card from level ${cardLevelorName} reserved successfully`);
             } else {
-                console.log(`Card from level ${cardLevelorName} reserved successfully`);
+                console.log(`${cardLevelorName} reserved successfully`);
 
             }
             handleReserveCardResponse(response);

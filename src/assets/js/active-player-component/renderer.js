@@ -39,4 +39,4 @@ function disableOwnPlayer() {
     handleMarketClickability(false);
 }
 
-export {renderActivePlayer}
+export {renderActivePlayer};

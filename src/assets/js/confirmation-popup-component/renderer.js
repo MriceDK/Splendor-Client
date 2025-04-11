@@ -46,4 +46,4 @@ export {
     renderBuyDevelopmentCardPopup,
     renderReserveDevelopmentCardPopup,
     closePopUp
-}
+};
