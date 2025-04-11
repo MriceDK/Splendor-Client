@@ -2,8 +2,7 @@ import * as handler from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import { UppercaseFirstLetterOfWord } from "../helper/utils.js";
-import {checkedForTooManyGems, checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
-import {getGameInfo} from "../API/api.js";
+import {checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
 import { renderOwnTokenValue} from "../own-player-component/renderer.js";
 
 const chosenBankTokens = {
@@ -114,7 +113,7 @@ function collectTokens(){
 
     });
 
-    // TODO FIX THIS SHITT Y GKINGS CODFE WRITTEN BY MY CUTIE
+    // TODO: Fix this implementation of the checkTooMuchGems function
 
 
     enableOrDisableBank(playerName);

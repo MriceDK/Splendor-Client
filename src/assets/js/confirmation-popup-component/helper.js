@@ -1,8 +1,7 @@
 import * as api from "../API/api.js";
 import {closePopUp} from "./renderer.js";
 import {handleError} from "../data-connector/error-handler.js";
-import {checkedForTooManyGems, checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
-import {getGameInfo} from "../API/api.js";
+import {checkTooMuchGems} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 
 function checkIfPopUpIsReserveType($popupContainer) {
