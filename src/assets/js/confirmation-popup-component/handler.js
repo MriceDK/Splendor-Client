@@ -37,13 +37,17 @@ function handleClickOnCard(e) {
 
 function handlePopUpClicks(e) {
     const $popupContainer = document.querySelector(".popup-container");
+    let isCardLevel = false;
+
 
     if (e.target.closest(".confirm-pop-up-button")) {
         const cardName = document.querySelector(".selected-card").dataset.cardName;
         const cardLevel = parseInt(document.querySelector(".selected-card").dataset.level);
         const isReservedCard = document.querySelector(".selected-card").classList.contains("reserved");
+
         if (helper.checkIfPopUpIsReserveType($popupContainer)) {
-            helper.reserveCardFromDeck(cardLevel);
+            isCardLevel = true;
+            helper.reserveCard(cardLevel, isCardLevel);
         } else if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer) || helper.checkIfPopUpIsBuyType($popupContainer)) {
             render.closePopUp();
             renderTokenSelectorForm(cardName, isReservedCard);
@@ -51,8 +55,9 @@ function handlePopUpClicks(e) {
         }
     } else if (e.target.closest(".cancel-pop-up-button")) {
         const cardName = document.querySelector(".selected-card").dataset.cardName;
+        isCardLevel = false;
         if (helper.checkIfPopUpIsBuyAndReserveType($popupContainer)) {
-            helper.reserveCard(cardName);
+            helper.reserveCard(cardName, isCardLevel);
         }
     } else if (e.target.closest(".close-pop-up-button") || e.target.closest(".popup-container") && document.querySelector(".con")) {
         render.closePopUp();
