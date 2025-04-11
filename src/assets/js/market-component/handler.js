@@ -1,4 +1,4 @@
-import renderPickableNobles from "./renderer.js";
+import { renderPickableNobles } from "./renderer.js";
 
 
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){

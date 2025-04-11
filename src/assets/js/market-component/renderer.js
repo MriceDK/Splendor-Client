@@ -1,5 +1,5 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
-import hookUpEventListenersOnPickableNoble from "./handler.js";
+import {hookUpEventListenersOnPickableNoble}  from "./handler.js";
 
 function renderMarket(gameInfo) {
     const $target = document.querySelector(".market-grid-container");
