@@ -200,7 +200,8 @@ function checkMaxTwoOfSameColour() {
 }
 
 function checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem) {
-    return !(numberOfChosenTokens === 2 && chosenBankTokens[gem] !== 0);
+    const maxChosenTokensSameColour = 2;
+    return !(numberOfChosenTokens === maxChosenTokensSameColour && chosenBankTokens[gem] !== 0);
 }
 
 function checkOnlyTwoOfSameColourWhenValueOfMinFour(gem) {
