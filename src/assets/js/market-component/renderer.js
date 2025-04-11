@@ -30,17 +30,17 @@ function renderLevelCard(level, cardStackSize, $target) {
 function renderNobles(nobles){
     const $target = document.querySelector(".market-grid-container");
 
-    const $template = document.querySelector("#noble").content.firstElementChild.cloneNode(true);
-
     nobles.forEach(noble => {
-        console.log(noble);
+        const $template = document.querySelector("#noble").content.firstElementChild.cloneNode(true);
 
         $template.querySelector(".noble-name").innerHTML = noble.name;
         $template.querySelector(".prestige-points").innerHTML = noble.prestigePoints;
         renderBonusesInNobles(noble.neededBonuses, $template);
+
+        $target.insertAdjacentHTML("afterbegin", $template.outerHTML);
         
     });
-    $target.insertAdjacentHTML("afterbegin", $template.outerHTML);
+    
 
 }
 
