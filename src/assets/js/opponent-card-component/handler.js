@@ -7,16 +7,11 @@ function tokenInPurse(player, token, bonus = true) {
             return 0;
         }
 
+    } else if (player.tokens[token]) {
+        return player.tokens[token];
     } else {
-
-        if (player.tokens[token]) {
-            return player.tokens[token];
-        } else {
-            return 0;
+        return 0;
         }
-
-
-    }
 
 }
 
