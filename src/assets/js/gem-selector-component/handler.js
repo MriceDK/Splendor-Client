@@ -6,6 +6,15 @@ import {checkTooManyTokens} from "../own-player-component/gems-overflow-componen
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 import { getCurrentPlayer } from "../game.js";
 
+function immediateNobleCheckAfterBuy(){
+    API.getGameInfo().then(res => {
+
+        const currentPlayer = getCurrentPlayer(res.players, res.currentPlayer);
+        nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);
+    }
+    );
+}
+
 function buyDevelopmentCard(e) {
     e.preventDefault();
 
@@ -21,6 +30,10 @@ function buyDevelopmentCard(e) {
         Object.entries(buyResponse.tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
+
+        immediateNobleCheckAfterBuy();
+
+
 
     }).catch(err => {
         ErrorHandler.handleError(err);
@@ -43,12 +56,9 @@ function buyReservedDevelopmentCard(e) {
         Object.entries(tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
-        API.getGameInfo().then(res => {
 
-            const currentPlayer = getCurrentPlayer(res.players, res.currentPlayer);
-            nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);
-        }
-        );
+        immediateNobleCheckAfterBuy();
+
     }).catch(err => {
         ErrorHandler.handleError(err);
     });
