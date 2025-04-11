@@ -4,7 +4,7 @@ function dataListFromApi(data) {
 
     lobbyName(data.gameName);
     started(data.started);
-    renderUsersLoop(data.players, data);
+    renderPlayersLoop(data.players, data);
     renderOwnPlayerName();
 }
 
@@ -25,20 +25,20 @@ function renderLobbyAmount(currentUserCount, maxUserCount) {
     document.querySelector("#playerCount").innerHTML = `${currentUserCount}/${maxUserCount} Players`;
 }
 
-function renderUsersLoop(userArray, data) {
+function renderPlayersLoop(playerArray, data) {
 
     const $template = document.querySelector("#player");
     const $target = document.querySelector(".users");
     $target.innerHTML = $template.outerHTML;
 
-    userArray.forEach(user => {
+    playerArray.forEach(user => {
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
         $copy.textContent = user;
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
-    renderLobbyAmount(userArray.length, data.numberOfPlayers);
+    renderLobbyAmount(playerArray.length, data.numberOfPlayers);
 }
 
 function started(isStarted) {
@@ -52,5 +52,5 @@ function renderOwnPlayerName() {
     document.querySelector("#playername").textContent = storageAbstractor.loadFromStorage("playerName");
 }
 
-export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderUsersLoop, dataListFromApi};
+export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi};
 

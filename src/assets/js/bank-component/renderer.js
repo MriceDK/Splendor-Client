@@ -147,8 +147,9 @@ function showChosenBankToken(gem) {
 
 function checkConfirmButton() {
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
+    const maxTokensOfDiffColour = 3;
 
-    if (numberOfChosenTokens === 3 || Object.values(chosenBankTokens).includes(2)) {
+    if (numberOfChosenTokens === maxTokensOfDiffColour || Object.values(chosenBankTokens).includes(2)) {
         toggleCollectGemsButton(false);
     } else {
         toggleCollectGemsButton(true);
