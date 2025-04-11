@@ -42,4 +42,4 @@ function disableSubmitButton(target) {
     target.setAttribute("disabled", "true");
 }
 
-export { createLobby };
+export {createLobby};

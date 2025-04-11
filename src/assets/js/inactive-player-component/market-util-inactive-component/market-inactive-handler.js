@@ -1,9 +1,9 @@
-import { renderDisableCard, renderEnabledCard } from "./market-inactive-renderer.js"
+import {renderDisableCard, renderEnabledCard} from "./market-inactive-renderer.js"
 
-function handleMarketClickability(clickable){
+function handleMarketClickability(clickable) {
     const cards = document.querySelectorAll(".market-grid-container article");
     cards.forEach(card => {
-        if (clickable){
+        if (clickable) {
             renderEnabledCard(card);
         } else {
             renderDisableCard(card);
@@ -11,4 +11,4 @@ function handleMarketClickability(clickable){
     });
 }
 
-export { handleMarketClickability }
+export {handleMarketClickability}

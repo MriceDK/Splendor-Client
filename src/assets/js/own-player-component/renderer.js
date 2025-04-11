@@ -1,6 +1,6 @@
 import * as getOwnInfo from "./handler.js"
 
-function ownPlayerCardRenderer(gameInfo){
+function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);
 
     const $playerCard = document.querySelector("#own-player-card");
@@ -13,15 +13,15 @@ function ownPlayerCardRenderer(gameInfo){
 
 }
 
-function renderOwnTokenValue(token){
+function renderOwnTokenValue(token) {
     document.querySelector(`.own-inventory .${token[0].toLowerCase()} .token-text`).innerText = token[1];
 }
 
-function renderOwnBonusValue(bonus){
+function renderOwnBonusValue(bonus) {
     document.querySelector(`.own-inventory  .${bonus[0].toLowerCase()} .card-text`).innerText = bonus[1];
 }
 
-function renderTooManyGemsPopUp(playerTokens){
+function renderTooManyGemsPopUp(playerTokens) {
     const $tooMuchGemsTemplate = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
     $target.innerHTML = "";
@@ -33,10 +33,10 @@ function renderTooManyGemsPopUp(playerTokens){
 
 }
 
-function putInitalValue($tooMuchGemsTemplate, token){
+function putInitalValue($tooMuchGemsTemplate, token) {
     const selector = `#token-remover-${token[0].toLowerCase()}`;
     $tooMuchGemsTemplate.querySelector(selector).setAttribute("value", token[1]);
-    
+
 }
 
-export { ownPlayerCardRenderer, renderTooManyGemsPopUp, renderOwnTokenValue }
+export {ownPlayerCardRenderer, renderTooManyGemsPopUp, renderOwnTokenValue}

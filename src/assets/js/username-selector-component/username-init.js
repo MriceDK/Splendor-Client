@@ -1,6 +1,6 @@
-import { changeUsername } from "./handler.js"
+import {changeUsername} from "./handler.js"
 
-function init(){
+function init() {
 
     document.querySelector("#playername-changer").addEventListener("submit", changeUsername)
 

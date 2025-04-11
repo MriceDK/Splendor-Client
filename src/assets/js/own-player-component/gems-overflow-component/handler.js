@@ -1,19 +1,20 @@
-import { renderTooManyGemsPopUp } from "../renderer.js";
+import {renderTooManyGemsPopUp} from "../renderer.js";
 import * as APIAbstractor from "../../data-connector/api-communication-abstractor.js"
 import * as LocalStorageAbstractor from "../../data-connector/local-storage-abstractor.js";
 import {UppercaseFirstLetterOfWord} from "../../helper/utils.js";
 
 const MAX_TOKENS = 10;
 
-function checkTooMuchGems(playersInfos, currentPlayer){
+function checkTooMuchGems(playersInfos, currentPlayer) {
     playersInfos.forEach(player => {
-        if (player.name === currentPlayer){
+        if (player.name === currentPlayer) {
             checkTooMuchGemsHelp(player);
 
         }
     });
 
 }
+
 // TODO: Implement this functionality later not important RN
 function countTotalTokens(allTokens) {
     let tokensOfPlayer = 0;
@@ -24,7 +25,7 @@ function countTotalTokens(allTokens) {
     return tokensOfPlayer;
 }
 
-function checkTooMuchGemsHelp(player){
+function checkTooMuchGemsHelp(player) {
     let tokensOfPlayer = countTotalTokens(player.tokens);
     if (tokensOfPlayer > MAX_TOKENS) {
         renderTooManyGemsPopUp(player.tokens);
@@ -32,9 +33,9 @@ function checkTooMuchGemsHelp(player){
     }
 }
 
-function formGemChecker(player){
+function formGemChecker(player) {
     const gemsCount = countGems();
-    if (gemsCount > MAX_TOKENS){
+    if (gemsCount > MAX_TOKENS) {
         document.querySelector("#gem-remover-button").disabled = true;
     } else {
         document.querySelector("#gem-remover-button").disabled = false;
@@ -50,7 +51,7 @@ function formGemChecker(player){
     }
 }
 
-function countGems(){
+function countGems() {
     const allGems = document.querySelectorAll(".gem-remover-input");
     let count = 0;
     allGems.forEach(gem => {
@@ -60,7 +61,7 @@ function countGems(){
 }
 
 
-function updateGemsAfterTooMuch(gameId, player){
+function updateGemsAfterTooMuch(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${player.name}/tokens`, "PATCH", body);
@@ -68,7 +69,7 @@ function updateGemsAfterTooMuch(gameId, player){
 
 }
 
-function getDiffTokensObject(tokens){
+function getDiffTokensObject(tokens) {
     const returnObject = {};
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
     $tokensForm.forEach(token => {
@@ -78,19 +79,20 @@ function getDiffTokensObject(tokens){
     return returnObject;
 }
 
-function returnTokensBody(tokensToReturn){
+function returnTokensBody(tokensToReturn) {
     const returnObj = {};
     Object.entries(tokensToReturn).forEach(token => {
         const tokenName = token[0];
         const tokenValue = tokensToReturn[tokenName];
-        if (tokenValue > 0){
+        if (tokenValue > 0) {
             returnObj[tokenName.toString()] = tokenValue;
         }
 
     });
     return {
         "return": returnObj
-        
+
     };
 }
-export { checkTooMuchGems, updateGemsAfterTooMuch}
+
+export {checkTooMuchGems, updateGemsAfterTooMuch}

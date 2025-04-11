@@ -1,4 +1,3 @@
-
 function renderDevelopmentCards(cards, $target) {
     cards.forEach(card => {
         renderDevelopmentCard(card, $target);

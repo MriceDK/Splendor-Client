@@ -1,14 +1,14 @@
-import { loadFromStorage } from "../data-connector/local-storage-abstractor.js";
+import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 
-function getOwnUsername(){
+function getOwnUsername() {
     return loadFromStorage("playerName");
 }
 
-function getOwnPlayerInfo(gameinfo){
+function getOwnPlayerInfo(gameinfo) {
     const players = gameinfo.players;
 
     for (const player of players) {
-        if (player.name === getOwnUsername()){
+        if (player.name === getOwnUsername()) {
             return player;
         }
     }
@@ -16,4 +16,4 @@ function getOwnPlayerInfo(gameinfo){
     return null;
 }
 
-export { getOwnPlayerInfo};
+export {getOwnPlayerInfo};

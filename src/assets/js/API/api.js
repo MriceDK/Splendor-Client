@@ -27,8 +27,8 @@ function buyReservedCard(cardName, body) {
 
 function getGameInfo() {
     const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`,"GET")
+    return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`, "GET")
 }
 
 
-export { reserveCard, buyDevelopmentCardRequest, buyReservedCard, getGameInfo};
+export {reserveCard, buyDevelopmentCardRequest, buyReservedCard, getGameInfo};

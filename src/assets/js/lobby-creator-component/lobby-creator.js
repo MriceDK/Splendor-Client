@@ -1,5 +1,5 @@
 import * as LobbyCreatorHandler from "./handler.js";
-import { changeUsernameText } from "../username-selector-component/renderer.js";
+import {changeUsernameText} from "../username-selector-component/renderer.js";
 
 function init() {
     changeUsernameText();

@@ -21,9 +21,9 @@ function buyDevelopmentCard(e) {
             renderOwnTokenValue(token);
         });
 
-        }).catch(err => {
-                ErrorHandler.handleError(err);
-            });
+    }).catch(err => {
+        ErrorHandler.handleError(err);
+    });
 
 }
 
@@ -42,11 +42,10 @@ function buyReservedDevelopmentCard(e) {
         Object.entries(tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
-        }).catch(err => {
+    }).catch(err => {
         ErrorHandler.handleError(err);
     });
     // TODO: Fix this implementation of the checkTooMuchGems function
-
 
 
 }
@@ -79,4 +78,4 @@ function getGemCostObject($form) {
     return obj;
 }
 
-export { buyDevelopmentCard, buyReservedDevelopmentCard };
+export {buyDevelopmentCard, buyReservedDevelopmentCard};

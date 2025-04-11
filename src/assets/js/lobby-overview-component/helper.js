@@ -1,4 +1,3 @@
-
 function addGameNames(games) {
     const gamesWithNames = games;
     gamesWithNames.forEach(game => {
@@ -9,4 +8,4 @@ function addGameNames(games) {
     return gamesWithNames;
 }
 
-export { addGameNames };
+export {addGameNames};

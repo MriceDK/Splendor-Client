@@ -4,6 +4,7 @@ import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
 import {renderMarket} from "./market-component/renderer.js";
 import {renderActivePlayer} from "./active-player-component/renderer.js";
 import {getGameInfo} from "./API/api.js";
+
 // import {checkTooMuchGems} from "./own-player-component/gems-overflow-component/handler.js";
 
 

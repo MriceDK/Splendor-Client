@@ -1,6 +1,7 @@
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
-import {handleMarketClickability} from "../inactive-player-component/market-util-inactive-component/market-inactive-handler.js";
-
+import {
+    handleMarketClickability
+} from "../inactive-player-component/market-util-inactive-component/market-inactive-handler.js";
 
 
 function renderActivePlayer(currentPlayerName) {
@@ -12,6 +13,7 @@ function renderActivePlayer(currentPlayerName) {
         renderCurrentOrDisabledOpponent(currentPlayerName);
     }
 }
+
 function renderCurrentOrDisabledOpponent(currentPlayerName) {
     document.querySelectorAll(".opponent").forEach(opponent => {
         if (opponent.querySelector(".player").innerText === currentPlayerName) {

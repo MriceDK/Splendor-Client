@@ -14,4 +14,4 @@ function createReserveCardBody(cardNameOrLevel, level) {
     }
 }
 
-export { createReserveCardBody };
+export {createReserveCardBody};

@@ -1,7 +1,7 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
 
 function renderMarket(gameInfo, isActive) {
-    const $target= document.querySelector(".market-grid-container");
+    const $target = document.querySelector(".market-grid-container");
 
     renderLevelRows(gameInfo.market, $target);
 }
@@ -26,4 +26,4 @@ function renderLevelCard(level, cardStackSize, $target) {
     $target.insertAdjacentHTML("beforeend", $levelCard.outerHTML);
 }
 
-export { renderMarket };
+export {renderMarket};

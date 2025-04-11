@@ -26,23 +26,22 @@ function handleReserveCardResponse(response) {
 }
 
 function reserveCard(cardLevelorName, reserveFromLevel) {
-        api.reserveCard(cardLevelorName, reserveFromLevel)
-            .then(response => {
-                if (reserveFromLevel) {
-                    console.log(`Card from level ${cardLevelorName} reserved successfully`);
-                } else {
-                    console.log(`Card from level ${cardLevelorName} reserved successfully`);
+    api.reserveCard(cardLevelorName, reserveFromLevel)
+        .then(response => {
+            if (reserveFromLevel) {
+                console.log(`Card from level ${cardLevelorName} reserved successfully`);
+            } else {
+                console.log(`Card from level ${cardLevelorName} reserved successfully`);
 
-                }
-                handleReserveCardResponse(response);
-            })
-            .catch(error => {
-                handleError(error);
-            });
+            }
+            handleReserveCardResponse(response);
+        })
+        .catch(error => {
+            handleError(error);
+        });
 
 
 }
-
 
 
 function removeSelectedCard() {
@@ -50,4 +49,10 @@ function removeSelectedCard() {
     $selectedCard.classList.remove("selected-card");
 }
 
-export { checkIfPopUpIsReserveType, checkIfPopUpIsBuyType, checkIfPopUpIsBuyAndReserveType, reserveCard, removeSelectedCard };
+export {
+    checkIfPopUpIsReserveType,
+    checkIfPopUpIsBuyType,
+    checkIfPopUpIsBuyAndReserveType,
+    reserveCard,
+    removeSelectedCard
+};

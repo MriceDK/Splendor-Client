@@ -1,6 +1,6 @@
 import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
 
-function dataListFromApi(data){
+function dataListFromApi(data) {
 
     lobbyName(data.gameName);
     started(data.started);
@@ -12,21 +12,20 @@ function lobbyName(lobbyName) {
     let $titleElement = document.querySelector("#title");
     $titleElement.innerHTML = ``;
 
-    if (lobbyName === null || lobbyName === ""){
+    if (lobbyName === null || lobbyName === "") {
 
         $titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
-    }
-    else{
+    } else {
         $titleElement.innerHTML = lobbyName;
     }
 }
 
-function renderLobbyAmount(currentUserCount,maxUserCount){
+function renderLobbyAmount(currentUserCount, maxUserCount) {
 
-       document.querySelector("#playerCount").innerHTML = `${currentUserCount}/${maxUserCount} Players`;
+    document.querySelector("#playerCount").innerHTML = `${currentUserCount}/${maxUserCount} Players`;
 }
 
-function renderUsersLoop(userArray, data){
+function renderUsersLoop(userArray, data) {
 
     const $template = document.querySelector("#player");
     const $target = document.querySelector(".users");
@@ -42,16 +41,16 @@ function renderUsersLoop(userArray, data){
     renderLobbyAmount(userArray.length, data.numberOfPlayers);
 }
 
-function started(isStarted){
+function started(isStarted) {
 
-    if(isStarted === true){
+    if (isStarted === true) {
         window.location.assign("./game-board.html");
     }
 }
 
-function renderOwnUserName(){
+function renderOwnUserName() {
     document.querySelector("#playername").textContent = storageAbstractor.loadFromStorage("playerName");
 }
 
-export { lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi };
+export {lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi};
 

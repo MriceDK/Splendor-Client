@@ -1,12 +1,12 @@
 import * as renderer from "./renderer.js";
 
-function openBank(){
+function openBank() {
     renderer.changeButtons();
     renderer.enableTokens();
     renderer.checkAllowedTokens();
 }
 
-function closeBank(){
+function closeBank() {
     renderer.changeButtons();
     renderer.removeChosenTokens();
     renderer.checkConfirmButton();
@@ -14,7 +14,7 @@ function closeBank(){
     renderer.disableTokens();
 }
 
-function chooseBankToken(e){
+function chooseBankToken(e) {
     renderer.getChosenTokenColour(e);
     renderer.checkConfirmButton();
     renderer.checkAllowedTokens();

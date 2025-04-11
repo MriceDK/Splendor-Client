@@ -1,7 +1,7 @@
-function tokenInPurse(player, token, bonus = true){
+function tokenInPurse(player, token, bonus = true) {
 
-    if (bonus){
-        if(player.bonuses[token]){
+    if (bonus) {
+        if (player.bonuses[token]) {
             return player.bonuses[token];
         } else {
             return 0
@@ -9,15 +9,15 @@ function tokenInPurse(player, token, bonus = true){
 
     } else {
 
-        if(player.tokens[token]){
+        if (player.tokens[token]) {
             return player.tokens[token];
         } else {
             return 0;
         }
 
 
-
     }
-    
+
 }
-export { tokenInPurse };
+
+export {tokenInPurse};

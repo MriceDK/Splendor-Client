@@ -1,4 +1,11 @@
-import { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, redirectToStartScreen } from "./handler.js";
+import {
+    showSettingsScreen,
+    hideSettingsScreen,
+    showForfeitOption,
+    hideSettingsMenu,
+    hideForfeitCloseButtons,
+    redirectToStartScreen
+} from "./handler.js";
 
 function setUpEventlisteners() {
     document.querySelector("#settings").addEventListener("click", showSettingsScreen);
@@ -9,4 +16,4 @@ function setUpEventlisteners() {
     document.querySelector("#forfeit-yes").addEventListener("click", redirectToStartScreen);
 }
 
-export { setUpEventlisteners };
+export {setUpEventlisteners};

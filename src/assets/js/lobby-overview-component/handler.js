@@ -11,8 +11,10 @@ function loadUserInformation() {
 
 function getMatchingGames() {
     APIAbstractor.fetchFromServer("/games", "GET")
-        .then((json) => {handleFilters(helper.addGameNames(json.games))
-        setTimeout(getMatchingGames, 1000)})
+        .then((json) => {
+            handleFilters(helper.addGameNames(json.games))
+            setTimeout(getMatchingGames, 1000)
+        })
         .catch(errorHandler.handleError);
 }
 
@@ -55,7 +57,7 @@ function matchesJoinabilityFilter(game, showFull, showJoinable) {
 function matchesPlayerCountFilter(game, showAmountOfPlayers) {
     if (showAmountOfPlayers === "isAny") {
         return true;
-    }else {
+    } else {
         return game.numberOfPlayers === parseInt(showAmountOfPlayers);
     }
 }
@@ -101,4 +103,4 @@ function addPlayerToGame(joinGameId) {
     }
 }
 
-export { getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
+export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
