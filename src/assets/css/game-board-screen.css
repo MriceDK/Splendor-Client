@@ -49,7 +49,7 @@ header {
 .pickable-noble {
     border: 0.25rem;
     border-color: yellow;
-    transition: 1rem 1s infinite ease-in-out;
+    transition: 1s infinite ease-in-out;
 }
 
 .pickable-noble:hover {
