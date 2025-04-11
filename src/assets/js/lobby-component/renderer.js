@@ -1,57 +1,56 @@
 import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
 
-function dataListFromApi(data){
+function dataListFromApi(data) {
 
     lobbyName(data.gameName);
     started(data.started);
-    renderUsersLoop(data.players, data);
-    renderOwnUserName();
+    renderPlayersLoop(data.players, data);
+    renderOwnPlayerName();
 }
 
-function lobbyName(lobbyName) {
-    let titleElement = document.querySelector("#title");
-    titleElement.innerHTML = ``;
+function lobbyName(lobbyNameString) {
+    const $titleElement = document.querySelector("#title");
+    $titleElement.innerHTML = ``;
 
-    if (lobbyName === null || lobbyName === ""){
+    if (lobbyNameString === null || lobbyNameString === "") {
 
-        titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
+        $titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
+    } else {
+        $titleElement.innerHTML = lobbyNameString;
     }
-    else{
-        titleElement.innerHTML = lobbyName;
-    }
 }
 
-function renderLobbyAmount(currentUserCount,maxUserCount){
+function renderLobbyAmount(currentUserCount, maxUserCount) {
 
-       document.querySelector("#playerCount").innerHTML = `${currentUserCount}/${maxUserCount} Players`;
+    document.querySelector("#playerCount").innerHTML = `${currentUserCount}/${maxUserCount} Players`;
 }
 
-function renderUsersLoop(userArray, data){
+function renderPlayersLoop(playerArray, data) {
 
     const $template = document.querySelector("#player");
     const $target = document.querySelector(".users");
     $target.innerHTML = $template.outerHTML;
 
-    userArray.forEach(user => {
+    playerArray.forEach(user => {
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
         $copy.textContent = user;
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
-    })
-    renderLobbyAmount(userArray.length, data.numberOfPlayers);
+    });
+    renderLobbyAmount(playerArray.length, data.numberOfPlayers);
 }
 
-function started(isStarted){
+function started(isStarted) {
 
-    if(isStarted === true){
+    if (isStarted === true) {
         window.location.assign("./game-board.html");
     }
 }
 
-function renderOwnUserName(){
+function renderOwnPlayerName() {
     document.querySelector("#playername").textContent = storageAbstractor.loadFromStorage("playerName");
 }
 
-export { lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi };
+export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi};
 

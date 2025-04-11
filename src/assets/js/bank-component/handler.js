@@ -1,12 +1,12 @@
 import * as renderer from "./renderer.js";
 
-function openBank(){
+function openBank() {
     renderer.changeButtons();
     renderer.enableTokens();
     renderer.checkAllowedTokens();
 }
 
-function closeBank(){
+function closeBank() {
     renderer.changeButtons();
     renderer.removeChosenTokens();
     renderer.checkConfirmButton();
@@ -14,14 +14,14 @@ function closeBank(){
     renderer.disableTokens();
 }
 
-function chooseBankToken(e){
+function chooseBankToken(e) {
     renderer.getChosenTokenColour(e);
     renderer.checkConfirmButton();
     renderer.checkAllowedTokens();
 }
 
 function removeChosenBankToken(e) {
-    const className = e.target.classList[2]
+    const className = e.target.classList[2];
     const classNameWithCapitalLetter = className.replace(className[0], className[0].toUpperCase());
 
     renderer.chosenBankTokens[classNameWithCapitalLetter]--;

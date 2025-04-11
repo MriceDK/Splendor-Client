@@ -4,14 +4,14 @@ function createReserveCardBody(cardNameOrLevel, level) {
             "development": {
                 "level": cardNameOrLevel
             }
-        }
+        };
     } else {
         return {
             "development": {
                 "name": cardNameOrLevel
             }
-        }
+        };
     }
 }
 
-export { createReserveCardBody };
+export {createReserveCardBody};

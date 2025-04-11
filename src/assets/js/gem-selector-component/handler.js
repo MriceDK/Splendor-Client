@@ -2,6 +2,8 @@ import * as Utils from "../helper/utils.js";
 import * as ErrorHandler from "../data-connector/error-handler.js";
 import * as API from "../API/api.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";
+import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
+import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -12,12 +14,17 @@ function buyDevelopmentCard(e) {
     const gemCost = getGemCostObject($form);
 
     const body = createBuyCardBody(devCardName, gemCost);
-    API.buyDevelopmentCardRequest(body).then(() => {
+    API.buyDevelopmentCardRequest(body).then(buyResponse => {
         closePopUp();
-    })
-        .catch(err => {
-            ErrorHandler.handleError(err);
+        checkTooManyTokens(buyResponse.tokens);
+        Object.entries(buyResponse.tokens).forEach((token) => {
+            renderOwnTokenValue(token);
         });
+
+    }).catch(err => {
+        ErrorHandler.handleError(err);
+    });
+
 }
 
 function buyReservedDevelopmentCard(e) {
@@ -31,10 +38,16 @@ function buyReservedDevelopmentCard(e) {
     const body = createBuyReservedCardBody(gemCost);
     API.buyReservedCard(devCardName, body).then(() => {
         closePopUp();
-    })
-        .catch(err => {
-            ErrorHandler.handleError(err);
+        checkTooManyTokens(tokens);
+        Object.entries(tokens).forEach((token) => {
+            renderOwnTokenValue(token);
         });
+    }).catch(err => {
+        ErrorHandler.handleError(err);
+    });
+    // TODO: Fix this implementation of the checkTooMuchGems function
+
+
 }
 
 function createBuyCardBody(devCardName, gemCost) {
@@ -57,12 +70,12 @@ function getGemCostObject($form) {
     const obj = {};
 
     $inputs.forEach($input => {
-        const gemName = Utils.UppercaseFirstLetterOfWord($input.name);
+        const gemName = Utils.uppercaseFirstLetterOfWord($input.name);
 
         obj[gemName] = parseInt($input.value);
-    })
+    });
 
     return obj;
 }
 
-export { buyDevelopmentCard, buyReservedDevelopmentCard };
+export {buyDevelopmentCard, buyReservedDevelopmentCard};

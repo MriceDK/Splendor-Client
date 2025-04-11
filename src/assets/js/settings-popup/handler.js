@@ -5,26 +5,33 @@ function showSettingsScreen() {
 
 function hideSettingsScreen() {
     document.querySelector(".popup").classList.add("hidden");
-    document.querySelector(".forfeit-popup").classList.add("hidden")
+    document.querySelector(".forfeit-popup").classList.add("hidden");
     document.querySelector(".popup-container").classList.add("hidden");
 }
 
-function showForfeitOption(){
+function showForfeitOption() {
     document.querySelector(".forfeit-popup").classList.remove("hidden");
 }
 
-function hideSettingsMenu(){
+function hideSettingsMenu() {
     document.querySelector(".popup").classList.add("hidden");
     document.querySelector(".popup-container").classList.add("hidden");
 }
 
-function hideForfeitCloseButtons(){
+function hideForfeitCloseButtons() {
     document.querySelector("#forfeit").classList.add("hidden");
     document.querySelector(".close").classList.add("hidden");
 }
 
-function redirectToStartScreen(){
-    window.location.href = "index.html"
+function redirectToStartScreen() {
+    window.location.href = "index.html";
 }
 
-export { showSettingsScreen, hideSettingsScreen, showForfeitOption, hideSettingsMenu, hideForfeitCloseButtons, redirectToStartScreen };
+export {
+    showSettingsScreen,
+    hideSettingsScreen,
+    showForfeitOption,
+    hideSettingsMenu,
+    hideForfeitCloseButtons,
+    redirectToStartScreen
+};

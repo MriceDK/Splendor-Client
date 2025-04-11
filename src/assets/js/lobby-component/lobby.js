@@ -1,7 +1,8 @@
 import * as handler from "../lobby-component/handler.js";
 
-function init(){
+function init() {
 
     handler.loadJoinedGame();
 }
+
 init();
