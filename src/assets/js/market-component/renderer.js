@@ -30,7 +30,7 @@ function renderLevelCard(level, cardStackSize, $target) {
 function renderNobles(nobles){
     const $target = document.querySelector(".market-grid-container");
 
-    const $template = document.querySelector(".noble").content.firstElementChild.cloneNode(true);
+    const $template = document.querySelector("#noble").content.firstElementChild.cloneNode(true);
 
     nobles.forEach(noble => {
 
