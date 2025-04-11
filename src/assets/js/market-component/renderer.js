@@ -65,7 +65,8 @@ function nameChecker(noble, $allNobles){
     $allNobles.forEach(aNoble => {
         if (aNoble.innerHTML === noble.name){
             aNoble.classList.add("pickable-noble");
-            aNoble.classList.add(`${noble.name.trim().toLowerCase().split(" ").join("-")}`);
+            const forceNameFromServer = noble.name.trim().toLowerCase().split(" ").join("-");
+            aNoble.classList.add(`${forceNameFromServer}`);
             hookUpEventListenersOnPickableNoble(gameId, playerName, noble);
         }
     });
