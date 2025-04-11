@@ -94,13 +94,6 @@ function addPlayerToGame(joinGameId) {
             window.location.assign("./lobby.html");
         })
         .catch(errorHandler.handleError);
-
-    // TODO: Remove const response. Temp value for template
-    const response = {
-        "gameId": 23,
-        "playerName": "Anna",
-        "playerToken": "23_Anna"
-    }
 }
 
 export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
