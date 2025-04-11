@@ -19,7 +19,6 @@ function init() {
             renderNobles(res.unclaimedNobles);
             
             nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);
-            checkTooMuchGems(res.players, res.currentPlayer);
             
             
             // TODO render token bank
