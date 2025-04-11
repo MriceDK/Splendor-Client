@@ -6,7 +6,7 @@ import * as localStorageAbstractor from "../data-connector/local-storage-abstrac
 
 
 function loadUserInformation() {
-    render.renderOwnUserName(localStorageAbstractor.loadFromStorage("playerName"));
+    render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
 
 function getMatchingGames() {

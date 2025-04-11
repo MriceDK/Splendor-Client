@@ -1,6 +1,6 @@
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 
-function changeUsernameText() {
+function changePlayerNameText() {
 
     const playerName = loadFromStorage("playerName");
     document.querySelector("#playername").innerText = playerName;
@@ -8,4 +8,4 @@ function changeUsernameText() {
 
 }
 
-export {changeUsernameText}
+export {changePlayerNameText}

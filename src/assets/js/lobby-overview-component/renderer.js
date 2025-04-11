@@ -11,9 +11,9 @@ function renderGames(games) {
         $results.insertAdjacentHTML("beforeend", $lobby.outerHTML);
     });
 }
-function renderOwnUserName(name){
+function renderOwnPlayerName(name){
     document.querySelector("#playername").innerHTML = name;
 }
 
 
-export { renderGames, renderOwnUserName };
+export { renderGames, renderOwnPlayerName };

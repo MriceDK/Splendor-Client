@@ -1,13 +1,13 @@
 import { saveToStorage } from "../data-connector/local-storage-abstractor.js";
-import { changeUsernameText } from "./renderer.js";
+import { changePlayerNameText } from "./renderer.js";
 
-function changeUsername(e){
+function changePlayerName(e){
     e.preventDefault();
     
     const $usernameForm = document.querySelector("#playername-text")
     saveToStorage("playerName", $usernameForm.value);
-    changeUsernameText();
+    changePlayerNameText();
 
 }
 
-export { changeUsername }
+export { changePlayerName }

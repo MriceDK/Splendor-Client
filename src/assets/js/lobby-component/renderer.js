@@ -5,7 +5,7 @@ function dataListFromApi(data) {
     lobbyName(data.gameName);
     started(data.started);
     renderUsersLoop(data.players, data);
-    renderOwnUserName();
+    renderOwnPlayerName();
 }
 
 function lobbyName(lobbyName) {
@@ -48,9 +48,9 @@ function started(isStarted) {
     }
 }
 
-function renderOwnUserName() {
+function renderOwnPlayerName() {
     document.querySelector("#playername").textContent = storageAbstractor.loadFromStorage("playerName");
 }
 
-export {lobbyName, renderLobbyAmount, renderOwnUserName, started, renderUsersLoop, dataListFromApi};
+export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderUsersLoop, dataListFromApi};
 

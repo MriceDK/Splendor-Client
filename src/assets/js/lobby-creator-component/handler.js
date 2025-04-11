@@ -10,9 +10,9 @@ function createLobby(e) {
 
     const lobbyName = document.querySelector("#lobby-name").value;
     const playerAmount = document.querySelector(".radio-option input:checked").value;
-    const username = loadFromStorage("playerName");
+    const playername = loadFromStorage("playerName");
 
-    const body = createBody(lobbyName, playerAmount, username);
+    const body = createBody(lobbyName, playerAmount, playername);
 
     APIAbstractor.fetchFromServer("/games", "POST", body)
         .then(res => {
