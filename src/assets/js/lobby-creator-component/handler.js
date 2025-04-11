@@ -22,11 +22,11 @@ function createLobby(e) {
         });
 }
 
-function createBody(lobbyName, playerAmount, username) {
+function createBody(lobbyName, playerAmount, playername) {
 
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
-        "playerName": username
+        "playerName": playername
     };
 
     if (!(lobbyName === "" || lobbyName == null)) {
