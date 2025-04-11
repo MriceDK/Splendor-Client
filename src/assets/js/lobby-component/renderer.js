@@ -8,15 +8,15 @@ function dataListFromApi(data) {
     renderOwnPlayerName();
 }
 
-function lobbyName(lobbyName) {
+function lobbyName(lobbyNameString) {
     const $titleElement = document.querySelector("#title");
     $titleElement.innerHTML = ``;
 
-    if (lobbyName === null || lobbyName === "") {
+    if (lobbyNameString === null || lobbyNameString === "") {
 
         $titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
     } else {
-        $titleElement.innerHTML = lobbyName;
+        $titleElement.innerHTML = lobbyNameString;
     }
 }
 
