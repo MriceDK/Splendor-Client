@@ -1,3 +1,5 @@
+import { handleError } from "../data-connector/error-handler.js";
+import { getCurrentPlayer } from "../game.js";
 import { renderPickableNobles } from "./renderer.js";
 
 
@@ -46,13 +48,21 @@ function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
 
 function getNobleToInventory(gameId, playerName, noble){
 
-    const body = {
-        "name": noble.name,
-        "prestigePoints": noble.prestigePoints,
-        "neededBonuses":noble.neededBonuses
-    };
-    APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body)
-    removePickableFromNobles();
+    if (e.target.classList.contains("pickable-noble") && playerName === getCurrentPlayer(playerName)){
+
+        const body = {
+            "name": noble.name,
+            "prestigePoints": noble.prestigePoints,
+            "neededBonuses":noble.neededBonuses
+        };
+        APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body)
+        removePickableFromNobles();
+
+    } else {
+        throw "TurnError";
+    }
+
+
 }
 
 function removePickableFromNobles(){
