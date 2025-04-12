@@ -34,7 +34,7 @@ function renderNobles(nobles){
         const $template = document.querySelector("#noble").content.firstElementChild.cloneNode(true);
 
         $template.querySelector(".noble-name").innerHTML = noble.name;
-        $template.querySelector(".prestige-points").innerHTML = noble.prestigePoints;
+        $template.querySelector(".prestige-point").innerHTML = noble.prestigePoints;
         renderBonusesInNobles(noble.neededBonuses, $template);
 
         $target.insertAdjacentHTML("afterbegin", $template.outerHTML);
