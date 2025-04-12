@@ -1,6 +1,7 @@
 import { handleError } from "../data-connector/error-handler.js";
 import { getCurrentPlayer } from "../game.js";
 import { renderPickableNobles } from "./renderer.js";
+import { getNobleToInventory } from "../API/api.js";
 
 
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
@@ -46,25 +47,6 @@ function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
 
 }
 
-function getNobleToInventory(gameId, playerName, noble){
-
-    if (playerName === getCurrentPlayer(playerName)){
-
-        const body = {
-            "name": noble.name,
-            "prestigePoints": noble.prestigePoints,
-            "neededBonuses":noble.neededBonuses
-        };
-        APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body)
-        removePickableFromNobles();
-
-    } else {
-        throw "TurnError";
-    }
-
-
-}
-
 function removePickableFromNobles(){
     const $pickableNobles = document.querySelectorAll(".pickable-noble");
     $pickableNobles.forEach(pickableNoble => {
@@ -73,4 +55,4 @@ function removePickableFromNobles(){
         
     });
 }
-export {nobleCheck, hookUpEventListenersOnPickableNoble};
+export {nobleCheck, hookUpEventListenersOnPickableNoble, removePickableFromNobles};
