@@ -4,13 +4,13 @@ import { getNobleToInventory } from "../API/api.js";
 
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
     if (nobleCheck){
-        const pickableNobles = nobleVisualCheck(unclaimedNobles, currentPlayerInfo);
+        const pickableNobles = checkAvailableNobles(unclaimedNobles, currentPlayerInfo);
         renderPickableNobles(pickableNobles); 
     }
 }
 
 
-function nobleVisualCheck(nobles, playerInfo){
+function checkAvailableNobles(nobles, playerInfo){
     const playerBonuses = playerInfo.bonuses;
     const qualifiedNobles = [];
     nobles.forEach(noble => {
