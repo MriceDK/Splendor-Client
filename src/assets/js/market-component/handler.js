@@ -1,5 +1,3 @@
-import { handleError } from "../data-connector/error-handler.js";
-import { getCurrentPlayer } from "../game.js";
 import { renderPickableNobles } from "./renderer.js";
 import { getNobleToInventory } from "../API/api.js";
 

@@ -13,4 +13,13 @@ function convertToKebabCase(string){
 
 }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase};
+function getCurrentPlayer(players, currentPlayer){
+    players.forEach(player => {
+        if (player.name === currentPlayer){
+            return player;
+        }
+        
+    });
+ }
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer};

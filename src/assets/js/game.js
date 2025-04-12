@@ -23,15 +23,4 @@ function init() {
 
 }
 
-function getCurrentPlayer(players, currentPlayer){
-    players.forEach(player => {
-        if (player.name === currentPlayer){
-            return player;
-        }
-        
-    });
- }
-
  init();
-
- export {getCurrentPlayer};

@@ -1,7 +1,7 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import {createReserveCardBody} from "./helper.js";
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
-import { getCurrentPlayer } from "../game.js";
+import { getCurrentPlayer } from "../helper/utils.js";
 import { removePickableFromNobles } from "../market-component/handler.js";
 
 
