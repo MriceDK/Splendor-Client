@@ -48,7 +48,7 @@ function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
 
 function getNobleToInventory(gameId, playerName, noble){
 
-    if (e.target.classList.contains("pickable-noble") && playerName === getCurrentPlayer(playerName)){
+    if (playerName === getCurrentPlayer(playerName)){
 
         const body = {
             "name": noble.name,
