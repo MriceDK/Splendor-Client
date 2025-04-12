@@ -1,4 +1,5 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
+import { convertToKebabCase } from "../helper/utils.js";
 import {hookUpEventListenersOnPickableNoble}  from "./handler.js";
 
 function renderMarket(gameInfo) {
@@ -67,7 +68,7 @@ function nameChecker(noble, $allNobles){
     $allNobles.forEach(aNoble => {
         if (aNoble.innerHTML === noble.name){
             aNoble.classList.add("pickable-noble");
-            const forceNameFromServer = noble.name.trim().toLowerCase().split(" ").join("-");
+            const forceNameFromServer = convertToKebabCase(noble.name);
             aNoble.classList.add(`${forceNameFromServer}`);
             hookUpEventListenersOnPickableNoble(gameId, playerName, noble);
         }
@@ -75,6 +76,8 @@ function nameChecker(noble, $allNobles){
 
     
 }
+
+
 
 
 

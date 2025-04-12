@@ -8,4 +8,9 @@ function showPopupContainer() {
     $popupContainer.classList.remove("hidden");
 }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer};
+function convertToKebabCase(string){
+    return string.trim().toLowerCase().split(" ").join("-");
+
+}
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase};
