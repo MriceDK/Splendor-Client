@@ -2,7 +2,6 @@ import {renderOpponentsStats} from "./opponent-card-component/renderer.js";
 import {renderTokenBank} from "./bank-component/renderer.js";
 import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
 import {renderMarket, renderNobles} from "./market-component/renderer.js";
-import {nobleCheck} from "./market-component/handler.js";
 import {renderActivePlayer} from "./active-player-component/renderer.js";
 import {getGameInfo} from "./API/api.js";
 
