@@ -15,9 +15,6 @@ function init() {
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderNobles(res.unclaimedNobles);
-
-            
-            // TODO render token bank
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
             // checkTooMuchGems(res.players, res.currentPlayer);
