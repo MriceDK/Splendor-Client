@@ -65,16 +65,22 @@ function renderPickableNobles(nobles){
 }
 
 function nameChecker(noble, $allNobles){
-    $allNobles.forEach(aNoble => {
-        if (aNoble.innerHTML === noble.name){
-            aNoble.classList.add("pickable-noble");
-            const forceNameFromServer = convertToKebabCase(noble.name);
-            aNoble.classList.add(`${forceNameFromServer}`);
-            hookUpEventListenersOnPickableNoble(gameId, playerName, noble);
+    $allNobles.forEach(nobleInDom => {
+        if (nobleInDom.innerHTML === noble.name){
+            renderPickableNoblesHelp(nobleInDom);
+
         }
     });
-
     
+}
+
+function renderPickableNoblesHelp(nobleInDom){
+
+    nobleInDom.classList.add("pickable-noble");
+    const forceNameFromServer = convertToKebabCase(noble.name);
+    nobleInDom.classList.add(`${forceNameFromServer}`);
+    hookUpEventListenersOnPickableNoble(gameId, playerName, noble);
+
 }
 
 
