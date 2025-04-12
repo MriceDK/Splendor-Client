@@ -58,7 +58,7 @@ function renderBonusesInNobles(bonusesNeeded, $template){
 function renderPickableNobles(nobles){
     const $allNobles = document.querySelectorAll(".noble-article .noble-name");
     nobles.forEach(noble => {
-        nameChecker(noble, $allNobles)
+        nameChecker(noble, $allNobles);
 
     });
 
