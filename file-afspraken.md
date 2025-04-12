@@ -1,8 +1,0 @@
-- Renderer
-	- Alles te doen om te renderen
-- Handler
-	- Alles van eventHandlers
-- Logic
-	- Alles van logica
-- 1 Init per HTML pagina
-	- Waar alles wordt opgestart
