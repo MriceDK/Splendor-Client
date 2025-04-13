@@ -1,9 +1,7 @@
 import * as handler from "./handler.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
-import * as api from "../../../API/api.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
-import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
-import {renderOwnTokenValue} from "../own-player-component/renderer.js";
+import {isLegalToken} from "./helper";
 
 const chosenBankTokens = {
     Ruby: 0,
@@ -25,14 +23,7 @@ function renderTokenBank(gameInfo) {
     disableTokens();
     setTokenMarketValues(gameInfo);
 
-    hoopUpEvents();
-}
-
-function hoopUpEvents() {
-    document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", handler.openBank);
-    document.querySelector(".bank-buttons .cancel-button").addEventListener("click", handler.closeBank);
-    document.querySelector(".bank-buttons .collect-gems-button").addEventListener("click", collectTokens);
-    document.querySelectorAll(".token-bank button").forEach(button => button.addEventListener("click", handler.chooseBankToken));
+    handler.hookUpEvents();
 }
 
 function changeButtons() {
@@ -97,29 +88,6 @@ function setTokenValue(token, amount) {
     document.querySelector(`.token-bank .${token.toLowerCase()} `).innerText = amount;
 }
 
-function collectTokens() {
-    const gameId = loadFromStorage("gameId");
-    const playerName = loadFromStorage("playerName");
-    const tokenData = {
-        "take": chosenBankTokens
-    };
-
-    api.updateTokens(gameId, playerName, tokenData).then(tokens => {
-        checkTooManyTokens(tokens);
-        Object.entries(tokens).forEach((token) => {
-            renderOwnTokenValue(token);
-
-        });
-
-    });
-
-    // TODO: Fix this implementation of the checkTooMuchGems function
-
-
-    enableOrDisableBank(playerName);
-    handler.closeBank();
-}
-
 function getChosenTokenColour(e) {
     if (e.target.classList.contains("ruby")) {
         showChosenBankToken("Ruby");
@@ -145,21 +113,6 @@ function showChosenBankToken(gem) {
     chosenBankTokens[gem]++;
 }
 
-function checkConfirmButton() {
-    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
-    const maxTokensOfDiffColour = 3;
-
-    if (numberOfChosenTokens === maxTokensOfDiffColour || Object.values(chosenBankTokens).includes(2)) {
-        toggleCollectGemsButton(false);
-    } else {
-        toggleCollectGemsButton(true);
-    }
-}
-
-function checkAllowedTokens() {
-    Object.keys(currentBankTokens).forEach((token) => enableOrDisableToken(token));
-}
-
 function enableOrDisableToken(token) {
     const $tokenButton = document.querySelector(`.token-bank .${token.toLowerCase()} `);
     if (isLegalToken(token)) {
@@ -171,45 +124,6 @@ function enableOrDisableToken(token) {
     }
 }
 
-function isLegalToken(token) {
-    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
-
-    if (currentBankTokens[token] !== 0) {
-        if (checkMaxThreeTokens(numberOfChosenTokens)) {
-            if (checkMaxTwoOfSameColour()) {
-                if (checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, token)) {
-                    return checkOnlyTwoOfSameColourWhenValueOfMinFour(token);
-                }
-            }
-        }
-    }
-
-    return false;
-}
-
-function checkMaxThreeTokens(numberOfChosenTokens) {
-    const maxChosenTokens = 3;
-
-    return numberOfChosenTokens < maxChosenTokens;
-}
-
-function checkMaxTwoOfSameColour() {
-    const maxChosenTokensSameColour = 2;
-
-    return !Object.values(chosenBankTokens).includes(maxChosenTokensSameColour);
-}
-
-function checkMaxTwoOfSameColourWhenTwoSelected(numberOfChosenTokens, gem) {
-    const maxChosenTokensSameColour = 2;
-    return !(numberOfChosenTokens === maxChosenTokensSameColour && chosenBankTokens[gem] !== 0);
-}
-
-function checkOnlyTwoOfSameColourWhenValueOfMinFour(gem) {
-    const minValueTwoOfSameColourAllowed = 4;
-    const maxTokensOfAColourWhenColourValuesLessThanFour = 1;
-
-    return !(chosenBankTokens[gem] + currentBankTokens[gem] < minValueTwoOfSameColourAllowed && chosenBankTokens[gem] === maxTokensOfAColourWhenColourValuesLessThanFour);
-}
 
 function removeChosenTokens() {
     document.querySelector(".selected-tokens").innerHTML = "";
@@ -237,11 +151,12 @@ export {
     changeButtons,
     enableTokens,
     disableTokens,
-    getChosenTokenColour,
     removeChosenTokens,
-    setTokenMarketValues,
     updateToken,
-    checkConfirmButton,
-    checkAllowedTokens,
-    chosenBankTokens
+    getChosenTokenColour,
+    enableOrDisableBank,
+    enableOrDisableToken,
+    toggleCollectGemsButton,
+    chosenBankTokens,
+    currentBankTokens
 };
