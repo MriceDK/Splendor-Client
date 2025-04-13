@@ -1,11 +1,12 @@
-import * as Utils from "../../../helper/utils.js";
+import * as helper from "./helper";
 import * as ErrorHandler from "../../../data-connector/error-handler.js";
 import * as API from "../../../API/api.js";
+
+import {getCurrentPlayer} from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";
 import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
-import { getCurrentPlayer } from "../../../helper/utils.js";
-import { nobleCheck } from "../market-component/handler.js";
+import {nobleCheck} from "../market-component/handler.js";
 
 function immediateNobleCheckAfterBuy(){
     API.getGameInfo().then(res => {
@@ -22,9 +23,9 @@ function buyDevelopmentCard(e) {
     const $form = document.querySelector("#token-selector-form");
 
     const devCardName = $form.querySelector("#token-selector-dev-card").value;
-    const gemCost = getGemCostObject($form);
+    const gemCost = helper.getGemCostObject($form);
 
-    const body = createBuyCardBody(devCardName, gemCost);
+    const body = helper.createBuyCardBody(devCardName, gemCost);
     API.buyDevelopmentCardRequest(body).then(buyResponse => {
         closePopUp();
         checkTooManyTokens(buyResponse.tokens);
@@ -49,9 +50,9 @@ function buyReservedDevelopmentCard(e) {
     const $form = document.querySelector("#token-selector-form");
 
     const devCardName = $form.querySelector("#token-selector-dev-card").value;
-    const gemCost = getGemCostObject($form);
+    const gemCost = helper.getGemCostObject($form);
 
-    const body = createBuyReservedCardBody(gemCost);
+    const body = helper.createBuyReservedCardBody(gemCost);
     API.buyReservedCard(devCardName, body).then(() => {
         closePopUp();
         checkTooManyTokens(tokens);
@@ -67,32 +68,14 @@ function buyReservedDevelopmentCard(e) {
     // TODO: Fix this implementation of the checkTooMuchGems function
 }
 
-function createBuyCardBody(devCardName, gemCost) {
-    return {
-        development: {
-            name: devCardName
-        },
-        payment: gemCost
-    };
+function hookupEventListeners(reservedCard) {
+    if (reservedCard) {
+        document.querySelector("#token-selector-form").addEventListener("submit", buyReservedDevelopmentCard);
+
+    } else if (!reservedCard) {
+        document.querySelector("#token-selector-form").addEventListener("submit", buyDevelopmentCard);
+    }
+    document.querySelector("#token-selector-close-button").addEventListener("click", closePopUp);
 }
 
-function createBuyReservedCardBody(gemCost) {
-    return {
-        payment: gemCost
-    };
-}
-
-function getGemCostObject($form) {
-    const $inputs = $form.querySelectorAll(".gem-selector-input");
-    const obj = {};
-
-    $inputs.forEach($input => {
-        const gemName = Utils.uppercaseFirstLetterOfWord($input.name);
-
-        obj[gemName] = parseInt($input.value);
-    });
-
-    return obj;
-}
-
-export {buyDevelopmentCard, buyReservedDevelopmentCard};
+export {buyDevelopmentCard, buyReservedDevelopmentCard, hookupEventListeners};

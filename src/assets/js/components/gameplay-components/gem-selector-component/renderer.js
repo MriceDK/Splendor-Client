@@ -1,6 +1,6 @@
-import {buyDevelopmentCard, buyReservedDevelopmentCard} from "./handler.js";
 import * as Utils from "../../../helper/utils.js";
-import {closePopUp} from "../confirmation-popup-component/renderer.js";
+import {hookupEventListeners} from "./handler.js";
+
 
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
 
@@ -15,14 +15,6 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
     hookupEventListeners(reservedCard);
 }
 
-function hookupEventListeners(reservedCard) {
-    if (reservedCard) {
-        document.querySelector("#token-selector-form").addEventListener("submit", buyReservedDevelopmentCard);
 
-    } else if (!reservedCard) {
-        document.querySelector("#token-selector-form").addEventListener("submit", buyDevelopmentCard);
-    }
-    document.querySelector("#token-selector-close-button").addEventListener("click", closePopUp);
-}
 
 export {renderTokenSelectorForm};
