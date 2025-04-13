@@ -31,6 +31,8 @@ function createBody(lobbyName, playerAmount, playername) {
 
     if (!(lobbyName === "" || lobbyName == null)) {
         body.gameName = lobbyName;
+    } else {
+        body.gameName = playername + "'s lobby";
     }
 
     return body;

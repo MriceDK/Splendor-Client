@@ -2,7 +2,6 @@ import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import * as api from "../../../API/api.js";
-import {addGameNames} from "../../../helper/utils";
 
 
 function loadUserInformation() {
@@ -12,7 +11,7 @@ function loadUserInformation() {
 function getMatchingGames() {
     api.getAllLobbies()
         .then((res) => {
-            handleFilters(addGameNames(res.games));
+            handleFilters(res.games);
             setTimeout(getMatchingGames, 1000);
         })
         .catch(errorHandler.handleError);
