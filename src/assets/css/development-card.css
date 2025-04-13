@@ -18,12 +18,12 @@
 
 .deck, .development-card, .noble {
     background-color: grey;
+    overflow: hidden;
 }
 
 .deck, .development-card {
     width: 8rem;
     height: 11rem;
-    overflow: hidden;
 }
 
 .deck {
