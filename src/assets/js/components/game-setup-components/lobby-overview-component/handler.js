@@ -1,7 +1,7 @@
 import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import * as api from "../../../api/api.js";
+import * as api from "../../../api/gameplay-api.js";
 
 
 function loadUserInformation() {
@@ -11,10 +11,19 @@ function loadUserInformation() {
 function getMatchingGames() {
     api.getAllLobbies()
         .then((res) => {
-            handleFilters(res.games);
+            handleFilters(addGameName(res.games));
             setTimeout(getMatchingGames, 1000);
         })
         .catch(errorHandler.handleError);
+}
+
+function addGameName(games) {
+    games.forEach(game => {
+        if (game.gameName === null || game.gameName === "") {
+            game.gameName = game.players[0] + "'s lobby";
+        }
+    });
+    return games;
 }
 
 function getFilterValues() {
