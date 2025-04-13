@@ -1,4 +1,6 @@
-function tokenInPurse(player, token, bonus = true) {
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor";
+
+function getTokenInPurse(player, token, bonus = true) {
 
     if (bonus) {
         if (player.bonuses[token]) {
@@ -15,4 +17,11 @@ function tokenInPurse(player, token, bonus = true) {
 
 }
 
-export {tokenInPurse};
+function getOpponents(players) {
+    const ownName = loadFromStorage("playerName");
+    return players.filter(player => {
+        return player.name !== ownName;
+    });
+}
+
+export {getTokenInPurse, getOpponents};

@@ -1,15 +1,7 @@
-import {tokenInPurse} from "./handler.js";
-import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
-
-function getOpponents(players) {
-    const ownName = loadFromStorage("playerName");
-    return players.filter(player => {
-        return player.name !== ownName;
-    });
-}
+import * as handler from "./handler.js";
 
 function renderOpponentsStats(players) {
-    const opponents = getOpponents(players);
+    const opponents = handler.getOpponents(players);
     opponents.forEach(opponent => renderOpponentStats(opponent));
 }
 
@@ -27,18 +19,18 @@ function fillOpponentStat($template, opponent) {
     $template.querySelector(".points").innerText = opponent.totalPrestigePoints;
     $template.querySelector("#reserved-count").innerText = opponent.reserve.length;
 
-    $template.querySelector(".gems.red>.token-text").innerText = tokenInPurse(opponent, "Ruby", false);
-    $template.querySelector(".gems.green>.token-text").innerText = tokenInPurse(opponent, "Emerald", false);
-    $template.querySelector(".gems.black>.token-text").innerText = tokenInPurse(opponent, "Onyx", false);
-    $template.querySelector(".gems.blue>.token-text").innerText = tokenInPurse(opponent, "Sapphire", false);
-    $template.querySelector(".gems.white>.token-text").innerText = tokenInPurse(opponent, "Diamond", false);
-    $template.querySelector(".gems.yellow>.token-text").innerText = tokenInPurse(opponent, "Gold", false);
+    $template.querySelector(".gems.red>.token-text").innerText = handler.getTokenInPurse(opponent, "Ruby", false);
+    $template.querySelector(".gems.green>.token-text").innerText = handler.getTokenInPurse(opponent, "Emerald", false);
+    $template.querySelector(".gems.black>.token-text").innerText = handler.getTokenInPurse(opponent, "Onyx", false);
+    $template.querySelector(".gems.blue>.token-text").innerText = handler.getTokenInPurse(opponent, "Sapphire", false);
+    $template.querySelector(".gems.white>.token-text").innerText = handler.getTokenInPurse(opponent, "Diamond", false);
+    $template.querySelector(".gems.yellow>.token-text").innerText = handler.getTokenInPurse(opponent, "Gold", false);
 
-    $template.querySelector(".card.red>.token-text").innerText = tokenInPurse(opponent, "Ruby", true);
-    $template.querySelector(".card.green>.token-text").innerText = tokenInPurse(opponent, "Emerald", true);
-    $template.querySelector(".card.black>.token-text").innerText = tokenInPurse(opponent, "Onyx", true);
-    $template.querySelector(".card.blue>.token-text").innerText = tokenInPurse(opponent, "Sapphire", true);
-    $template.querySelector(".card.white>.token-text").innerText = tokenInPurse(opponent, "Diamond", true);
+    $template.querySelector(".card.red>.token-text").innerText = handler.getTokenInPurse(opponent, "Ruby", true);
+    $template.querySelector(".card.green>.token-text").innerText = handler.getTokenInPurse(opponent, "Emerald", true);
+    $template.querySelector(".card.black>.token-text").innerText = handler.getTokenInPurse(opponent, "Onyx", true);
+    $template.querySelector(".card.blue>.token-text").innerText = handler.getTokenInPurse(opponent, "Sapphire", true);
+    $template.querySelector(".card.white>.token-text").innerText = handler.getTokenInPurse(opponent, "Diamond", true);
 }
 
 export {renderOpponentsStats};
