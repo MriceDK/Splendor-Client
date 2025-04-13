@@ -81,6 +81,12 @@
     background-color: var(--main-bg-color); /* Adjust color */
     font-size: .75rem;
     width: 6rem;
+    height: 3.5rem;
+}
+
+.nobles-container .empty {
+    background-color: transparent;
+    border: 1px solid var(--main-bg-color);
 }
 
 .reserved-section{
