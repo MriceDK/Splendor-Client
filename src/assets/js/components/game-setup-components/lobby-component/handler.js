@@ -1,19 +1,16 @@
 import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import * as APIAbstractor from "../../../data-connector/api-communication-abstractor.js";
 import * as renderer from "./renderer.js";
-import {getGameInfo} from "../../../API/api";
+import {getGameInfo} from "../../../API/api.js";
 
 function loadJoinedGame() {
-
     const gameId = storageAbstractor.loadFromStorage("gameId");
-    const playerToken = storageAbstractor.loadFromStorage("playerToken");
 
     if (gameId !== null) {
-        getGameDetailsForGameId(gameId, playerToken);
+        getGameDetailsForGameId();
     }
 }
 
-function getGameDetailsForGameId(gameId) {
+function getGameDetailsForGameId() {
     getGameInfo()
         .then(data => {
             renderer.dataListFromApi(data);
