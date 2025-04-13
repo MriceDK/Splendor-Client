@@ -1,10 +1,13 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
+import * as NobleRenderer from "../noble-component/renderer.js";
 import { convertToKebabCase } from "../helper/utils.js";
 import {hookUpEventListenersOnPickableNoble}  from "./handler.js";
 
 function renderMarket(gameInfo) {
     const $target = document.querySelector(".market-grid-container");
 
+    console.log(gameInfo);
+    NobleRenderer.renderNobles(gameInfo.unclaimedNobles, $target);
     renderLevelRows(gameInfo.market, $target);
 }
 
@@ -28,32 +31,6 @@ function renderLevelCard(level, cardStackSize, $target) {
     $target.insertAdjacentHTML("beforeend", $levelCard.outerHTML);
 }
 
-function renderNobles(nobles){
-    const $target = document.querySelector(".market-grid-container");
-
-    nobles.forEach(noble => {
-        const $template = document.querySelector("#noble").content.firstElementChild.cloneNode(true);
-
-        $template.querySelector(".noble-name").innerHTML = noble.name;
-        $template.querySelector(".prestige-point").innerHTML = noble.prestigePoints;
-        renderBonusesInNobles(noble.neededBonuses, $template);
-
-        $target.insertAdjacentHTML("afterbegin", $template.outerHTML);
-        
-    });
-    
-
-}
-
-function renderBonusesInNobles(bonusesNeeded, $template){
-
-    const $ul = $template.querySelector(".bonus-costs");
-    Object.entries(bonusesNeeded).forEach(([bonusNeeded, bonusValue]) =>
-        {
-            $ul.insertAdjacentHTML("beforeend", `<li class= "${bonusNeeded.toLowerCase()}">${bonusValue}</li>`);
-
-        });
-}
 
 function renderPickableNobles(nobles){
     const $allNobles = document.querySelectorAll(".noble-article");
@@ -88,4 +65,4 @@ function renderPickableNoblesHelp($nobleInDom, noble){
 
 
 
-export { renderMarket, renderNobles, renderPickableNobles };
+export { renderMarket, renderPickableNobles };
