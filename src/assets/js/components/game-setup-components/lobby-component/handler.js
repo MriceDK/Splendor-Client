@@ -1,5 +1,5 @@
-import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
-import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
+import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
+import * as APIAbstractor from "../../../data-connector/api-communication-abstractor.js";
 import * as renderer from "./renderer.js";
 
 function loadJoinedGame() {

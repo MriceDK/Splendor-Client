@@ -1,10 +1,10 @@
-import * as Utils from "../helper/utils.js";
-import * as ErrorHandler from "../data-connector/error-handler.js";
-import * as API from "../API/api.js";
+import * as Utils from "../../../helper/utils.js";
+import * as ErrorHandler from "../../../data-connector/error-handler.js";
+import * as API from "../../../API/api.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";
 import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
-import { getCurrentPlayer } from "../helper/utils.js";
+import { getCurrentPlayer } from "../../../helper/utils.js";
 import { nobleCheck } from "../market-component/handler.js";
 
 function immediateNobleCheckAfterBuy(){

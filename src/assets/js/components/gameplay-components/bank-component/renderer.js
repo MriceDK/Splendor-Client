@@ -1,7 +1,7 @@
 import * as handler from "./handler.js";
-import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
-import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import {uppercaseFirstLetterOfWord} from "../helper/utils.js";
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
+import * as APIAbstractor from "../../../data-connector/api-communication-abstractor.js";
+import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 

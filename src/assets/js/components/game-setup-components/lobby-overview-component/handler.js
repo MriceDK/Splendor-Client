@@ -1,8 +1,8 @@
-import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import * as errorHandler from "../data-connector/error-handler.js";
+import * as APIAbstractor from "../../../data-connector/api-communication-abstractor.js";
+import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
-import * as localStorageAbstractor from "../data-connector/local-storage-abstractor.js";
+import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 
 
 function loadUserInformation() {

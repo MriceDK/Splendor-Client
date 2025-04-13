@@ -1,4 +1,4 @@
-import * as handler from "../lobby-component/handler.js";
+import * as handler from "./handler.js";
 
 function init() {
 

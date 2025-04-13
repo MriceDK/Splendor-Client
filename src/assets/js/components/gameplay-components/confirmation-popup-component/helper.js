@@ -1,6 +1,6 @@
-import * as api from "../API/api.js";
+import * as api from "../../../API/api.js";
 import {closePopUp} from "./renderer.js";
-import {handleError} from "../data-connector/error-handler.js";
+import {handleError} from "../../../data-connector/error-handler.js";
 import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 

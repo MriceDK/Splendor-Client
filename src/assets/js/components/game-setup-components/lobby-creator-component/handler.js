@@ -1,5 +1,5 @@
-import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
-import {loadFromStorage, saveToStorage} from "../data-connector/local-storage-abstractor.js";
+import * as APIAbstractor from "../../../data-connector/api-communication-abstractor.js";
+import {loadFromStorage, saveToStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 function createLobby(e) {
     e.preventDefault();

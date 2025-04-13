@@ -1,5 +1,5 @@
 import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
-import { convertToKebabCase } from "../helper/utils.js";
+import { convertToKebabCase } from "../../../helper/utils.js";
 import {hookUpEventListenersOnPickableNoble}  from "./handler.js";
 
 function renderMarket(gameInfo) {

@@ -1,4 +1,4 @@
-import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 function getOwnPlayerName() {
     return loadFromStorage("playerName");

@@ -1,4 +1,4 @@
-import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
+import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {
     handleMarketClickability
 } from "../inactive-player-component/market-util-inactive-component/market-inactive-handler.js";

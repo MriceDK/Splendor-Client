@@ -1,4 +1,4 @@
-import * as storageAbstractor from "../data-connector/local-storage-abstractor.js";
+import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 
 function dataListFromApi(data) {
 

@@ -1,8 +1,8 @@
-import {renderOpponentsStats} from "./opponent-card-component/renderer.js";
-import {renderTokenBank} from "./bank-component/renderer.js";
-import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
-import {renderMarket, renderNobles} from "./market-component/renderer.js";
-import {renderActivePlayer} from "./active-player-component/renderer.js";
+import {renderOpponentsStats} from "./components/gameplay-components/opponent-card-component/renderer.js";
+import {renderTokenBank} from "./components/gameplay-components/bank-component/renderer.js";
+import {ownPlayerCardRenderer} from "./components/gameplay-components/own-player-component/renderer.js";
+import {renderMarket, renderNobles} from "./components/gameplay-components/market-component/renderer.js";
+import {renderActivePlayer} from "./components/gameplay-components/active-player-component/renderer.js";
 import {getGameInfo} from "./API/api.js";
 
 // import {checkTooMuchGems} from "./own-player-component/gems-overflow-component/handler.js";

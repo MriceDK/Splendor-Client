@@ -1,4 +1,4 @@
-import { saveToStorage } from "../data-connector/local-storage-abstractor.js";
+import { saveToStorage } from "../../../data-connector/local-storage-abstractor.js";
 import { changePlayerNameText } from "./renderer.js";
 
 function changePlayerName(e){
