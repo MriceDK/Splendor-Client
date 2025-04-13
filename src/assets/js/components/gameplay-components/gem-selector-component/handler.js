@@ -1,15 +1,16 @@
 import * as helper from "./helper";
 import * as ErrorHandler from "../../../data-connector/error-handler.js";
-import * as API from "../../../api/api.js";
+import * as API from "../../../api/gameplay-api.js";
 
 import {getCurrentPlayer} from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";
 import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 import {nobleCheck} from "../market-component/handler.js";
+import {getGameInfo} from "../../../api/game-setup-api";
 
 function immediateNobleCheckAfterBuy(){
-    API.getGameInfo().then(res => {
+    getGameInfo().then(res => {
 
         const currentPlayer = getCurrentPlayer(res.players, res.currentPlayer);
         nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);

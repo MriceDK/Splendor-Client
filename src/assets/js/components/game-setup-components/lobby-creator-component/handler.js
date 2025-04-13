@@ -1,5 +1,5 @@
 import {loadFromStorage, saveToStorage} from "../../../data-connector/local-storage-abstractor.js";
-import * as api from "../../../api/api.js";
+import {createLobby as createLobby1} from "../../../api/game-setup-api";
 
 function createLobby(e) {
     e.preventDefault();
@@ -13,7 +13,7 @@ function createLobby(e) {
 
     const body = createBody(lobbyName, playerAmount, playername);
 
-    api.createLobby(body)
+    createLobby1(body)
         .then(res => {
             saveToStorage("gameId", res.gameId);
             saveToStorage("playerToken", res.playerToken);

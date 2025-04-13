@@ -1,8 +1,8 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import {createReserveCardBody} from "./helper.js";
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
-import { getCurrentPlayer } from "../helper/utils.js";
-import { removePickableFromNobles } from "../components/gameplay-components/market-component/handler.js";
+import {getCurrentPlayer} from "../helper/utils.js";
+import {removePickableFromNobles} from "../components/gameplay-components/market-component/handler.js";
 
 
 function reserveCard(cardNameOrLevel, level = false) {
@@ -26,11 +26,6 @@ function buyReservedCard(cardName, body) {
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve/${cardName}`, "DELETE", body);
 }
 
-function getGameInfo() {
-    const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-    return APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}`, "GET");
-}
-
 function getNobleToInventory(gameId, playerName, noble){
 
     if (playerName === getCurrentPlayer(playerName)){
@@ -47,21 +42,9 @@ function getNobleToInventory(gameId, playerName, noble){
     }
 }
 
-function createLobby(body) {
-    return APIAbstractor.fetchFromServer("/games", "POST", body);
-}
-
-function getAllLobbies() {
-    return APIAbstractor.fetchFromServer("/games", "GET");
-}
-
-function joinLobby(joinGameId, playerName) {
-    return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST");
-}
-
 function updateTokens(gameId, playerName, body) {
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body);
 }
 
 
-export {reserveCard, buyDevelopmentCardRequest, buyReservedCard, getGameInfo, getNobleToInventory, createLobby, getAllLobbies, joinLobby, updateTokens};
+export {reserveCard, buyDevelopmentCardRequest, buyReservedCard, getNobleToInventory, updateTokens};

@@ -1,7 +1,7 @@
 import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import * as api from "../../../api/gameplay-api.js";
+import {getAllLobbies, joinLobby} from "../../../api/game-setup-api";
 
 
 function loadUserInformation() {
@@ -9,7 +9,7 @@ function loadUserInformation() {
 }
 
 function getMatchingGames() {
-    api.getAllLobbies()
+    getAllLobbies()
         .then((res) => {
             handleFilters(addGameName(res.games));
             setTimeout(getMatchingGames, 1000);
@@ -96,7 +96,7 @@ function handleLobbyJoinClick(e) {
 
 function addPlayerToGame(joinGameId) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    api.joinLobby(joinGameId, playerName)
+    joinLobby(joinGameId, playerName)
         .then(res => {
             localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
             window.location.assign("./lobby.html");

@@ -3,7 +3,8 @@ import {renderTokenBank} from "./components/gameplay-components/bank-component/r
 import {ownPlayerCardRenderer} from "./components/gameplay-components/own-player-component/renderer.js";
 import {renderMarket, renderNobles} from "./components/gameplay-components/market-component/renderer.js";
 import {renderActivePlayer} from "./components/gameplay-components/active-player-component/renderer.js";
-import {getGameInfo} from "./api/api.js";
+
+import {getGameInfo} from "./api/game-setup-api";
 
 // import {checkTooMuchGems} from "./components/gameplay-components/own-player-component/gems-overflow-component/handler.js";
 

@@ -1,5 +1,5 @@
 import {renderPickableNobles} from "./renderer.js";
-import {getNobleToInventory} from "../../../api/api.js";
+import {getNobleToInventory} from "../../../api/gameplay-api.js";
 import {checkAvailableNobles} from "./helper.js";
 
 

@@ -1,5 +1,5 @@
 import {renderTooManyGemsPopUp} from "../renderer.js";
-import * as api from "../../../../api/api.js";
+import * as api from "../../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../../helper/utils.js";
 
