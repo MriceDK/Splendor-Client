@@ -8,4 +8,20 @@ function showPopupContainer() {
     $popupContainer.classList.remove("hidden");
 }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer};
+function convertToKebabCase(string){
+    return string.trim().toLowerCase().split(" ").join("-");
+
+}
+
+function getCurrentPlayer(players, currentPlayer){
+    players.forEach(player => {
+        if (player.name === currentPlayer){
+            return player;
+        }
+        
+    });
+
+    return undefined;
+ }
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer};

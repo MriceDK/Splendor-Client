@@ -46,3 +46,13 @@ header {
     background-color: grey;
 }
 
+.pickable-noble {
+    border: 0.25rem;
+    border-color: yellow;
+    transition: 1s infinite ease-in-out;
+}
+
+.pickable-noble:hover {
+    border: 1rem;
+}
+

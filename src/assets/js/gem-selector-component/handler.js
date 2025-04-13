@@ -4,6 +4,17 @@ import * as API from "../API/api.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";
 import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
+import { getCurrentPlayer } from "../helper/utils.js";
+import { nobleCheck } from "../market-component/handler.js";
+
+function immediateNobleCheckAfterBuy(){
+    API.getGameInfo().then(res => {
+
+        const currentPlayer = getCurrentPlayer(res.players, res.currentPlayer);
+        nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);
+    }
+    );
+}
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -21,8 +32,13 @@ function buyDevelopmentCard(e) {
             renderOwnTokenValue(token);
         });
 
+        immediateNobleCheckAfterBuy();
+
+
+
     }).catch(err => {
         ErrorHandler.handleError(err);
+     
     });
 
 }
@@ -42,12 +58,13 @@ function buyReservedDevelopmentCard(e) {
         Object.entries(tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
+
+        immediateNobleCheckAfterBuy();
+
     }).catch(err => {
         ErrorHandler.handleError(err);
     });
     // TODO: Fix this implementation of the checkTooMuchGems function
-
-
 }
 
 function createBuyCardBody(devCardName, gemCost) {
