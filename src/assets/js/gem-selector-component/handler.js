@@ -2,7 +2,7 @@ import * as Utils from "../helper/utils.js";
 import * as ErrorHandler from "../data-connector/error-handler.js";
 import * as API from "../API/api.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";
-import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
+// import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 import { getCurrentPlayer } from "../helper/utils.js";
 import { nobleCheck } from "../market-component/handler.js";
@@ -27,7 +27,7 @@ function buyDevelopmentCard(e) {
     const body = createBuyCardBody(devCardName, gemCost);
     API.buyDevelopmentCardRequest(body).then(buyResponse => {
         closePopUp();
-        checkTooManyTokens(buyResponse.tokens);
+        //checkTooManyTokens(buyResponse.tokens); TODO deze functie werkt nog niet optimaal
         Object.entries(buyResponse.tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
@@ -54,7 +54,7 @@ function buyReservedDevelopmentCard(e) {
     const body = createBuyReservedCardBody(gemCost);
     API.buyReservedCard(devCardName, body).then(() => {
         closePopUp();
-        checkTooManyTokens(tokens);
+        //checkTooManyTokens(tokens); Deze functie werkt nogn iet optimaal
         Object.entries(tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
