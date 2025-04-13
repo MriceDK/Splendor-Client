@@ -1,5 +1,5 @@
-import * as APIAbstractor from "../../../data-connector/api-communication-abstractor.js";
 import {loadFromStorage, saveToStorage} from "../../../data-connector/local-storage-abstractor.js";
+import * as api from "../../../API/api.js";
 
 function createLobby(e) {
     e.preventDefault();
@@ -13,7 +13,7 @@ function createLobby(e) {
 
     const body = createBody(lobbyName, playerAmount, playername);
 
-    APIAbstractor.fetchFromServer("/games", "POST", body)
+    api.createLobby(body)
         .then(res => {
             saveToStorage("gameId", res.gameId);
             saveToStorage("playerToken", res.playerToken);

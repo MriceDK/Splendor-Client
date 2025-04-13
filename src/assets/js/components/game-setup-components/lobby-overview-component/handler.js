@@ -3,6 +3,8 @@ import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
+import * as api from "../../../API/api.js";
+
 
 
 function loadUserInformation() {
@@ -10,9 +12,9 @@ function loadUserInformation() {
 }
 
 function getMatchingGames() {
-    APIAbstractor.fetchFromServer("/games", "GET")
-        .then((json) => {
-            handleFilters(helper.addGameNames(json.games));
+    api.getAllLobbies()
+        .then((res) => {
+            handleFilters(helper.addGameNames(res.games));
             setTimeout(getMatchingGames, 1000);
         })
         .catch(errorHandler.handleError);
@@ -88,7 +90,7 @@ function handleLobbyJoinClick(e) {
 
 function addPlayerToGame(joinGameId) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
+    api.joinLobby(joinGameId, playerName)
         .then(res => {
             localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
             window.location.assign("./lobby.html");

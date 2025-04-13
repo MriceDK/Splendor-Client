@@ -45,9 +45,23 @@ function getNobleToInventory(gameId, playerName, noble){
     } else {
         throw "TurnError";
     }
+}
 
+function createLobby(body) {
+    return APIAbstractor.fetchFromServer("/games", "POST", body);
+}
 
+function getAllLobbies() {
+    return APIAbstractor.fetchFromServer("/games", "GET");
+}
+
+function joinLobby(joinGameId, playerName) {
+    return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST");
+}
+
+function updateTokens(gameId, playerName, body) {
+    return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/tokens`, "PATCH", body);
 }
 
 
-export {reserveCard, buyDevelopmentCardRequest, buyReservedCard, getGameInfo, getNobleToInventory};
+export {reserveCard, buyDevelopmentCardRequest, buyReservedCard, getGameInfo, getNobleToInventory, createLobby, getAllLobbies, joinLobby, updateTokens};

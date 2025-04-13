@@ -1,5 +1,5 @@
 import {renderTooManyGemsPopUp} from "../renderer.js";
-import * as APIAbstractor from "../../../../data-connector/api-communication-abstractor.js";
+import * as api from "../../../../API/api.js";
 import * as LocalStorageAbstractor from "../../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../../helper/utils.js";
 
@@ -64,9 +64,7 @@ function counTokens() {
 function updateTokensAfterTooMany(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
-    return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${player.name}/tokens`, "PATCH", body);
-
-
+    return api.updateTokens(gameId, player.name, body)
 }
 
 function getDiffTokensObject(tokens) {
