@@ -1,0 +1,17 @@
+{
+  "reserve": [
+    {
+      "name": "Royal Sapphire Chamber",
+      "level": 3,
+      "cost": {
+        "Diamond": 7
+      },
+      "bonus": "Sapphire",
+      "prestigePoints": 4
+    }
+  ],
+  "tokens": {
+    "Ruby": 2,
+    "Gold": 1
+  }
+}
