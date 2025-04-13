@@ -16,7 +16,8 @@
     gap: 1rem;
 }
 
-.deck, .development-card, .noble {
+.deck, .development-card, .noble-article {
+
     background-color: grey;
     overflow: hidden;
 }
