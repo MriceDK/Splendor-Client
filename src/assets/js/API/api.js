@@ -2,7 +2,7 @@ import * as APIAbstractor from "../data-connector/api-communication-abstractor.j
 import {createReserveCardBody} from "./helper.js";
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 import { getCurrentPlayer } from "../helper/utils.js";
-// import { removePickableFromNobles } from "../components/gameplay-components/market-component/handler.js";
+import { removePickableFromNobles } from "../components/gameplay-components/market-component/handler.js";
 
 
 function reserveCard(cardNameOrLevel, level = false) {
@@ -40,8 +40,7 @@ function getNobleToInventory(gameId, playerName, noble){
             "prestigePoints": noble.prestigePoints,
             "neededBonuses":noble.neededBonuses
         };
-        // APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body).then(removePickableFromNobles());
-        // TODO FIXME: removePickableFromNobles() is not working as expected
+        APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body).then(() => removePickableFromNobles());
 
     } else {
         throw "TurnError";
