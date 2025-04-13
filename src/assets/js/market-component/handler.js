@@ -39,8 +39,8 @@ function nobleQualification(nobleRequirements, playerBonuses){
 
 function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
     const $pickableNobles = document.querySelectorAll(".pickable-nobles");
-    $pickableNobles.forEach( pickableNoble => {
-        pickableNoble.addEventListener("click", getNobleToInventory(gameId, playerName, noble));
+    $pickableNobles.forEach( (pickableNoble) => {
+        pickableNoble.addEventListener("click", () => {getNobleToInventory(gameId, playerName, noble)})
     }); 
 
 }

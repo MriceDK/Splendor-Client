@@ -20,6 +20,8 @@ function getCurrentPlayer(players, currentPlayer){
         }
         
     });
+
+    return undefined;
  }
 
 export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer};
