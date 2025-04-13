@@ -3,6 +3,8 @@ import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as NobleRenderer from "../noble-component/renderer.js";
 import { unclaimedNoblesDummy } from "../game.js";
 
+const MAX_NOBLE_DISPLAY = 3;
+
 function getOpponents(players) {
     const ownName = loadFromStorage("playerName");
     return players.filter(player => {
@@ -43,7 +45,22 @@ function fillOpponentStat($template, opponent) {
     $template.querySelector(".card.white>.token-text").innerText = tokenInPurse(opponent, "Diamond", true);
 
     const $nobleContainer = $template.querySelector(".nobles-container");
-    NobleRenderer.renderNobles(unclaimedNoblesDummy, $nobleContainer);
+    NobleRenderer.renderNobles(opponent.nobles, $nobleContainer);
+    renderEmptyNobleSpots($nobleContainer);
+}
+
+function renderEmptyNobleSpots($nobleContainer) {
+
+    const $childItems = $nobleContainer.querySelectorAll(".noble-article");
+
+    if ($childItems.length < MAX_NOBLE_DISPLAY) {
+
+        const $emptyNobleSpot = `<article class="noble-article empty"></article>`
+        $nobleContainer.insertAdjacentHTML("beforeend", $emptyNobleSpot);
+
+        renderEmptyNobleSpot($nobleContainer);
+    }
+
 }
 
 export {renderOpponentsStats};
