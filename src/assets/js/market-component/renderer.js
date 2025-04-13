@@ -32,6 +32,9 @@ function renderLevelCard(level, cardStackSize, $target) {
 
 
 function renderPickableNobles(nobles){
+    // TODO Wanneer we dit makkelijk kunnen testen, zou ik dit in het noble component steken en het onderstaande verbeteren
+    // Hier wordt er geselecteerd op ALLE elementen met de klasse noble-article, is het niet de bedoeling dat er enkel
+    // geselecteerd wordt op elementen BINNEN de market-grid-container ?
     const $allNobles = document.querySelectorAll(".noble-article");
     nobles.forEach(noble => {
         nameChecker(noble, $allNobles);
