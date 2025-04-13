@@ -1,7 +1,7 @@
 import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {getAllLobbies, joinLobby} from "../../../api/game-setup-api";
+import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
 
 function loadUserInformation() {

@@ -1,4 +1,4 @@
-import * as render from "./renderer";
+import * as render from "./renderer.js";
 
 function isLegalToken(token) {
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;

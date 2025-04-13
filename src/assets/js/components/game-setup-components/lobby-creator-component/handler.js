@@ -1,5 +1,5 @@
 import {loadFromStorage, saveToStorage} from "../../../data-connector/local-storage-abstractor.js";
-import {createLobby as createLobby1} from "../../../api/game-setup-api";
+import {createLobby as createLobby1} from "../../../api/game-setup-api.js";
 
 function createLobby(e) {
     e.preventDefault();

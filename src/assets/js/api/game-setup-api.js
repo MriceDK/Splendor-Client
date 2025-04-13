@@ -1,5 +1,5 @@
-import * as APIAbstractor from "../data-connector/api-communication-abstractor";
-import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor";
+import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
+import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 
 function getGameInfo() {
     const gameId = LocalStorageAbstractor.loadFromStorage("gameId");

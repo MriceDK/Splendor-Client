@@ -1,4 +1,4 @@
-import {loadFromStorage} from "../../../data-connector/local-storage-abstractor";
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 function getTokenInPurse(player, token, bonus = true) {
 

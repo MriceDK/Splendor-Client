@@ -1,4 +1,4 @@
-import * as helper from "./helper";
+import * as helper from "./helper.js";
 import * as ErrorHandler from "../../../data-connector/error-handler.js";
 import * as API from "../../../api/gameplay-api.js";
 
@@ -7,7 +7,7 @@ import {closePopUp} from "../confirmation-popup-component/renderer.js";
 // import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
 import {renderOwnTokenValue} from "../own-player-component/renderer.js";
 import {nobleCheck} from "../market-component/handler.js";
-import {getGameInfo} from "../../../api/game-setup-api";
+import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function immediateNobleCheckAfterBuy(){
     getGameInfo().then(res => {

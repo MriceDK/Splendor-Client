@@ -1,4 +1,4 @@
-import * as Utils from "../../../helper/utils";
+import * as Utils from "../../../helper/utils.js";
 
 function getGemCostObject($form) {
     const $inputs = $form.querySelectorAll(".gem-selector-input");

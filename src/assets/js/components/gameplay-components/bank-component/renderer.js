@@ -1,7 +1,7 @@
 import * as handler from "./handler.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
-import {isLegalToken} from "./helper";
+import {isLegalToken} from "./helper.js";
 
 const chosenBankTokens = {
     Ruby: 0,
