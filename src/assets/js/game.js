@@ -5,7 +5,7 @@ import {renderMarket, renderNobles} from "./components/gameplay-components/marke
 import {renderActivePlayer} from "./components/gameplay-components/active-player-component/renderer.js";
 import {getGameInfo} from "./API/api.js";
 
-// import {checkTooMuchGems} from "./own-player-component/gems-overflow-component/handler.js";
+// import {checkTooMuchGems} from "./components/gameplay-components/own-player-component/gems-overflow-component/handler.js";
 
 
 function init() {

@@ -16,4 +16,10 @@ function getOwnPlayerInfo(gameinfo) {
     return null;
 }
 
-export {getOwnPlayerInfo};
+function putInitalValue($tooMuchGemsTemplate, token) {
+    const selector = `#token-remover-${token[0].toLowerCase()}`;
+    $tooMuchGemsTemplate.querySelector(selector).setAttribute("value", token[1]);
+
+}
+
+export {putInitalValue, getOwnPlayerInfo};

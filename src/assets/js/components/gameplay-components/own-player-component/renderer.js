@@ -1,4 +1,6 @@
-import * as getOwnInfo from "./handler.js";
+import * as getOwnInfo from "./helper.js";
+
+import {putInitalValue} from "./helper.js";
 
 function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);
@@ -40,12 +42,6 @@ function renderTooManyGemsPopUp(playerTokens) {
 
     $target.insertAdjacentHTML("beforeend", $tooMuchGemsTemplate.outerHTML);
 
-
-}
-
-function putInitalValue($tooMuchGemsTemplate, token) {
-    const selector = `#token-remover-${token[0].toLowerCase()}`;
-    $tooMuchGemsTemplate.querySelector(selector).setAttribute("value", token[1]);
 
 }
 
