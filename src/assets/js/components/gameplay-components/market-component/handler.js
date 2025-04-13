@@ -1,5 +1,6 @@
-import { renderPickableNobles } from "./renderer.js";
-import { getNobleToInventory } from "../../../API/api.js";
+import {renderPickableNobles} from "./renderer.js";
+import {getNobleToInventory} from "../../../API/api.js";
+import {checkAvailableNobles} from "./helper.js";
 
 
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
@@ -9,33 +10,6 @@ function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
     }
 }
 
-
-function checkAvailableNobles(nobles, playerInfo){
-    const playerBonuses = playerInfo.bonuses;
-    const qualifiedNobles = [];
-    nobles.forEach(noble => {
-        if (nobleQualification(noble.neededBonuses, playerBonuses)){
-            qualifiedNobles.push(noble);
-        }
-
-        
-    });
-
-    return qualifiedNobles;
-    
-
-}
-
-function nobleQualification(nobleRequirements, playerBonuses){
-    for (const [bonus, requiredAmount] of Object.entries(nobleRequirements)){
-
-        if (playerBonuses[bonus] < requiredAmount) {
-            return false; 
-        }
-    }
-    return true; 
-
-}
 
 function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
     const $pickableNobles = document.querySelectorAll(".pickable-nobles");
