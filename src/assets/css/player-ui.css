@@ -77,12 +77,10 @@
     margin-top: 0.5rem;
 }
 
-.noble {
-    width: 4.9rem;  /* Square size */
-    height: 3rem;
+.nobles-container .noble-article {
     background-color: var(--main-bg-color); /* Adjust color */
-    border: 2px solid var(--main-grey-color); /* Border similar to the image */
-    border-radius: 5px; /* Optional rounded corners */
+    font-size: .75rem;
+    width: 6rem;
 }
 
 .reserved-section{
