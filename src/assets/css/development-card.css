@@ -117,7 +117,7 @@
     justify-content: space-between;
 }
 
-.market-grid-container .bonus-costs {
+.bonus-costs {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
