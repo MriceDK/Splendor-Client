@@ -1,5 +1,7 @@
 import {tokenInPurse} from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
+import * as NobleRenderer from "../noble-component/renderer.js";
+import { unclaimedNoblesDummy } from "../game.js";
 
 function getOpponents(players) {
     const ownName = loadFromStorage("playerName");
@@ -39,6 +41,9 @@ function fillOpponentStat($template, opponent) {
     $template.querySelector(".card.black>.token-text").innerText = tokenInPurse(opponent, "Onyx", true);
     $template.querySelector(".card.blue>.token-text").innerText = tokenInPurse(opponent, "Sapphire", true);
     $template.querySelector(".card.white>.token-text").innerText = tokenInPurse(opponent, "Diamond", true);
+
+    const $nobleContainer = $template.querySelector(".nobles-container");
+    NobleRenderer.renderNobles(unclaimedNoblesDummy, $nobleContainer);
 }
 
 export {renderOpponentsStats};
