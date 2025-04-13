@@ -1,7 +1,6 @@
 import {tokenInPurse} from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as NobleRenderer from "../noble-component/renderer.js";
-import { unclaimedNoblesDummy } from "../game.js";
 
 const MAX_NOBLE_DISPLAY = 3;
 
@@ -58,7 +57,7 @@ function renderEmptyNobleSpots($nobleContainer) {
         const $emptyNobleSpot = `<article class="noble-article empty"></article>`
         $nobleContainer.insertAdjacentHTML("beforeend", $emptyNobleSpot);
 
-        renderEmptyNobleSpot($nobleContainer);
+        renderEmptyNobleSpots($nobleContainer);
     }
 
 }
