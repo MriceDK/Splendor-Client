@@ -1,6 +1,6 @@
 import * as helper from "./helper";
 import * as ErrorHandler from "../../../data-connector/error-handler.js";
-import * as API from "../../../API/api.js";
+import * as API from "../../../api/api.js";
 
 import {getCurrentPlayer} from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup-component/renderer.js";

@@ -1,6 +1,6 @@
 import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import * as renderer from "./renderer.js";
-import {getGameInfo} from "../../../API/api.js";
+import {getGameInfo} from "../../../api/api.js";
 
 function loadJoinedGame() {
     const gameId = storageAbstractor.loadFromStorage("gameId");

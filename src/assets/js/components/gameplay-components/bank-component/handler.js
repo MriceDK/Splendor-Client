@@ -1,5 +1,5 @@
 import * as renderer from "./renderer.js";
-import * as api from "../../../API/api";
+import * as api from "../../../api/api";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor";
 import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler";
 import {renderOwnTokenValue} from "../own-player-component/renderer";
