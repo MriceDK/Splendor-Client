@@ -1,0 +1,11 @@
+{
+  "players": [
+    "Alice"
+  ],
+  "started": false,
+  "gameId": 0,
+  "gameName": null,
+  "numberOfPlayers": 3,
+  "returnExcessTokensRequired": false,
+  "pickNobleRequired": false
+}
