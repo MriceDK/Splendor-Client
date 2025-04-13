@@ -1,4 +1,3 @@
-import * as APIAbstractor from "../../../data-connector/api-communication-abstractor.js";
 import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
