@@ -50,11 +50,11 @@ function collectTokens() {
         "take": renderer.chosenBankTokens
     };
 
-    api.updateTokens(gameId, playerName, tokenData).then(tokens => {
+    api.updateTokens(gameId, playerName, tokenData).then(res => {
         // checkTooManyTokens(tokens);
         // TODO: Fix this implementation of the checkTooMuchGems function
 
-        Object.entries(tokens).forEach((token) => {
+        Object.entries(res.tokens).forEach((token) => {
             renderOwnTokenValue(token);
 
         });
