@@ -22,14 +22,14 @@ function renderCostBonuses(bonusesNeeded, $target){
     Object.entries(bonusesNeeded).forEach(([bonus, bonusValue]) =>
     {
         bonus = bonus.toLowerCase();
-        const $costBonus = renderCostBonus(bonus, bonusValue);
+        const $costBonus = generateCostBonus(bonus, bonusValue);
 
         $target.insertAdjacentHTML("beforeend", $costBonus);
 
     });
 }
 
-function renderCostBonus(bonusNeeded, bonusValue) {
+function generateCostBonus(bonusNeeded, bonusValue) {
     return `<li class="${bonusNeeded}">${bonusValue}</li>`;
 }
 
