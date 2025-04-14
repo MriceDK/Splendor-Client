@@ -69,14 +69,4 @@ function buyReservedDevelopmentCard(e) {
     // TODO: Fix this implementation of the checkTooMuchGems function
 }
 
-function hookupEventListeners(reservedCard) {
-    if (reservedCard) {
-        document.querySelector("#token-selector-form").addEventListener("submit", buyReservedDevelopmentCard);
-
-    } else if (!reservedCard) {
-        document.querySelector("#token-selector-form").addEventListener("submit", buyDevelopmentCard);
-    }
-    document.querySelector("#token-selector-close-button").addEventListener("click", closePopUp);
-}
-
-export {buyDevelopmentCard, buyReservedDevelopmentCard, hookupEventListeners};
+export {buyDevelopmentCard, buyReservedDevelopmentCard};
