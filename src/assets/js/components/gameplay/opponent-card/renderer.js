@@ -1,4 +1,5 @@
 import * as handler from "./handler.js";
+import * as NobleRenderer from "../noble/renderer.js";
 
 function renderOpponentsStats(players) {
     const opponents = handler.getOpponents(players);
@@ -31,6 +32,10 @@ function fillOpponentStat($template, opponent) {
     $template.querySelector(".card.black>.token-text").innerText = handler.getTokenInPurse(opponent, "Onyx", true);
     $template.querySelector(".card.blue>.token-text").innerText = handler.getTokenInPurse(opponent, "Sapphire", true);
     $template.querySelector(".card.white>.token-text").innerText = handler.getTokenInPurse(opponent, "Diamond", true);
+
+    const $nobleContainer = $template.querySelector(".nobles-container");
+    NobleRenderer.renderNobles(opponent.nobles, $nobleContainer);
+    NobleRenderer.renderEmptyNobleSpots($nobleContainer);
 }
 
 export {renderOpponentsStats};

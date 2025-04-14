@@ -16,7 +16,8 @@
     gap: 1rem;
 }
 
-.deck, .development-card, .noble {
+.deck, .development-card, .noble-article {
+
     background-color: grey;
     overflow: hidden;
 }
@@ -110,18 +111,19 @@
 
 .noble-article {
     width: 8rem;
+    height: 4.5rem;
     padding: .5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.market-grid-container .bonus-costs {
+.bonus-costs {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
-.bonus-cost {
+.bonus-costs li {
     padding: .25rem;
 }

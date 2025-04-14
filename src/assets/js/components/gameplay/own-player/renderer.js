@@ -1,5 +1,6 @@
 import * as getOwnInfo from "./helper.js";
-import {renderDevelopmentCards} from "../development-card/renderer.js";
+import * as NobleRenderer from "../noble/renderer.js";
+import * as DevelopmentCardRenderer from "../development-card/renderer.js";
 
 function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);
@@ -7,22 +8,16 @@ function ownPlayerCardRenderer(gameInfo) {
     const $playerCard = document.querySelector("#own-player-card");
     $playerCard.querySelector("#own-username").textContent = ownPlayer.name;
     $playerCard.querySelector("#own-prestige-points").textContent = ownPlayer.totalPrestigePoints;
-    ownPlayer.nobles.forEach(noble => renderAcquiredNoble(noble));
+
+    const $ownNobles = $playerCard.querySelector(".nobles-container");
+    NobleRenderer.renderNobles(ownPlayer.nobles, $ownNobles);
+    NobleRenderer.renderEmptyNobleSpots($ownNobles);
+
     Object.entries(ownPlayer.tokens).forEach(token => renderOwnTokenValue(token));
     Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
 
     const $reservedCards = $playerCard.querySelector(".own-reserved-cards");
-    renderDevelopmentCards(ownPlayer.reserve, $reservedCards);
-
-}
-
-function renderAcquiredNoble(noble){
-    const $noblesDiv = document.querySelector("#noble");
-    const $noblesTemplate = document.querySelector(".noble-template").content.firstElementChild.cloneNode(true);
-    $noblesTemplate.querySelector(".noble-name").innerHTML = noble.name;
-    $noblesTemplate.querySelector(".noble-prestige-points-given").innerHTML = noble.prestigePoints;
-
-    $noblesDiv.insertAdjacentHTML("beforeend", $noblesTemplate.outerHTML);
+    DevelopmentCardRenderer.renderDevelopmentCards(ownPlayer.reserve, $reservedCards);
 
 }
 

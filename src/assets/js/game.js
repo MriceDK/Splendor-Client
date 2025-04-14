@@ -1,7 +1,7 @@
 import {renderOpponentsStats} from "./components/gameplay/opponent-card/renderer.js";
 import {renderTokenBank} from "./components/gameplay/bank/renderer.js";
 import {ownPlayerCardRenderer} from "./components/gameplay/own-player/renderer.js";
-import {renderMarket, renderNobles} from "./components/gameplay/market/renderer.js";
+import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 
 import {getGameInfo} from "./api/game-setup-api.js";
@@ -15,7 +15,6 @@ function init() {
             ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
             renderOpponentsStats(res.players);
             renderMarket(res);
-            renderNobles(res.unclaimedNobles);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
             // checkTooMuchGems(res.players, res.currentPlayer);
