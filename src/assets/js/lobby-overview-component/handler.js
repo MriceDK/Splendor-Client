@@ -99,7 +99,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueNess = 0) {
 
         numberToAddNameUniqueNess++;
         uniqueNameForcer(numberToAddNameUniqueNess);
-        addPlayerToGame(joinGameId);
+        addPlayerToGame(joinGameId, numberToAddNameUniqueNess);
 
         }
         
@@ -110,7 +110,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueNess = 0) {
 function uniqueNameForcer(n){
 
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    const newPlayerName = `${playerName}_${n}`;
+    const newPlayerName = `${playerName}${n}`;
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
