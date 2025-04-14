@@ -4,9 +4,9 @@ import * as API from "../../../api/gameplay-api.js";
 
 import {getCurrentPlayer} from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
-// import {checkTooManyTokens} from "../own-player/gems-overflow-component/handler.js";
-import {renderOwnTokenValue} from "../own-player/renderer.js";
-import {nobleCheck} from "../market/handler.js";
+// import {checkTooManyTokens} from "../own-player/gems-overflow/handler.js";
+import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
+import {nobleCheck} from "../../gameplay/market/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function immediateNobleCheckAfterBuy(){

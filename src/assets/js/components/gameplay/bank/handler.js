@@ -1,7 +1,7 @@
 import * as renderer from "./renderer.js";
 import * as api from "../../../api/gameplay-api.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
-// import {checkTooManyTokens} from "../own-player/gems-overflow-component/handler.js";
+// import {checkTooManyTokens} from "../own-player/gems-overflow/handler.js";
 import {renderOwnTokenValue} from "../own-player/renderer.js";
 
 function hookUpEvents() {

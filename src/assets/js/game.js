@@ -6,7 +6,7 @@ import {renderActivePlayer} from "./components/gameplay/active-player/renderer.j
 
 import {getGameInfo} from "./api/game-setup-api.js";
 
-// import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow-component/handler.js";
+// import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 
 
 function init() {
