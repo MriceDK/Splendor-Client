@@ -1,6 +1,6 @@
 import * as getOwnInfo from "./handler.js";
 import * as NobleRenderer from "../noble-component/renderer.js";
-import {renderDevelopmentCards} from "../development-card-component/renderer.js";
+import * as DevelopmentCardRenderer from "../development-card-component/renderer.js";
 
 function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);
@@ -17,7 +17,7 @@ function ownPlayerCardRenderer(gameInfo) {
     Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
 
     const $reservedCards = $playerCard.querySelector(".own-reserved-cards");
-    renderDevelopmentCards(ownPlayer.reserve, $reservedCards);
+    DevelopmentCardRenderer.renderDevelopmentCards(ownPlayer.reserve, $reservedCards);
 
 }
 
