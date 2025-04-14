@@ -3,6 +3,7 @@ import * as errorHandler from "../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
 import * as localStorageAbstractor from "../data-connector/local-storage-abstractor.js";
+import { getGameDetailsForGameId } from "../lobby-component/handler.js";
 
 
 function loadUserInformation() {
@@ -87,6 +88,7 @@ function handleLobbyJoinClick(e) {
 }
 
 function addPlayerToGame(joinGameId) {
+    const gameDetails = getGameDetailsForGameId(joinGameId);
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
         .then(res => {
@@ -94,6 +96,28 @@ function addPlayerToGame(joinGameId) {
             window.location.assign("./lobby.html");
         })
         .catch(errorHandler.handleError);
+}
+
+
+function uniqueNameForcer(gameDetails, playerName){
+
+    const players = gameDetails.players;
+
+    const nameCounts = {};
+
+    players.forEach(player => {
+
+        let displayName = playerName;
+        if (nameCounts[player] === undefined){
+            nameCounts[player] = 0;
+        } else {
+            nameCounts[player]++;
+            displayName = `${user}_${nameCounts[user]}`;
+        }
+        
+    });
+
+    return displayName;
 }
 
 export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};

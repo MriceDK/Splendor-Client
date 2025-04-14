@@ -20,4 +20,4 @@ function getGameDetailsForGameId(gameId) {
         });
 }
 
-export {loadJoinedGame};
+export {loadJoinedGame, getGameDetailsForGameId};
