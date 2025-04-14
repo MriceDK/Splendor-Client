@@ -89,7 +89,8 @@ function handleLobbyJoinClick(e) {
 
 function addPlayerToGame(joinGameId) {
     const gameDetails = getGameDetailsForGameId(joinGameId);
-    const playerName = localStorageAbstractor.loadFromStorage("playerName");
+    const playerLS = localStorageAbstractor.loadFromStorage("playerName");
+    const playerName = uniqueNameForcer(gameDetails, playerLS);
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
         .then(res => {
             localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);

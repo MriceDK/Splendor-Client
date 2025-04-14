@@ -34,16 +34,10 @@ function renderPlayersLoop(playerArray, data) {
     const nameCounts = {};
 
     playerArray.forEach(user => {
-        let displayName = user;
-        if (nameCounts[user] === undefined){
-            nameCounts[user] = 0;
-        } else {
-            nameCounts[user]++;
-            displayName = `${user}_${nameCounts[user]}`;
-        }
+        
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
-        $copy.textContent = displayName;
+        $copy.textContent = user;
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
