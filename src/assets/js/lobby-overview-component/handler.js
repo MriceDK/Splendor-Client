@@ -82,46 +82,31 @@ function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
         localStorageAbstractor.saveToStorage("gameId", joinGameId);
-        addPlayerToGame(joinGameId);
+        addPlayerToGame(joinGameId);        
     }
 
 }
 
 function addPlayerToGame(joinGameId) {
-    getGameInfo().then(
-        gameDetails => {
-            const playerLS = localStorageAbstractor.loadFromStorage("playerName");
-            const playerName = uniqueNameForcer(gameDetails, playerLS);
-            APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST");
-
-        }
-    ).then(res => {
+    const playerLS = localStorageAbstractor.loadFromStorage("playerName");
+    const playerName = uniqueNameForcer(gameDetails, playerLS);
+    APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
+    .then(res => {
         localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
         window.location.assign("./lobby.html");
     })
-    .catch(errorHandler.handleError);
+    .catch(
+        errorHandler.handleError;
+        addPlayerToGame(joinGameId);
+
+    );
 }
 
 
-function uniqueNameForcer(gameDetails, playerName){
-
-    const players = gameDetails.players;
-
-    const nameCounts = {};
-
-    players.forEach(player => {
-
-        let displayName = playerName;
-        if (nameCounts[player] === undefined){
-            nameCounts[player] = 0;
-        } else {
-            nameCounts[player]++;
-            displayName = `${player}_${nameCounts[player]}`;
-        }
-        
-    });
-
-    return displayName;
+function uniqueNameForcer(n){
+    const playerName = localStorageAbstractor.loadFromStorage("playerName");
+    const newPlayerName = `${playerName}_${n}`;
+    localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
 export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
