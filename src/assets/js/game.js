@@ -1,11 +1,12 @@
-import {renderOpponentsStats} from "./opponent-card-component/renderer.js";
-import {renderTokenBank} from "./bank-component/renderer.js";
-import {ownPlayerCardRenderer} from "./own-player-component/renderer.js";
-import {renderMarket} from "./market-component/renderer.js";
-import {renderActivePlayer} from "./active-player-component/renderer.js";
-import {getGameInfo} from "./API/api.js";
+import {renderOpponentsStats} from "./components/gameplay/opponent-card/renderer.js";
+import {renderTokenBank} from "./components/gameplay/bank/renderer.js";
+import {ownPlayerCardRenderer} from "./components/gameplay/own-player/renderer.js";
+import {renderMarket} from "./components/gameplay/market/renderer.js";
+import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 
-// import {checkTooMuchGems} from "./own-player-component/gems-overflow-component/handler.js";
+import {getGameInfo} from "./api/game-setup-api.js";
+
+// import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 
 
 function init() {

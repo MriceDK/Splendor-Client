@@ -1,0 +1,25 @@
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
+
+function getOwnPlayerName() {
+    return loadFromStorage("playerName");
+}
+
+function getOwnPlayerInfo(gameinfo) {
+    const players = gameinfo.players;
+
+    for (const player of players) {
+        if (player.name === getOwnPlayerName()) {
+            return player;
+        }
+    }
+
+    return null;
+}
+
+function putInitalValue($tooMuchGemsTemplate, token) {
+    const selector = `#token-remover-${token[0].toLowerCase()}`;
+    $tooMuchGemsTemplate.querySelector(selector).setAttribute("value", token[1]);
+
+}
+
+export {putInitalValue, getOwnPlayerInfo};
