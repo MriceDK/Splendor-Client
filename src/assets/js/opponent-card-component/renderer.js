@@ -54,7 +54,7 @@ function renderEmptyNobleSpots($nobleContainer) {
 
     if ($childItems.length < MAX_NOBLE_DISPLAY) {
 
-        const $emptyNobleSpot = `<article class="noble-article empty"></article>`
+        const $emptyNobleSpot = `<article class="noble-article empty"></article>`;
         $nobleContainer.insertAdjacentHTML("beforeend", $emptyNobleSpot);
 
         renderEmptyNobleSpots($nobleContainer);

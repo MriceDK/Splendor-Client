@@ -30,7 +30,7 @@ function renderCostBonuses(bonusesNeeded, $target){
 }
 
 function renderCostBonus(bonusNeeded, bonusValue) {
-    return `<li class="${bonusNeeded}">${bonusValue}</li>`
+    return `<li class="${bonusNeeded}">${bonusValue}</li>`;
 }
 
 export { renderNobles };
