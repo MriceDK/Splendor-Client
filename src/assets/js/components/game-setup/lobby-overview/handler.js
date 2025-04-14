@@ -96,7 +96,7 @@ function handleLobbyJoinClick(e) {
 
 }
 
-function addPlayerToGame(joinGameId, numberToAddNameUniqueNess = 0) {
+function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
     .then(res => {
@@ -106,9 +106,9 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueNess = 0) {
     .catch(() => {
         errorHandler.handleError;
 
-        numberToAddNameUniqueNess++;
-        uniqueNameForcer(numberToAddNameUniqueNess);
-        addPlayerToGame(joinGameId, numberToAddNameUniqueNess);
+        numberToAddNameUniqueness++;
+        uniqueNameForcer(numberToAddNameUniqueness);
+        addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
         }
         
