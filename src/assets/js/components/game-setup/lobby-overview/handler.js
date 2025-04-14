@@ -4,6 +4,7 @@ import * as localStorageAbstractor from "../../../data-connector/local-storage-a
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
 
+
 function loadUserInformation() {
     render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
@@ -89,19 +90,44 @@ function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
         localStorageAbstractor.saveToStorage("gameId", joinGameId);
-        addPlayerToGame(joinGameId);
+        addPlayerToGame(joinGameId);        
     }
 
 }
 
-function addPlayerToGame(joinGameId) {
+function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     joinLobby(joinGameId, playerName)
-        .then(res => {
-            localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
-            window.location.assign("./lobby.html");
-        })
-        .catch(errorHandler.handleError);
+    .then(res => {
+        joinLobbyHelp(res);
+
+    })
+    .catch(() => {
+        errorHandler.handleError;
+
+        numberToAddNameUniqueness++;
+        uniqueNameForcer(numberToAddNameUniqueness);
+        addPlayerToGame(joinGameId, numberToAddNameUniqueness);
+
+        }
+        
+    );
+}
+
+
+function uniqueNameForcer(n){
+
+    const playerName = localStorageAbstractor.loadFromStorage("playerName");
+    const newPlayerName = `${playerName}${n}`;
+    localStorageAbstractor.saveToStorage("playerName", newPlayerName);
+}
+
+function joinLobbyHelp(res){
+
+    localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
+    window.location.assign("./lobby.html");
+
+
 }
 
 export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};

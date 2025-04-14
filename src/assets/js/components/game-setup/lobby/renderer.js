@@ -31,7 +31,10 @@ function renderPlayersLoop(playerArray, data) {
     const $target = document.querySelector(".users");
     $target.innerHTML = $template.outerHTML;
 
+    const nameCounts = {};
+
     playerArray.forEach(user => {
+        
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
         $copy.textContent = user;
