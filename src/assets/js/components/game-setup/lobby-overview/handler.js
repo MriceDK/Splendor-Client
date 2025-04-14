@@ -1,6 +1,5 @@
 import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
-import * as localStorageAbstractor from "../data-connector/local-storage-abstractor.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
@@ -98,9 +97,9 @@ function handleLobbyJoinClick(e) {
 
 function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
+    joinLobby(joinGameId, playerName)
     .then(res => {
-        joinLobby(res);
+        joinLobbyHelp(res);
 
     })
     .catch(() => {
@@ -123,7 +122,7 @@ function uniqueNameForcer(n){
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
-function joinLobby(res){
+function joinLobbyHelp(res){
 
     localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
     window.location.assign("./lobby.html");
