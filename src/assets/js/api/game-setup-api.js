@@ -22,5 +22,5 @@ export {
     joinLobby,
     getAllLobbies,
     createLobby,
-    getGameInfo
+    getGameInfo,
 };
