@@ -1,5 +1,5 @@
 import * as getOwnInfo from "./handler.js";
-import {renderNobles} from "../noble-component/renderer.js";
+import * as NobleRenderer from "../noble-component/renderer.js";
 
 function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);
@@ -9,7 +9,8 @@ function ownPlayerCardRenderer(gameInfo) {
     $playerCard.querySelector("#own-prestige-points").textContent = ownPlayer.totalPrestigePoints;
 
     const $ownNobles = $playerCard.querySelector("#nobles");
-    renderNobles(ownPlayer.nobles, $ownNobles);
+    NobleRenderer.renderNobles(ownPlayer.nobles, $ownNobles);
+    NobleRenderer.renderEmptyNobleSpots($ownNobles);
 
     Object.entries(ownPlayer.tokens).forEach(token => renderOwnTokenValue(token));
     Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
