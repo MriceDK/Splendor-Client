@@ -1,12 +1,5 @@
 import * as handler from "./handler.js";
-import * as NobleRenderer from "../noble-component/renderer.js";
-
-function getOpponents(players) {
-    const ownName = loadFromStorage("playerName");
-    return players.filter(player => {
-        return player.name !== ownName;
-    });
-}
+import * as NobleRenderer from "../noble/renderer.js";
 
 function renderOpponentsStats(players) {
     const opponents = handler.getOpponents(players);
@@ -44,8 +37,6 @@ function fillOpponentStat($template, opponent) {
     NobleRenderer.renderNobles(opponent.nobles, $nobleContainer);
     NobleRenderer.renderEmptyNobleSpots($nobleContainer);
 }
-
-
 
 export {renderOpponentsStats};
 

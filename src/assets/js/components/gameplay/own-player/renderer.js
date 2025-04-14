@@ -1,5 +1,5 @@
 import * as getOwnInfo from "./helper.js";
-import * as NobleRenderer from "../noble-component/renderer.js";
+import * as NobleRenderer from "../noble/renderer.js";
 import * as DevelopmentCardRenderer from "../development-card/renderer.js";
 
 function ownPlayerCardRenderer(gameInfo) {
