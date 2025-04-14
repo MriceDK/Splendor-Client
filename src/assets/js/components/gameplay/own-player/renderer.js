@@ -1,6 +1,4 @@
 import * as getOwnInfo from "./helper.js";
-
-import {putInitalValue} from "./helper.js";
 import {renderDevelopmentCards} from "../development-card/renderer.js";
 
 function ownPlayerCardRenderer(gameInfo) {
@@ -36,16 +34,4 @@ function renderOwnBonusValue(bonus) {
     document.querySelector(`.own-inventory  .${bonus[0].toLowerCase()} .card-text`).innerText = bonus[1];
 }
 
-function renderTooManyGemsPopUp(playerTokens) {
-    const $tooMuchGemsTemplate = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);
-    const $target = document.querySelector(".popup-container");
-    $target.innerHTML = "";
-    $target.classList.remove("hidden");
-    Object.entries(playerTokens).forEach(token => putInitalValue($tooMuchGemsTemplate, token));
-
-    $target.insertAdjacentHTML("beforeend", $tooMuchGemsTemplate.outerHTML);
-
-
-}
-
-export {ownPlayerCardRenderer, renderTooManyGemsPopUp, renderOwnTokenValue};
+export {ownPlayerCardRenderer, renderOwnTokenValue};
