@@ -19,7 +19,9 @@ function checkIfPopUpIsBuyAndReserveType($popupContainer) {
 function handleReserveCardResponse(response) {
     closePopUp();
     removeSelectedCard();
-    checkTooManyTokens(response.tokens);
+    // checkTooManyTokens(response.tokens);
+    // TODO: Fix this implementation of the checkTooMuchGems function
+
     Object.entries(response.tokens).forEach((token) => {
         renderOwnTokenValue(token);
     });
