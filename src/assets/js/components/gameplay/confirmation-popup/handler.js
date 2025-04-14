@@ -1,6 +1,6 @@
 import * as render from "./renderer.js";
 import * as helper from "./helper.js";
-import {renderTokenSelectorForm} from "../gem-selector-component/renderer.js";
+import {renderTokenSelectorForm} from "../gem-selector/renderer.js";
 
 function handleClickOnCard(e) {
     document.querySelector(".popup-container").innerHTML = "";

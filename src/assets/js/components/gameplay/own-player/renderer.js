@@ -1,7 +1,7 @@
 import * as getOwnInfo from "./helper.js";
 
 import {putInitalValue} from "./helper.js";
-import {renderDevelopmentCards} from "../development-card-component/renderer.js";
+import {renderDevelopmentCards} from "../development-card/renderer.js";
 
 function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);

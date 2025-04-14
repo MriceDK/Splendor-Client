@@ -1,8 +1,8 @@
 import * as renderer from "./renderer.js";
 import * as api from "../../../api/gameplay-api.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
-// import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
-import {renderOwnTokenValue} from "../own-player-component/renderer.js";
+// import {checkTooManyTokens} from "../own-player/gems-overflow-component/handler.js";
+import {renderOwnTokenValue} from "../own-player/renderer.js";
 
 function hookUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", openBank);

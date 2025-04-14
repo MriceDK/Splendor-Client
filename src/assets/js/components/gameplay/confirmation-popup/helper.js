@@ -1,8 +1,8 @@
 import * as api from "../../../api/gameplay-api.js";
 import {closePopUp} from "./renderer.js";
 import {handleError} from "../../../data-connector/error-handler.js";
-// import {checkTooManyTokens} from "../own-player-component/gems-overflow-component/handler.js";
-import {renderOwnTokenValue} from "../own-player-component/renderer.js";
+// import {checkTooManyTokens} from "../own-player/gems-overflow-component/handler.js";
+import {renderOwnTokenValue} from "../own-player/renderer.js";
 
 function checkIfPopUpIsReserveType($popupContainer) {
     return $popupContainer.dataset.popUpType === "reserve-deck-pop-up";

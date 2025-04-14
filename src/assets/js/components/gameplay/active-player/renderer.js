@@ -1,7 +1,7 @@
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {
     handleMarketClickability
-} from "../market-component/inactive-market-component/market-inactive-handler.js";
+} from "../market/inactive-market-component/market-inactive-handler.js";
 
 
 function renderActivePlayer(currentPlayerName) {
