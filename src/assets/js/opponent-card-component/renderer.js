@@ -2,8 +2,6 @@ import {tokenInPurse} from "./handler.js";
 import {loadFromStorage} from "../data-connector/local-storage-abstractor.js";
 import * as NobleRenderer from "../noble-component/renderer.js";
 
-const MAX_NOBLE_DISPLAY = 3;
-
 function getOpponents(players) {
     const ownName = loadFromStorage("playerName");
     return players.filter(player => {
@@ -45,22 +43,10 @@ function fillOpponentStat($template, opponent) {
 
     const $nobleContainer = $template.querySelector(".nobles-container");
     NobleRenderer.renderNobles(opponent.nobles, $nobleContainer);
-    renderEmptyNobleSpots($nobleContainer);
+    NobleRenderer.renderEmptyNobleSpots($nobleContainer);
 }
 
-function renderEmptyNobleSpots($nobleContainer) {
 
-    const $childItems = $nobleContainer.querySelectorAll(".noble-article");
-
-    if ($childItems.length < MAX_NOBLE_DISPLAY) {
-
-        const $emptyNobleSpot = `<article class="noble-article empty"></article>`;
-        $nobleContainer.insertAdjacentHTML("beforeend", $emptyNobleSpot);
-
-        renderEmptyNobleSpots($nobleContainer);
-    }
-
-}
 
 export {renderOpponentsStats};
 

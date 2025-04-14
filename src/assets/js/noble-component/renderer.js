@@ -1,3 +1,5 @@
+const MAX_NOBLE_DISPLAY = 3;
+
 function renderNobles(nobles, $target) {
     nobles.forEach(noble => {
         renderNoble(noble, $target);
@@ -33,4 +35,18 @@ function generateCostBonus(bonusNeeded, bonusValue) {
     return `<li class="${bonusNeeded}">${bonusValue}</li>`;
 }
 
-export { renderNobles };
+function renderEmptyNobleSpots($target) {
+
+    const $childItems = $target.querySelectorAll(".noble-article");
+
+    if ($childItems.length < MAX_NOBLE_DISPLAY) {
+
+        const $emptyNobleSpot = `<article class="noble-article empty"></article>`;
+        $target.insertAdjacentHTML("beforeend", $emptyNobleSpot);
+
+        renderEmptyNobleSpots($target);
+    }
+
+}
+
+export { renderNobles, renderEmptyNobleSpots };
