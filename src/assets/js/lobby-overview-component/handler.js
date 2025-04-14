@@ -87,23 +87,28 @@ function handleLobbyJoinClick(e) {
 
 }
 
-function addPlayerToGame(joinGameId) {
-    const playerLS = localStorageAbstractor.loadFromStorage("playerName");
-    const playerName = uniqueNameForcer(gameDetails, playerLS);
+function addPlayerToGame(joinGameId, numberToAddNameUniqueNess = 0) {
+    const playerName = localStorageAbstractor.loadFromStorage("playerName");
     APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST")
     .then(res => {
         localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
         window.location.assign("./lobby.html");
     })
-    .catch(
+    .catch(() => {
         errorHandler.handleError;
+
+        numberToAddNameUniqueNess++;
+        uniqueNameForcer(numberToAddNameUniqueNess);
         addPlayerToGame(joinGameId);
 
+        }
+        
     );
 }
 
 
 function uniqueNameForcer(n){
+
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     const newPlayerName = `${playerName}_${n}`;
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
