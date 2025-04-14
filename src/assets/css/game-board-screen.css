@@ -56,3 +56,8 @@ header {
     border: 1rem;
 }
 
+.own-reserved-cards {
+    display: flex;
+    gap: 2rem;
+}
+
