@@ -31,10 +31,19 @@ function renderPlayersLoop(playerArray, data) {
     const $target = document.querySelector(".users");
     $target.innerHTML = $template.outerHTML;
 
+    const nameCounts = {};
+
     playerArray.forEach(user => {
+        let displayName = user;
+        if (nameCounts[user] === undefined){
+            nameCounts[user] = 0;
+        } else {
+            nameCounts[user]++;
+            displayName = `${user}_${nameCounts[user]}`;
+        }
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
-        $copy.textContent = user;
+        $copy.textContent = displayName;
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
