@@ -28,7 +28,7 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
 function renderCostsInPopUp(costs) {
 
-    const $target = document.querySelector("?");
+    const $target = document.querySelector("input[type='submit'][value='confirm-payment']");
     for (const gem in costs) {
         if (costs[gem] !== 0 || costs[gem] !== null || costs[gem] !== undefined) {
             $target.insertAdjacentHTML("beforeend", `cost of ${gem} is ${costs[gem]}`);
