@@ -79,6 +79,8 @@ function getCostFromDevelopmentCard($devCard){
             if ($value.classList.contains(token)) {
                 returnObj[token] = $value.innerText;
 
+            } else {
+                returnObj[token] = 0;
             }
         })
 
