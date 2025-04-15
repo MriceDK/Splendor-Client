@@ -49,10 +49,17 @@ function renderCostsInPopUp(costs) {
 
 }
 
-function putInitalBuyValueInForm(devCard) {
+function putInitalBuyValueInForm(devCardValues) {
+    const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
     const $allInputs = document.querySelectorAll("#token-selector-form input");
     $allInputs.forEach((input) => {
-        input.setAttribute("value", devCard.token);
+        tokenArray.forEach((token) => {
+            if (input.getAttribute("name") === token){
+                input.setAttribute("value", devCardValues[token]);
+
+            }
+        })
+
     })
 }
 
@@ -64,7 +71,7 @@ function getCostFromDevelopmentCard($devCard){
     tokenArray.forEach((token) => {
         $values.forEach(($value) => {
             if ($value.classList.contains(token)) {
-                returnObj[token] = $value.innerHTML;
+                returnObj[token] = $value.innerText;
 
             }
         })
