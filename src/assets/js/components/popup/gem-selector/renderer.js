@@ -18,7 +18,7 @@ function hookupEventListeners(reservedCard) {
 
 function renderTokenSelectorForm(devCardName, reservedCard) {
     Utils.showPopupContainer();
-    const $devCard = document.querySelector(`article.development-card[data-card-name=${devCardName}]`);
+    const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
     const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
 
