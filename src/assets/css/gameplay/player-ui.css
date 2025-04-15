@@ -52,6 +52,10 @@
     margin-top: 0.5rem;
 }
 
+.opponent-frame-container .points {
+    margin-top: .5rem;
+}
+
 .own-purse>p{
     font-size: 1.5rem;
     font-weight: bold;
