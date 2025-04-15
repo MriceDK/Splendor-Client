@@ -1,3 +1,5 @@
+const MAX_RESERVED_CARDS = 3;
+
 function renderDevelopmentCards(cards, $target) {
     cards.forEach(card => {
         renderDevelopmentCard(card, $target);
@@ -37,7 +39,7 @@ function renderEmptyDevelopmentCardSpots($target) {
 
     const $childItems = $target.querySelectorAll(".development-card");
 
-    if ($childItems.length < 3) {
+    if ($childItems.length < MAX_RESERVED_CARDS) {
 
         const $emptyNobleSpot = `<article class="development-card empty"></article>`;
         $target.insertAdjacentHTML("beforeend", $emptyNobleSpot);
