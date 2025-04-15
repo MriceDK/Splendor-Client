@@ -130,16 +130,20 @@
     </form>
 </template>
 
-<div class="popup-container hidden">
-    <div class="popup hidden">
-        <button id="forfeit">Forfeit</button>
+<template id="settings-popup-template">
+    <div class="popup">
+        <button class="forfeit">Forfeit</button>
         <button class="close">Close</button>
         <div class="forfeit-popup hidden">
             <p>Do you want to forfeit?</p>
-            <button id="forfeit-yes">Yes</button>
-            <button id="forfeit-no">No</button>
+            <button class="forfeit-yes">Yes</button>
+            <button class="forfeit-no">No</button>
         </div>
     </div>
+</template>
+
+<div class="popup-container hidden">
+
 </div>
 
 <main>

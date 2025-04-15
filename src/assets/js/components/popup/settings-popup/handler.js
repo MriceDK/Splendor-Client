@@ -1,37 +1,28 @@
-function showSettingsScreen() {
-    document.querySelector(".popup").classList.remove("hidden");
-    document.querySelector(".popup-container").classList.remove("hidden");
-}
-
-function hideSettingsScreen() {
-    document.querySelector(".popup").classList.add("hidden");
-    document.querySelector(".forfeit-popup").classList.add("hidden");
-    document.querySelector(".popup-container").classList.add("hidden");
-}
-
-function showForfeitOption() {
-    document.querySelector(".forfeit-popup").classList.remove("hidden");
-}
-
-function hideSettingsMenu() {
-    document.querySelector(".popup").classList.add("hidden");
-    document.querySelector(".popup-container").classList.add("hidden");
-}
-
-function hideForfeitCloseButtons() {
-    document.querySelector("#forfeit").classList.add("hidden");
-    document.querySelector(".close").classList.add("hidden");
-}
+import {closePopUp} from "../confirmation-popup/renderer.js";
+import {hideForfeitCloseButtons, showForfeitOption} from "./renderer.js";
 
 function redirectToStartScreen() {
     window.location.href = "index.html";
 }
 
+function handleSettingsPopupClicks(e){
+    if (e.target.closest(".forfeit")){
+        showForfeitOption();
+        hideForfeitCloseButtons();
+    }
+    if (e.target.closest(".forfeit-yes")){
+        window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0");
+        redirectToStartScreen();
+    }
+    if (e.target.closest(".forfeit-no")){
+        closePopUp();
+    }
+    if (e.target.closest(".close")){
+        closePopUp();
+    }
+}
+
 export {
-    showSettingsScreen,
-    hideSettingsScreen,
-    showForfeitOption,
-    hideSettingsMenu,
-    hideForfeitCloseButtons,
-    redirectToStartScreen
+    redirectToStartScreen,
+    handleSettingsPopupClicks
 };
