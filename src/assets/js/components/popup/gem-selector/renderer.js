@@ -18,6 +18,8 @@ function hookupEventListeners(reservedCard) {
 
 function renderTokenSelectorForm(devCardName, reservedCard) {
     Utils.showPopupContainer();
+    const devCardValues = document.querySelector(`article.development-card[data-card-name=${devCardName}]`);
+    putInitalBuyValueInForm(devCardValues);
 
     const $target = document.querySelector(".popup-container");
 
@@ -33,14 +35,24 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 function renderCostsInPopUp(costs) {
 
     const $target = document.querySelector("input[type='submit'][value='confirm-payment']");
+    $target.insertAdjacentHTML("beforeend", `<p>The costs are:</p>`);
     for (const gem in costs) {
-        console.log("gem")
+        console.log(gem);
+        console.log(costs[gem]);
+
         if (costs[gem] !== 0 || costs[gem] !== null || costs[gem] !== undefined) {
             $target.insertAdjacentHTML("beforeend", `<p>cost of ${gem} is ${costs[gem]}</p>`);
         }
 
     }
 
+}
+
+function putInitalBuyValueInForm(devCard) {
+    const $allInputs = document.querySelectorAll("#token-selector-form input");
+    $allInputs.forEach((input) => {
+        input.setAttribute("value", devCard.token);
+    })
 }
 
 
