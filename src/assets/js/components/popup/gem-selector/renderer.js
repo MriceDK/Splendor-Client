@@ -18,7 +18,8 @@ function hookupEventListeners(reservedCard) {
 
 function renderTokenSelectorForm(devCardName, reservedCard) {
     Utils.showPopupContainer();
-    const devCardValues = document.querySelector(`article.development-card[data-card-name=${devCardName}]`);
+    const $devCard = document.querySelector(`article.development-card[data-card-name=${devCardName}]`);
+    const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
 
     const $target = document.querySelector(".popup-container");
@@ -55,6 +56,23 @@ function putInitalBuyValueInForm(devCard) {
     })
 }
 
+
+function getCostFromDevelopmentCard($devCard){
+    const tokenArray = ["ruby", "diamond", "sapphire", "emerald", "onyx"];
+    const $values = $devCard.querySelectorAll("span.gem-costs");
+    const returnObj = {};
+    tokenArray.forEach((token) => {
+        $values.forEach(($value) => {
+            if ($value.classList.contains(token)) {
+                returnObj[token] = $value.innerHTML;
+
+            }
+        })
+
+    })
+
+    return returnObj;
+}
 
 export {
     renderTokenSelectorForm,
