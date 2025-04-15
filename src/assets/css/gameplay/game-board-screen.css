@@ -6,7 +6,7 @@ main {
     grid-template-areas:    "username market header"
                             "username market info"
                             "username market bank"
-                            "user-info user-info history";
+                            ". user-info history";
 }
 
 header {
