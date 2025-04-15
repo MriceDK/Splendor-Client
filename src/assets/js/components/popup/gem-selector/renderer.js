@@ -18,14 +18,15 @@ function hookupEventListeners(reservedCard) {
 
 function renderTokenSelectorForm(devCardName, reservedCard) {
     Utils.showPopupContainer();
-    const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
-    const devCardValues =  getCostFromDevelopmentCard($devCard);
-    putInitalBuyValueInForm(devCardValues);
+
 
     const $target = document.querySelector(".popup-container");
 
     $tokenSelector.querySelector("#token-selector-dev-card").value = devCardName;
     $target.insertAdjacentHTML("beforeend", $tokenSelector.outerHTML);
+    const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
+    const devCardValues =  getCostFromDevelopmentCard($devCard);
+    putInitalBuyValueInForm(devCardValues);
     const $form = document.querySelector("#token-selector-form");
     const costs = helper.getGemCostObject($form);
     renderCostsInPopUp(costs)
@@ -51,7 +52,8 @@ function renderCostsInPopUp(costs) {
 
 function putInitalBuyValueInForm(devCardValues) {
     const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
-    const $allInputs = document.querySelectorAll("#token-selector-form input");
+    const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
+    console.log($allInputs);
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
 
