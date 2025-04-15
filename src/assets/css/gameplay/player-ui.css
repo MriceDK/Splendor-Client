@@ -1,13 +1,17 @@
 .username-flexcontainer{
-    display: block;
-    padding-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
     padding-top: 1rem;
 }
 
 .opponent{
+    margin-bottom: 1rem;
+}
+
+.opponent-frame-container {
     border: solid var(--main-grey-color);
     background-color: var(--main-grey-color);
-    margin-bottom: 1rem;
+    padding: .5rem;
 }
 
 .inventory {
@@ -138,6 +142,6 @@
     background: #ffc600;
     color: black; }
 
-.current-player {
+.current-player .opponent-frame-container {
     border: solid hotpink;
 }
