@@ -11,6 +11,7 @@ function handleSettingsPopupClicks(e){
         hideForfeitCloseButtons();
     }
     if (e.target.closest(".forfeit-yes")){
+        window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0");
         redirectToStartScreen();
     }
     if (e.target.closest(".forfeit-no")){
