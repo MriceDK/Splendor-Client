@@ -33,4 +33,19 @@ function renderCostGem(gem, amount) {
     return `<span class="gem-cost ${gem}">${amount}</span>`;
 }
 
-export {renderDevelopmentCards};
+function renderEmptyDevelopmentCardSpots($target) {
+
+    const $childItems = $target.querySelectorAll(".development-card");
+
+    if ($childItems.length < 3) {
+
+        const $emptyNobleSpot = `<article class="development-card empty"></article>`;
+        $target.insertAdjacentHTML("beforeend", $emptyNobleSpot);
+
+        renderEmptyDevelopmentCardSpots($target);
+
+    }
+
+}
+
+export {renderDevelopmentCards, renderEmptyDevelopmentCardSpots};
