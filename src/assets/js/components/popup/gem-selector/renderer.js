@@ -54,8 +54,12 @@ function putInitalBuyValueInForm(devCardValues) {
     const $allInputs = document.querySelectorAll("#token-selector-form input");
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
+
+            console.log(input);
+
             if (input.getAttribute("name") === token){
                 input.setAttribute("value", devCardValues[token]);
+
 
             }
         })
@@ -66,7 +70,7 @@ function putInitalBuyValueInForm(devCardValues) {
 
 function getCostFromDevelopmentCard($devCard){
     const tokenArray = ["ruby", "diamond", "sapphire", "emerald", "onyx"];
-    const $values = $devCard.querySelectorAll("span.gem-costs");
+    const $values = $devCard.querySelectorAll("span.gem-cost");
     const returnObj = {};
     tokenArray.forEach((token) => {
         $values.forEach(($value) => {
