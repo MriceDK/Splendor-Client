@@ -28,7 +28,8 @@ header {
 
 .user-info-flexcontainer {
     grid-area: user-info;
-    background-color: red;
+    /*background-color: red;*/
+    align-self: end;
 }
 
 .history {
@@ -54,6 +55,20 @@ header {
 
 .pickable-noble:hover {
     border: 1rem;
+}
+
+.own-player-card {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 1rem;
+    background-color: lightgrey; /* TODO Give this a better color */
+}
+
+.own-purse {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, auto);
 }
 
 .own-reserved-cards {
