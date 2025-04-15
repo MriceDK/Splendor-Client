@@ -24,6 +24,8 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
     $tokenSelector.querySelector("#token-selector-dev-card").value = devCardName;
     $target.insertAdjacentHTML("beforeend", $tokenSelector.outerHTML);
+
+
     const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
     const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
@@ -36,14 +38,12 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
 function renderCostsInPopUp(costs) {
 
-    const $target = document.querySelector("input[type='submit'][value='confirm-payment']");
-    $target.insertAdjacentHTML("beforeend", `<p>The costs are:</p>`);
-    for (const gem in costs) {
-        console.log(gem);
-        console.log(costs[gem]);
+    const $target = document.querySelector("#token-selector-form dl");
 
-        if (costs[gem] !== 0 || costs[gem] !== null || costs[gem] !== undefined) {
-            $target.insertAdjacentHTML("beforeend", `<p>cost of ${gem} is ${costs[gem]}</p>`);
+    for (const gem in costs) {
+        if (costs[gem] > 0 && !isNaN(costs[gem])) {
+            $target.insertAdjacentHTML("beforeend", `<dt>${gem}:</dt>`);
+            $target.insertAdjacentHTML("beforeend", `<dd>${costs[gem]}</dd>`)
         }
 
     }
@@ -53,11 +53,8 @@ function renderCostsInPopUp(costs) {
 function putInitalBuyValueInForm(devCardValues) {
     const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
     const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
-    console.log($allInputs);
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
-
-            console.log(input);
 
             if (input.getAttribute("name") === token){
                 input.setAttribute("value", devCardValues[token]);
@@ -79,8 +76,6 @@ function getCostFromDevelopmentCard($devCard){
             if ($value.classList.contains(token)) {
                 returnObj[token] = $value.innerText;
 
-            } else {
-                returnObj[token] = 0;
             }
         })
 
