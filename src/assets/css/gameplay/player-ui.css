@@ -91,6 +91,15 @@
     margin-top: 0.5rem;
 }
 
+.nobles-container.wrap {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.nobles-container.wrap .noble-article:last-child {
+    margin: auto;
+}
+
 .nobles-container .noble-article {
     background-color: var(--main-bg-color); /* Adjust color */
     font-size: .75rem;
