@@ -18,8 +18,10 @@ header {
 
 .username-flexcontainer {
     grid-area: username;
-    display: flex;
     background-color: sandybrown;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
 }
 
 .market-grid-container {
