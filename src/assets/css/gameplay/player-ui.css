@@ -84,7 +84,7 @@
     height: 4rem;
 }
 
-.nobles-container .empty {
+.nobles-container .empty, .own-reserved-cards .empty {
     background-color: transparent;
     border: .0625rem solid var(--main-bg-color);
 }
