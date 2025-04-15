@@ -28,10 +28,10 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
 function renderCostsInPopUp(costs) {
 
-    const $target = document.querySelector("form#token-selector-form input[type='submit'][value='confirm-payment']");
+    const $target = $tokenSelector.querySelector("input[type='submit'][value='confirm-payment']");
     for (const gem in costs) {
         if (costs[gem] !== 0 || costs[gem] !== null || costs[gem] !== undefined) {
-            $target.insertAdjacentHTML("beforeend", `cost of ${gem} is ${costs[gem]}`);
+            $target.insertAdjacentHTML("beforeend", `<p>cost of ${gem} is ${costs[gem]}</p>`);
         }
 
     }
@@ -41,5 +41,6 @@ function renderCostsInPopUp(costs) {
 
 export {
     renderTokenSelectorForm,
-    hookupEventListeners
+    hookupEventListeners,
+    renderCostsInPopUp
 };
