@@ -1,8 +1,9 @@
 main {
     display: grid;
-    grid-template-columns: 0.7fr 1.6fr 0.7fr;
-    grid-template-rows: 5% 1fr 1.75fr 1.25fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 5% 1fr 1.75fr auto;
     height: 100vh;
+    width: 100vw;
     grid-template-areas:    "username market header"
                             "username market info"
                             "username market bank"
