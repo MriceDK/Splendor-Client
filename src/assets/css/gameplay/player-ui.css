@@ -111,14 +111,9 @@
     background-color: grey;
 }
 
-#reserved-count{
-    margin-right: 0.25rem;
-}
-
 .hidden{
     display: none;
 }
-
 
 .red {
     background-color: orangered;
