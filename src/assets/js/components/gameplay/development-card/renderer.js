@@ -1,3 +1,5 @@
+const MAX_RESERVED_CARDS = 3;
+
 function renderDevelopmentCards(cards, $target) {
     cards.forEach(card => {
         renderDevelopmentCard(card, $target);
@@ -33,4 +35,19 @@ function renderCostGem(gem, amount) {
     return `<span class="gem-cost ${gem}">${amount}</span>`;
 }
 
-export {renderDevelopmentCards};
+function renderEmptyDevelopmentCardSpots($target) {
+
+    const $childItems = $target.querySelectorAll(".development-card");
+
+    if ($childItems.length < MAX_RESERVED_CARDS) {
+
+        const $emptyNobleSpot = `<article class="development-card empty"></article>`;
+        $target.insertAdjacentHTML("beforeend", $emptyNobleSpot);
+
+        renderEmptyDevelopmentCardSpots($target);
+
+    }
+
+}
+
+export {renderDevelopmentCards, renderEmptyDevelopmentCardSpots};
