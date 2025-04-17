@@ -31,7 +31,7 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
     putInitalBuyValueInForm(devCardValues);
     const $form = document.querySelector("#token-selector-form");
     const costs = helper.getGemCostObject($form);
-    renderCostsInPopUp(costs)
+    renderCostsInPopUp(costs);
 
     hookupEventListeners(reservedCard);
 }
@@ -43,7 +43,7 @@ function renderCostsInPopUp(costs) {
     for (const gem in costs) {
         if (costs[gem] > 0 && !isNaN(costs[gem])) {
             $target.insertAdjacentHTML("beforeend", `<dt>${gem}:</dt>`);
-            $target.insertAdjacentHTML("beforeend", `<dd>${costs[gem]}</dd>`)
+            $target.insertAdjacentHTML("beforeend", `<dd>${costs[gem]}</dd>`);
         }
 
     }
