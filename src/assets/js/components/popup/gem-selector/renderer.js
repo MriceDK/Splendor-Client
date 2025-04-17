@@ -61,9 +61,9 @@ function putInitalBuyValueInForm(devCardValues) {
 
 
             }
-        })
+        });
 
-    })
+    });
 }
 
 
@@ -77,9 +77,9 @@ function getCostFromDevelopmentCard($devCard){
                 returnObj[token] = $value.innerText;
 
             }
-        })
+        });
 
-    })
+    });
 
     return returnObj;
 }
