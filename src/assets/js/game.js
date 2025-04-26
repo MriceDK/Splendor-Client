@@ -5,6 +5,7 @@ import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 
 import {getGameInfo} from "./api/game-setup-api.js";
+import {checkTooManyTokens} from "./components/popup/gems-overflow/handler";
 
 // import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 
@@ -17,7 +18,7 @@ function init() {
             renderMarket(res);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
-            // checkTooMuchGems(res.players, res.currentPlayer);
+            checkTooManyTokens(res.players, res.currentPlayer);
             // TODO: ask how to implement this function
         });
 

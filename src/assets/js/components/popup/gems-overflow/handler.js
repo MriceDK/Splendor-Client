@@ -46,7 +46,7 @@ function formGemChecker(player) {
             });
         });
     }
-    if (document.querySelector("#too-many-gems-pop-up-form")) {
+    if (document.querySelector("#too-many-gems-pop-up-form").classList.contains("active")) {
         setTimeout(() => formGemChecker(player), 1000);
     }
 }
