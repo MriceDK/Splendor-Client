@@ -1,4 +1,4 @@
-import {putInitalValue} from "../../gameplay/own-player/helper";
+import {putInitalValue} from "../../gameplay/own-player/helper.js";
 
 function renderTooManyGemsPopUp(playerTokens) {
     const $tooMuchGemsTemplate = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);

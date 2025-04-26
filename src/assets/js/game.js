@@ -5,7 +5,7 @@ import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 
 import {getGameInfo} from "./api/game-setup-api.js";
-import {checkTooManyTokens} from "./components/popup/gems-overflow/handler";
+import {checkTooManyTokens} from "./components/popup/gems-overflow/handler.js";
 
 // import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 

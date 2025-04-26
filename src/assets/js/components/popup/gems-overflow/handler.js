@@ -1,7 +1,7 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
-import {renderTooManyGemsPopUp} from "./renderer";
+import {renderTooManyGemsPopUp} from "./renderer.js";
 
 const MAX_TOKENS = 10;
 
@@ -35,18 +35,21 @@ function checkTooMuchTokensHelp(player) {
 
 function formGemChecker(player) {
     const gemsCount = counTokens();
+    const $form = document.querySelector("#too-many-gems-pop-up-form");
+    $form.classList.add("active");
     if (gemsCount > MAX_TOKENS) {
         document.querySelector("#gem-remover-button").disabled = true;
     } else {
         document.querySelector("#gem-remover-button").disabled = false;
-        document.querySelector("#too-many-gems-pop-up-form").addEventListener("submit", e => {
+        $form.addEventListener("submit", e => {
             e.preventDefault();
             updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
-                document.querySelector("#too-many-gems-pop-up-form").remove();
+                $form.remove();
+                $form.classList.remove("active");
             });
         });
     }
-    if (document.querySelector("#too-many-gems-pop-up-form").classList.contains("active")) {
+    if ($form.classList.contains("active")) {
         setTimeout(() => formGemChecker(player), 1000);
     }
 }
