@@ -152,6 +152,10 @@
     background: #ffc600;
     color: black; }
 
-.current-player .opponent-frame-container {
+.current-player .opponent-frame-container, .current-player {
     border: solid hotpink;
+}
+
+.opponent.current-player {
+    border: none;
 }

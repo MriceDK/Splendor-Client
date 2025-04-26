@@ -18,7 +18,7 @@ function renderOpponentStats(opponent) {
 function fillOpponentStat($template, opponent) {
     $template.querySelector(".player").innerText = opponent.name;
     $template.querySelector(".points").innerText = opponent.totalPrestigePoints;
-    $template.querySelector("#reserved-count").innerText = opponent.reserve.length;
+    $template.querySelector(".reserved-count").innerText = opponent.reserve.length;
 
     $template.querySelector(".gems.red>.token-text").innerText = handler.getTokenInPurse(opponent, "Ruby", false);
     $template.querySelector(".gems.green>.token-text").innerText = handler.getTokenInPurse(opponent, "Emerald", false);
