@@ -25,7 +25,7 @@ body {
 
 header {
  width: 100%;
- background-color: var(--main-header-bg-color);
+
  color: var(--main-white-color);
  display: flex;
  align-items: center;
