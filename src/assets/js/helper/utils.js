@@ -4,7 +4,7 @@ function uppercaseFirstLetterOfWord(word) {
 
 function showPopupContainer() {
     const $popupContainer = document.querySelector(".popup-container");
-    $popupContainer.innerHTML = "";
+    $popupContainer.innerHTML = document.querySelector("#popup-templates").outerHTML;
     $popupContainer.classList.remove("hidden");
 }
 
