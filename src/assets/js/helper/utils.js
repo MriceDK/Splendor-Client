@@ -24,4 +24,17 @@ function getCurrentPlayer(players, currentPlayer){
     return undefined;
  }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer};
+ function elementIsInArray(array, element) {
+
+    for (const item of array) {
+        if (item === element) {
+            console.log(`${item} VS ${element}`);
+            return true;
+        }
+    }
+
+    return false;
+
+ }
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray};
