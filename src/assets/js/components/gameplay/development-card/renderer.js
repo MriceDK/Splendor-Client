@@ -67,12 +67,10 @@ function renderEnabledCard(card) {
 
 function renderBuyableCards() {
     const $developmentCards = document.querySelectorAll(".market-grid-container .development-card");
-    console.log("yay");
-    console.log($developmentCards);
+
     $developmentCards.forEach($card => {
 
         if (Helper.elementIsInArray(buyableDevCards, $card.dataset.cardName)) {
-            console.log("yay");
             renderBuyableCard($card);
         }
 
