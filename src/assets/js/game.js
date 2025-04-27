@@ -18,7 +18,6 @@ function init() {
             renderMarket(res);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
-            checkTooManyTokens(res.players, res.currentPlayer);
             // TODO: ask how to implement this function
         });
 
