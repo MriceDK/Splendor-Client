@@ -3,7 +3,7 @@ import * as helper from "./helper.js";
 import {renderTokenSelectorForm} from "../gem-selector/renderer.js";
 
 function handleClickOnCard(e) {
-    document.querySelector(".popup-container").innerHTML = "";
+    document.querySelector(".popup-container").innerHTML = document.querySelector("#popup-templates").outerHTML;
     // TODO: make the rest of the card clickable
     if (e.target.classList.contains("reserved") && !e.target.classList.contains("disabled")) {
         const cardName = e.target.dataset.cardName;

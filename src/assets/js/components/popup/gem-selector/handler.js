@@ -8,6 +8,7 @@ import {closePopUp} from "../confirmation-popup/renderer.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {nobleCheck} from "../../gameplay/market/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
+import {displayGame} from "../../../game.js";
 
 function immediateNobleCheckAfterBuy(){
     getGameInfo().then(res => {
@@ -25,7 +26,6 @@ function buyDevelopmentCard(e) {
 
     const devCardName = $form.querySelector("#token-selector-dev-card").value;
     const gemCost = helper.getGemCostObject($form);
-
     const body = helper.createBuyCardBody(devCardName, gemCost);
     API.buyDevelopmentCardRequest(body).then(buyResponse => {
         closePopUp();
@@ -35,9 +35,8 @@ function buyDevelopmentCard(e) {
         });
 
         immediateNobleCheckAfterBuy();
-
-
-
+    }).then(() => {
+        displayGame();
     }).catch(err => {
         ErrorHandler.handleError(err);
      
@@ -62,7 +61,8 @@ function buyReservedDevelopmentCard(e) {
         });
 
         immediateNobleCheckAfterBuy();
-
+    }).then(() => {
+        displayGame();
     }).catch(err => {
         ErrorHandler.handleError(err);
     });

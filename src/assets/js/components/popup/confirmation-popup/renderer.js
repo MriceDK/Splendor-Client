@@ -38,7 +38,7 @@ function closePopUp() {
     if ($popupContainer.hasAttribute("data-pop-up-type")) {
         $popupContainer.removeAttribute("data-pop-up-type");
     }
-    $popupContainer.innerHTML = "";
+    $popupContainer.innerHTML = document.querySelector("#popup-templates").outerHTML;
 }
 
 export {

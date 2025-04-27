@@ -3,6 +3,7 @@ import {closePopUp} from "./renderer.js";
 import {handleError} from "../../../data-connector/error-handler.js";
 // import {checkTooManyTokens} from "../own-player/gems-overflow/handler.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
+import {displayGame} from "../../../game.js";
 
 function checkIfPopUpIsReserveType($popupContainer) {
     return $popupContainer.dataset.popUpType === "reserve-deck-pop-up";
@@ -37,8 +38,9 @@ function reserveCard(cardLevelorName, reserveFromLevel) {
 
             }
             handleReserveCardResponse(response);
-        })
-        .catch(error => {
+        }).then(() => {
+        displayGame();
+        }).catch(error => {
             handleError(error);
         });
 
