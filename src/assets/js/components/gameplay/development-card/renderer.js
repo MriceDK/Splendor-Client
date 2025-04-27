@@ -1,3 +1,6 @@
+import {buyableDevCards} from "../../../game.js";
+import * as Helper from "../../../helper/utils.js";
+
 const MAX_RESERVED_CARDS = 3;
 
 function renderDevelopmentCards(cards, $target, isReserved = false) {
@@ -52,8 +55,6 @@ function renderEmptyDevelopmentCardSpots($target) {
 
 }
 
-export {renderDevelopmentCards, renderEmptyDevelopmentCardSpots};
-
 function renderDisableCard(card) {
     card.classList.remove("active-card");
     card.classList.add("disabled");
@@ -64,4 +65,22 @@ function renderEnabledCard(card) {
     card.classList.add("active-card");
 }
 
-export {renderEnabledCard, renderDisableCard};
+function renderBuyableCards() {
+    const $developmentCards = document.querySelectorAll(".market-grid-container .development-card");
+    console.log("yay");
+    console.log($developmentCards);
+    $developmentCards.forEach($card => {
+
+        if (Helper.elementIsInArray(buyableDevCards, $card.dataset.cardName)) {
+            console.log("yay");
+            renderBuyableCard($card);
+        }
+
+    })
+}
+
+function renderBuyableCard($card) {
+    $card.classList.add("buyable");
+}
+
+export {renderDevelopmentCards, renderEmptyDevelopmentCardSpots, renderEnabledCard, renderDisableCard, renderBuyableCards};

@@ -18,8 +18,6 @@ function getListOfBuyableCards(market, ownTokens) {
     const cards = getAllDevCardsFromMarket(market);
 
     cards.forEach(card => {
-        //console.log(card.name);
-        console.log(card);
         if (isBuyable(card.cost, ownTokens)) {
 
             list.push(card.name);
