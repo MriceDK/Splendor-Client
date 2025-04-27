@@ -33,7 +33,10 @@ function isBuyable(priceDevCard, ownTokens) {
     let counter = 0;
 
     Object.entries(priceDevCard).forEach((obj) => {
-        if (ownTokens[obj[0]] >= obj[1] ) {
+        const name = obj[0];
+        const value = obj[1];
+
+        if (ownTokens[name] >= value ) {
             counter++;
         }
     })
