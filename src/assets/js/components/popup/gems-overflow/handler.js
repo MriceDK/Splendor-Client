@@ -67,7 +67,7 @@ function counTokens() {
 function updateTokensAfterTooMany(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
-    return api.updateTokens(gameId, player.name, body)
+    return api.updateTokens(gameId, player.name, body);
 }
 
 function getDiffTokensObject(tokens) {
