@@ -1,6 +1,7 @@
 import {renderPickableNobles} from "./renderer.js";
 import {getNobleToInventory} from "../../../api/gameplay-api.js";
 import {checkAvailableNobles} from "./helper.js";
+import {renderDisableCard, renderEnabledCard} from "../development-card/renderer.js";
 
 
 function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
@@ -27,4 +28,16 @@ function removePickableFromNobles(){
         
     });
 }
-export {nobleCheck, hookUpEventListenersOnPickableNoble, removePickableFromNobles};
+
+function handleMarketClickability(clickable) {
+    const cards = document.querySelectorAll(".market-grid-container article");
+    cards.forEach(card => {
+        if (clickable) {
+            renderEnabledCard(card);
+        } else {
+            renderDisableCard(card);
+        }
+    });
+}
+
+export {nobleCheck, hookUpEventListenersOnPickableNoble, removePickableFromNobles, handleMarketClickability};
