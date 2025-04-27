@@ -6,6 +6,7 @@ import {renderActivePlayer} from "./components/gameplay/active-player/renderer.j
 
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
+import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
 
 // import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 
@@ -13,6 +14,7 @@ import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
 function displayGame() {
     getGameInfo()
         .then(res => {
+            handleGameOver(res.winner);
             ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
             renderOpponentsStats(res.players);
             renderMarket(res);
