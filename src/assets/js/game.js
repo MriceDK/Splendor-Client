@@ -6,9 +6,11 @@ import {renderActivePlayer} from "./components/gameplay/active-player/renderer.j
 
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
+import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
+import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 
 // import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
-
+let buyableDevCards = [];
 
 function displayGame() {
     getGameInfo()
@@ -18,6 +20,9 @@ function displayGame() {
             renderMarket(res);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
+            const ownPlayer = getOwnPlayerInfo(res);
+            buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
+            console.log(buyableDevCards);
             // checkTooMuchGems(res.players, res.currentPlayer);
             // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
@@ -30,4 +35,4 @@ function displayGame() {
  displayGame();
 
 
-export {displayGame};
+export {displayGame, buyableDevCards};
