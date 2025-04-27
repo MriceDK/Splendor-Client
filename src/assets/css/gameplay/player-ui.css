@@ -1,13 +1,23 @@
-.username-flexcontainer{
-    display: block;
-    padding-left: 0.5rem;
-    padding-top: 1rem;
+.opponent{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: .5rem;
 }
 
-.opponent{
+.opponent-frame-container {
     border: solid var(--main-grey-color);
     background-color: var(--main-grey-color);
-    margin-bottom: 1rem;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+}
+
+.inventory-collection {
+    display: flex;
+    gap: .5rem;
 }
 
 .inventory {
@@ -44,6 +54,10 @@
     margin-top: 0.5rem;
 }
 
+.opponent-frame-container .points {
+    margin-top: .5rem;
+}
+
 .own-purse>p{
     font-size: 1.5rem;
     font-weight: bold;
@@ -77,44 +91,44 @@
     margin-top: 0.5rem;
 }
 
+.nobles-container.wrap {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.nobles-container.wrap .noble-article:last-child {
+    margin: auto;
+}
+
 .nobles-container .noble-article {
     background-color: var(--main-bg-color); /* Adjust color */
     font-size: .75rem;
     width: 6rem;
-    height: 3.5rem;
+    height: 4rem;
 }
 
-.nobles-container .empty {
+.nobles-container .empty, .own-reserved-cards .empty {
     background-color: transparent;
     border: .0625rem solid var(--main-bg-color);
 }
 
-.reserved-section{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 0.5rem;
-    background-color: var(--main-bg-color);
-    border-radius: 0.2rem;
-    width: fit-content;
-    gap: 0.5rem;
-}
-
-.reserved-label{
-    color: var(--main-black-color);
-    margin-bottom: 0.5rem;
+.reserved-label {
     display: flex;
     align-items: center;
+    gap: .5rem;
 }
 
-#reserved-count{
-    margin-right: 0.25rem;
+.reserved-label:before{
+    display: inline-block;
+    content: "";
+    min-width: 1rem;
+    min-height: 1.5rem;
+    background-color: grey;
 }
 
 .hidden{
     display: none;
 }
-
 
 .red {
     background-color: orangered;
@@ -138,6 +152,10 @@
     background: #ffc600;
     color: black; }
 
-.current-player {
+.current-player .opponent-frame-container, .current-player {
     border: solid hotpink;
+}
+
+.opponent.current-player {
+    border: none;
 }

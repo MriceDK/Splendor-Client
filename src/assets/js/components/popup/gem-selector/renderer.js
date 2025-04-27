@@ -1,6 +1,7 @@
 import * as Utils from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
 import {buyDevelopmentCard, buyReservedDevelopmentCard} from "./handler.js";
+import * as helper from "./helper.js";
 
 
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
@@ -18,16 +19,73 @@ function hookupEventListeners(reservedCard) {
 function renderTokenSelectorForm(devCardName, reservedCard) {
     Utils.showPopupContainer();
 
+
     const $target = document.querySelector(".popup-container");
 
     $tokenSelector.querySelector("#token-selector-dev-card").value = devCardName;
     $target.insertAdjacentHTML("beforeend", $tokenSelector.outerHTML);
 
+
+    const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
+    const devCardValues =  getCostFromDevelopmentCard($devCard);
+    putInitalBuyValueInForm(devCardValues);
+    const $form = document.querySelector("#token-selector-form");
+    const costs = helper.getGemCostObject($form);
+    renderCostsInPopUp(costs);
+
     hookupEventListeners(reservedCard);
 }
 
+function renderCostsInPopUp(costs) {
+
+    const $target = document.querySelector("#token-selector-form dl");
+
+    for (const gem in costs) {
+        if (costs[gem] > 0 && !isNaN(costs[gem])) {
+            $target.insertAdjacentHTML("beforeend", `<dt>${gem}:</dt>`);
+            $target.insertAdjacentHTML("beforeend", `<dd>${costs[gem]}</dd>`);
+        }
+
+    }
+
+}
+
+function putInitalBuyValueInForm(devCardValues) {
+    const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
+    const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
+    $allInputs.forEach((input) => {
+        tokenArray.forEach((token) => {
+
+            if (input.getAttribute("name") === token){
+                input.setAttribute("value", devCardValues[token]);
+
+
+            }
+        });
+
+    });
+}
+
+
+function getCostFromDevelopmentCard($devCard){
+    const tokenArray = ["ruby", "diamond", "sapphire", "emerald", "onyx"];
+    const $values = $devCard.querySelectorAll("span.gem-cost");
+    const returnObj = {};
+    tokenArray.forEach((token) => {
+        $values.forEach(($value) => {
+            if ($value.classList.contains(token)) {
+                returnObj[token] = $value.innerText;
+
+            }
+        });
+
+    });
+
+    return returnObj;
+}
 
 export {
     renderTokenSelectorForm,
-    hookupEventListeners
+    hookupEventListeners,
+    renderCostsInPopUp
 };

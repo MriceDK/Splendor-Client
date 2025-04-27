@@ -18,6 +18,7 @@ function ownPlayerCardRenderer(gameInfo) {
 
     const $reservedCards = $playerCard.querySelector(".own-reserved-cards");
     DevelopmentCardRenderer.renderDevelopmentCards(ownPlayer.reserve, $reservedCards);
+    DevelopmentCardRenderer.renderEmptyDevelopmentCardSpots($reservedCards);
 
 }
 

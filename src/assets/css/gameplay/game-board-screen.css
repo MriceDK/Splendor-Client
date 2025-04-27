@@ -1,12 +1,13 @@
 main {
     display: grid;
-    grid-template-columns: 0.7fr 1.6fr 0.7fr;
-    grid-template-rows: 5% 1fr 1.75fr 1.25fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 5% 1fr 1.75fr auto;
     height: 100vh;
+    width: 100vw;
     grid-template-areas:    "username market header"
                             "username market info"
                             "username market bank"
-                            "user-info user-info history";
+                            ". user-info history";
 }
 
 header {
@@ -17,8 +18,10 @@ header {
 
 .username-flexcontainer {
     grid-area: username;
-    display: flex;
     background-color: sandybrown;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
 }
 
 .market-grid-container {
@@ -28,7 +31,8 @@ header {
 
 .user-info-flexcontainer {
     grid-area: user-info;
-    background-color: red;
+    /*background-color: red;*/
+    align-self: end;
 }
 
 .history {
@@ -56,8 +60,26 @@ header {
     border: 1rem;
 }
 
+.own-player-card {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 1rem;
+    background-color: lightgrey; /* TODO Give this a better color */
+}
+
+.own-purse {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, auto);
+}
+
 .own-reserved-cards {
     display: flex;
     gap: 2rem;
+}
+
+.own-prestige-points {
+    margin-top: .5rem;
 }
 
