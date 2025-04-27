@@ -2,6 +2,7 @@ import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {renderTooManyGemsPopUp} from "./renderer";
+import {displayGame} from "../../../game.js";
 
 const MAX_TOKENS = 10;
 
@@ -43,6 +44,8 @@ function formGemChecker(player) {
             e.preventDefault();
             updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
                 document.querySelector("#too-many-gems-pop-up-form").remove();
+            }).then(() => {
+                displayGame();
             });
         });
     }
