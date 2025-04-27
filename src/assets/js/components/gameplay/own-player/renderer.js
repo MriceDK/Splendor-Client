@@ -1,4 +1,5 @@
 import * as getOwnInfo from "./helper.js";
+import {getAllOwnPlayerTokens} from "./helper.js";
 import * as NobleRenderer from "../noble/renderer.js";
 import * as DevelopmentCardRenderer from "../development-card/renderer.js";
 
@@ -13,7 +14,7 @@ function ownPlayerCardRenderer(gameInfo) {
     NobleRenderer.renderNobles(ownPlayer.nobles, $ownNobles);
     NobleRenderer.renderEmptyNobleSpots($ownNobles);
 
-    Object.entries(ownPlayer.tokens).forEach(token => renderOwnTokenValue(token));
+    Object.entries(getAllOwnPlayerTokens(ownPlayer)).forEach(token => renderOwnTokenValue(token));
     Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
 
     const $reservedCards = $playerCard.querySelector(".own-reserved-cards");
