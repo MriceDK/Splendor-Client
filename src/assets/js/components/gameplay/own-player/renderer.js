@@ -17,6 +17,7 @@ function ownPlayerCardRenderer(gameInfo) {
     Object.entries(ownPlayer.bonuses).forEach(bonus => renderOwnBonusValue(bonus));
 
     const $reservedCards = $playerCard.querySelector(".own-reserved-cards");
+    $reservedCards.innerHTML = "";
     DevelopmentCardRenderer.renderDevelopmentCards(ownPlayer.reserve, $reservedCards);
     DevelopmentCardRenderer.renderEmptyDevelopmentCardSpots($reservedCards);
 
