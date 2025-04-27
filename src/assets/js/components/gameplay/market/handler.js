@@ -29,8 +29,8 @@ function removePickableFromNobles(){
     });
 }
 
-function handleMarketClickability(clickable) {
-    const cards = document.querySelectorAll(".market-grid-container article");
+function handleClickability(clickable, targetContainerClass) {
+    const cards = document.querySelectorAll(`.${targetContainerClass} article`);
     cards.forEach(card => {
         if (clickable) {
             renderEnabledCard(card);
@@ -40,4 +40,4 @@ function handleMarketClickability(clickable) {
     });
 }
 
-export {nobleCheck, hookUpEventListenersOnPickableNoble, removePickableFromNobles, handleMarketClickability};
+export {nobleCheck, hookUpEventListenersOnPickableNoble, removePickableFromNobles, handleClickability};
