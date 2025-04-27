@@ -1,3 +1,11 @@
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,1)), url("../../../images/background-images/world-map.JPG");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    color: var(--main-white-color);
+}
+
 main {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -18,7 +26,6 @@ header {
 
 .username-flexcontainer {
     grid-area: username;
-    background-color: sandybrown;
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
@@ -37,17 +44,14 @@ header {
 
 .history {
     grid-area: history;
-    background-color: darkblue;
 }
 
 .lobby-info {
     grid-area: info;
-    background-color: darkgreen;
 }
 
 .bank-flexcontainer {
     grid-area: bank;
-    background-color: grey;
 }
 
 .pickable-noble {
@@ -65,7 +69,7 @@ header {
     gap: 2.5rem;
     align-items: center;
     padding: 1rem;
-    background-color: lightgrey; /* TODO Give this a better color */
+
 }
 
 .own-purse {
