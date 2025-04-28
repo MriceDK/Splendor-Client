@@ -6,6 +6,17 @@ header img {
     width: 5rem;
 }
 
+body{
+    color: var(--main-white-color);
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,1)), url("../../../images/background-images/russian-invasion-ukraine.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(0.2em);
+    z-index: -1;
+}
+
 header a{
     display: flex;
     text-decoration: none;
@@ -40,7 +51,6 @@ h1 {
 }
 
 #filter {
-    background-color: beige;
     padding: 1rem;
     border-radius: 1rem;
     width: 50%;
@@ -48,7 +58,6 @@ h1 {
     margin-right: auto;
     margin-top: 1rem;
     display: block;
-    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
 
 }
 
@@ -75,6 +84,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: var(--main-white-color);
+    color: var(--main-black-color);
     padding: 1rem;
     margin: 0.25rem;
     border-radius: 0.5rem;
@@ -109,4 +119,3 @@ h1 {
     background-color: #3498db;
     color: white;
 }
-
