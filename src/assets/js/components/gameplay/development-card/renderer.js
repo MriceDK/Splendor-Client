@@ -1,15 +1,16 @@
 const MAX_RESERVED_CARDS = 3;
 
-function renderDevelopmentCards(cards, $target) {
+function renderDevelopmentCards(cards, $target, isReserved = false) {
     cards.forEach(card => {
-        renderDevelopmentCard(card, $target);
+        renderDevelopmentCard(card, $target, isReserved);
     });
 }
 
-function renderDevelopmentCard(card, $target) {
+function renderDevelopmentCard(card, $target, isReserved = false) {
     const $devCard = document.querySelector("#development-card").content.firstElementChild.cloneNode(true);
 
     $devCard.classList.add(`level-${card.level}`);
+    isReserved ? $devCard.classList.add("reserved"): null;
     $devCard.setAttribute("data-card-name", card.name);
     $devCard.querySelector("h2").innerText = card.name;
     $devCard.querySelector(".prestige-point").innerText = card.prestigePoints;
@@ -52,3 +53,15 @@ function renderEmptyDevelopmentCardSpots($target) {
 }
 
 export {renderDevelopmentCards, renderEmptyDevelopmentCardSpots};
+
+function renderDisableCard(card) {
+    card.classList.remove("active-card");
+    card.classList.add("disabled");
+}
+
+function renderEnabledCard(card) {
+    card.classList.remove("disabled");
+    card.classList.add("active-card");
+}
+
+export {renderEnabledCard, renderDisableCard};
