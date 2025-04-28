@@ -146,11 +146,142 @@
 </template>
 
 <div class="popup-container hidden">
+    <div id="popup-templates" class="hidden">
+        <template id="buy-popup-template">
+            <div class="confirmation-popup popup">
+                <h3 class="title-popup">buy ${cardname}</h3>
+                <button type="button" class="close-pop-up-button">Cancel</button>
+                <button type="button" class="confirm-pop-up-button">Buy Card</button>
+            </div>
+        </template>
+        <template id="reserve-deck-popup-template">
+            <div class="confirmation-popup popup">
+                <h3 class="title-popup">Reserve card from level ${cardname}?</h3>
+                <div class="errormessages">
+                    <p></p>
+                </div>
+                <button type="button" class="close-pop-up-button">Cancel</button>
+                <button type="button" class="confirm-pop-up-button">Reserve Card</button>
 
+            </div>
+        </template>
+        <template id="buy-or-reserve-popup-template">
+            <div class="confirmation-popup popup">
+                <h3 class="title-popup"></h3>
+                <div class="errormessages">
+                    <p></p>
+                </div>
+                <button type="button" class="close-pop-up-button">Cancel</button>
+                <button type="button" class="cancel-pop-up-button">Reserve Card</button>
+                <button type="button" class="confirm-pop-up-button">Buy Card</button>
+            </div>
+        </template>
+        <template id="too-many-gems-pop-up-template">
+            <form id="too-many-gems-pop-up-form" action="#" method="GET" class="popup">
+                <label for="token-remover-emerald">
+                    Emerald
+                </label>
+                <input class="gem-remover-input" id="token-remover-emerald" type="number" name="emerald" min="0">
+
+                <label for="token-remover-ruby">
+                    Ruby
+                </label>
+                <input class="gem-remover-input" id="token-remover-ruby" type="number" name="ruby" min="0">
+
+                <label for="token-remover-sapphire">
+                    Sapphire
+                </label>
+                <input class="gem-remover-input" id="token-remover-sapphire" type="number" name="sapphire" min="0">
+
+                <label for="token-remover-diamond">
+                    Diamond
+                </label>
+                <input class="gem-remover-input" id="token-remover-diamond" type="number" name="diamond" min="0">
+
+                <label for="token-remover-onyx">
+                    Onyx
+                </label>
+                <input class="gem-remover-input" id="token-remover-onyx" type="number" name="onyx" min="0">
+
+                <label for="token-remover-gold">
+                    Gold
+                </label>
+                <input class="gem-remover-input" id="token-remover-gold" type="number" name="gold" min="0">
+
+                <button type="submit" id="gem-remover-button" value="confirm-removal">Remove Gems</button>
+
+
+            </form>
+        </template>
+        <template id="settings-popup-template">
+            <div class="popup">
+                <button class="forfeit">Forfeit</button>
+                <button class="close">Close</button>
+                <div class="forfeit-popup hidden">
+                    <p>Do you want to forfeit?</p>
+                    <button class="forfeit-yes">Yes</button>
+                    <button class="forfeit-no">No</button>
+                </div>
+            </div>
+        </template>
+        <template id="token-selector">
+            <div class="popup-token-selector">
+                <div class="errormessages">
+                    <p></p>
+                </div>
+                <form id="token-selector-form" action="#" method="GET">
+                    <input id="token-selector-dev-card" type="hidden" name="dev-card" value="">
+                    <label for="token-selector-emerald">
+                        Emerald
+                        <input class="gem-selector-input" id="token-selector-emerald" type="number" name="emerald"
+                               value="0"
+                               min="0">
+                    </label>
+                    <label for="token-selector-ruby">
+                        Ruby
+                        <input class="gem-selector-input" id="token-selector-ruby" type="number" name="ruby" value="0"
+                               min="0">
+                    </label>
+                    <label for="token-selector-sapphire">
+                        Sapphire
+                        <input class="gem-selector-input" id="token-selector-sapphire" type="number" name="sapphire"
+                               value="0"
+                               min="0">
+                    </label>
+                    <label for="token-selector-diamond">
+                        Diamond
+                        <input class="gem-selector-input" id="token-selector-diamond" type="number" name="diamond"
+                               value="0"
+                               min="0">
+                    </label>
+                    <label for="token-selector-onyx">
+                        Onyx
+                        <input class="gem-selector-input" id="token-selector-onyx" type="number" name="onyx" value="0"
+                               min="0">
+                    </label>
+                    <label for="token-selector-gold">
+                        Gold
+                        <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0"
+                               min="0">
+                    </label>
+                    <button type="button" id="token-selector-close-button">Cancel</button>
+                    <input type="submit" value="confirm-payment">
+                    <p>The costs are:</p>
+                    <dl></dl>
+                </form>
+
+            </div>
+        </template>
+        <template id="end-of-game-template">
+            <div class="popup">
+                <h3 class="title-popup">Game Over</h3>
+                <p class="winner-text">The winner was: <span class="winnner"></span></p>
+                <button type="button" class="return-to-main-menu-button">Return to main menu</button>
+            </div>
+        </template>
+    </div>
 </div>
-
 <main>
-
     <header>
         <div class="settings">
             <button id="settings"><img src="images/settings-icon.png" alt="settings icon" title="settings icon">
@@ -219,10 +350,9 @@
             </div>
 
         </template>
-
-
     </div>
     <div class="market-grid-container">
+        <div id="market-templates" class="hidden">
             <template id="noble">
 
                 <article class="noble-article">
@@ -231,33 +361,31 @@
                     <ul class="bonus-costs">
                     </ul>
                 </article>
-    
+
             </template>
 
 
+            <template id="level-card">
 
+                <article class="deck">
+                    <h2>Level <span class="level-title"></span></h2>
+                    <p><span class="card-amount"></span> left</p>
+                </article>
 
-        <template id="level-card">
+            </template>
 
-            <article class="deck">
-                <h2>Level <span class="level-title"></span></h2>
-                <p><span class="card-amount"></span> left</p>
-            </article>
+            <template id="development-card">
 
-        </template>
+                <article class="development-card">
+                    <h2 class="development-card-title hidden">title</h2>
+                    <span class="prestige-point">1</span>
+                    <img class="bonus" src="#" alt="bonus">
+                    <div class="gem-costs">
+                    </div>
+                </article>
 
-        <template id="development-card">
-
-            <article class="development-card">
-                <h2 class="development-card-title hidden">title</h2>
-                <span class="prestige-point">1</span>
-                <img class="bonus" src="#" alt="bonus">
-                <div class="gem-costs">
-                </div>
-            </article>
-
-        </template>
-
+            </template>
+        </div>
     </div>
     <div class="lobby-info">
         <h1 class="splendor-name">Splendor</h1>
