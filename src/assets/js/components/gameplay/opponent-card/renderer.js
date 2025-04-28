@@ -10,8 +10,8 @@ function renderOpponentStats(opponent) {
     const $template = document.querySelector("#opponent-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".username-flexcontainer");
 
+    $target.innerHTML = document.querySelector("#opponent-template").outerHTML;
     fillOpponentStat($template, opponent);
-
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
 
