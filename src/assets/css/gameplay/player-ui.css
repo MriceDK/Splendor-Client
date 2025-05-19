@@ -9,7 +9,6 @@
 }
 
 .opponent{
-    display: flex;
     justify-content: start;
     align-items: start;
     gap: .5rem;
@@ -120,17 +119,8 @@
 }
 
 .reserved-label {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-}
-
-.reserved-label:before{
-    display: inline-block;
-    content: "";
-    min-width: 1rem;
-    min-height: 1.5rem;
-    background-color: grey;
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
 }
 
 .hidden{
