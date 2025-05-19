@@ -164,16 +164,24 @@
 }
 
 .username-flexcontainer .points-bar-container {
+    content: "";
     width: 100%;
-    background-color: var(--not-white);
-    border: 0.05rem solid var(--dark-green);
-    border-radius: 0.65rem;
+    background-color: var(--lighter-green);
     margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    overflow: visible;
+    clip-path: polygon(
+            0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%
+    ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }
 
 .username-flexcontainer .points-bar-container .points-bar {
-    width: 80%;
+    content: "";
+    height: 0.9rem;
+    width: 60%;
     background-color: var(--dark-green);
-    border-radius: 0.5rem;
+    clip-path: polygon(
+            0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%
+    ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }
