@@ -10,24 +10,36 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/game-setup/create-lobby.css">
-    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
-
 
     <script type="module" src="assets/js/components/game-setup/lobby-creator/lobby-creator.js"></script>
 
 </head>
 <body>
+<div class="popup-container hidden">
+    <template id="username-popup-template">
+        <div class="popup">
+            <a href="#" id="closePopup">
+                <p>X</p>
+            </a>
+            <form id="playername-changer">
+                <label for="playername-text">Username: </label>
+                <input type="text" id="playername-text" name="playername">
+                <button type="submit" id="playername-button">Change Username</button>
+            </form>
+        </div>
+    </template>
+</div>
     <header>
         <nav>
             <a href="index.html">⬅</a>
         </nav>
-        <a href="username-selector.html">
-            <img src="./images/user-logo.png" alt="username logo" title="username logo" id="profile-picture">
+        <h1>Create lobby</h1>
+        <a href="#" id="renderButton">
+            <img src="./images/playername-logo.png" alt="username logo" title="username logo" id="profile-picture">
             <span id="playername">Select Username</span>
         </a>
     </header>
     <main>
-        <h1>Create lobby</h1>
 
         <form id="lobby-create-form" class="lobby-create-form" action="#" method="GET">
 
@@ -40,26 +52,17 @@
                 <h2 class="form-title">Amount of players</h2>
 
                 <div class="options">
-                    <div class="radio-option bomb-radio">
-                        <label for="player-amount-2">
-                            <input required id="player-amount-2" name="player-amount" type="radio" value="2">
-                            <span class="bomb-shape"></span>
-                            2
-                        </label>
+                    <div class="radio-option">
+                        <input required id="player-amount-2" name="player-amount" type="radio" value="2">
+                        <label for="player-amount-2">2</label>
                     </div>
-                    <div class="radio-option bomb-radio">
-                        <label for="player-amount-3">
-                            <input required id="player-amount-3" name="player-amount" type="radio" value="3">
-                            <span class="bomb-shape"></span>
-                            3
-                        </label>
+                    <div class="radio-option">
+                        <input required id="player-amount-3" name="player-amount" type="radio" value="3">
+                        <label for="player-amount-3">3</label>
                     </div>
-                    <div class="radio-option bomb-radio">
-                        <label for="player-amount-4">
-                            <input required id="player-amount-4" name="player-amount" type="radio" value="4">
-                            <span class="bomb-shape"></span>
-                            4
-                        </label>
+                    <div class="radio-option">
+                        <input required id="player-amount-4" name="player-amount" type="radio" value="4">
+                        <label for="player-amount-4">4</label>
                     </div>
                 </div>
             </section>
@@ -86,7 +89,7 @@
             </section>
 -->
 
-            <input class="button-style" type="submit" value="Create game">
+            <input class="submit" type="submit" value="Create game">
         </form>
     </main>
 

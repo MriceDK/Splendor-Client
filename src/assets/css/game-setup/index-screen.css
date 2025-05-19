@@ -1,33 +1,29 @@
-
 body {
-    display: grid;
+    font-family: "Roboto", sans-serif;
     max-height: 100vh;
-    max-width: 100vw;
-
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,1)), url("../../../images/background-images/trump-tariff-list.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    font-family: "Roboto", sans-serif;
-    color: var(--main-black-color);
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-}
-
-.grid-container {
-    height: 100%
+    backdrop-filter: blur(0.2em);
+    z-index: -1;
+    color: var(--main-white-color);
+    position: relative;
 }
 
 header {
+    display: flex;
+    align-items: center;
+    text-align: end;
     flex-flow: row-reverse;
     height: 100%;
 }
 
+header img {
+    width: 5rem;
+}
 
-.grid {
+.grid{
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
@@ -38,7 +34,7 @@ h1 {
     font-size: 6rem;
     text-align: center;
     margin-top: 2rem;
-    font-family: "Saira stencil one", Arial, serif;
+    font-family: "Cinzel Decorative", Arial, serif;
     font-style: italic;
     font-weight: bold;
 }
@@ -51,7 +47,66 @@ h3 {
     font-weight: bold;
 }
 
+.button-style {
+    text-align: center;
+    margin-top: 4rem;
+    font-size: 3rem;
+    color: var(--main-white-color);
+    padding: 1rem;
+    border: var(--main-white-color) solid;
+    border-radius: 1rem;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
 
+.button-style:hover {
+    background-color: rgb(230, 177, 0);
+}
 
+#playername {
+    text-align: end;
+    font-size: 2rem;
+}
+#playername-changer label{
+    color: var(--main-black-color);
+}
 
-/* Styling for The PlayerName */
+main {
+    height: 100%;
+}
+
+.grid-container {
+    display: grid;
+    height: fit-content;
+}
+
+.container div {
+    align-self: center;
+    justify-self: center;
+}
+.popup-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 50%);
+    z-index: 2;
+    display: grid;
+}
+
+.popup-container .popup {
+    align-self: center;
+    justify-self: center;
+    background-color: var(--main-white-color);
+    font-size: 3rem;
+    text-align: center;
+}
+
+#close{
+    justify-content: right;
+}
+
+.popup-container.hidden{
+    display: none;
+}
+
