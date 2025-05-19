@@ -2,6 +2,8 @@ import * as CommunicationAbstractor from "./data-connector/api-communication-abs
 import * as ErrorHandler from "./data-connector/error-handler.js";
 import {changePlayerNameText} from "./components/game-setup/username-selector/renderer.js";
 import {renderPopup} from "./components/popup/usernameselector-popup/handeler.js";
+import {usernameInit} from "./components/game-setup/username-selector/username-init.js";
+
 
 function init() {
     testConnection();
@@ -14,10 +16,13 @@ function testConnection() {
 }
 
 function eventListenerUsernameSelector(){
-    document.getElementById("renderButton").addEventListener("click", (e) => {
+    document.querySelector("#renderButton").addEventListener("click", (e) => {
+        console.log("bqllq")
         e.preventDefault();
         renderPopup();
+        usernameInit(e)
     });
 }
+
 
 init();
