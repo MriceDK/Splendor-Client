@@ -64,10 +64,6 @@
     margin-top: 0.5rem;
 }
 
-.opponent-frame-container .points {
-    margin-top: .5rem;
-}
-
 .own-purse>p{
     font-size: 1.5rem;
     font-weight: bold;
@@ -168,4 +164,10 @@
 
 .opponent.current-player {
     border: none;
+}
+
+.opponent-player-info {
+    font-size: 1.75rem;
+    display: flex;
+    justify-content: space-between;
 }
