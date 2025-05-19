@@ -1,7 +1,3 @@
-.title-popup{
-    color: var(--popup-titlte-color);
-}
-
 #confirmation-pop-up{
     z-index: 2;
     display: block;
