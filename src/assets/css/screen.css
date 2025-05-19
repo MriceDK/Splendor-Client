@@ -1,7 +1,7 @@
 :root {
  --main-bg-color: #f4f4f4;
  --main-header-bg-color: #2c3e50;
- --main-white-color: var(--not-white);
+ --main-white-color: var(--offwhite);
  --main-black-color: var(--black);
  --main-blue-color: blue;
  --main-grey-color: grey;
@@ -18,7 +18,7 @@
  --black : #262524;
  --off-black : #000000;
  --brown : #594940;
- --not-white : #F0EEE4;
+ --offwhite : #F0EEE4;
 
 /* TOKEN COLOURS*/
  --ruby-token-color: #CD332E;
