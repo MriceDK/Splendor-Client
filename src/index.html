@@ -18,6 +18,17 @@
     <script src="assets/js/index.js" type="module"></script>
 </head>
 <body>
+<div class="popup-container">
+    <template id="username-popup-template">
+        <div class="popup">
+            <form id="playername-changer">
+                <label for="playername-text">Username: </label>
+                <input type="text" id="playername-text" name="playername">
+                <button type="submit" id="playername-button">Change Username</button>
+            </form>
+        </div>
+    </template>
+</div>
 <div class="grid">
     <header>
         <a href="#" id="renderButton">
@@ -34,15 +45,7 @@
             <a class="button-style" href="./lobby-overview.html">Join game</a>
         </div>
     </div>
-        <template id="username-popup-template">
-            <div class="popup">
-                <form id="playername-changer">
-                    <label for="playername-text">Username: </label>
-                    <input type="text" id="playername-text" name="playername">
-                    <button type="submit" id="playername-button">Change Username</button>
-                </form>
-            </div>
-        </template>
+
     <div class="errormessages">
         <p></p>
     </div>
