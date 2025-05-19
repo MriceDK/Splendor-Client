@@ -15,12 +15,26 @@
 
 </head>
 <body>
+<div class="popup-container hidden">
+    <template id="username-popup-template">
+        <div class="popup">
+            <a href="#" id="closePopup">
+                <p>X</p>
+            </a>
+            <form id="playername-changer">
+                <label for="playername-text">Username: </label>
+                <input type="text" id="playername-text" name="playername">
+                <button type="submit" id="playername-button">Change Username</button>
+            </form>
+        </div>
+    </template>
+</div>
     <header>
         <nav>
             <a href="index.html">⬅</a>
         </nav>
         <h1>Create lobby</h1>
-        <a href="username-selector.html">
+        <a href="#" id="renderButton">
             <img src="./images/playername-logo.png" alt="username logo" title="username logo" id="profile-picture">
             <span id="playername">Select Username</span>
         </a>

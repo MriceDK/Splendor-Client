@@ -10,6 +10,7 @@ body {
     backdrop-filter: blur(0.2em);
     z-index: -1;
     color: var(--main-white-color);
+    position: relative;
 }
 
 main {
@@ -94,4 +95,31 @@ nav a {
     font-size: 2rem;
     margin-left: 1rem;
 }
+#playername-changer label{
+    color: var(--main-black-color);
+}
 
+.popup-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 50%);
+    z-index: 2;
+    display: grid;
+}
+
+.popup-container .popup {
+    align-self: center;
+    justify-self: center;
+    background-color: var(--main-white-color);
+    font-size: 3rem;
+    text-align: center;
+}
+
+#close{
+    justify-content: right;
+}
+
+.popup-container.hidden{
+    display: none;
+}

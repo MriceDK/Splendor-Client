@@ -68,10 +68,9 @@ h3 {
     text-align: end;
     font-size: 2rem;
 }
-label{
+#playername-changer label{
     color: var(--main-black-color);
 }
-
 
 main {
     height: 100%;

@@ -1,4 +1,3 @@
-import {renderPopup} from "./handeler.js";
 
 function renderUsernamePopup(){
     const $template = document.querySelector("#username-popup-template").content.firstElementChild.cloneNode(true);
@@ -9,7 +8,6 @@ function renderUsernamePopup(){
 }
 
 function hideUserNamePopup() {
-    const $template = document.querySelector("#username-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
     $target.classList.add("hidden");
 }
