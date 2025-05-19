@@ -131,23 +131,31 @@
     background-color: orangered;
     color: black;
 }
+
 .green {
     background: lime;
     color: black;
 }
+
 .blue {
     background: dodgerblue;
     color: white;
 }
+
 .white {
     background: var(--main-white-color);
-    color: black; }
+    color: black;
+}
+
 .black {
     background: #8d6830;
-    color: white; }
+    color: white;
+}
+
 .yellow {
     background: #ffc600;
-    color: black; }
+    color: black;
+}
 
 .current-player .opponent-frame-container {
     background-color: var(--dark-beige);
