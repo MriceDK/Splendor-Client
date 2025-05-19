@@ -183,7 +183,6 @@
 .username-flexcontainer .points-bar-container .points-bar {
     content: "";
     height: 0.9rem;
-    width: 0%;
     background-color: var(--dark-green);
     clip-path: polygon(
             0% 0%,
