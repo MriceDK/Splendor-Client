@@ -47,7 +47,6 @@
 
 body {
  background-image: url("../../images/background-images/army-background.png");
- backdrop-filter: blur(0.2em);
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
