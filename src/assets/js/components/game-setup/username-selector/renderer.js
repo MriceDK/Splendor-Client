@@ -12,5 +12,4 @@ function closePlayerNamePopup(){
     hideUserNamePopup();
 }
 
-
 export {changePlayerNameText};

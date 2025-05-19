@@ -4,7 +4,6 @@ import {changePlayerNameText} from "./components/game-setup/username-selector/re
 import {renderPopup} from "./components/popup/usernameselector-popup/handeler.js";
 import {usernameInit} from "./components/game-setup/username-selector/username-init.js";
 
-
 function init() {
     testConnection();
     changePlayerNameText();
@@ -17,13 +16,10 @@ function testConnection() {
 
 function eventListenerUsernameSelector(){
     document.querySelector("#renderButton").addEventListener("click", (e) => {
-
         e.preventDefault();
         renderPopup();
         usernameInit(e)
     });
 }
-
-
 
 init();
