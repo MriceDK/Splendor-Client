@@ -19,10 +19,15 @@ body{
     text-align: center;
 }
 
+.popup-container.hidden{
+    display: none;
+}
+
+.forfeit-popup{
+    color: var(--popup-titlte-color);
+}
+
 #close{
     justify-content: right;
 }
 
-.popup-container.hidden{
-    display: none;
-}
