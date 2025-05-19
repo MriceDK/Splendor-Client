@@ -1,8 +1,21 @@
+body{
+    color: var(--main-white-color);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,1)), url("../../../images/background-images/world-map.JPG");
+    height: 100vh;
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    backdrop-filter: blur(0.2rem);
+}
+
 main {
     display: grid;
-    grid-template-columns: 0.7fr 1.6fr 0.7fr;
-    grid-template-rows: 5% 1fr 1.75fr 1.25fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 5% 1fr 1.75fr auto;
     height: 100vh;
+    width: 100vw;
     grid-template-areas:    "username market header"
                             "username market info"
                             "username market bank"
@@ -18,7 +31,8 @@ header {
 .username-flexcontainer {
     grid-area: username;
     display: flex;
-    background-color: sandybrown;
+    flex-direction: column;
+    padding-top: 1rem;
 }
 
 .market-grid-container {
@@ -34,17 +48,14 @@ header {
 
 .history {
     grid-area: history;
-    background-color: darkblue;
 }
 
 .lobby-info {
     grid-area: info;
-    background-color: darkgreen;
 }
 
 .bank-flexcontainer {
     grid-area: bank;
-    background-color: grey;
 }
 
 .pickable-noble {
@@ -62,7 +73,7 @@ header {
     gap: 2.5rem;
     align-items: center;
     padding: 1rem;
-    background-color: lightgrey; /* TODO Give this a better color */
+
 }
 
 .own-purse {

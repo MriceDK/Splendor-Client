@@ -10,15 +10,15 @@ function renderOpponentStats(opponent) {
     const $template = document.querySelector("#opponent-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".username-flexcontainer");
 
+    $target.innerHTML = document.querySelector("#opponent-template").outerHTML;
     fillOpponentStat($template, opponent);
-
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
 
 function fillOpponentStat($template, opponent) {
     $template.querySelector(".player").innerText = opponent.name;
     $template.querySelector(".points").innerText = opponent.totalPrestigePoints;
-    $template.querySelector("#reserved-count").innerText = opponent.reserve.length;
+    $template.querySelector(".reserved-count").innerText = opponent.reserve.length;
 
     $template.querySelector(".gems.red>.token-text").innerText = handler.getTokenInPurse(opponent, "Ruby", false);
     $template.querySelector(".gems.green>.token-text").innerText = handler.getTokenInPurse(opponent, "Emerald", false);

@@ -14,15 +14,16 @@ body{
 .popup-container .popup {
     align-self: center;
     justify-self: center;
-    background-color: var(--main-white-color);
+    color: var(--main-black-color);
     font-size: 3rem;
     text-align: center;
+}
+
+.popup-container.hidden{
+    display: none;
 }
 
 #close{
     justify-content: right;
 }
 
-.popup-container.hidden{
-    display: none;
-}

@@ -43,6 +43,7 @@
     grid-template-columns: 2rem auto 2rem;
     grid-template-rows: 2rem auto;
     padding: .5rem;
+    background-size: 100%
 }
 
 .development-card-title {
@@ -126,4 +127,8 @@
 
 .bonus-costs li {
     padding: .25rem;
+}
+
+.buyable {
+    border: solid .25rem #f41d1d;
 }

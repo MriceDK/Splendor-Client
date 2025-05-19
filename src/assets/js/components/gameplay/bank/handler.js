@@ -3,6 +3,7 @@ import * as api from "../../../api/gameplay-api.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 // import {checkTooManyTokens} from "../own-player/gems-overflow/handler.js";
 import {renderOwnTokenValue} from "../own-player/renderer.js";
+import {displayGame} from "../../../game.js";
 
 function hookUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", openBank);
@@ -56,9 +57,9 @@ function collectTokens() {
 
         Object.entries(res.tokens).forEach((token) => {
             renderOwnTokenValue(token);
-
         });
-
+    }).then(() => {
+        displayGame();
     });
 
 

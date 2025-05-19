@@ -5,7 +5,7 @@ import {hookUpEventListenersOnPickableNoble}  from "./handler.js";
 
 function renderMarket(gameInfo) {
     const $target = document.querySelector(".market-grid-container");
-
+    $target.innerHTML = document.querySelector("#market-templates").outerHTML;
     NobleRenderer.renderNobles(gameInfo.unclaimedNobles, $target);
     renderLevelRows(gameInfo.market, $target);
 }

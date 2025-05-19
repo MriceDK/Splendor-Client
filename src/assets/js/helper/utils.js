@@ -4,7 +4,7 @@ function uppercaseFirstLetterOfWord(word) {
 
 function showPopupContainer() {
     const $popupContainer = document.querySelector(".popup-container");
-    $popupContainer.innerHTML = "";
+    $popupContainer.innerHTML = document.querySelector("#popup-templates").outerHTML;
     $popupContainer.classList.remove("hidden");
 }
 
@@ -24,4 +24,17 @@ function getCurrentPlayer(players, currentPlayer){
     return undefined;
  }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer};
+ function elementIsInArray(array, element) {
+
+    for (const item of array) {
+        if (item === element) {
+            console.log(`${item} VS ${element}`);
+            return true;
+        }
+    }
+
+    return false;
+
+ }
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray};
