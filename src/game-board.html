@@ -27,8 +27,8 @@
         <template id="buy-popup-template">
             <div class="confirmation-popup popup">
                 <h3 class="title-popup">buy ${cardname}</h3>
-                <button type="button" class="close-pop-up-button">Cancel</button>
-                <button type="button" class="confirm-pop-up-button">Buy Card</button>
+                <button type="button" class="button-style-popup close-pop-up-button">Cancel</button>
+                <button type="button" class="button-style-popup confirm-pop-up-button">Buy Card</button>
             </div>
         </template>
         <template id="reserve-deck-popup-template">
@@ -48,9 +48,9 @@
                 <div class="errormessages">
                     <p></p>
                 </div>
-                <button type="button" class="close-pop-up-button">Cancel</button>
-                <button type="button" class="cancel-pop-up-button">Reserve Card</button>
-                <button type="button" class="confirm-pop-up-button">Buy Card</button>
+                <button type="button" class="button-style button-style-popup cancel-pop-up-button">Reserve Card</button>
+                <button type="button" class="button-style button-style-popup confirm-pop-up-button">Buy Card</button>
+                <button type="button" class="button-style button-style-popup close-pop-up-button">Cancel</button>
             </div>
         </template>
         <template id="too-many-gems-pop-up-template">
@@ -92,12 +92,13 @@
         </template>
         <template id="settings-popup-template">
             <div class="popup">
-                <button class="forfeit">Forfeit</button>
-                <button class="close">Close</button>
+                <p class="settings-title">Settings</p>
+                <button class="forfeit button-style button-style-popup">Forfeit</button>
+                <button class="close button-style button-style-popup">Close</button>
                 <div class="forfeit-popup hidden">
                     <p>Do you want to forfeit?</p>
-                    <button class="forfeit-yes">Yes</button>
-                    <button class="forfeit-no">No</button>
+                    <button class="forfeit-yes button-style button-style-popup">Yes</button>
+                    <button class="forfeit-no button-style button-style-popup">No</button>
                 </div>
             </div>
         </template>
