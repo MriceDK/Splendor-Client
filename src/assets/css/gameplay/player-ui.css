@@ -1,5 +1,5 @@
 .opponents-info{
-    color: var(--main-black-color);
+    color: var(--black);
 }
 
 .opponents-info h2{
@@ -161,4 +161,19 @@
     font-size: 1.75rem;
     display: flex;
     justify-content: space-between;
+}
+
+.username-flexcontainer .points-bar-container {
+    width: 100%;
+    background-color: var(--not-white);
+    border: 0.05rem solid var(--dark-green);
+    border-radius: 0.65rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.username-flexcontainer .points-bar-container .points-bar {
+    width: 80%;
+    background-color: var(--dark-green);
+    border-radius: 0.5rem;
 }
