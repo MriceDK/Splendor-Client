@@ -170,9 +170,14 @@
     margin-top: 0.25rem;
     margin-bottom: 0.2rem;
     display: flex;
-    overflow: visible;
+    overflow: hidden;
     clip-path: polygon(
-            0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%
+            10% 0%,
+            90% 0%,
+            100% 50%,
+            90% 100%,
+            10% 100%,
+            0% 50%
     ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }
 
@@ -182,6 +187,11 @@
     width: 60%;
     background-color: var(--dark-green);
     clip-path: polygon(
-            0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%
+            0% 0%,
+            100% 0%,
+            100% 50%,
+            100% 100%,
+            0% 100%,
+            0% 0%
     ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }
