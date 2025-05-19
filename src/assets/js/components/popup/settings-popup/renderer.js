@@ -13,6 +13,7 @@ function showForfeitOption() {
 function hideForfeitCloseButtons() {
     document.querySelector(".forfeit").classList.add("hidden");
     document.querySelector(".close").classList.add("hidden");
+    document.querySelector(".settings-title").classList.add("hidden")
 }
 
 export {renderSettingsPopup, hideForfeitCloseButtons, showForfeitOption};
