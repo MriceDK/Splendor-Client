@@ -4,7 +4,8 @@
 }
 
 .splendor-name{
-    font-family: "Cinzel Decorative", serif;
+    font-family: "Saira stencil one", Arial, serif;
+    color: var(--main-black-color);
     text-align: center;
     margin-top: 1rem;
     font-style: italic;

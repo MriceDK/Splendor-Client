@@ -1,6 +1,4 @@
 body{
-    color: var(--main-white-color);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,1)), url("../../../images/background-images/world-map.JPG");
     height: 100vh;
     margin: 0;
     background-size: cover;
