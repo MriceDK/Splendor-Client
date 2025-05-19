@@ -1,18 +1,29 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
+import {showPopupContainer, uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {renderTooManyGemsPopUp} from "./renderer";
 import {displayGame} from "../../../game.js";
 
 const MAX_TOKENS = 10;
 
-function checkTooManyTokens(playersInfos, currentPlayer) {
-    playersInfos.forEach(player => {
-        if (player.name === currentPlayer) {
-            checkTooMuchTokensHelp(player);
+function returnTooManyTokens(currentPlayer) {
+    const tokens = counTokens();
+    showPopupContainer();
+    loadUpFormWithTokensLoaded();
+    if (countTotalTokens(tokens) === MAX_TOKENS) {
+        updateTokensAfterTooMany();
+    }
 
-        }
-    });
+
+
+}
+
+function checkTooManyTokens(gameState, currentPlayer) {
+    if (gameState === "ReturnGems"){
+        returnTooManyTokens(currentPlayer);
+
+    }
+
 
 }
 
