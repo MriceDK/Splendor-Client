@@ -15,7 +15,7 @@ body{
     align-self: center;
     justify-self: center;
     color: var(--main-black-color);
-    background-color: var(--not-white);
+    background-color: var(--offwhite);
     padding: 1rem 2rem;
     border-radius: 1rem;
     font-size: 3rem;
