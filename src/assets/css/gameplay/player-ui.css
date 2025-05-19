@@ -7,8 +7,7 @@
 }
 
 .opponent-frame-container {
-    border: solid var(--main-grey-color);
-    background-color: var(--main-grey-color);
+    background-color: var(--main-white-color);
     padding: .5rem;
     display: flex;
     flex-direction: column;

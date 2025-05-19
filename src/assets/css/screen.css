@@ -42,6 +42,7 @@
 
 * {
  box-sizing: border-box;
+ font-family: "Saira stencil one", Arial, serif;
 }
 
 body {
@@ -51,7 +52,6 @@ body {
  background-position: center;
  background-repeat: no-repeat;
 
- font-family: Arial, sans-serif;
  background-color: var(--main-bg-color);
  margin: 0;
  padding: 0;
