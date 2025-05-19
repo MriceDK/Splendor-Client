@@ -3,6 +3,7 @@ import * as NobleRenderer from "../noble/renderer.js";
 
 function renderOpponentsStats(players) {
     const opponents = handler.getOpponents(players);
+    document.querySelector(".username-flexcontainer").innerHTML = document.querySelector("#opponent-template").outerHTML;
     opponents.forEach(opponent => renderOpponentStats(opponent));
 }
 
@@ -10,7 +11,6 @@ function renderOpponentStats(opponent) {
     const $template = document.querySelector("#opponent-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".username-flexcontainer");
 
-    $target.innerHTML = document.querySelector("#opponent-template").outerHTML;
     fillOpponentStat($template, opponent);
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
