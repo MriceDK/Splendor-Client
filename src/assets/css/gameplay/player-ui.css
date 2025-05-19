@@ -170,7 +170,6 @@
     margin-top: 0.25rem;
     margin-bottom: 0.2rem;
     display: flex;
-    overflow: hidden;
     clip-path: polygon(
             10% 0%,
             90% 0%,
@@ -184,7 +183,7 @@
 .username-flexcontainer .points-bar-container .points-bar {
     content: "";
     height: 0.9rem;
-    width: 60%;
+    width: 0%;
     background-color: var(--dark-green);
     clip-path: polygon(
             0% 0%,
