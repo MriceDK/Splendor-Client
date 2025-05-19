@@ -17,12 +17,13 @@ function testConnection() {
 
 function eventListenerUsernameSelector(){
     document.querySelector("#renderButton").addEventListener("click", (e) => {
-        console.log("bqllq")
+
         e.preventDefault();
         renderPopup();
         usernameInit(e)
     });
 }
+
 
 
 init();
