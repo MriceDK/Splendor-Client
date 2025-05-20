@@ -36,10 +36,10 @@ function getListOfBuyableCards(market, player) {
 
 // TODO schrijf een functie die uitrekent hoeveel tokens er nog nodig zijn zodat er kan berekent worden of de development koopbaar is met een gold token
 
-function mergeTokensAndBonuses(ownTokens, bonuses) {
+function mergeTokensAndBonuses(tokens, bonuses) {
     const res = [];
 
-    Object.entries(ownTokens).forEach((obj) => {
+    Object.entries(tokens).forEach((obj) => {
         const tokenName = obj[0];
         const tokenValue = obj[1];
         let bonusValue = 0;
@@ -54,9 +54,9 @@ function mergeTokensAndBonuses(ownTokens, bonuses) {
     return res;
 }
 
-function isBuyable(priceDevCard, bonusAndOwnTokens, goldenTokens) {
+function isBuyable(priceDevCard, tokensAndBonuses, goldenTokens) {
 
-    const tokensStillNeeded = getNeededTokens(priceDevCard, bonusAndOwnTokens);
+    const tokensStillNeeded = getNeededTokens(priceDevCard, tokensAndBonuses);
 
     if (tokensStillNeeded === 0) {
         return true;
