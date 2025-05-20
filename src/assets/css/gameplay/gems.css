@@ -17,6 +17,10 @@
     height: 5rem;
 }
 
+.own-inventory .gem-value {
+    font-size: 1.5rem;
+}
+
 .gem, .card {
     font-family: 'Inter', serif;
 }
