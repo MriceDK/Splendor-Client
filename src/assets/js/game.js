@@ -12,6 +12,7 @@ import {renderBuyableCards} from "./components/gameplay/development-card/rendere
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
 import {returnTooManyTokens} from "./components/popup/gems-overflow/handler.js";
 import { handleGemOverflow } from "./components/popup/gems-overflow/handler.js";
+import {getCurrentPlayer} from "./helper/utils";
 
 //import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 let buyableDevCards = [];
@@ -28,8 +29,9 @@ function displayGame() {
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
             renderBuyableCards();
-            if (res.gameState === "ReturnGems"){
-                returnTooManyTokens(ownPlayer);
+            if (res.gameState === "ReturnGems" ){
+                showReturnTokensPopup(ownPlayer.tokens);
+                return
 
             }
             //returnTooManyTokens(res.currentPlayer);
