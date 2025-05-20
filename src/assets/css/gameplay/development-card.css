@@ -79,10 +79,8 @@
     align-self: flex-end;
 }
 
-.gem-cost {
-    padding: .25rem;
-    background-color: white;
-    border-radius: 50%;
+.gem-costs .gem-value {
+    font-size: 1rem;
 }
 
 .gem {
@@ -98,8 +96,9 @@
 }
 
 .gem-value {
+    font-size: 2rem;
     grid-area: gem;
-    z-index: 2;
+    z-index: 1;
 }
 
 /*
