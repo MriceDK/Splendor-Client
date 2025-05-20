@@ -34,8 +34,6 @@ function getListOfBuyableCards(market, player) {
 
 }
 
-// TODO schrijf een functie die uitrekent hoeveel tokens er nog nodig zijn zodat er kan berekent worden of de development koopbaar is met een gold token
-
 function mergeTokensAndBonuses(tokens, bonuses) {
     const res = [];
 
