@@ -14,6 +14,7 @@
 
  /* MAIN REDESIGN COLORS */
  --dark-green : #565939;
+ --lighter-green : #888b69;
  --beige : #BFAD8A;
  --dark-beige : #A69677;
  --black : #262524;
@@ -43,6 +44,7 @@
 
 * {
  box-sizing: border-box;
+ font-family: "Saira stencil one", Arial, serif;
 }
 
 body {
@@ -105,8 +107,6 @@ header img {
  text-align: end;
  font-size: 3rem;
  height: 50%;
- border: 0.2rem solid var(--main-white-color);
- border-radius: 1rem;
  padding: 0.4rem;
 }
 
@@ -145,7 +145,7 @@ header img {
 }
 
 .button-style-popup {
- width: 20rem;
+ width: 10rem;
  padding: 0.3rem;
  font-size: 2rem;
  margin-top: 1rem;
