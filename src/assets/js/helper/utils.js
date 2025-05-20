@@ -28,7 +28,6 @@ function getCurrentPlayer(players, currentPlayer){
 
     for (const item of array) {
         if (item === element) {
-            console.log(`${item} VS ${element}`);
             return true;
         }
     }
