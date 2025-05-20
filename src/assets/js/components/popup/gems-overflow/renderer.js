@@ -35,7 +35,7 @@ function showReturnTokensPopup(playerTokens) {
             return;
         }
 
-        api.updateTokens(gameId, playername tokensToReturn);
+        api.updateTokens(gameId, playername, tokensToReturn);
         $container.classList.add("hidden");
         $container.innerHTML = "";
 
