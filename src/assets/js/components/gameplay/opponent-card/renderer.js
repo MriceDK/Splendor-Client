@@ -1,5 +1,6 @@
 import * as handler from "./handler.js";
 import * as NobleRenderer from "../noble/renderer.js";
+import {getPrestigePointsPercentage} from "./helper.js";
 
 function renderOpponentsStats(players) {
     const opponents = handler.getOpponents(players);
@@ -18,6 +19,7 @@ function renderOpponentStats(opponent) {
 function fillOpponentStat($template, opponent) {
     $template.querySelector(".player").innerText = opponent.name;
     $template.querySelector(".points").innerText = opponent.totalPrestigePoints;
+    $template.querySelector(".points-bar").style.width = `${getPrestigePointsPercentage(opponent.totalPrestigePoints)}%`;
     $template.querySelector(".reserved-count").innerText = opponent.reserve.length;
 
     $template.querySelector(".gems.red>.token-text").innerText = handler.getTokenInPurse(opponent, "Ruby", false);

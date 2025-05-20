@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/gameplay/confirmation-popup.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
 
     <script src="assets/js/components/popup/confirmation-popup/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
@@ -165,69 +166,77 @@
             </button>
         </div>
     </header>
-    <div class="username-flexcontainer">
-        <template id="opponent-template">
-            <div class="opponent">
-                <div class="opponent-frame-container">
-                    <p class="player"></p>
-                    <p class="points"></p>
-                    <div class="inventory-collection">
-                        <div class="inventory">
-                            <div class="token gems red">
-                                <p class="token-text"></p>
+    <section class="opponents-info">
+        <h2>Opponents:</h2>
+        <div class="username-flexcontainer">
+            <template id="opponent-template">
+                <div class="opponent">
+                    <div class="opponent-frame-container">
+                        <div class="opponent-player-info">
+                            <p class="player"></p>
+                            <p class="points"></p>
+                        </div>
+                        <div class="points-bar-container">
+                            <div class="points-bar"></div>
+                        </div>
+                        <div class="inventory-collection">
+                            <div class="inventory">
+                                <div class="token gems red">
+                                    <p class="token-text"></p>
+                                </div>
+                                <div class="card red">
+                                    <p class="token-text"></p>
+                                </div>
                             </div>
-                            <div class="card red">
-                                <p class="token-text"></p>
+                            <div class="inventory">
+                                <div class="gems green">
+                                    <p class="token-text"></p>
+                                </div>
+                                <div class="card green">
+                                    <p class="token-text"></p>
+                                </div>
+                            </div>
+                            <div class="inventory">
+                                <div class="gems black">
+                                    <p class="token-text"></p>
+                                </div>
+                                <div class="card black">
+                                    <p class="token-text"></p>
+                                </div>
+                            </div>
+                            <div class="inventory">
+                                <div class="gems blue">
+                                    <p class="token-text"></p>
+                                </div>
+                                <div class="card blue">
+                                    <p class="token-text"></p>
+                                </div>
+                            </div>
+                            <div class="inventory">
+                                <div class="gems white">
+                                    <p class="token-text"></p>
+                                </div>
+                                <div class="card white">
+                                    <p class="token-text"></p>
+                                </div>
+                            </div>
+                            <div class="inventory">
+                                <div class="gems yellow">
+                                    <p class="token-text"></p>
+                                </div>
                             </div>
                         </div>
-                        <div class="inventory">
-                            <div class="gems green">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card green">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems black">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card black">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems blue">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card blue">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems white">
-                                <p class="token-text"></p>
-                            </div>
-                            <div class="card white">
-                                <p class="token-text"></p>
-                            </div>
-                        </div>
-                        <div class="inventory">
-                            <div class="gems yellow">
-                                <p class="token-text"></p>
-                            </div>
+
+                        <div class="nobles-container wrap hidden">
+
                         </div>
                     </div>
-
-                    <div class="nobles-container wrap hidden">
-
-                    </div>
+                    <p class="reserved-label"><span class="reserved-count"></span> reserved</p>
                 </div>
-                <p class="reserved-label"><span class="reserved-count"></span></p>
-            </div>
 
-        </template>
-    </div>
+            </template>
+        </div>
+    </section>
     <div class="market-grid-container">
         <div id="market-templates" class="hidden">
             <template id="noble">
