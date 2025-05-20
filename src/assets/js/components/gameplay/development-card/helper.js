@@ -12,12 +12,15 @@ function getAllDevCardsFromMarket(market) {
     return cards;
 }
 
-function getListOfBuyableCards(market, ownTokens, bonuses) {
+function getListOfBuyableCards(market, player) {
     const list = [];
 
-    const cards = getAllDevCardsFromMarket(market);
-    const bonusAndOwnTokens = calculateFullTokenAmount(ownTokens, bonuses);
-    const goldenTokens = ownTokens["Gold"];
+    const marketCards = getAllDevCardsFromMarket(market);
+    const reservedCards = player.reserve;
+    const cards = marketCards.concat(reservedCards);
+
+    const bonusAndOwnTokens = calculateFullTokenAmount(player.tokens, player.bonuses);
+    const goldenTokens = player.tokens["Gold"];
 
     cards.forEach(card => {
         if (isBuyable(card.cost, bonusAndOwnTokens, goldenTokens)) {
@@ -35,7 +38,7 @@ function getListOfBuyableCards(market, ownTokens, bonuses) {
 
 function calculateFullTokenAmount(ownTokens, bonuses) {
     const res = [];
-    console.log(Object.entries(ownTokens));
+
     Object.entries(ownTokens).forEach((obj) => {
         const tokenName = obj[0];
         const tokenValue = obj[1];

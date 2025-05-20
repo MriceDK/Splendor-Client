@@ -66,7 +66,7 @@ function renderEnabledCard(card) {
 }
 
 function renderBuyableCards() {
-    const $developmentCards = document.querySelectorAll(".market-grid-container .development-card");
+    const $developmentCards = document.querySelectorAll(".development-card");
 
     $developmentCards.forEach($card => {
 
