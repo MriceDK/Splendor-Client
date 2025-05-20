@@ -19,7 +19,7 @@ function getListOfBuyableCards(market, player) {
     const reservedCards = player.reserve;
     const cards = marketCards.concat(reservedCards);
 
-    const bonusAndOwnTokens = calculateFullTokenAmount(player.tokens, player.bonuses);
+    const bonusAndOwnTokens = mergeTokensAndBonuses(player.tokens, player.bonuses);
     const goldenTokens = player.tokens["Gold"];
 
     cards.forEach(card => {
@@ -36,7 +36,7 @@ function getListOfBuyableCards(market, player) {
 
 // TODO schrijf een functie die uitrekent hoeveel tokens er nog nodig zijn zodat er kan berekent worden of de development koopbaar is met een gold token
 
-function calculateFullTokenAmount(ownTokens, bonuses) {
+function mergeTokensAndBonuses(ownTokens, bonuses) {
     const res = [];
 
     Object.entries(ownTokens).forEach((obj) => {
@@ -61,6 +61,7 @@ function isBuyable(priceDevCard, bonusAndOwnTokens, goldenTokens) {
     if (tokensStillNeeded === 0) {
         return true;
     } else return hasEnoughGold(goldenTokens, tokensStillNeeded);
+
 }
 
 function hasEnoughGold(goldenTokens, tokensStillNeeded) {
