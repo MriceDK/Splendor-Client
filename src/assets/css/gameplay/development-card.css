@@ -131,6 +131,10 @@ background-image: url("data:image/svg+xml,%3Csvg width='73' height='134' viewBox
     stroke: var(--onyx-token-color-border);
 }
 
+.onyx .gem-value, .emerald .gem-value, .ruby .gem-value, .sapphire .gem-value {
+    color: white;
+}
+
 .gold path {
     fill: var(--gold-token-color);
     stroke: var(--gold-token-color-border);

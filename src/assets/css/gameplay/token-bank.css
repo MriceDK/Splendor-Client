@@ -44,6 +44,7 @@
     font-size: 1.25rem;
 }
 
+/* TODO selected fixen */
 .bank-flexcontainer .selected-tokens .selected-ruby-token{
     background-color: orangered;
 }
