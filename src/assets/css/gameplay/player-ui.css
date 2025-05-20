@@ -46,22 +46,20 @@
     font-size: 0.75rem;
     border: 0.1rem solid var(--main-black-color);
     color: var(--main-black-color);
-    margin-top: 0.5rem;
 }
 
 .card {
-    width: 0.75rem;
+    width: 1rem;
     height: 1rem;
+    border-radius: 50%;
     position: absolute;
-    top: -0.25rem;
-    right: -0.25rem;
+    top: 0;
+    right: 4%;
     font-size: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0.1rem solid var(--main-black-color);
-    color: var(--main-black-color);
-    margin-top: 0.5rem;
+    border: 0.1rem solid;
 }
 
 .own-purse>p{
@@ -84,10 +82,8 @@
 
 .own-inventory .card {
     width: 1.5rem;
-    height: 2rem;
+    height: 1.5rem;
     font-size: 1.25rem;
-    top: -0.75rem;
-    right: -0.625rem;
 }
 
 .nobles-container {
