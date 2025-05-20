@@ -3,11 +3,15 @@ import { changePlayerNameText } from "./renderer.js";
 
 function changePlayerName(e){
     e.preventDefault();
-    
-    const $usernameForm = document.querySelector("#playername-text");
-    saveToStorage("playerName", $usernameForm.value);
-    changePlayerNameText();
 
+    const $usernameForm = document.querySelector("#playername-text");
+    if ($usernameForm === null || $usernameForm === undefined || $usernameForm.value === "") {
+    document.querySelector(".errorUsernameSelector").classList.remove("hidden");
+    }
+    else{
+        saveToStorage("playerName", $usernameForm.value);
+        changePlayerNameText();
+    }
 }
 
 export { changePlayerName };
