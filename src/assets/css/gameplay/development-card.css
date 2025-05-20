@@ -22,9 +22,14 @@
     overflow: hidden;
 }
 
-.deck, .development-card {
+.deck {
     width: 7.5rem; /*8*/
     height: 10.3125rem; /*11*/
+}
+
+.own-reserved-cards .development-card {
+    width: 6rem; /*8*/
+    height: 8.25rem; /*11*/
 }
 
 .deck {
@@ -79,9 +84,12 @@
     align-self: flex-end;
 }
 
+.own-reserved-cards .gem-costs {
+    font-size: x-small;
+}
+
 .gem-cost {
     padding: .25rem;
-    background-color: white;
     border-radius: 50%;
 }
 
