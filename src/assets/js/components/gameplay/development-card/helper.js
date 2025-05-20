@@ -17,9 +17,10 @@ function getListOfBuyableCards(market, ownTokens, bonuses) {
 
     const cards = getAllDevCardsFromMarket(market);
     const bonusAndOwnTokens = calculateFullTokenAmount(ownTokens, bonuses);
+    const goldenTokens = ownTokens["Gold"];
 
     cards.forEach(card => {
-        if (isBuyable(card.cost, bonusAndOwnTokens)) {
+        if (isBuyable(card.cost, bonusAndOwnTokens, goldenTokens)) {
 
             list.push(card.name);
         }
@@ -34,7 +35,7 @@ function getListOfBuyableCards(market, ownTokens, bonuses) {
 
 function calculateFullTokenAmount(ownTokens, bonuses) {
     const res = [];
-
+    console.log(Object.entries(ownTokens));
     Object.entries(ownTokens).forEach((obj) => {
         const tokenName = obj[0];
         const tokenValue = obj[1];
@@ -50,19 +51,33 @@ function calculateFullTokenAmount(ownTokens, bonuses) {
     return res;
 }
 
-function isBuyable(priceDevCard, bonusAndOwnTokens) {
-    let counter = 0;
+function isBuyable(priceDevCard, bonusAndOwnTokens, goldenTokens) {
+
+    const tokensStillNeeded = getNeededTokens(priceDevCard, bonusAndOwnTokens);
+
+    if (tokensStillNeeded === 0) {
+        return true;
+    } else return hasEnoughGold(goldenTokens, tokensStillNeeded);
+}
+
+function hasEnoughGold(goldenTokens, tokensStillNeeded) {
+    return goldenTokens >= tokensStillNeeded;
+}
+
+function getNeededTokens(priceDevCard, bonusAndOwnTokens) {
+    let tokensStillNeeded = 0;
 
     Object.entries(priceDevCard).forEach((obj) => {
         const name = obj[0];
         const value = obj[1];
 
-        if (bonusAndOwnTokens[name] >= value ) {
-            counter++;
+        if (bonusAndOwnTokens[name] < value ) {
+            const tokensNeeded = value - bonusAndOwnTokens;
+            tokensStillNeeded += tokensNeeded;
         }
-    })
+    });
 
-    return counter === Object.entries(priceDevCard).length;
+    return tokensStillNeeded;
 }
 
 export { getListOfBuyableCards };
