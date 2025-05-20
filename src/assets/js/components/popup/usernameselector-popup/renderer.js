@@ -5,6 +5,8 @@ function renderUsernamePopup(){
     $target.classList.remove("hidden");
     $target.innerHTML = document.querySelector("#username-popup-template").outerHTML
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
+
+    console.log("Popup rendered")
 }
 
 function hideUserNamePopup() {

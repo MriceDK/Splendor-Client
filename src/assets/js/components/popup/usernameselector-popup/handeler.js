@@ -2,10 +2,10 @@ import {hideUserNamePopup, renderUsernamePopup} from "./renderer.js"
 
 function renderPopup(){
  renderUsernamePopup();
- closePopup()
+ closePopupButton();
 }
 
-function closePopup(){
+function closePopupButton(){
  document.querySelector("#closePopup").addEventListener("click", (e) =>{
   e.preventDefault();
   hideUserNamePopup();
