@@ -1,17 +1,14 @@
+
 body {
     display: grid;
-    font-family: "Roboto", sans-serif;
     max-height: 100vh;
     max-width: 100vw;
 
-    background-image: url("../../../images/background-images/army-background.png");
-    backdrop-filter: blur(0.2em);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     backdrop-filter: blur(0.2em);
-    z-index: -1;
-    color: var(--main-white-color);
+    color: var(--main-black-color);
     position: relative;
 }
 
@@ -54,34 +51,6 @@ h3 {
     font-weight: bold;
 }
 
-.button-style {
-    text-align: center;
-    margin-top: 4rem;
-    font-size: 3rem;
-    color: var(--main-white-color);
-    padding: 1rem;
-    border: var(--main-white-color) solid;
-    border-radius: 1rem;
-    display: block;
-    width: 100%;
-    text-decoration: none;
-}
-
-.button-style:hover {
-    background-color: rgb(230, 177, 0);
-}
-
-#playername {
-    text-align: end;
-    font-size: 2rem;
-}
-#playername-changer label{
-    color: var(--main-black-color);
-}
-
-main {
-    height: 100%;
-}
 
 .grid-container {
     display: grid;
