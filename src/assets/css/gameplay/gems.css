@@ -59,11 +59,6 @@
     border-color: var(--sapphire-token-color-border);
 }
 
-.card.ruby {
-    background-color: var(--ruby-token-color);
-    border-color: var(--ruby-token-color-border);
-}
-
 .emerald path {
     fill: var(--emerald-token-color);
     stroke: var(--emerald-token-color-border);
