@@ -2,6 +2,17 @@ body{
     position: relative;
 }
 
+.form-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:    "own-tokens-to-use tokens-to-buy-card"
+                            "own-tokens-to-use tokens-to-buy-card"
+                            "own-tokens-to-use tokens-to-buy-card"
+                            "own-tokens-to-use tokens-to-buy-card"
+                            "own-tokens-to-use tokens-to-buy-card"
+                            "own-tokens-to-use tokens-to-buy-card";
+}
+
 .popup-container {
     position: absolute;
     width: 100%;
@@ -63,6 +74,7 @@ body{
 }
 
 .gem-selector-input {
+    grid-area: own-tokens-to-use;
     display: block;
     width: 50%;
     padding: 0.5rem;
@@ -74,16 +86,12 @@ body{
 }
 
 .total{
-    display: inline;
+    grid-area: tokens-to-buy-card;
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    display: block;
 }
 
-.gems-with-total{
-    display: inline;
-}
-
-.gem-with-name-and-cost{
-    display: inline;
-}
 
 #token-selector-close-button {
     margin-top: 1.5rem;
@@ -95,7 +103,7 @@ body{
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 48%;
+    width: 50%;
     display: inline-block;
 }
 
@@ -113,7 +121,7 @@ body{
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 48%;
+    width: 100%;
     display: inline-block;
     float: right;
 }
