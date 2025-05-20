@@ -177,7 +177,6 @@
     background-color: var(--lighter-green);
     margin-top: 0.25rem;
     margin-bottom: 0.2rem;
-    display: flex;
     clip-path: polygon(
             10% 0%,
             90% 0%,
