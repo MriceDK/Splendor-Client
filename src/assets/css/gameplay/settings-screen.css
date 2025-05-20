@@ -58,7 +58,7 @@ body{
     color: var(--main-black-color, #333);
     padding: 2rem;
     border-radius: 1rem;
-    max-width: 400px;
+    max-width: 20rem;
     width: 90%;
     margin: auto;
     font-family: "Saira stencil one", Arial, serif;
@@ -67,7 +67,6 @@ body{
 }
 
 .popup-token-selector label {
-    display: block;
     margin-top: 1rem;
     font-weight: bold;
     text-align: left;
@@ -85,13 +84,11 @@ body{
     box-sizing: border-box;
 }
 
-
-.total {
-    font-size: 1.5rem;
-    line-height: 5rem;
+.total{
+    grid-area: tokens-to-buy-card;
+    display: grid;
+    justify-items: end;
 }
-
-
 
 .total-each-gem{
     grid-area: tokens-to-buy-card;
@@ -103,18 +100,40 @@ body{
     gap: 1.5rem
 }
 
+.emerald-name{
+    color: var(--emerald-token-color);
+}
+
+.ruby-name{
+    color: var(--ruby-token-color);
+}
+
+.onyx-name{
+    color: var(--onyx-token-color);
+}
+
+.sapphire-name{
+    color: var(--sapphire-token-color);
+}
+
+.diamond-name{
+    color: var(--main-black-color);
+}
+
+.gold-name{
+    color: var(--gold-token-color);
+}
+
+
 #token-selector-close-button {
     margin-top: 1.5rem;
-    padding: 0.75rem;
     background-color: #ccc;
     color: #333;
     border: none;
     border-radius: 0.5rem;
     font-size: 1rem;
-    cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 50%;
-    display: inline-block;
+    width: 60%;
 }
 
 #token-selector-close-button:hover {
