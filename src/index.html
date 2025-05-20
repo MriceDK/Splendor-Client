@@ -12,46 +12,29 @@
     <link rel="stylesheet" href="assets/css/game-setup/index-screen.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
 
     <script src="assets/js/index.js" type="module"></script>
 </head>
 <body>
-<div class="popup-container hidden">
-    <template id="username-popup-template">
-        <div class="popup">
-            <a href="#" id="closePopup">
-                <p>X</p>
-            </a>
-            <form id="playername-changer">
-                <label for="playername-text">Username: </label>
-                <input type="text" id="playername-text" name="playername">
-                <button type="submit" id="playername-button">Change Username</button>
-            </form>
-        </div>
-    </template>
-</div>
 <div class="grid">
     <header>
-        <a href="#" id="renderButton">
-            <img src="./images/playername-logo.png" alt="username logo" title="username logo" id="profile-picture">
+        <a href="username-selector.html">
+            <img src="./images/user-logo.png" alt="username logo" title="username logo" id="profile-picture">
             <span id="playername">Select Username</span>
         </a>
     </header>
     <main>
-    <div class="grid-container">
-        <div>
+        <div class="grid-container">
             <h1>Splendor</h1>
             <h3>WW III Edition</h3>
             <a class="button-style" href="./create-lobby.html">Create game</a>
             <a class="button-style" href="./lobby-overview.html">Join game</a>
         </div>
-    </div>
-
-    <div class="errormessages">
-        <p></p>
-    </div>
+        <div class="errormessages">
+            <p></p>
+        </div>
     </main>
 </div>
 </body>
