@@ -35,12 +35,10 @@ header {
 
 .market-grid-container {
     grid-area: market;
-    /*background-color: blueviolet; Dit mag inprincipe al weg*/
 }
 
 .user-info-flexcontainer {
     grid-area: user-info;
-    /*background-color: red;*/
     align-self: end;
 }
 
@@ -70,8 +68,8 @@ header {
     display: flex;
     gap: 2.5rem;
     align-items: center;
-    padding: 1rem;
-
+    margin: 1rem;
+    background-color: var(--main-white-color);
 }
 
 .own-purse {

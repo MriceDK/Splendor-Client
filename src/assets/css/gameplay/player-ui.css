@@ -157,7 +157,7 @@
     color: black;
 }
 
-.current-player .opponent-frame-container {
+.current-player .opponent-frame-container, .user-info-flexcontainer .current-player {
     background-color: var(--dark-beige);
 }
 
@@ -169,6 +169,10 @@
     font-size: 1.75rem;
     display: flex;
     justify-content: space-between;
+}
+
+.opponent-player-info .points {
+    margin-left: 1rem;
 }
 
 .username-flexcontainer .points-bar-container {
