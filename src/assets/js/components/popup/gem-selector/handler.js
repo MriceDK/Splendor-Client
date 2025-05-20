@@ -53,10 +53,10 @@ function buyReservedDevelopmentCard(e) {
     const gemCost = helper.getGemCostObject($form);
 
     const body = helper.createBuyReservedCardBody(gemCost);
-    API.buyReservedCard(devCardName, body).then(() => {
+    API.buyReservedCard(devCardName, body).then(buyResponse => {
         closePopUp();
         //checkTooManyTokens(tokens); Deze functie werkt nogn iet optimaal
-        Object.entries(tokens).forEach((token) => {
+        Object.entries(buyResponse.tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
 
