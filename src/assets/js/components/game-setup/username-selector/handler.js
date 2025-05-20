@@ -6,7 +6,7 @@ function changePlayerName(e){
 
     const $usernameForm = document.querySelector("#playername-text");
     if ($usernameForm === null || $usernameForm === undefined || $usernameForm.value === "") {
-    document.querySelector(".errorUsernameSelector").classList.remove("hidden");
+    document.querySelector(".errorUsernameSelector").innerHTML = "Please enter a username";
     }
     else{
         saveToStorage("playerName", $usernameForm.value);
