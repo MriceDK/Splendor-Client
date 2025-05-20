@@ -68,7 +68,6 @@ header {
     display: flex;
     gap: 2.5rem;
     align-items: center;
-    margin: 1rem;
     background-color: var(--main-white-color);
 }
 

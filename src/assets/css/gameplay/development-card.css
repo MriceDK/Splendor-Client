@@ -23,8 +23,8 @@
 }
 
 .deck, .development-card {
-    width: 8rem;
-    height: 11rem;
+    width: 7.5rem; /*8*/
+    height: 10.3125rem; /*11*/
 }
 
 .deck {
@@ -111,8 +111,8 @@
 }
 
 .noble-article {
-    width: 8rem;
-    height: 4.5rem;
+    width: 7.5rem; /*8*/
+    height: 4.21875rem; /*4.5*/
     padding: .5rem;
     display: flex;
     flex-direction: column;
