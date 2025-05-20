@@ -68,6 +68,7 @@ header {
     display: flex;
     gap: 2.5rem;
     align-items: center;
+    padding: 0.5rem;
     background-color: var(--main-white-color);
 }
 
@@ -80,8 +81,6 @@ header {
 .own-reserved-cards {
     display: flex;
     gap: 2rem;
-    padding-bottom: .5rem;
-    padding-top: .5rem;
 }
 
 .own-prestige-points {
