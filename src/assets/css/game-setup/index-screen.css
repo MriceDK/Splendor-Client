@@ -8,8 +8,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     backdrop-filter: blur(0.2em);
-    z-index: -1;
-    color: var(--main-white-color);
+    color: var(--main-black-color);
     position: relative;
 }
 
