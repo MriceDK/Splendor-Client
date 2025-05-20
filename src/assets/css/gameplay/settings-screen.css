@@ -30,3 +30,101 @@ body{
     justify-content: right;
 }
 
+.token-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin: auto;
+}
+
+.input-column{
+    display: block;
+}
+
+.popup-token-selector {
+    background-color: var(--offwhite);
+    color: var(--main-black-color, #333);
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 400px;
+    width: 90%;
+    margin: auto;
+    font-family: "Saira stencil one", Arial, serif;
+    font-size: 1rem;
+    position: relative;
+}
+
+.popup-token-selector label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.gem-selector-input {
+    display: block;
+    width: 50%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.total{
+    display: inline;
+}
+
+.gems-with-total{
+    display: inline;
+}
+
+.gem-with-name-and-cost{
+    display: inline;
+}
+
+#token-selector-close-button {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 48%;
+    display: inline-block;
+}
+
+#token-selector-close-button:hover {
+    background-color: #bbb;
+}
+
+#token-selector-form input[type="submit"] {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: var(--dark-beige);
+    color: var(--main-black-color);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 48%;
+    display: inline-block;
+    float: right;
+}
+
+#token-selector-form input[type="submit"]:hover {
+    background-color: var(--brown);
+    color: var(--beige);
+}
+
+.popup-token-selector .errormessages p {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
