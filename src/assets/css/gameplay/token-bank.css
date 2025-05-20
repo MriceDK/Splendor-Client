@@ -5,14 +5,11 @@
 }
 
 .bank-flexcontainer .token-bank{
-    width: 80%;
+    width: max-content;
     display: grid;
-    height: 12rem;
+    grid-gap: .5rem;
     margin: 1rem auto auto;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:    "red-token green-token black-token"
-                            "blue-token white-token joker-token";
 }
 
 .bank-flexcontainer .token-bank button{
