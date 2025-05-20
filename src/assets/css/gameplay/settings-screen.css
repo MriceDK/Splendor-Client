@@ -3,15 +3,14 @@ body{
 }
 
 .form-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:    "own-tokens-to-use tokens-to-buy-card"
-                            "own-tokens-to-use tokens-to-buy-card"
-                            "own-tokens-to-use tokens-to-buy-card"
-                            "own-tokens-to-use tokens-to-buy-card"
-                            "own-tokens-to-use tokens-to-buy-card"
-                            "own-tokens-to-use tokens-to-buy-card";
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.2rem;
 }
+
+
 
 .popup-container {
     position: absolute;
@@ -19,12 +18,12 @@ body{
     height: 100%;
     background-color: rgba(0, 0, 0, 75%);
     z-index: 2;
-    display: grid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .popup-container .popup {
-    align-self: center;
-    justify-self: center;
     color: var(--main-black-color);
     background-color: var(--offwhite);
     padding: 1rem 2rem;
@@ -42,15 +41,18 @@ body{
 }
 
 .token-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 2rem;
-    align-items: start;
-    margin: auto;
+    align-items: flex-start;
+    justify-content: center;
+
 }
 
 .input-column{
-    display: grid;
+    display: flex;
+    flex-direction: column;
 }
 
 .popup-token-selector {
@@ -67,14 +69,13 @@ body{
 }
 
 .popup-token-selector label {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     font-weight: bold;
     text-align: left;
 }
 
 .gem-selector-input {
-    grid-area: own-tokens-to-use;
-    display: grid;
+    display: block;
     width: 50%;
     padding: 0.5rem;
     margin-top: 0.25rem;
@@ -85,20 +86,13 @@ body{
 }
 
 .total{
-    grid-area: tokens-to-buy-card;
-    display: grid;
-    justify-items: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: auto;
 }
 
-.total-each-gem{
-    grid-area: tokens-to-buy-card;
-}
-
-.total-container{
-    grid-area: tokens-to-buy-card;
-    font-size: 1.5rem;
-    gap: 1.5rem
-}
 
 .emerald-name{
     color: var(--emerald-token-color);
