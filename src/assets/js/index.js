@@ -32,4 +32,4 @@ function checkUserName() {
 
 init();
 
-export {eventListenerUsernameSelector};
+export {eventListenerUsernameSelector, checkUserName};
