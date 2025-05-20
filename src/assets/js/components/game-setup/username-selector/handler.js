@@ -8,6 +8,9 @@ function changePlayerName(e){
     if ($usernameForm === null || $usernameForm === undefined || $usernameForm.value === "") {
     document.querySelector(".errorUsernameSelector").innerHTML = "Please enter a username";
     }
+    else if(/\s/.test($usernameForm.value)){
+        document.querySelector(".errorUsernameSelector").innerHTML = "Username cannot contain spaces";
+    }
     else{
         saveToStorage("playerName", $usernameForm.value);
         changePlayerNameText();
