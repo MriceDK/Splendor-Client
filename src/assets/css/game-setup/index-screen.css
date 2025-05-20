@@ -1,4 +1,5 @@
 body {
+    display: grid;
     font-family: "Roboto", sans-serif;
     max-height: 100vh;
     max-width: 100vw;
@@ -14,19 +15,22 @@ body {
     position: relative;
 }
 
-header {
+main {
     display: flex;
-    align-items: center;
-    text-align: end;
+    flex-direction: column;
+}
+
+.grid-container {
+    height: 100%
+}
+
+header {
     flex-flow: row-reverse;
     height: 100%;
 }
 
-header img {
-    width: 5rem;
-}
 
-.grid{
+.grid {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
@@ -37,7 +41,7 @@ h1 {
     font-size: 6rem;
     text-align: center;
     margin-top: 2rem;
-    font-family: "Cinzel Decorative", Arial, serif;
+    font-family: "Saira stencil one", Arial, serif;
     font-style: italic;
     font-weight: bold;
 }
@@ -113,3 +117,5 @@ main {
     display: none;
 }
 
+
+/* Styling for The PlayerName */

@@ -2,6 +2,8 @@ body {
     display: grid;
     grid-template-rows: 10%  auto;
     height: 100vh;
+    font-family: "Saira stencil one", Arial, serif;
+    color: var(--main-black-color);
     font-family: "roboto", sans-serif;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,1)), url("../../../images/background-images/russian-invasion-ukraine.jpg");
     background-size: cover;
