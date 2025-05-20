@@ -1,18 +1,28 @@
+.opponents-info{
+    color: var(--black);
+}
+
+.opponents-info h2{
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.75rem;
+}
+
 .opponent{
-    margin-bottom: 1rem;
-    display: flex;
     justify-content: start;
     align-items: start;
     gap: .5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.75rem;
 }
 
 .opponent-frame-container {
-    border: solid var(--main-grey-color);
-    background-color: var(--main-grey-color);
+    background-color: var(--main-white-color);
     padding: .5rem;
     display: flex;
     flex-direction: column;
     width: min-content;
+    border-radius: .5rem;
 }
 
 .inventory-collection {
@@ -52,10 +62,6 @@
     border: 0.1rem solid var(--main-black-color);
     color: var(--main-black-color);
     margin-top: 0.5rem;
-}
-
-.opponent-frame-container .points {
-    margin-top: .5rem;
 }
 
 .own-purse>p{
@@ -113,17 +119,8 @@
 }
 
 .reserved-label {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-}
-
-.reserved-label:before{
-    display: inline-block;
-    content: "";
-    min-width: 1rem;
-    min-height: 1.5rem;
-    background-color: grey;
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
 }
 
 .hidden{
@@ -134,28 +131,72 @@
     background-color: orangered;
     color: black;
 }
+
 .green {
     background: lime;
     color: black;
 }
+
 .blue {
     background: dodgerblue;
     color: white;
 }
+
 .white {
     background: var(--main-white-color);
-    color: black; }
+    color: black;
+}
+
 .black {
     background: #8d6830;
-    color: white; }
+    color: white;
+}
+
 .yellow {
     background: #ffc600;
-    color: black; }
+    color: black;
+}
 
-.current-player .opponent-frame-container, .current-player {
-    border: solid hotpink;
+.current-player .opponent-frame-container {
+    background-color: var(--dark-beige);
 }
 
 .opponent.current-player {
     border: none;
+}
+
+.opponent-player-info {
+    font-size: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.username-flexcontainer .points-bar-container {
+    content: "";
+    width: 100%;
+    background-color: var(--lighter-green);
+    margin-top: 0.25rem;
+    margin-bottom: 0.2rem;
+    clip-path: polygon(
+            10% 0%,
+            90% 0%,
+            100% 50%,
+            90% 100%,
+            10% 100%,
+            0% 50%
+    ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
+}
+
+.username-flexcontainer .points-bar-container .points-bar {
+    content: "";
+    height: 0.9rem;
+    background-color: var(--dark-green);
+    clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            100% 50%,
+            100% 100%,
+            0% 100%,
+            0% 0%
+    ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }

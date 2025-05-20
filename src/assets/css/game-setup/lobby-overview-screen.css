@@ -13,6 +13,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
+    position: relative;
 }
 
 header a{
@@ -46,6 +47,9 @@ h1 {
     width: 2.5rem;
     height: 2.5rem;
     margin-right: 0.625rem;
+}
+#playername-changer label{
+    color: var(--main-black-color);
 }
 
 #filter {
@@ -116,4 +120,29 @@ h1 {
 .spectate-button {
     background-color: #3498db;
     color: white;
+}
+
+.popup-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 50%);
+    z-index: 2;
+    display: grid;
+}
+
+.popup-container .popup {
+    align-self: center;
+    justify-self: center;
+    background-color: var(--main-white-color);
+    font-size: 3rem;
+    text-align: center;
+}
+
+#close{
+    justify-content: right;
+}
+
+.popup-container.hidden{
+    display: none;
 }
