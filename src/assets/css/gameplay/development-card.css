@@ -83,6 +83,16 @@
     font-size: 1rem;
 }
 
+.gem-costs svg {
+    width: 1.2rem;
+    height: 1.85rem;
+}
+
+.token-bank svg {
+    width: 4rem;
+    height: 7.35rem;
+}
+
 .gem {
     width: max-content;
     display: grid;
@@ -100,10 +110,6 @@
     grid-area: gem;
     z-index: 1;
 }
-
-/*
-background-image: url("data:image/svg+xml,%3Csvg width='73' height='134' viewBox='0 0 73 134' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z' fill='%23CD332E' stroke='%239C352C' stroke-width='10'/%3E%3C/svg%3E");
-*/
 
 .ruby path {
     fill: var(--ruby-token-color);
