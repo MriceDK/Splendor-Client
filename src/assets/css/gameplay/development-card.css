@@ -85,29 +85,55 @@
     border-radius: 50%;
 }
 
-.emerald {
-    background-color: limegreen;
+.gem {
+    width: max-content;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas: "gem";
 }
 
-.ruby {
-    background-color: orangered;
+.gem svg {
+    grid-area: gem;
 }
 
-.sapphire {
-    background-color: dodgerblue;
+.gem-value {
+    grid-area: gem;
+    z-index: 2;
 }
 
-.diamond {
-    background-color: white;
+/*
+background-image: url("data:image/svg+xml,%3Csvg width='73' height='134' viewBox='0 0 73 134' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z' fill='%23CD332E' stroke='%239C352C' stroke-width='10'/%3E%3C/svg%3E");
+*/
+
+.ruby path {
+    fill: var(--ruby-token-color);
+    stroke: var(--ruby-token-color-border);
 }
 
-.onyx {
-    background: #8d6830;
-    color: white;
+.sapphire path {
+    fill: var(--sapphire-token-color);
+    stroke: var(--sapphire-token-color-border);
 }
 
-.gold {
-    background: #ffc600;
+.emerald path {
+    fill: var(--emerald-token-color);
+    stroke: var(--emerald-token-color-border);
+}
+
+.diamond path {
+    fill: var(--diamond-token-color);
+    stroke: var(--diamond-token-color-border);
+}
+
+.onyx path {
+    fill: var(--onyx-token-color);
+    stroke: var(--onyx-token-color-border);
+}
+
+.gold path {
+    fill: var(--gold-token-color);
+    stroke: var(--gold-token-color-border);
 }
 
 .noble-article {

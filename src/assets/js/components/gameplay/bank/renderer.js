@@ -85,7 +85,7 @@ function setTokenValue(token, amount) {
         currentBankTokens[token] = amount;
     }
 
-    document.querySelector(`.token-bank .${token.toLowerCase()} `).innerText = amount;
+    document.querySelector(`.token-bank .${token.toLowerCase()} .gem-value `).innerText = amount;
 }
 
 function getChosenTokenColour(e) {
