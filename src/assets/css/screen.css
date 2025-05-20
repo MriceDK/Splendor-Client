@@ -21,7 +21,7 @@
  --brown : #594940;
  --offwhite : #F0EEE4;
 
-/* TOKEN COLOURS*/
+ /* TOKEN COLOURS*/
  --ruby-token-color: #CD332E;
  --ruby-token-color-border: #9C352C;
 
@@ -52,6 +52,7 @@ body {
  background-position: center;
  background-repeat: no-repeat;
 
+ font-family: Arial, sans-serif;
  background-color: var(--main-bg-color);
  margin: 0;
  padding: 0;
@@ -142,7 +143,7 @@ header img {
 }
 
 .button-style-popup {
-  width: 10rem;
+ width: 10rem;
  padding: 0.3rem;
  font-size: 2rem;
  margin-top: 1rem;
