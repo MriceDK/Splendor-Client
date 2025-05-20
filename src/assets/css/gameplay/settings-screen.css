@@ -50,7 +50,7 @@ body{
 }
 
 .input-column{
-    display: block;
+    display: grid;
 }
 
 .popup-token-selector {
@@ -75,7 +75,7 @@ body{
 
 .gem-selector-input {
     grid-area: own-tokens-to-use;
-    display: block;
+    display: grid;
     width: 50%;
     padding: 0.5rem;
     margin-top: 0.25rem;
@@ -85,13 +85,23 @@ body{
     box-sizing: border-box;
 }
 
-.total{
-    grid-area: tokens-to-buy-card;
-    margin-top: 2.5rem;
+
+.total {
     font-size: 1.5rem;
-    display: block;
+    line-height: 5.5rem;
 }
 
+
+
+.total-each-gem{
+    grid-area: tokens-to-buy-card;
+}
+
+.total-container{
+    grid-area: tokens-to-buy-card;
+    font-size: 1.5rem;
+    gap: 1.5rem
+}
 
 #token-selector-close-button {
     margin-top: 1.5rem;
