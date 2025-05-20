@@ -1,3 +1,4 @@
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 function renderUsernamePopup(){
     const $template = document.querySelector("#username-popup-template").content.firstElementChild.cloneNode(true);
@@ -5,13 +6,17 @@ function renderUsernamePopup(){
     $target.classList.remove("hidden");
     $target.innerHTML = document.querySelector("#username-popup-template").outerHTML
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
-
-    console.log("Popup rendered")
+    if (loadFromStorage("playerName") === null || loadFromStorage("playerName") === undefined || loadFromStorage("playerName") === ""){
+        document.querySelector("#closePopup").classList.add("hidden");
+    }
+    else{
+        document.querySelector("#playername-text").value = loadFromStorage("playerName");
+    }
 }
 
 function hideUserNamePopup() {
-    const $target = document.querySelector(".popup-container");
-    $target.classList.add("hidden");
+        const $target = document.querySelector(".popup-container");
+        $target.classList.add("hidden");
 }
 
 export {renderUsernamePopup, hideUserNamePopup}

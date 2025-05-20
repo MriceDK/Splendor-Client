@@ -7,8 +7,8 @@ import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
 
 function init() {
     testConnection();
-    checkUserName();
     changePlayerNameText();
+    checkUserName();
     eventListenerUsernameSelector();
 }
 
@@ -24,14 +24,10 @@ function eventListenerUsernameSelector(){
     });
 }
 function checkUserName() {
-    if (loadFromStorage("playerName") === null || loadFromStorage("playerName") === undefined || loadFromStorage("username") === null || loadFromStorage("username") === "") {
+    if (loadFromStorage("playerName") === null || loadFromStorage("playerName") === undefined || loadFromStorage("playerName") === "") {
         renderPopup();
-        console.log("opened popup")
+        usernameInit()
     }
-    else{
-        console.log("you already have a username")
-    }
-
 }
 
 init();
