@@ -2,7 +2,7 @@
     font-size: 1rem;
 }
 
-.gem-costs svg {
+.bonus svg, .gem-costs svg {
     width: 1.2rem;
     height: 1.85rem;
 }
