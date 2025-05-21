@@ -58,11 +58,15 @@ function setDisable(boolean) {
     $tokenListItems.forEach($tokenListItem => {
         if (!$tokenListItem.classList.contains("gold")) {
             if (boolean) {
-                $tokenListItem.classList.remove("clickable");
-                $tokenListItem.classList.add("disabled");
+                makeDisabled($tokenListItem);
             } else {
-                $tokenListItem.classList.add("clickable");
+                makeClickable($tokenListItem);
+            }
+        } else {
+            if (boolean) {
                 $tokenListItem.classList.remove("disabled");
+            } else {
+                $tokenListItem.classList.add("disabled")
             }
         }
     })
@@ -71,6 +75,16 @@ function setDisable(boolean) {
     document.querySelector(".token-bank .onyx").disabled = boolean;
     document.querySelector(".token-bank .sapphire").disabled = boolean;
     document.querySelector(".token-bank .diamond").disabled = boolean;
+}
+
+function makeDisabled($target) {
+    $target.classList.remove("clickable");
+    $target.classList.add("disabled");
+}
+
+function makeClickable($target) {
+    $target.classList.add("clickable");
+    $target.classList.remove("disabled");
 }
 
 function enableTokens() {
