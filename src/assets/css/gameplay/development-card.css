@@ -78,9 +78,6 @@
     flex-direction: column;
     justify-self: flex-start;
     align-self: flex-end;
-}
-
-.own-reserved-cards .gem-costs {
     font-size: x-small;
 }
 

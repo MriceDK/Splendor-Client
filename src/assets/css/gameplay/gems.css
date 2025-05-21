@@ -17,16 +17,16 @@
 }
 
 .own-inventory svg {
-    width: 2.7rem;
-    height: 4.5rem;
+    width: 2.25rem; /*2.7*/
+    height: 3.75rem; /*4.5*/
 }
 
 .own-inventory .gem-value {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .card .card-text {
-    font-size: 1rem;
+    font-size: .7rem;
 }
 
 .inventory svg {
