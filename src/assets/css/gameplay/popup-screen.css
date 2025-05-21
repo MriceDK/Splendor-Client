@@ -9,7 +9,8 @@ body{
     gap: 1rem;
 }
 
-.gem {
+/* Changed this for now because there is already a class with name "gem" */
+.gem-chooser {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
