@@ -188,27 +188,7 @@ body{
  justify-content: right;
 }
 
-#playername-text{
- width: 50%;
- padding: 0.5rem;
- margin-top: 0.25rem;
- border: 1px solid #ccc;
- border-radius: 0.5rem;
- font-size: 1rem;
- box-sizing: border-box;
-}
 
-#closePopup{
- display: flex;
- text-decoration: none;
- justify-content: flex-end;
- font-size: 1.5rem;
- color: var(--main-black-color);
-}
-
-#playername-changer label{
- font-family: "Saira stencil one", Arial, serif;
-}
 
 .clickable{
  cursor: pointer;
