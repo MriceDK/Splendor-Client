@@ -135,12 +135,12 @@ function getChosenTokenColour($tokenFromBank) {
 
 function showChosenBankToken(gem) {
     updateToken(gem, true);
-    const chosenToken = document.createElement("button");
-    chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
-    chosenToken.classList.add("clickable");
-    chosenToken.classList.add(gem.toLowerCase());
-    chosenToken.addEventListener("click", handler.removeChosenBankToken);
-    document.querySelector(".selected-tokens").appendChild(chosenToken);
+    const $chosenToken = document.createElement("button");
+    $chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
+    $chosenToken.classList.add("clickable");
+    $chosenToken.classList.add(gem.toLowerCase());
+    $chosenToken.addEventListener("click", handler.removeChosenBankToken);
+    document.querySelector(".selected-tokens").appendChild($chosenToken);
     chosenBankTokens[gem]++;
 }
 
