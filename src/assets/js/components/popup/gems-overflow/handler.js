@@ -7,6 +7,7 @@ import {displayGame} from "../../../game.js";
 const MAX_TOKENS = 10;
 
 function checkTooManyTokens(playersInfos, currentPlayer) {
+    console.log("checktooManyTokens")
     playersInfos.forEach(player => {
         if (player.name === currentPlayer) {
             checkTooMuchTokensHelp(player);
@@ -34,25 +35,25 @@ function checkTooMuchTokensHelp(player) {
 }
 
 function formGemChecker(player) {
+    console.log("test form");
 
     const gemsCount = counTokens();
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     const $popup = document.querySelector(".popup-container");
 
     $form.classList.add("active");
-    if (gemsCount === MAX_TOKENS) {
+    if (gemsCount > MAX_TOKENS || MAX_TOKENS < gemsCount) {
         document.querySelector("#gem-remover-button").disabled = true;
     } else {
         document.querySelector("#gem-remover-button").disabled = false;
         $form.addEventListener("submit", e => {
             e.preventDefault();
             updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
-                document.querySelector("#too-many-gems-pop-up-form").remove();
-            }).then(() => {
                 displayGame();
-                $form.remove();
+                $form.classList.add("hidden");
+                $form.classList.remove("active");
                 $popup.classList.add("hidden");
-            });
+            })
         });
     }
     if ($form.classList.contains("active")) {

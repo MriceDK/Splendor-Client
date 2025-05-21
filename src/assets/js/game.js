@@ -26,6 +26,7 @@ function displayGame() {
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
             renderBuyableCards();
             if (res.gameState === "ReturnGems" && res.currentPlayer === ownPlayer.name ) {
+                console.log(res.gameState);
                 checkTooManyTokens(res.players, res.currentPlayer);
 
             }
