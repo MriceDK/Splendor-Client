@@ -3,6 +3,8 @@ import {closePopUp} from "./renderer.js";
 import {handleError} from "../../../data-connector/error-handler.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {displayGame} from "../../../game.js";
+import {checkTooManyTokens} from "../gems-overflow/handler.js";
+import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function checkIfPopUpIsReserveType($popupContainer) {
     return $popupContainer.dataset.popUpType === "reserve-deck-pop-up";
@@ -19,9 +21,6 @@ function checkIfPopUpIsBuyAndReserveType($popupContainer) {
 function handleReserveCardResponse(response) {
     closePopUp();
     removeSelectedCard();
-    // checkTooManyTokens(response.tokens);
-    // TODO: Fix this implementation of the checkTooMuchGems function
-
     Object.entries(response.tokens).forEach((token) => {
         renderOwnTokenValue(token);
     });
@@ -38,7 +37,10 @@ function reserveCard(cardLevelorName, reserveFromLevel) {
             }
             handleReserveCardResponse(response);
         }).then(() => {
-        displayGame();
+            getGameInfo().then(res => { checkTooManyTokens(res.players, res.currentPlayer, res.gameState);
+                displayGame();
+            })
+
         }).catch(error => {
             handleError(error);
         });

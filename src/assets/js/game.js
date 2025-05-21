@@ -16,6 +16,7 @@ let buyableDevCards = [];
 function displayGame() {
     getGameInfo()
         .then(res => {
+            console.log(res);
             handleGameOver(res.winner);
             ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
             renderOpponentsStats(res.players);
@@ -25,11 +26,6 @@ function displayGame() {
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
             renderBuyableCards();
-            if (res.gameState === "ReturnGems" && res.currentPlayer === ownPlayer.name ) {
-                console.log(res.gameState);
-                checkTooManyTokens(res.players, res.currentPlayer);
-
-            }
             // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);

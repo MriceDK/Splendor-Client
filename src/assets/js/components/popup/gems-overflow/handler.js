@@ -6,12 +6,10 @@ import {displayGame} from "../../../game.js";
 
 const MAX_TOKENS = 10;
 
-function checkTooManyTokens(playersInfos, currentPlayer) {
-    console.log("checktooManyTokens")
+function checkTooManyTokens(playersInfos, currentPlayer, gameState) {
     playersInfos.forEach(player => {
         if (player.name === currentPlayer) {
-            checkTooMuchTokensHelp(player);
-
+            checkTooMuchTokensHelp(player, gameState);
         }
     });
 
@@ -26,44 +24,32 @@ function countTotalTokens(allTokens) {
     return tokensOfPlayer;
 }
 
-function checkTooMuchTokensHelp(player) {
+function checkTooMuchTokensHelp(player, gameState) {
     const tokensOfPlayer = countTotalTokens(player.tokens);
-    if (tokensOfPlayer > MAX_TOKENS) {
+    if (tokensOfPlayer > MAX_TOKENS && gameState === "ReturnGems") {
         renderTooManyGemsPopUp(player.tokens);
         formGemChecker(player);
     }
 }
 
 function formGemChecker(player) {
-    const $gemRemove = document.querySelector("#gem-remover-button");
-    $gemRemove.disabled = true;
-    console.log("test form");
-
-    const gemsCount = counTokens();
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     const $popup = document.querySelector(".popup-container");
 
-    $form.classList.add("active");
-    if (gemsCount > MAX_TOKENS || MAX_TOKENS < gemsCount) {
-        $gemRemove.disabled = true;
-    } else {
-        $gemRemove.disabled = false;
-        $form.addEventListener("submit", e => {
-            e.preventDefault();
-            updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
-                displayGame();
-                $form.classList.add("hidden");
-                $form.classList.remove("active");
-                $popup.classList.add("hidden");
-            })
-        });
-    }
-    if ($form.classList.contains("active")) {
-        setTimeout(() => formGemChecker(player), 1000);
-    }
+    $form.addEventListener("submit", e => {
+        e.preventDefault();
+        updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
+            $form.classList.add("hidden");
+            $form.classList.remove("active");
+            $popup.classList.add("hidden");
+            displayGame()
+        }).catch(() => {
+            formGemChecker(player);
+        })
+    });
 }
 
-function counTokens() {
+function countTokens() {
     const allGems = document.querySelectorAll(".gem-remover-input");
     let count = 0;
     allGems.forEach(gem => {
@@ -76,7 +62,8 @@ function counTokens() {
 function updateTokensAfterTooMany(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
-    return api.updateTokens(gameId, player.name, body);
+    console.log(body);
+    return api.updateTokens(gameId, player.name, body).then(() => {displayGame();});
 }
 
 function getDiffTokensObject(tokens) {
