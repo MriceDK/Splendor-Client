@@ -22,15 +22,6 @@ function checkTooManyTokens(playersInfos, currentPlayer) {
     }
 }
 
-function countTotalTokens(allTokens) {
-    let tokensOfPlayer = 0;
-
-    Object.entries(allTokens).forEach(([_, value]) => {
-        tokensOfPlayer += parseInt(value);
-    });
-    return tokensOfPlayer;
-}
-
 function checkTooMuchTokensHelp(player) {
     renderTooManyGemsPopUp(player.tokens);
     formGemChecker(player);
@@ -52,16 +43,6 @@ function formGemChecker(player) {
         })
     });
 }
-
-function countTokens() {
-    const allGems = document.querySelectorAll(".gem-remover-input");
-    let count = 0;
-    allGems.forEach(gem => {
-        count += parseInt(gem.value);
-    });
-    return count;
-}
-
 
 function updateTokensAfterTooMany(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
