@@ -9,7 +9,7 @@ function hookUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", openBank);
     document.querySelector(".bank-buttons .cancel-button").addEventListener("click", closeBank);
     document.querySelector(".bank-buttons .collect-gems-button").addEventListener("click", collectTokens);
-    document.querySelectorAll(".token-bank button").forEach(button => button.addEventListener("click", chooseBankToken));
+    document.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", chooseBankToken));
 }
 
 function openBank() {

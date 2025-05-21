@@ -85,19 +85,22 @@ function setTokenValue(token, amount) {
         currentBankTokens[token] = amount;
     }
 
-    document.querySelector(`.token-bank .${token.toLowerCase()} .gem-value `).innerText = amount;
+    console.log(document.querySelector(`.token-bank .gem.${token.toLowerCase()} .gem-value`));
+    document.querySelector(`.token-bank .gem.${token.toLowerCase()} .gem-value`).innerText = amount;
 }
 
 function getChosenTokenColour(e) {
-    if (e.target.classList.contains("ruby")) {
+    let $tag = e.target.closest(".gem");
+
+    if ($tag.classList.contains("ruby")) {
         showChosenBankToken("Ruby");
-    } else if (e.target.classList.contains("emerald")) {
+    } else if ($tag.classList.contains("emerald")) {
         showChosenBankToken("Emerald");
-    } else if (e.target.classList.contains("onyx")) {
+    } else if ($tag.classList.contains("onyx")) {
         showChosenBankToken("Onyx");
-    } else if (e.target.classList.contains("sapphire")) {
+    } else if ($tag.classList.contains("sapphire")) {
         showChosenBankToken("Sapphire");
-    } else if (e.target.classList.contains("diamond")) {
+    } else if ($tag.classList.contains("diamond")) {
         showChosenBankToken("Diamond");
     }
 }
@@ -114,7 +117,7 @@ function showChosenBankToken(gem) {
 }
 
 function enableOrDisableToken(token) {
-    const $tokenButton = document.querySelector(`.token-bank .${token.toLowerCase()} `);
+    const $tokenButton = document.querySelector(`.token-bank .gem.${token.toLowerCase()}`);
     if (isLegalToken(token)) {
         $tokenButton.disabled = false;
         $tokenButton.classList.add("clickable");
@@ -135,6 +138,7 @@ function removeChosenTokens() {
     }
 
     Object.keys(chosenBankTokens).forEach(gem => chosenBankTokens[gem] = 0);
+    console.log(chosenBankTokens);
 }
 
 function updateToken(gem, remove) {
@@ -143,7 +147,7 @@ function updateToken(gem, remove) {
     } else {
         currentBankTokens[gem]++;
     }
-    document.querySelector(`.token-bank .${gem.toLowerCase()} `).innerHTML = currentBankTokens[gem];
+    document.querySelector(`.token-bank .gem.${gem.toLowerCase()} .gem-value`).innerHTML = currentBankTokens[gem];
 }
 
 export {
