@@ -12,6 +12,7 @@ function ownPlayerCardRenderer(gameInfo) {
     document.querySelector("#own-prestige-points p").textContent = ownPlayer.totalPrestigePoints;
 
     const $ownNobles = $playerCard.querySelector(".nobles-container");
+    $ownNobles.innerHTML = "";
     NobleRenderer.renderNobles(ownPlayer.nobles, $ownNobles);
     NobleRenderer.renderEmptyNobleSpots($ownNobles);
 

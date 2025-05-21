@@ -172,7 +172,8 @@
 
 #own-prestige-points {
     font-size: 1.75rem;
-    justify-self: center;
+    display: flex;
+    justify-content: center;
 }
 
 .min-points-to-win {
