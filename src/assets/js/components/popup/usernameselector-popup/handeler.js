@@ -5,11 +5,13 @@ function renderPopup(){
  closePopupButton();
 }
 
+function handleClosePopup(e){
+ e.preventDefault();
+ hideUserNamePopup();
+}
+
 function closePopupButton(){
- document.querySelector("#close-popup").addEventListener("click", (e) =>{
-  e.preventDefault();
-  hideUserNamePopup();
- });
+ document.querySelector("#close-popup").addEventListener("click", (handleClosePopup));
 }
 export {renderPopup}
 
