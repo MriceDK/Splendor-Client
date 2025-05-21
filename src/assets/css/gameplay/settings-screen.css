@@ -27,9 +27,6 @@ body{
     max-width: 6rem;
 }
 
-
-
-
 .popup-container {
     position: absolute;
     width: 100%;
@@ -58,20 +55,6 @@ body{
     justify-content: right;
 }
 
-.token-grid{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: flex-start;
-    justify-content: center;
-
-}
-
-.input-column{
-    display: flex;
-    flex-direction: column;
-}
 
 .popup-token-selector {
     background-color: var(--offwhite);
@@ -86,12 +69,7 @@ body{
     position: relative;
 }
 
-.popup-token-selector label {
-    display: block;
-    margin-top: 0.5rem;
-    font-weight: bold;
-    text-align: left;
-}
+
 
 .gem-selector-input {
     display: block;
@@ -104,11 +82,6 @@ body{
     box-sizing: border-box;
 }
 
-.total{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
 
 
 .emerald-name{
@@ -135,16 +108,24 @@ body{
     color: var(--gold-token-color);
 }
 
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
 
 #token-selector-close-button {
-    margin-top: 1.5rem;
-    background-color: #ccc;
-    color: #333;
-    border: none;
-    border-radius: 0.5rem;
     font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 60%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #token-selector-close-button:hover {
@@ -152,18 +133,15 @@ body{
 }
 
 #token-selector-form input[type="submit"] {
-    margin-top: 1.5rem;
-    padding: 0.75rem;
-    background-color: var(--dark-beige);
-    color: var(--main-black-color);
-    border: none;
-    border-radius: 0.5rem;
     font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%;
-    display: inline-block;
-    float: right;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #token-selector-form input[type="submit"]:hover {
