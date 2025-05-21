@@ -11,7 +11,7 @@ function hookUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", openBank);
     document.querySelector(".bank-buttons .cancel-button").addEventListener("click", closeBank);
     document.querySelector(".bank-buttons .collect-gems-button").addEventListener("click", collectTokens);
-    document.querySelectorAll(".token-bank button").forEach(button => button.addEventListener("click", chooseBankToken));
+    document.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", chooseBankToken));
 }
 
 function openBank() {
@@ -29,17 +29,24 @@ function closeBank() {
 }
 
 function chooseBankToken(e) {
-    renderer.getChosenTokenColour(e);
-    checkConfirmButton();
-    checkAllowedTokens();
+    let $tokenFromBank = e.target.closest(".gem");
+
+    if ($tokenFromBank.classList.contains("clickable")) {
+        renderer.getChosenTokenColour($tokenFromBank);
+        checkConfirmButton();
+        checkAllowedTokens();
+    }
+
 }
 
 function removeChosenBankToken(e) {
-    const className = e.target.classList[2];
+    const $target = e.target.closest(".gem");
+    const className = $target.classList[3];
+
     const classNameWithCapitalLetter = className.replace(className[0], className[0].toUpperCase());
 
     renderer.chosenBankTokens[classNameWithCapitalLetter]--;
-    e.target.remove();
+    $target.remove();
 
     renderer.updateToken(classNameWithCapitalLetter, false);
     checkConfirmButton();
@@ -69,7 +76,8 @@ function collectTokens() {
 }
 
 function checkConfirmButton() {
-    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
+    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens li").length;
+
     const maxTokensOfDiffColour = 3;
 
     if (numberOfChosenTokens === maxTokensOfDiffColour || Object.values(renderer.chosenBankTokens).includes(2)) {

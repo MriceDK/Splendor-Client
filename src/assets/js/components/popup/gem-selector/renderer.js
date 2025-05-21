@@ -38,12 +38,11 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
 function renderCostsInPopUp(costs) {
 
-    const $target = document.querySelector("#token-selector-form dl");
 
     for (const gem in costs) {
+        const $target = document.querySelector(`#token-selector-form .${gem.toLowerCase()}-cost`);
         if (costs[gem] > 0 && !isNaN(costs[gem])) {
-            $target.insertAdjacentHTML("beforeend", `<dt>${gem}:</dt>`);
-            $target.insertAdjacentHTML("beforeend", `<dd>${costs[gem]}</dd>`);
+            $target.insertAdjacentHTML("beforeend", `<p>/${costs[gem]}</p>`);
         }
 
     }

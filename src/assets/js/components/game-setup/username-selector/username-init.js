@@ -1,9 +1,7 @@
 import {changePlayerName} from "./handler.js";
 
-function init() {
-
-    document.querySelector("#playername-changer").addEventListener("submit", changePlayerName);
-
+function usernameInit() {
+    document.querySelector(".popup #playername-changer").addEventListener("submit", changePlayerName)
 }
 
-init();
+export { usernameInit };

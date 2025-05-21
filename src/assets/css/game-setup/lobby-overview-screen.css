@@ -9,11 +9,9 @@ header img {
 body{
     color: var(--main-white-color);
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,1)), url("../../../images/background-images/russian-invasion-ukraine.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    backdrop-filter: blur(0.2em);
     z-index: -1;
 }
 
@@ -48,6 +46,9 @@ h1 {
     width: 2.5rem;
     height: 2.5rem;
     margin-right: 0.625rem;
+}
+#playername-changer label{
+    color: var(--main-black-color);
 }
 
 #filter {

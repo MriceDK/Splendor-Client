@@ -1,7 +1,7 @@
 :root {
  --main-bg-color: #f4f4f4;
  --main-header-bg-color: #2c3e50;
- --main-white-color: var(--not-white);
+ --main-white-color: var(--offwhite);
  --main-black-color: var(--black);
  --main-blue-color: blue;
  --main-grey-color: grey;
@@ -9,18 +9,20 @@
  --main-green-color: green;
  --main-yellow-color: yellow;
  --clickable-color: hotpink;
+ --popup-titlte-color: #333333;
 
 
  /* MAIN REDESIGN COLORS */
  --dark-green : #565939;
+ --lighter-green : #888b69;
  --beige : #BFAD8A;
  --dark-beige : #A69677;
  --black : #262524;
  --off-black : #000000;
  --brown : #594940;
- --not-white : #F0EEE4;
+ --offwhite : #F0EEE4;
 
-/* TOKEN COLOURS*/
+ /* TOKEN COLOURS*/
  --ruby-token-color: #CD332E;
  --ruby-token-color-border: #9C352C;
 
@@ -42,11 +44,11 @@
 
 * {
  box-sizing: border-box;
+ font-family: "Saira stencil one", Arial, serif;
 }
 
 body {
  background-image: url("../../images/background-images/army-background.png");
- backdrop-filter: blur(0.2em);
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
@@ -62,6 +64,7 @@ body {
 header {
  width: 100%;
 
+ color: var(--main-white-color);
  display: flex;
  align-items: center;
  justify-content: space-between;
@@ -140,12 +143,52 @@ header img {
  border: var(--main-black-color) solid;
  color: var(--beige);
 }
+
+.button-style-popup {
+ width: 20rem;
+ padding: 0.3rem;
+ font-size: 2rem;
+ margin-top: 1rem;
+
+}
 /*end region*/
 
 
 .hidden{
  display: none;
 }
+body{
+ position: relative;
+}
+
+.popup-container {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 75%);
+ z-index: 2;
+ display: grid;
+}
+
+.popup-container .popup {
+ align-self: center;
+ justify-self: center;
+ color: var(--main-black-color);
+ background-color: var(--offwhite);
+ padding: 1rem 2rem;
+ border-radius: 1rem;
+ font-size: 3rem;
+ text-align: center;
+}
+
+.popup-container.hidden{
+ display: none;
+}
+#close{
+ justify-content: right;
+}
+
+
 
 .clickable{
  cursor: pointer;

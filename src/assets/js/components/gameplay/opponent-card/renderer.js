@@ -1,8 +1,10 @@
 import * as handler from "./handler.js";
 import * as NobleRenderer from "../noble/renderer.js";
+import {getPrestigePointsPercentage} from "./helper.js";
 
 function renderOpponentsStats(players) {
     const opponents = handler.getOpponents(players);
+    document.querySelector(".username-flexcontainer").innerHTML = document.querySelector("#opponent-template").outerHTML;
     opponents.forEach(opponent => renderOpponentStats(opponent));
 }
 
@@ -10,7 +12,6 @@ function renderOpponentStats(opponent) {
     const $template = document.querySelector("#opponent-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".username-flexcontainer");
 
-    $target.innerHTML = document.querySelector("#opponent-template").outerHTML;
     fillOpponentStat($template, opponent);
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
@@ -18,24 +19,29 @@ function renderOpponentStats(opponent) {
 function fillOpponentStat($template, opponent) {
     $template.querySelector(".player").innerText = opponent.name;
     $template.querySelector(".points").innerText = opponent.totalPrestigePoints;
+    $template.querySelector(".points-bar").style.width = `${getPrestigePointsPercentage(opponent.totalPrestigePoints)}%`;
     $template.querySelector(".reserved-count").innerText = opponent.reserve.length;
 
-    $template.querySelector(".gems.red>.token-text").innerText = handler.getTokenInPurse(opponent, "Ruby", false);
-    $template.querySelector(".gems.green>.token-text").innerText = handler.getTokenInPurse(opponent, "Emerald", false);
-    $template.querySelector(".gems.black>.token-text").innerText = handler.getTokenInPurse(opponent, "Onyx", false);
-    $template.querySelector(".gems.blue>.token-text").innerText = handler.getTokenInPurse(opponent, "Sapphire", false);
-    $template.querySelector(".gems.white>.token-text").innerText = handler.getTokenInPurse(opponent, "Diamond", false);
-    $template.querySelector(".gems.yellow>.token-text").innerText = handler.getTokenInPurse(opponent, "Gold", false);
-
-    $template.querySelector(".card.red>.token-text").innerText = handler.getTokenInPurse(opponent, "Ruby", true);
-    $template.querySelector(".card.green>.token-text").innerText = handler.getTokenInPurse(opponent, "Emerald", true);
-    $template.querySelector(".card.black>.token-text").innerText = handler.getTokenInPurse(opponent, "Onyx", true);
-    $template.querySelector(".card.blue>.token-text").innerText = handler.getTokenInPurse(opponent, "Sapphire", true);
-    $template.querySelector(".card.white>.token-text").innerText = handler.getTokenInPurse(opponent, "Diamond", true);
+    fillTokens($template, opponent.tokens);
+    fillBonuses($template, opponent.bonuses);
 
     const $nobleContainer = $template.querySelector(".nobles-container");
     NobleRenderer.renderNobles(opponent.nobles, $nobleContainer);
     NobleRenderer.renderEmptyNobleSpots($nobleContainer);
+}
+
+function fillTokens($template, tokens) {
+    Object.entries(tokens).forEach((obj) => {
+        const tokenName = obj[0];
+        $template.querySelector(`.gem.${tokenName.toLowerCase()} .gem-value`).innerText = obj[1];
+    })
+}
+
+function fillBonuses($template, bonuses) {
+    Object.entries(bonuses).forEach((obj) => {
+        const tokenName = obj[0];
+        $template.querySelector(`.card.${tokenName.toLowerCase()} .card-text`).innerText = obj[1];
+    })
 }
 
 export {renderOpponentsStats};

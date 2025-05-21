@@ -24,7 +24,7 @@ function displayGame() {
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
             const ownPlayer = getOwnPlayerInfo(res);
-            buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
+            buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
             immediateTokenCheckAfterTokenUpdate();
             // TODO: ask how to implement this function
