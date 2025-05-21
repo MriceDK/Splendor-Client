@@ -1,4 +1,4 @@
-import {checkTooManyTokens} from "./handler.js";
+import { updateTokensAfterTooMany} from "./handler.js";
 
 function init(){
     hookUpEventListenerOnTooMuchGemsForm();
@@ -6,8 +6,8 @@ function init(){
 
 function hookUpEventListenerOnTooMuchGemsForm() {
     const $form = document.querySelector("#too-many-gems-pop-up-form");
-    $form.addEventListener("submit", checkTooManyTokens);
+    $form.addEventListener("submit", updateTokensAfterTooMany);
 
 }
 
-init();
+//init();

@@ -4,7 +4,7 @@ import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.
 
 import {renderOwnTokenValue} from "../own-player/renderer.js";
 import {displayGame} from "../../../game.js";
-import {checkTooManyTokens} from "../../popup/gems-overflow/handler.js";
+import {immediateTokenCheckAfterTokenUpdate} from "../../popup/gems-overflow/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function hookUpEvents() {
@@ -54,7 +54,6 @@ function collectTokens() {
     };
 
     api.updateTokens(gameId, playerName, tokenData).then(res => {
-        getGameInfo().then(gameRes => {checkTooManyTokens(gameRes.players, gameRes.currentPlayer, gameRes.gameState);})
 
         Object.entries(res.tokens).forEach((token) => {
             renderOwnTokenValue(token);

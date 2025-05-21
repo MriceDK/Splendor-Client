@@ -3,7 +3,8 @@ import * as LocalStorageAbstractor from "../../../data-connector/local-storage-a
 import {getCurrentPlayer, uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {renderTooManyGemsPopUp} from "./renderer.js";
 import {displayGame} from "../../../game.js";
-import {getGameInfo} from "../../../api/game-setup-api";
+import {getGameInfo} from "../../../api/game-setup-api.js";
+import {handleError} from "../../../data-connector/error-handler.js";
 
 const MAX_TOKENS = 10;
 
@@ -18,30 +19,36 @@ function immediateTokenCheckAfterTokenUpdate(){
 function checkTooManyTokens(playersInfos, currentPlayer) {
     const currentPlayerChecked = getCurrentPlayer(playersInfos, currentPlayer);
     if (LocalStorageAbstractor.loadFromStorage("playerName") === currentPlayerChecked.name) {
-            checkTooMuchTokensHelp(currentPlayerChecked);
+        checkTooMuchTokensHelp(currentPlayerChecked);
     }
 }
 
 function checkTooMuchTokensHelp(player) {
-    renderTooManyGemsPopUp(player.tokens);
-    formGemChecker(player);
+    const $form = renderTooManyGemsPopUp(player.tokens);
+    hookUpEventListenerOnTooMuchGemsForm($form, player);
+
 }
 
-function formGemChecker(player) {
-    const $form = document.querySelector("#too-many-gems-pop-up-form");
+function hookUpEventListenerOnTooMuchGemsForm($form, player) {
     const $popup = document.querySelector(".popup-container");
+    console.log(player.name);
 
-    $form.addEventListener("submit", e => {
-        e.preventDefault();
-        updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
-            $form.classList.add("hidden");
-            $form.classList.remove("active");
-            $popup.classList.add("hidden");
-            displayGame()
-        }).catch(() => {
-            formGemChecker(player);
-        })
-    });
+    $form.addEventListener("submit", e => {updateAndDisplay(e, player, $form, $popup)});
+}
+
+function updateAndDisplay(e, player, $form, $popup) {
+    e.preventDefault();
+    console.log(player);
+    updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
+        console.log("TEST");
+        $popup.classList.add("hidden");
+        $form.remove();
+        displayGame()
+
+    }).catch(error => {
+        console.log(error);
+        handleError(error);
+    })
 }
 
 function updateTokensAfterTooMany(gameId, player) {
@@ -77,4 +84,4 @@ function returnTokensBody(tokensToReturn) {
     };
 }
 
-export {checkTooManyTokens, updateTokensAfterTooMany};
+export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate};

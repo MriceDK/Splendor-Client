@@ -3,7 +3,7 @@ import {closePopUp} from "./renderer.js";
 import {handleError} from "../../../data-connector/error-handler.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {displayGame} from "../../../game.js";
-import {checkTooManyTokens} from "../gems-overflow/handler.js";
+import {immediateTokenCheckAfterTokenUpdate} from "../gems-overflow/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function checkIfPopUpIsReserveType($popupContainer) {
@@ -37,7 +37,7 @@ function reserveCard(cardLevelorName, reserveFromLevel) {
             }
             handleReserveCardResponse(response);
         }).then(() => {
-            getGameInfo().then(res => { checkTooManyTokens(res.players, res.currentPlayer, res.gameState);
+            getGameInfo().then(res => {
                 displayGame();
             })
 
