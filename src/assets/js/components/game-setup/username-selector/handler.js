@@ -4,12 +4,12 @@ import { changePlayerNameText } from "./renderer.js";
 function changePlayerName(e){
     e.preventDefault();
 
-    const $usernameForm = document.querySelector("#playername-text");
-    if ($usernameForm === null || $usernameForm === undefined || $usernameForm.value === "") {
+    const $usernameForm = document.querySelector("#playername-text").value.trim();
+    if ($usernameForm === "") {
     document.querySelector(".errorUsernameSelector").innerHTML = "Please enter a username";
     }
     else{
-        saveToStorage("playerName", $usernameForm.value);
+        saveToStorage("playerName", $usernameForm);
         changePlayerNameText();
     }
 }
