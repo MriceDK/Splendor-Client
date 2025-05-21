@@ -100,7 +100,6 @@ function updateTokensAfterTooMany(gameId, player) {
 
 function getDiffTokensObject(tokens) {
     const returnObject = {};
-
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
     $tokensForm.forEach(token => {
         const tokenName = uppercaseFirstLetterOfWord(token.getAttribute("name"));
