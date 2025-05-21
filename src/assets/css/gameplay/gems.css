@@ -13,8 +13,8 @@
 }
 
 .own-inventory svg {
-    width: 3rem;
-    height: 5rem;
+    width: 2.7rem;
+    height: 4.5rem;
 }
 
 .own-inventory .gem-value {
@@ -23,6 +23,10 @@
 
 .gem, .card {
     font-family: 'Inter', serif;
+}
+
+.card .card-text {
+    font-size: 1rem;
 }
 
 .gem {
