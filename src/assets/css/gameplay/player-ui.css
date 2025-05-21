@@ -93,7 +93,7 @@
     display: flex;
     justify-content: left;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
 }
 
 .nobles-container.wrap {
@@ -108,8 +108,8 @@
 .nobles-container .noble-article {
     background-color: var(--main-bg-color); /* Adjust color */
     font-size: .75rem;
-    width: 6rem;
-    height: 4rem;
+    width: 6rem; /*8*/
+    height: 3.375rem; /*4.5*/
 }
 
 .nobles-container .empty, .own-reserved-cards .empty {

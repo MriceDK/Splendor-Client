@@ -114,15 +114,6 @@
     background: #ffc600;
 }
 
-.noble-article {
-    width: 7.5rem; /*8*/
-    height: 4.21875rem; /*4.5*/
-    padding: .5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .bonus-costs {
     display: flex;
     gap: 1rem;
