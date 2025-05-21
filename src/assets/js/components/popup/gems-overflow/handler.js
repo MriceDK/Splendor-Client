@@ -35,6 +35,8 @@ function checkTooMuchTokensHelp(player) {
 }
 
 function formGemChecker(player) {
+    const $gemRemove = document.querySelector("#gem-remover-button");
+    $gemRemove.disabled = true;
     console.log("test form");
 
     const gemsCount = counTokens();
@@ -43,9 +45,9 @@ function formGemChecker(player) {
 
     $form.classList.add("active");
     if (gemsCount > MAX_TOKENS || MAX_TOKENS < gemsCount) {
-        document.querySelector("#gem-remover-button").disabled = true;
+        $gemRemove.disabled = true;
     } else {
-        document.querySelector("#gem-remover-button").disabled = false;
+        $gemRemove.disabled = false;
         $form.addEventListener("submit", e => {
             e.preventDefault();
             updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
