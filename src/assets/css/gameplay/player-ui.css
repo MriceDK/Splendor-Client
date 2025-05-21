@@ -75,6 +75,10 @@
     display: inline-block;
 }
 
+#own-username, .own-prestige-points {
+    font-size: 1.75rem;
+}
+
 .own-inventory .gems {
     width: 2.75rem;
     height: 2.75rem;
