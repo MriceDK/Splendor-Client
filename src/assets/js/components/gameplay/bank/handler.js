@@ -44,7 +44,7 @@ function removeChosenBankToken(e) {
     const classNameWithCapitalLetter = className.replace(className[0], className[0].toUpperCase());
 
     renderer.chosenBankTokens[classNameWithCapitalLetter]--;
-    e.target.remove();
+    $target.remove();
 
     renderer.updateToken(classNameWithCapitalLetter, false);
     checkConfirmButton();
