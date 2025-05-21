@@ -10,8 +10,11 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/screen.css">
   <link rel="stylesheet" href="assets/css/game-setup/lobby-overview-screen.css">
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
 
   <script src="assets/js/components/game-setup/lobby-overview/lobby-overview.js" type="module"></script>
+  <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
 </head>
 <body>
 <!--  Splendor  deployment test
@@ -19,15 +22,15 @@
 <div class="popup-container hidden">
   <template id="username-popup-template">
     <div class="popup">
-      <a href="#" id="closePopup">
-        <p>X</p>
+      <a href="#" id="close-popup">
+        <p>Close</p>
       </a>
       <form id="playername-changer">
         <label for="playername-text">Username: </label>
         <input type="text" id="playername-text" name="playername" maxlength="15">
-        <button type="submit" id="playername-button">Change Username</button>
+        <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
       </form>
-      <p class="errorUsernameSelector"></p>
+      <p class="error-username-selector"></p>
     </div>
   </template>
 </div>
