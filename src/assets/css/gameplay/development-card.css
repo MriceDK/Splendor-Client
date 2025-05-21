@@ -32,6 +32,10 @@
     height: 8.25rem; /*11*/
 }
 
+.own-reseved-cards .prestige-point {
+    padding-bottom: 0.5rem;
+}
+
 .deck {
     display: grid;
 }
@@ -46,7 +50,7 @@
 .development-card {
     display: grid;
     grid-template-columns: 2rem auto 2rem;
-    grid-template-rows: 2rem auto;
+    grid-template-rows: 1.5rem auto;
     padding: .5rem;
     background-size: 100%
 }

@@ -1,10 +1,19 @@
 .gem-costs .gem-value {
-    font-size: 1rem;
+    font-size: .75rem;
+}
+
+.bonus svg {
+    margin-left: 1rem;
 }
 
 .bonus svg, .gem-costs svg {
     width: 1.2rem;
     height: 1.85rem;
+}
+
+.own-reserved-cards .gem-costs svg, .own-reserved-cards .bonus svg {
+    width: 0.9rem; /*1.2*/
+    height: 1.3875rem; /*1.85*/
 }
 
 .token-bank svg {
