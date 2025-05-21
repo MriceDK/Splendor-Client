@@ -6,7 +6,7 @@ function renderPopup(){
 }
 
 function closePopupButton(){
- document.querySelector("#closePopup").addEventListener("click", (e) =>{
+ document.querySelector("#close-popup").addEventListener("click", (e) =>{
   e.preventDefault();
   hideUserNamePopup();
  });
