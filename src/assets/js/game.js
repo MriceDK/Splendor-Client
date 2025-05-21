@@ -11,8 +11,6 @@ import {getListOfBuyableCards} from "./components/gameplay/development-card/help
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
 import {checkTooManyTokens} from "./components/popup/gems-overflow/handler.js";
-
-// import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 let buyableDevCards = [];
 
 function displayGame() {
@@ -27,7 +25,10 @@ function displayGame() {
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
             renderBuyableCards();
-            // checkTooMuchGems(res.players, res.currentPlayer);
+            if (res.gameState === "ReturnGems" && res.currentPlayer === ownPlayer.name ) {
+                checkTooManyTokens(res.players, res.currentPlayer);
+
+            }
             // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);

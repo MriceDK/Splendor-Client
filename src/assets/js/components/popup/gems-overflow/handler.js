@@ -1,7 +1,7 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
-import {renderTooManyGemsPopUp} from "./renderer";
+import {renderTooManyGemsPopUp} from "./renderer.js";
 import {displayGame} from "../../../game.js";
 
 const MAX_TOKENS = 10;
@@ -16,7 +16,6 @@ function checkTooManyTokens(playersInfos, currentPlayer) {
 
 }
 
-// TODO: Implement this functionality later not important RN
 function countTotalTokens(allTokens) {
     let tokensOfPlayer = 0;
 
@@ -35,10 +34,13 @@ function checkTooMuchTokensHelp(player) {
 }
 
 function formGemChecker(player) {
+
     const gemsCount = counTokens();
     const $form = document.querySelector("#too-many-gems-pop-up-form");
+    const $popup = document.querySelector(".popup-container");
+
     $form.classList.add("active");
-    if (gemsCount > MAX_TOKENS) {
+    if (gemsCount === MAX_TOKENS) {
         document.querySelector("#gem-remover-button").disabled = true;
     } else {
         document.querySelector("#gem-remover-button").disabled = false;
@@ -49,7 +51,7 @@ function formGemChecker(player) {
             }).then(() => {
                 displayGame();
                 $form.remove();
-                $form.classList.remove("active");
+                $popup.classList.add("hidden");
             });
         });
     }
