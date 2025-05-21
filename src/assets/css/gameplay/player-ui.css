@@ -105,6 +105,7 @@
 .nobles-container .empty, .own-reserved-cards .empty {
     background-color: transparent;
     border: .0625rem solid var(--main-black-color);
+    border-radius: .5rem;
 }
 
 .reserved-label {
