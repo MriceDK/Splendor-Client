@@ -11,7 +11,7 @@ function loadUpFormWithTokensLoaded() {
 }
 
 function returnTooManyTokens(currentPlayer) {
-    const tokens = countTotalTokens(currentPlayer.tokens);
+    const tokens = counTokens();
     showPopupContainer();
     loadUpFormWithTokensLoaded();
     const $form = document.querySelector("#too-many-gems-pop-up-form");
@@ -32,7 +32,7 @@ function returnTooManyTokens(currentPlayer) {
 }
 
 function checkTooManyTokens(gameState, currentPlayer) {
-    if (gameState === "RETURN_GEMS"){
+    if (gameState === "ReturnGems"){
         returnTooManyTokens(currentPlayer);
 
     }
@@ -40,7 +40,7 @@ function checkTooManyTokens(gameState, currentPlayer) {
 
 }
 
-
+// TODO: Implement this functionality later not important RN
 function countTotalTokens(allTokens) {
     let tokensOfPlayer = 0;
 
