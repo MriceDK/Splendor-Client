@@ -70,7 +70,7 @@ function disableTokens() {
 }
 
 function removeTokenBorders() {
-    const $tokenBanks = document.querySelectorAll(".token-bank button");
+    const $tokenBanks = document.querySelectorAll(".token-bank li");
     $tokenBanks.forEach($tokenBank => {
         $tokenBank.classList.remove("clickable");
     });
