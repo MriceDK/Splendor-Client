@@ -38,7 +38,9 @@ function chooseBankToken(e) {
 }
 
 function removeChosenBankToken(e) {
-    const className = e.target.classList[2];
+    const $target = e.target.closest(".gem");
+    const className = $target.classList[3];
+    console.log(className);
     const classNameWithCapitalLetter = className.replace(className[0], className[0].toUpperCase());
 
     renderer.chosenBankTokens[classNameWithCapitalLetter]--;
