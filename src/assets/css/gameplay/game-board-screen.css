@@ -96,3 +96,7 @@ header {
     justify-content: space-between;
 }
 
+.gem, .card, .noble-article, .development-card {
+    font-family: 'Inter', serif;
+}
+
