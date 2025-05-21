@@ -8,10 +8,6 @@ function renderTooManyGemsPopUp(playerTokens) {
     Object.entries(playerTokens).forEach(token => putInitalValue($tooMuchGemsTemplate, token));
 
     $target.insertAdjacentHTML("beforeend", $tooMuchGemsTemplate.outerHTML);
-
-    return $tooMuchGemsTemplate;
-
-
 }
 
 export {renderTooManyGemsPopUp};

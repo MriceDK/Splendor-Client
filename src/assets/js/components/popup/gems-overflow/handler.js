@@ -24,21 +24,17 @@ function checkTooManyTokens(playersInfos, currentPlayer) {
 }
 
 function checkTooMuchTokensHelp(player) {
-    const $form = renderTooManyGemsPopUp(player.tokens);
-    hookUpEventListenerOnTooMuchGemsForm($form, player);
+    renderTooManyGemsPopUp(player.tokens);
 
+    const $form = document.querySelector("#too-many-gems-pop-up-form");
+    $form.addEventListener("submit", e => updateAndDisplay(e, player));
 }
 
-function hookUpEventListenerOnTooMuchGemsForm($form, player) {
-    const $popup = document.querySelector(".popup-container");
-    console.log(player.name);
-
-    $form.addEventListener("submit", e => {updateAndDisplay(e, player, $form, $popup)});
-}
-
-function updateAndDisplay(e, player, $form, $popup) {
+function updateAndDisplay(e, player) {
     e.preventDefault();
-    console.log(player);
+    const $form = document.querySelector("#too-many-gems-pop-up-form");
+    const $popup = document.querySelector(".popup-container");
+
     updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
         console.log("TEST");
         $popup.classList.add("hidden");
@@ -55,7 +51,7 @@ function updateTokensAfterTooMany(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
     console.log(body);
-    return api.updateTokens(gameId, player.name, body).then(() => {displayGame();});
+    return api.updateTokens(gameId, player.name, body);
 }
 
 function getDiffTokensObject(tokens) {
