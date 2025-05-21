@@ -1,4 +1,8 @@
 .gem-costs .gem-value {
+    font-size: 1rem;
+}
+
+.own-reserved-cards .gem-costs .gem-value {
     font-size: .75rem;
 }
 
