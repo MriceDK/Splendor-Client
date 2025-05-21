@@ -1,50 +1,23 @@
-import {displayGame} from "../../../game";
-import * as api from "../../../api/gameplay-api";
+    import {putInitalValue} from "../../gameplay/own-player/helper.js";
+    import {countTotalTokens} from "./handler.js"
 
-function showReturnTokensPopup(playerTokens) {
-    const $popup = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);
-    const $container = document.querySelector(".popup-container");
-
-    $container.innerHTML = ""; // Clear previous content
-    $container.classList.remove("hidden"); // Show popup
-
-    // Populate max values and create inputs
-    Object.entries(playerTokens).forEach(([tokenName, count]) => {
-        const input = $popup.querySelector(`input[name="${tokenName.toLowerCase()}"]`);
-        if (input) {
-            input.max = count;
-            input.value = 0;
-        }
-    });
-
-    // Submit handler
-    $popup.querySelector("form").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-        const tokensToReturn = {};
-        for (const [key, value] of formData.entries()) {
-            tokensToReturn[key] = Number(value);
-        }
-
-        const totalReturned = Object.values(tokensToReturn).reduce((a, b) => a + b, 0);
-        const currentTotal = countTotalTokens(playerTokens);
-
-        if (currentTotal - totalReturned > 10) {
-            alert("You must return enough tokens to have 10 or fewer.");
+    function renderTooManyGemsPopUp(playerTokens) {
+        const $tooMuchGemsTemplate = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);
+        const $target = document.querySelector(".popup-container");
+        if (!$tooMuchGemsTemplate){
             return;
         }
+        $target.innerHTML = "";
+        $target.classList.remove("hidden");
+        if (playerTokens > countTotalTokens(playerTokens)) {
 
-        api.updateTokens(gameId, playername tokensToReturn);
-        $container.classList.add("hidden");
-        $container.innerHTML = "";
+            Object.entries(playerTokens).forEach(token => putInitalValue($tooMuchGemsTemplate, token));
 
-        // Resume game
-        displayGame();
-    });
+        }
 
-    $container.insertAdjacentHTML("beforeend",$popup);
-}
+        $target.insertAdjacentHTML("beforeend", $tooMuchGemsTemplate.outerHTML);
 
 
-export {showReturnTokensPopup};
+    }
+
+    export {renderTooManyGemsPopUp};

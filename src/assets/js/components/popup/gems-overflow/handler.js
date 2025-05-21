@@ -6,7 +6,3 @@ import {displayGame} from "../../../game.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
 
 const MAX_TOKENS = 10;
-
-function handleGemOverflow(){
-
-}
