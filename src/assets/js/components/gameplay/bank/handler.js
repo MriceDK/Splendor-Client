@@ -76,7 +76,8 @@ function collectTokens() {
 }
 
 function checkConfirmButton() {
-    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
+    const numberOfChosenTokens = document.querySelectorAll(".selected-tokens li").length;
+    console.log(numberOfChosenTokens);
     const maxTokensOfDiffColour = 3;
 
     if (numberOfChosenTokens === maxTokensOfDiffColour || Object.values(renderer.chosenBankTokens).includes(2)) {
