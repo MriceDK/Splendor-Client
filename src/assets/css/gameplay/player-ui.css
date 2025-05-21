@@ -164,8 +164,15 @@
     border: none;
 }
 
-.opponent-player-info, .own-prestige-points {
+.opponent-player-info{
     font-size: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#own-prestige-points {
+    font-size: 1.75rem;
+    justify-self: center;
 }
 
 .opponent-player-info .player, #own-username {
