@@ -10,10 +10,9 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-import {returnTooManyTokens} from "./components/popup/gems-overflow/handler.js";
-import { handleGemOverflow } from "./components/popup/gems-overflow/handler.js";
+import {checkTooManyTokens, returnTooManyTokens} from "./components/popup/gems-overflow/handler.js";
 
-//import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
+// import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 let buyableDevCards = [];
 
 function displayGame() {
@@ -28,11 +27,7 @@ function displayGame() {
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
             renderBuyableCards();
-            if (res.gameState === "ReturnGems"){
-                returnTooManyTokens(ownPlayer);
-
-            }
-            //returnTooManyTokens(res.currentPlayer);
+            returnTooManyTokens(res.currentPlayer);
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
