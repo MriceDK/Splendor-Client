@@ -170,6 +170,20 @@
     justify-content: space-between;
 }
 
+.opponent-player-info .player, .own-player-info #own-username {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.own-player-info #own-username {
+    max-width: 33rem;
+}
+
+.opponent-player-info .player {
+    max-width: 12.25rem;
+}
+
 .opponent-player-info .points {
     margin-left: 1rem;
 }
