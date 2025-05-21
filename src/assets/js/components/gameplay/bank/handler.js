@@ -40,7 +40,7 @@ function chooseBankToken(e) {
 function removeChosenBankToken(e) {
     const $target = e.target.closest(".gem");
     const className = $target.classList[3];
-    console.log(className);
+
     const classNameWithCapitalLetter = className.replace(className[0], className[0].toUpperCase());
 
     renderer.chosenBankTokens[classNameWithCapitalLetter]--;
@@ -77,7 +77,7 @@ function collectTokens() {
 
 function checkConfirmButton() {
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens li").length;
-    console.log(numberOfChosenTokens);
+
     const maxTokensOfDiffColour = 3;
 
     if (numberOfChosenTokens === maxTokensOfDiffColour || Object.values(renderer.chosenBankTokens).includes(2)) {

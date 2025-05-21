@@ -108,7 +108,6 @@ function setTokenValue(token, amount) {
         currentBankTokens[token] = amount;
     }
 
-    console.log(document.querySelector(`.token-bank .gem.${token.toLowerCase()} .gem-value`));
     document.querySelector(`.token-bank .gem.${token.toLowerCase()} .gem-value`).innerText = amount;
 }
 
@@ -163,7 +162,6 @@ function removeChosenTokens() {
     }
 
     Object.keys(chosenBankTokens).forEach(gem => chosenBankTokens[gem] = 0);
-    console.log(chosenBankTokens);
 }
 
 function updateToken(gem, remove) {
