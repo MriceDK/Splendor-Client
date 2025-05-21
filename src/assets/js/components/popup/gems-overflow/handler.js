@@ -36,13 +36,11 @@ function updateAndDisplay(e, player) {
     const $popup = document.querySelector(".popup-container");
 
     updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
-        console.log("TEST");
         $popup.classList.add("hidden");
         $form.remove();
         displayGame()
 
     }).catch(error => {
-        console.log(error);
         handleError(error);
     })
 }
@@ -50,7 +48,6 @@ function updateAndDisplay(e, player) {
 function updateTokensAfterTooMany(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
     const body = returnTokensBody(tokensToReturn);
-    console.log(body);
     return api.updateTokens(gameId, player.name, body);
 }
 
