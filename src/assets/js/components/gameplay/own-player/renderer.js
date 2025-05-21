@@ -2,6 +2,7 @@ import * as getOwnInfo from "./helper.js";
 import {getAllOwnPlayerTokens} from "./helper.js";
 import * as NobleRenderer from "../noble/renderer.js";
 import * as DevelopmentCardRenderer from "../development-card/renderer.js";
+import {getPrestigePointsPercentage} from "../opponent-card/helper.js";
 
 function ownPlayerCardRenderer(gameInfo) {
     const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);
@@ -10,6 +11,7 @@ function ownPlayerCardRenderer(gameInfo) {
 
     document.querySelector("#own-username").textContent = ownPlayer.name;
     document.querySelector("#own-prestige-points p").textContent = ownPlayer.totalPrestigePoints;
+    document.querySelector("#own-player-card .points-bar").style.width = `${getPrestigePointsPercentage(ownPlayer.totalPrestigePoints)}%`;
 
     const $ownNobles = $playerCard.querySelector(".nobles-container");
     $ownNobles.innerHTML = "";
