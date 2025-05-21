@@ -1,18 +1,25 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
+import {getCurrentPlayer, uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {renderTooManyGemsPopUp} from "./renderer.js";
 import {displayGame} from "../../../game.js";
+import {getGameInfo} from "../../../api/game-setup-api";
 
 const MAX_TOKENS = 10;
 
-function checkTooManyTokens(playersInfos, currentPlayer, gameState) {
-    playersInfos.forEach(player => {
-        if (player.name === currentPlayer) {
-            checkTooMuchTokensHelp(player, gameState);
+function immediateTokenCheckAfterTokenUpdate(){
+    getGameInfo().then(result => {
+        const gameState = result.gameState;
+        if (gameState === "ReturnGems"){
+            checkTooManyTokens(result.players, result.currentPlayer);
         }
-    });
-
+    })
+}
+function checkTooManyTokens(playersInfos, currentPlayer) {
+    const currentPlayerChecked = getCurrentPlayer(playersInfos, currentPlayer);
+    if (LocalStorageAbstractor.loadFromStorage("playerName") === currentPlayerChecked.name) {
+            checkTooMuchTokensHelp(currentPlayerChecked);
+    }
 }
 
 function countTotalTokens(allTokens) {
@@ -24,12 +31,9 @@ function countTotalTokens(allTokens) {
     return tokensOfPlayer;
 }
 
-function checkTooMuchTokensHelp(player, gameState) {
-    const tokensOfPlayer = countTotalTokens(player.tokens);
-    if (tokensOfPlayer > MAX_TOKENS && gameState === "ReturnGems") {
-        renderTooManyGemsPopUp(player.tokens);
-        formGemChecker(player);
-    }
+function checkTooMuchTokensHelp(player) {
+    renderTooManyGemsPopUp(player.tokens);
+    formGemChecker(player);
 }
 
 function formGemChecker(player) {
