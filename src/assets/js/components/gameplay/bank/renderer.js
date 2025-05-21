@@ -70,11 +70,6 @@ function setDisable(boolean) {
             }
         }
     })
-    document.querySelector(".token-bank .ruby").disabled = boolean;
-    document.querySelector(".token-bank .emerald").disabled = boolean;
-    document.querySelector(".token-bank .onyx").disabled = boolean;
-    document.querySelector(".token-bank .sapphire").disabled = boolean;
-    document.querySelector(".token-bank .diamond").disabled = boolean;
 }
 
 function makeDisabled($target) {
