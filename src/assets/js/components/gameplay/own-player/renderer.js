@@ -25,7 +25,7 @@ function ownPlayerCardRenderer(gameInfo) {
 }
 
 function renderOwnTokenValue(token) {
-    document.querySelector(`.own-inventory .${token[0].toLowerCase()} .token-text`).innerText = token[1];
+    document.querySelector(`.own-inventory .${token[0].toLowerCase()} .gem-value`).innerText = token[1];
 }
 
 function renderOwnBonusValue(bonus) {

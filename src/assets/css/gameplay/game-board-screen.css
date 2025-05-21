@@ -89,3 +89,7 @@ header {
     margin-top: .5rem;
 }
 
+.gem, .card, .noble-article, .development-card {
+    font-family: 'Inter', serif;
+}
+

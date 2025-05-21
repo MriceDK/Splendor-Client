@@ -79,37 +79,6 @@
     align-self: flex-end;
 }
 
-.gem-cost {
-    padding: .25rem;
-    background-color: white;
-    border-radius: 50%;
-}
-
-.emerald {
-    background-color: limegreen;
-}
-
-.ruby {
-    background-color: orangered;
-}
-
-.sapphire {
-    background-color: dodgerblue;
-}
-
-.diamond {
-    background-color: white;
-}
-
-.onyx {
-    background: #8d6830;
-    color: white;
-}
-
-.gold {
-    background: #ffc600;
-}
-
 .noble-article {
     width: 8rem;
     height: 4.5rem;
@@ -120,13 +89,21 @@
 }
 
 .bonus-costs {
+    font-size: .7rem;
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
 .bonus-costs li {
-    padding: .25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-width: .1rem;
+    border-style: solid;
+    border-radius: 50%;
 }
 
 .buyable {
