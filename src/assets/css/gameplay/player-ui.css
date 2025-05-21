@@ -156,7 +156,7 @@
     color: black;
 }
 
-.current-player .opponent-frame-container, .user-info-flexcontainer .current-player {
+.current-player #own-username, .current-player .own-player-card {
     background-color: var(--dark-beige);
 }
 
