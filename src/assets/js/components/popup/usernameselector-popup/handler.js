@@ -10,8 +10,8 @@ function handleClosePopup(e){
  hideUserNamePopup();
 }
 
-function closePopupButton(){
- document.querySelector("#close-popup").addEventListener("click", (handleClosePopup));
+function closePopupButton() {
+ document.querySelector("#close-popup").addEventListener("click", handleClosePopup);
 }
 export {renderPopup}
 
