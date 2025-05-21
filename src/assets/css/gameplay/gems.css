@@ -121,7 +121,7 @@
 }
 
 .onyx, .emerald, .ruby, .sapphire {
-    color: white;
+    color: var(--main-white-color);
 }
 
 .gold path {
