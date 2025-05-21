@@ -9,17 +9,11 @@
     gap: 1rem;
 }
 
-.development-cards {
-    display: flex;
-    justify-content: space-between;
-    align-self: stretch;
-    gap: 1rem;
-}
-
 .deck, .development-card, .noble-article {
 
-    background-color: grey;
+    background-color: var(--offwhite);
     overflow: hidden;
+    border-radius: 0.5rem;
 }
 
 .deck, .development-card {
@@ -29,13 +23,15 @@
 
 .deck {
     display: grid;
+    background-size: 100%;
+    justify-content: right;
+    color: var(--main-white-color);
+    align-content: flex-start;
+    padding-right: 0.3rem;
 }
 
 .deck h2 {
     font-size: 1.5rem;
-    align-self: center;
-    justify-self: center;
-    text-align: center;
 }
 
 .development-card {
@@ -56,14 +52,17 @@
 
 .level-3 {
     grid-row-start: 2;
+    background-image: url("../../../images/background-images/level-3.png");
 }
 
 .level-2 {
     grid-row-start: 3;
+    background-image: url("../../../images/background-images/level-2.png");
 }
 
 .level-1 {
     grid-row-start: 4;
+    background-image: url("../../../images/background-images/level-1.png");
 }
 
 .bonus {
@@ -85,6 +84,11 @@
     border-radius: 50%;
 }
 
+.card-amount-left{
+    font-size: 1rem;
+    justify-self: right;
+    color: var(--main-white-color);
+}
 .emerald {
     background-color: limegreen;
 }
