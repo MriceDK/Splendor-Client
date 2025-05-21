@@ -46,6 +46,16 @@
     font-size: .7rem;
 }
 
+.selected-tokens svg {
+    width: 1.134rem;
+    height: 1.89rem;
+}
+
+.selected-tokens .gem.clickable {
+    border: none;
+    background-color: transparent;
+}
+
 .gem {
     width: max-content;
     display: grid;
@@ -123,11 +133,11 @@
     stroke: var(--gold-token-color-border);
 }
 
-.disabled path {
+.token-bank .disabled path {
     fill: #f1f1f1;
     stroke: #dcdcdc;
 }
 
-.disabled .gem-value {
+.token-bank .disabled .gem-value {
     color: #d6d6d6;
 }
