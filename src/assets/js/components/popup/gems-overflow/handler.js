@@ -1,20 +1,21 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
-import {renderTooManyGemsPopUp} from "./renderer.js";
+import {showPopupContainer, uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
+import {renderTooManyGemsPopUp} from "./renderer";
 import {displayGame} from "../../../game.js";
-import {closePopUp} from "../confirmation-popup/renderer";
 
 const MAX_TOKENS = 10;
 
+function loadUpFormWithTokensLoaded() {
+
+}
+
 function returnTooManyTokens(currentPlayer) {
     const tokens = countTotalTokens(currentPlayer.tokens);
-    renderTooManyGemsPopUp(currentPlayer.tokens);
+    showPopupContainer();
+    loadUpFormWithTokensLoaded();
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     $form.classList.add("active");
-    if ($form.classList.contains("active")) {
-        formGemChecker(currentPlayer);
-    }
 
     if (countTotalTokens(tokens) === MAX_TOKENS) {
         updateTokensAfterTooMany().then(() => {
@@ -31,8 +32,8 @@ function returnTooManyTokens(currentPlayer) {
 }
 
 function checkTooManyTokens(gameState, currentPlayer) {
-    if (gameState === "RETURN_GEMS" && countTotalTokens(currentPlayer.tokens) > MAX_TOKENS) {
-        triggerTooMuchGemsPopup(currentPlayer);
+    if (gameState === "RETURN_GEMS"){
+        returnTooManyTokens(currentPlayer);
 
     }
 
@@ -49,34 +50,47 @@ function countTotalTokens(allTokens) {
     return tokensOfPlayer;
 }
 
-function triggerTooMuchGemsPopup(player) {
-    renderTooManyGemsPopUp();
+function checkTooMuchTokensHelp(player) {
+    const tokensOfPlayer = countTotalTokens(player.tokens);
+    if (tokensOfPlayer > MAX_TOKENS) {
+        renderTooManyGemsPopUp(player.tokens);
+        formGemChecker(player);
+    }
+}
+
+function formGemChecker(player) {
+    const gemsCount = counTokens();
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     $form.classList.add("active");
-    const $submitButton = document.querySelector("#gem-remover-button");
-    const interval = setInterval(() => {
-        const totalSelected = countTokensFromForm();
-        $submitButton.disabled = totalSelected !== MAX_TOKENS;
-    }, 500)
-    document.querySelector("#gem-remover-button").disabled = false;
-    $form.addEventListener("submit", e => {
-        e.preventDefault();
-        const gameId = LocalStorageAbstractor.loadFromStorage("gameId");
-
-        if (countTokensFromForm() === MAX_TOKENS) {
-            updateTokensAfterTooMany(gameId, player).then( () => {
-                clearInterval(interval);
-                closePopUp($form);
+    if (gemsCount > MAX_TOKENS) {
+        document.querySelector("#gem-remover-button").disabled = true;
+    } else {
+        document.querySelector("#gem-remover-button").disabled = false;
+        $form.addEventListener("submit", e => {
+            e.preventDefault();
+            updateTokensAfterTooMany(LocalStorageAbstractor.loadFromStorage("gameId"), player).then(() => {
+                document.querySelector("#too-many-gems-pop-up-form").remove();
+            }).then(() => {
                 displayGame();
+                $form.remove();
+                $form.classList.remove("active");
             });
-        }
-    });
+        });
+    }
+    if ($form.classList.contains("active")) {
+        setTimeout(() => formGemChecker(player), 1000);
+    }
 }
 
-function countTokensFromForm() {
-    const inputs = document.querySelectorAll(".gem-remover-input");
-    return Array.from(inputs).reduce((sum, input) => sum + parseInt(input.value || 0), 0);
+function counTokens() {
+    const allGems = document.querySelectorAll(".gem-remover-input");
+    let count = 0;
+    allGems.forEach(gem => {
+        count += parseInt(gem.value);
+    });
+    return count;
 }
+
 
 function updateTokensAfterTooMany(gameId, player) {
     const tokensToReturn = getDiffTokensObject(player.tokens);
@@ -89,7 +103,7 @@ function getDiffTokensObject(tokens) {
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
     $tokensForm.forEach(token => {
         const tokenName = uppercaseFirstLetterOfWord(token.getAttribute("name"));
-        returnObject[tokenName] = tokens[tokenName] - parseInt(token.value || 0);
+        returnObject[tokenName] = tokens[tokenName] - parseInt(token.value);
     });
     return returnObject;
 }
@@ -110,4 +124,4 @@ function returnTokensBody(tokensToReturn) {
     };
 }
 
-export {checkTooManyTokens, updateTokensAfterTooMany, returnTooManyTokens};
+export {checkTooManyTokens, updateTokensAfterTooMany};
