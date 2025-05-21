@@ -99,8 +99,8 @@
 .nobles-container .noble-article {
     background-color: var(--main-bg-color); /* Adjust color */
     font-size: .75rem;
-    width: 6rem; /*8*/
-    height: 3.375rem; /*4.5*/
+    width: 6rem;
+    height: 3.375rem;
 }
 
 .nobles-container .empty, .own-reserved-cards .empty {

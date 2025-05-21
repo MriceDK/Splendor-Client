@@ -23,13 +23,13 @@
 }
 
 .deck, .development-card {
-    width: 7.5rem; /*8*/
-    height: 10.3125rem; /*11*/
+    width: 7.5rem;
+    height: 10.3125rem;
 }
 
 .own-reserved-cards .development-card {
-    width: 6rem; /*8*/
-    height: 8.25rem; /*11*/
+    width: 6rem;
+    height: 8.25rem;
 }
 
 .own-reseved-cards .prestige-point {
