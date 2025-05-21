@@ -10,9 +10,10 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-import {returnTooManyTokens} from "./components/popup/gems-overflow/handler.js";
-import { handleGemOverflow } from "./components/popup/gems-overflow/handler.js";
-import {getCurrentPlayer} from "./helper/utils";
+//import {returnTooManyTokens} from "./components/popup/gems-overflow/handler.js";
+//import { handleGemOverflow } from "./components/popup/gems-overflow/handler.js";
+//import {getCurrentPlayer} from "./helper/utils";
+import {showReturnTokensPopup} from "./components/popup/gems-overflow/renderer.js";
 
 //import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 let buyableDevCards = [];

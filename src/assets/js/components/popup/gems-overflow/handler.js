@@ -1,19 +1,15 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {showPopupContainer, uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
-import {renderTooManyGemsPopUp} from "./renderer";
+import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
+import {showReturnTokensPopup} from "./renderer.js";
 import {displayGame} from "../../../game.js";
 
 const MAX_TOKENS = 10;
 
-function loadUpFormWithTokensLoaded() {
-
-}
-
-function returnTooManyTokens(currentPlayer) {
+export function returnTooManyTokens(currentPlayer) {
     const tokens = counTokens();
-    showPopupContainer();
-    loadUpFormWithTokensLoaded();
+    showReturnTokensPopup();
+    formGemChecker();
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     $form.classList.add("active");
 
