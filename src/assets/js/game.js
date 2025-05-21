@@ -10,6 +10,7 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
+import {renderLastRoundNotification} from "./components/popup/last-round-notification/renderer.js";
 
 // import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
 let buyableDevCards = [];
@@ -32,7 +33,7 @@ function displayGame() {
                 setTimeout(displayGame, 1000);
             }
         });
-
+    renderLastRoundNotification()
 }
 
  displayGame();

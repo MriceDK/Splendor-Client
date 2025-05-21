@@ -15,11 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/gameplay/settings-screen.css">
+    <link rel="stylesheet" href="assets/css/gameplay/last-round-notification.css">
 
     <script src="assets/js/components/popup/confirmation-popup/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
     <script src="assets/js/components/popup/settings-popup/init.js" type="module"></script>
-    <link rel="stylesheet" href="assets/css/gameplay/settings-screen.css">
+
 </head>
 <body>
 <div class="popup-container hidden">
@@ -148,6 +150,12 @@
                     <dl></dl>
                 </form>
 
+            </div>
+        </template>
+        <template id="last-round-notification-template">
+            <div class="popup-notification">
+                <h3 class="title-popup">Last round</h3>
+                <p class="last-round-text"></p>
             </div>
         </template>
         <template id="end-of-game-template">
