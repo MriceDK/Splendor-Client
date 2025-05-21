@@ -12,6 +12,10 @@
     height: 7.35rem;
 }
 
+.token-bank .gem.clickable {
+    border: none;
+}
+
 .own-inventory svg {
     width: 2.7rem;
     height: 4.5rem;
@@ -117,4 +121,13 @@
 .gold path {
     fill: var(--gold-token-color);
     stroke: var(--gold-token-color-border);
+}
+
+.disabled path {
+    fill: #f1f1f1;
+    stroke: #dcdcdc;
+}
+
+.disabled .gem-value {
+    color: #d6d6d6;
 }

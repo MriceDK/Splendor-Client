@@ -53,6 +53,19 @@ function enableOrDisableBank(playerName) {
 }
 
 function setDisable(boolean) {
+    const $tokenListItems = document.querySelectorAll(".token-bank .gem");
+
+    $tokenListItems.forEach($tokenListItem => {
+        if (!$tokenListItem.classList.contains("gold")) {
+            if (boolean) {
+                $tokenListItem.classList.remove("clickable");
+                $tokenListItem.classList.add("disabled");
+            } else {
+                $tokenListItem.classList.add("clickable");
+                $tokenListItem.classList.remove("disabled");
+            }
+        }
+    })
     document.querySelector(".token-bank .ruby").disabled = boolean;
     document.querySelector(".token-bank .emerald").disabled = boolean;
     document.querySelector(".token-bank .onyx").disabled = boolean;
@@ -73,6 +86,7 @@ function removeTokenBorders() {
     const $tokenBanks = document.querySelectorAll(".token-bank li");
     $tokenBanks.forEach($tokenBank => {
         $tokenBank.classList.remove("clickable");
+        $tokenBank.classList.remove("disabled");
     });
 }
 
@@ -89,20 +103,20 @@ function setTokenValue(token, amount) {
     document.querySelector(`.token-bank .gem.${token.toLowerCase()} .gem-value`).innerText = amount;
 }
 
-function getChosenTokenColour(e) {
-    let $tag = e.target.closest(".gem");
+function getChosenTokenColour($tokenFromBank) {
 
-    if ($tag.classList.contains("ruby")) {
+    if ($tokenFromBank.classList.contains("ruby")) {
         showChosenBankToken("Ruby");
-    } else if ($tag.classList.contains("emerald")) {
+    } else if ($tokenFromBank.classList.contains("emerald")) {
         showChosenBankToken("Emerald");
-    } else if ($tag.classList.contains("onyx")) {
+    } else if ($tokenFromBank.classList.contains("onyx")) {
         showChosenBankToken("Onyx");
-    } else if ($tag.classList.contains("sapphire")) {
+    } else if ($tokenFromBank.classList.contains("sapphire")) {
         showChosenBankToken("Sapphire");
-    } else if ($tag.classList.contains("diamond")) {
+    } else if ($tokenFromBank.classList.contains("diamond")) {
         showChosenBankToken("Diamond");
     }
+
 }
 
 function showChosenBankToken(gem) {
@@ -119,11 +133,11 @@ function showChosenBankToken(gem) {
 function enableOrDisableToken(token) {
     const $tokenButton = document.querySelector(`.token-bank .gem.${token.toLowerCase()}`);
     if (isLegalToken(token)) {
-        $tokenButton.disabled = false;
         $tokenButton.classList.add("clickable");
+        $tokenButton.classList.remove("disabled");
     } else {
-        $tokenButton.disabled = true;
         $tokenButton.classList.remove("clickable");
+        $tokenButton.classList.add("disabled");
     }
 }
 

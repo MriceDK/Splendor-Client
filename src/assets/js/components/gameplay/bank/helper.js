@@ -1,6 +1,8 @@
 import * as render from "./renderer.js";
+import {currentBankTokens} from "./renderer.js";
 
 function isLegalToken(token) {
+    console.log(currentBankTokens);
     const numberOfChosenTokens = document.querySelectorAll(".selected-tokens button").length;
 
     if (render.currentBankTokens[token] !== 0) {

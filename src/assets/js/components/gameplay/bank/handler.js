@@ -27,9 +27,14 @@ function closeBank() {
 }
 
 function chooseBankToken(e) {
-    renderer.getChosenTokenColour(e);
-    checkConfirmButton();
-    checkAllowedTokens();
+    let $tokenFromBank = e.target.closest(".gem");
+
+    if ($tokenFromBank.classList.contains("clickable")) {
+        renderer.getChosenTokenColour($tokenFromBank);
+        checkConfirmButton();
+        checkAllowedTokens();
+    }
+
 }
 
 function removeChosenBankToken(e) {
