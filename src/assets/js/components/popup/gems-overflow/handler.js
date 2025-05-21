@@ -3,7 +3,7 @@ import * as LocalStorageAbstractor from "../../../data-connector/local-storage-a
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {renderTooManyGemsPopUp} from "./renderer.js";
 import {displayGame} from "../../../game.js";
-import {closePopUp} from "../confirmation-popup/renderer.js";
+import {closePopUp} from "../confirmation-popup/renderer";
 
 const MAX_TOKENS = 10;
 
@@ -41,9 +41,6 @@ function checkTooManyTokens(gameState, currentPlayer) {
 
 
 function countTotalTokens(allTokens) {
-    if (!allTokens || typeof allTokens !== "object") {
-        return 0;
-    }
     let tokensOfPlayer = 0;
 
     Object.entries(allTokens).forEach(([_, value]) => {
@@ -88,9 +85,6 @@ function updateTokensAfterTooMany(gameId, player) {
 }
 
 function getDiffTokensObject(tokens) {
-    if (!tokens){
-        return;
-    }
     const returnObject = {};
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
     $tokensForm.forEach(token => {
