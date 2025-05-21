@@ -44,24 +44,3 @@
     border-radius: 0.5rem;
     font-size: 1.25rem;
 }
-
-/* TODO selected fixen */
-.bank-flexcontainer .selected-tokens .selected-ruby-token{
-    background-color: orangered;
-}
-
-.bank-flexcontainer .selected-tokens .selected-emerald-token{
-    background-color: limegreen;
-}
-
-.bank-flexcontainer .selected-tokens .selected-onyx-token{
-    background-color: #8d6830;
-}
-
-.bank-flexcontainer .selected-tokens .selected-sapphire-token{
-    background-color: dodgerblue;
-}
-
-.bank-flexcontainer .selected-tokens .selected-diamond-token{
-    background-color: white;
-}
