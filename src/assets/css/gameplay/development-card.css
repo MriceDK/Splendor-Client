@@ -89,13 +89,25 @@
 }
 
 .bonus-costs {
+    font-size: .7rem;
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
 .bonus-costs li {
-    padding: .25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-width: .1rem;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+.bonus-costs li span {
+
 }
 
 .buyable {

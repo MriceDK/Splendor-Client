@@ -79,7 +79,7 @@
     stroke: var(--ruby-token-color-border);
 }
 
-.card.ruby {
+.card.ruby, .bonus-cost.ruby {
     background-color: var(--ruby-token-color);
     border-color: var(--ruby-token-color-border);
 }
@@ -89,7 +89,7 @@
     stroke: var(--sapphire-token-color-border);
 }
 
-.card.sapphire {
+.card.sapphire, .bonus-cost.sapphire {
     background-color: var(--sapphire-token-color);
     border-color: var(--sapphire-token-color-border);
 }
@@ -99,7 +99,7 @@
     stroke: var(--emerald-token-color-border);
 }
 
-.card.emerald {
+.card.emerald, .bonus-cost.emerald {
     background-color: var(--emerald-token-color);
     border-color: var(--emerald-token-color-border);
 }
@@ -109,7 +109,7 @@
     stroke: var(--diamond-token-color-border);
 }
 
-.card.diamond {
+.card.diamond, .bonus-cost.diamond {
     background-color: var(--diamond-token-color);
     border-color: var(--diamond-token-color-border);
 }
@@ -119,7 +119,7 @@
     stroke: var(--onyx-token-color-border);
 }
 
-.card.onyx {
+.card.onyx, .bonus-cost.onyx {
     background-color: var(--onyx-token-color);
     border-color: var(--onyx-token-color-border);
 }
