@@ -168,7 +168,7 @@ body{
     box-sizing: border-box;
 }
 
-#closePopup{
+#close-popup{
     display: flex;
     text-decoration: none;
     justify-content: flex-end;
@@ -178,6 +178,11 @@ body{
 
 #playername-changer label{
     font-family: "Saira stencil one", Arial, serif;
+}
+
+.error-username-selector{
+    font-size: 1.5rem;
+    color: var(--main-red-color);
 }
 
 /*end region*/
