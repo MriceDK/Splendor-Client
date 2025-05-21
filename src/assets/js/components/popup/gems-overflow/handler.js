@@ -6,25 +6,12 @@ import {displayGame} from "../../../game.js";
 
 const MAX_TOKENS = 10;
 
-function loadUpFormWithTokensLoaded() {
-
-}
-
 function returnTooManyTokens(currentPlayer) {
     const tokens = counTokens();
     showPopupContainer();
     loadUpFormWithTokensLoaded();
-    const $form = document.querySelector("#too-many-gems-pop-up-form");
-    $form.classList.add("active");
-
     if (countTotalTokens(tokens) === MAX_TOKENS) {
-        updateTokensAfterTooMany().then(() => {
-            document.querySelector("#too-many-gems-pop-up-form").remove();
-        }).then(() => {
-            displayGame();
-            $form.remove();
-            $form.classList.remove("active");
-        });
+        updateTokensAfterTooMany();
     }
 
 
