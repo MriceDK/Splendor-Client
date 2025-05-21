@@ -10,14 +10,14 @@ body{
 
 main {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 0.75fr 2fr 0.75fr;
     grid-template-rows: 5% 1fr 1.75fr auto;
     height: 100vh;
     width: 100vw;
     grid-template-areas:    "username market header"
                             "username market info"
                             "username market bank"
-                            ". user-info history";
+                            "user-info user-info history";
 }
 
 header {
@@ -40,6 +40,8 @@ header {
 .user-info-flexcontainer {
     grid-area: user-info;
     align-self: end;
+    width: min-content;
+    justify-self: end;
 }
 
 .history {
