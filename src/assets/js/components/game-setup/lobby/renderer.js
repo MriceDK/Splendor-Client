@@ -14,9 +14,9 @@ function lobbyName(lobbyNameString) {
 
     if (lobbyNameString === null || lobbyNameString === "") {
 
-        $titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName")}'s lobby`;
+        $titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName").charAt(0).toUpperCase() + storageAbstractor.loadFromStorage("playerName").slice(1).toLowerCase()}'s lobby`;
     } else {
-        $titleElement.innerHTML = lobbyNameString;
+        $titleElement.innerHTML = lobbyNameString.charAt(0).toUpperCase() + lobbyNameString.slice(1).toLowerCase();
     }
 }
 
