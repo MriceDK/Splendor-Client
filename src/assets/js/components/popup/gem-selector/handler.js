@@ -20,7 +20,6 @@ function immediateNobleCheckAfterBuy(){
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
-    console.log("buy");
 
     const $form = document.querySelector("#token-selector-form");
 
