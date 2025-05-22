@@ -1,6 +1,6 @@
 import {loadFromStorage, saveToStorage} from "../../../data-connector/local-storage-abstractor.js";
 import {createLobby as createLobby1} from "../../../api/game-setup-api.js";
-import {validNameForcer} from "../lobby-overview/handler.js";
+import {validNameForcer} from "../../../helper/utils.js";
 
 function createLobby(e) {
     e.preventDefault();
@@ -10,9 +10,12 @@ function createLobby(e) {
 
     const lobbyName = document.querySelector("#lobby-name").value;
     const playerAmount = document.querySelector(".radio-option input:checked").value;
-    const playername = validNameForcer(loadFromStorage("playerName"));
+    const originalPlayerName = validNameForcer(loadFromStorage("playerName"));
+    saveToStorage("playerName", originalPlayerName);
 
-    const body = createBody(lobbyName, playerAmount, playername);
+    const playerName = loadFromStorage("playerName");
+
+    const body = createBody(lobbyName, playerAmount, playerName);
 
     createLobby1(body)
         .then(res => {
@@ -23,17 +26,17 @@ function createLobby(e) {
         });
 }
 
-function createBody(lobbyName, playerAmount, playername) {
+function createBody(lobbyName, playerAmount, playerName) {
 
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
-        "playerName": playername
+        "playerName": playerName
     };
 
     if (!(lobbyName === "" || lobbyName == null)) {
         body.gameName = lobbyName;
     } else {
-        body.gameName = playername + "'s lobby";
+        body.gameName = playerName + "'s lobby";
     }
 
     return body;

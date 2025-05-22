@@ -2,6 +2,7 @@ import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
+import {validNameForcer} from "../../../helper/utils.js";
 
 
 
@@ -103,7 +104,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
 
     })
     .catch(() => {
-        errorHandler.handleError;
+        errorHandler.handleError();
 
         numberToAddNameUniqueness++;
         uniqueNameForcer(numberToAddNameUniqueness);
@@ -123,12 +124,6 @@ function uniqueNameForcer(n){
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
-function validNameForcer(name){
-    const output = name.split(" ").join("");
-    console.log(output);
-    return output;
-}
-
 function joinLobbyHelp(res){
 
     localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
@@ -137,4 +132,4 @@ function joinLobbyHelp(res){
 
 }
 
-export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation, validNameForcer};
+export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
