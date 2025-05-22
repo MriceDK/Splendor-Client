@@ -39,6 +39,7 @@
     align-items: center;
     font-weight: bold;
     font-size: 0.8rem;
+    border-radius: 20%
 }
 
 .deck {
