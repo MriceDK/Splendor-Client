@@ -1,9 +1,11 @@
 import * as renderer from "./renderer.js";
 import * as api from "../../../api/gameplay-api.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
-// import {checkTooManyTokens} from "../own-player/gems-overflow/handler.js";
+
 import {renderOwnTokenValue} from "../own-player/renderer.js";
 import {displayGame} from "../../../game.js";
+import {immediateTokenCheckAfterTokenUpdate} from "../../popup/too-much-gems-popup/handler.js";
+import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function hookUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", openBank);
@@ -59,8 +61,6 @@ function collectTokens() {
     };
 
     api.updateTokens(gameId, playerName, tokenData).then(res => {
-        // checkTooManyTokens(tokens);
-        // TODO: Fix this implementation of the checkTooMuchGems function
 
         Object.entries(res.tokens).forEach((token) => {
             renderOwnTokenValue(token);

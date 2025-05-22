@@ -10,15 +10,15 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-
-// import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
+import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
+import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
 let buyableDevCards = [];
 
 function displayGame() {
     getGameInfo()
         .then(res => {
             handleGameOver(res.winner);
-            ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
+            ownPlayerCardRenderer(res);
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderTokenBank(res);
@@ -26,8 +26,7 @@ function displayGame() {
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
-            // checkTooMuchGems(res.players, res.currentPlayer);
-            // TODO: ask how to implement this function
+            immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
