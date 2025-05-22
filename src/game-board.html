@@ -178,7 +178,7 @@
         <template id="end-of-game-template">
             <div class="popup">
                 <h3 class="title-popup">Game Over</h3>
-                <p class="winner-text">The winner was: <span class="winnner"></span></p>
+                <p class="winner-text">The winner is: <span class="winnner"></span></p>
                 <button type="button" class="return-to-main-menu-button button-style-popup button-style">Return to main menu</button>
             </div>
         </template>
@@ -198,7 +198,10 @@
                 <div class="opponent">
                     <div class="opponent-frame-container">
                         <div class="opponent-player-info">
-                            <p class="player"></p>
+                            <div class="player-name-container">
+                                <img src="./images/user-logo.png" class="profile-picture" alt="player logo">
+                                <p class="player"></p>
+                            </div>
                             <div class="points">
                                 <p class="points-text"></p>
                                 <span class="min-points-to-win">/15</span>
@@ -388,8 +391,10 @@
         </div>
     </section>
     <div class="user-info-flexcontainer">
-        <h2 id="own-username">Username</h2>
-        <div id="own-player-card" class="own-player-card">
+        <div class="own-user-info">
+            <img src="./images/user-logo.png" alt="User profile" class="profile-picture">
+            <h2 id="own-username">Username</h2>
+        </div>        <div id="own-player-card" class="own-player-card">
             <div class="container-1">
                 <div id="own-prestige-points" class="own-prestige-points">
                     <p></p>
