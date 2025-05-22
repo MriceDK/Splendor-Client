@@ -32,7 +32,7 @@ function elementIsInArray(array, element) {
     return false;
 }
 
-export function validNameForcer(name){
+function validNameForcer(name){
     const output = name.split(" ").join("");
     console.log(output);
     return output;
