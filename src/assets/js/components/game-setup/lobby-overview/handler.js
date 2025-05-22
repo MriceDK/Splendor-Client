@@ -118,8 +118,15 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
 function uniqueNameForcer(n){
 
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    const newPlayerName = `${playerName}${n}`;
+    const correctedPlayerName = validNameForcer(playerName);
+    const newPlayerName = `${correctedPlayerName}${n}`;
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
+}
+
+function validNameForcer(name){
+    const output = name.split(" ").join("");
+    console.log(output);
+    return output;
 }
 
 function joinLobbyHelp(res){
@@ -130,4 +137,4 @@ function joinLobbyHelp(res){
 
 }
 
-export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
+export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation, validNameForcer};
