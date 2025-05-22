@@ -4,7 +4,6 @@ import * as API from "../../../api/gameplay-api.js";
 
 import {getCurrentPlayer} from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
-// import {checkTooManyTokens} from "../own-player/too-much-gems-popup/handler.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {nobleCheck} from "../../gameplay/market/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
