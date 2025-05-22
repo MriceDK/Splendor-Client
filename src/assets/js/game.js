@@ -11,6 +11,9 @@ import {getListOfBuyableCards} from "./components/gameplay/development-card/help
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
+import {
+    hookUpEventListenersOnCards
+} from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
 let buyableDevCards = [];
 
 function displayGame() {
@@ -27,6 +30,7 @@ function displayGame() {
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
             setUpEventlisteners();
+            hookUpEventListenersOnCards()
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
