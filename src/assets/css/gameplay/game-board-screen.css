@@ -18,6 +18,7 @@ main {
                             "username market info"
                             "username market bank"
                             ". user-info history";
+    gap: 0.5rem;
 }
 
 header {

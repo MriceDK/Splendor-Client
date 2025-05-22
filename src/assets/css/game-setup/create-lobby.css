@@ -37,15 +37,6 @@ h1{
     margin-top: 3rem;
 }
 
-.submit {
-    padding: 1rem 2rem;
-    border: none;
-    background-color: grey;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 .disabled {
     opacity: 50%
 }
@@ -75,17 +66,7 @@ nav a {
     font-size: 2rem;
     margin-left: 1rem;
 }
-input[type="text"] {
-    width: 20rem;
-    border-radius: 0.5rem;
-    border: 0.063rem solid var(--main-black-color);
-    font-size: 2rem;
-}
 
-input[type="text"]:focus {
-    outline: none;
-    border: 0.125rem solid var(--clickable-color);
-}
 
 label {
     margin-right: .5rem;
