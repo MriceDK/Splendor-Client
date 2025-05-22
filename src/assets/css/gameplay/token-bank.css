@@ -21,6 +21,7 @@
     display: flex;
     justify-content: center;
     gap: .5rem;
+    margin-top: 0.5rem;
 }
 
 .bank-flexcontainer .selected-tokens button{
