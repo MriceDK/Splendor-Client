@@ -20,7 +20,6 @@ let buyableDevCards = [];
 function displayGame() {
     getGameInfo()
         .then(res => {
-            console.log(res);
             handleGameOver(res.winner);
             ownPlayerCardRenderer(res);
             renderOpponentsStats(res.players);
