@@ -23,8 +23,17 @@
 }
 
 .deck, .development-card {
-    width: 8rem;
-    height: 11rem;
+    width: 7.5rem;
+    height: 10.3125rem;
+}
+
+.own-reserved-cards .development-card {
+    width: 6rem;
+    height: 8.25rem;
+}
+
+.own-reseved-cards .prestige-point {
+    padding-bottom: 0.5rem;
 }
 
 .deck {
@@ -41,17 +50,13 @@
 .development-card {
     display: grid;
     grid-template-columns: 2rem auto 2rem;
-    grid-template-rows: 2rem auto;
+    grid-template-rows: 1.5rem auto;
     padding: .5rem;
     background-size: 100%
 }
 
 .development-card-title {
     grid-column-start: 2;
-}
-
-.prestige-point {
-    grid-row-start: 1;
 }
 
 .level-3 {
@@ -77,6 +82,7 @@
     flex-direction: column;
     justify-self: flex-start;
     align-self: flex-end;
+    font-size: x-small;
 }
 
 .gem-cost {
@@ -85,48 +91,22 @@
     border-radius: 50%;
 }
 
-.emerald {
-    background-color: limegreen;
-}
-
-.ruby {
-    background-color: orangered;
-}
-
-.sapphire {
-    background-color: dodgerblue;
-}
-
-.diamond {
-    background-color: white;
-}
-
-.onyx {
-    background: #8d6830;
-    color: white;
-}
-
-.gold {
-    background: #ffc600;
-}
-
-.noble-article {
-    width: 8rem;
-    height: 4.5rem;
-    padding: .5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .bonus-costs {
+    font-size: .7rem;
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
 .bonus-costs li {
-    padding: .25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-width: .1rem;
+    border-style: solid;
+    border-radius: 50%;
 }
 
 .buyable {

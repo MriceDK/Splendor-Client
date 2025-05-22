@@ -1,18 +1,28 @@
+.opponents-info{
+    color: var(--black);
+}
+
+.opponents-info h2{
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.75rem;
+}
+
 .opponent{
-    margin-bottom: 1rem;
-    display: flex;
     justify-content: start;
     align-items: start;
     gap: .5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.75rem;
 }
 
 .opponent-frame-container {
-    border: solid var(--main-grey-color);
-    background-color: var(--main-grey-color);
+    background-color: var(--main-white-color);
     padding: .5rem;
     display: flex;
     flex-direction: column;
     width: min-content;
+    border-radius: .5rem;
 }
 
 .inventory-collection {
@@ -36,38 +46,25 @@
     font-size: 0.75rem;
     border: 0.1rem solid var(--main-black-color);
     color: var(--main-black-color);
-    margin-top: 0.5rem;
 }
 
 .card {
-    width: 0.75rem;
+    width: 1rem;
     height: 1rem;
+    border-radius: 50%;
     position: absolute;
-    top: -0.25rem;
-    right: -0.25rem;
+    top: 0;
+    right: 4%;
     font-size: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0.1rem solid var(--main-black-color);
-    color: var(--main-black-color);
-    margin-top: 0.5rem;
-}
-
-.opponent-frame-container .points {
-    margin-top: .5rem;
-}
-
-.own-purse>p{
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0.5rem;
+    border: 0.1rem solid;
 }
 
 .own-inventory {
     position: relative;
     display: inline-block;
-    margin: 0.25rem;
 }
 
 .own-inventory .gems {
@@ -77,18 +74,17 @@
 }
 
 .own-inventory .card {
-    width: 1.5rem;
-    height: 2rem;
-    font-size: 1.25rem;
-    top: -0.75rem;
-    right: -0.625rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: .7rem;
 }
 
 .nobles-container {
     display: flex;
     justify-content: left;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: .25rem;
 }
 
 .nobles-container.wrap {
@@ -104,58 +100,105 @@
     background-color: var(--main-bg-color); /* Adjust color */
     font-size: .75rem;
     width: 6rem;
-    height: 4rem;
+    height: 3.375rem;
 }
 
 .nobles-container .empty, .own-reserved-cards .empty {
     background-color: transparent;
-    border: .0625rem solid var(--main-bg-color);
+    border: .0625rem solid var(--main-black-color);
+    border-radius: .5rem;
 }
 
 .reserved-label {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-}
-
-.reserved-label:before{
-    display: inline-block;
-    content: "";
-    min-width: 1rem;
-    min-height: 1.5rem;
-    background-color: grey;
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
 }
 
 .hidden{
     display: none;
 }
 
-.red {
-    background-color: orangered;
-    color: black;
-}
-.green {
-    background: lime;
-    color: black;
-}
-.blue {
-    background: dodgerblue;
-    color: white;
-}
-.white {
-    background: var(--main-white-color);
-    color: black; }
-.black {
-    background: #8d6830;
-    color: white; }
-.yellow {
-    background: #ffc600;
-    color: black; }
-
-.current-player .opponent-frame-container, .current-player {
-    border: solid hotpink;
+.current-player #own-username, .current-player .own-player-card, .current-player .opponent-frame-container {
+    background-color: var(--dark-beige);
 }
 
 .opponent.current-player {
     border: none;
+}
+
+.opponent-player-info, #own-prestige-points {
+    font-size: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#own-prestige-points {
+    font-size: 1.75rem;
+    display: flex;
+    justify-content: center;
+}
+
+.min-points-to-win {
+    font-size: 0.75rem;
+    align-self: end;
+}
+
+.opponent-player-info .player, #own-username {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#own-username {
+    background-color: var(--main-white-color);
+    font-size: 2.25rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-top: 0.25rem;
+    width: fit-content;
+    max-width: 22rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.opponent-player-info .player {
+    max-width: 11.25rem;
+}
+
+.opponent-player-info .points {
+    display: flex;<
+}
+
+.opponent-player-info .points-text {
+    margin-left: 1rem;
+}
+
+.points-bar-container {
+    content: "";
+    width: 100%;
+    background-color: var(--lighter-green);
+    margin-top: 0.25rem;
+    margin-bottom: 0.2rem;
+    clip-path: polygon(
+            10% 0%,
+            90% 0%,
+            100% 50%,
+            90% 100%,
+            10% 100%,
+            0% 50%
+    ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
+}
+
+.points-bar-container .points-bar {
+    content: "";
+    height: 0.9rem;
+    width: 40%;
+    background-color: var(--dark-green);
+    clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            100% 50%,
+            100% 100%,
+            0% 100%,
+            0% 0%
+    ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }

@@ -14,13 +14,11 @@ function convertToKebabCase(string){
 }
 
 function getCurrentPlayer(players, currentPlayer){
-    players.forEach(player => {
-        if (player.name === currentPlayer){
+    for (const player of players) {
+        if (player.name === currentPlayer) {
             return player;
         }
-        
-    });
-
+    }
     return undefined;
  }
 
@@ -28,7 +26,6 @@ function getCurrentPlayer(players, currentPlayer){
 
     for (const item of array) {
         if (item === element) {
-            console.log(`${item} VS ${element}`);
             return true;
         }
     }
