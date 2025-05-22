@@ -40,7 +40,6 @@ header {
 .user-info-flexcontainer {
     grid-area: user-info;
     align-self: end;
-    width: min-content;
     justify-self: end;
 }
 
