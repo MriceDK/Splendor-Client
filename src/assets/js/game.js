@@ -14,6 +14,8 @@ import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-even
 import {
     hookUpEventListenersOnCards
 } from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
+import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
+import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
 let buyableDevCards = [];
 
 function displayGame() {
@@ -32,6 +34,7 @@ function displayGame() {
             hookUpEventListenersOnCards();
             setUpEventlisteners();
             hookUpEventListenersOnCards()
+            immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
