@@ -27,7 +27,6 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
 
     const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
-    console.log($devCard)
     const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
     const $form = document.querySelector("#token-selector-form");
@@ -58,7 +57,7 @@ function putInitalBuyValueInForm(devCardValues) {
         tokenArray.forEach((token) => {
 
             if (input.getAttribute("name") === token){
-                input.setAttribute("value", devCardValues[token]);
+                input.setAttribute("value", calculateNeededDevelopmentCost(devCardValues[token], token));
 
 
             }
@@ -67,6 +66,15 @@ function putInitalBuyValueInForm(devCardValues) {
     });
 }
 
+function calculateNeededDevelopmentCost(devCardValue, token) {
+    const tokenBonus = parseInt(document.querySelector(`.own-inventory .${token} .card-text`).innerHTML);
+
+    if (tokenBonus >= devCardValue) {
+        return 0;
+    }
+
+    return devCardValue - tokenBonus;
+}
 
 function getCostFromDevelopmentCard($devCard){
     const tokenArray = ["ruby", "diamond", "sapphire", "emerald", "onyx"];
