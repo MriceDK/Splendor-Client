@@ -205,6 +205,5 @@ input[type="text"] {
 input[type="text"]:focus {
  outline: none;
  border: 0.125rem solid #e53935;
- /*background: #e53935;*/
  box-shadow: 0 0 0.5rem 0.125rem #ff5252;
 }
