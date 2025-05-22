@@ -26,7 +26,7 @@ function displayGame() {
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
-            immediateTokenCheckAfterTokenUpdate();
+            immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
             // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
