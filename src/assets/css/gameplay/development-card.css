@@ -106,6 +106,7 @@
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    justify-content: center;
 }
 
 .bonus-costs li {
