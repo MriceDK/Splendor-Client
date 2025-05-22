@@ -50,7 +50,7 @@ nav a {
     font-size: 2rem;
     background-color: var(--beige);
     border: solid var(--dark-beige) 0.2rem;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 1rem 0.75rem;
     border-radius: 1rem;
     margin-top: 4rem;
     margin-right: 0.5rem;

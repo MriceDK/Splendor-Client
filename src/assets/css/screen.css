@@ -137,7 +137,7 @@ header img {
 #renderButton:hover{
  transition: ease-in-out 0.1s;
  background-color: var(--brown);
- border: var(--main-black-color) solid;
+ border: var(--main-black-color) solid 0.2rem;
  color: var(--beige);
 }
 
