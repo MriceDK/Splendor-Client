@@ -59,5 +59,36 @@ h3 {
     align-self: center;
     justify-self: center;
 }
+#renderButton{
+    display: flex ;
+    align-items: center;
+    width: fit-content;
+    max-width: 30rem;
+    font-family: "Saira stencil one", Arial, serif;
+    font-size: 2rem;
+    background-color: var(--beige);
+    border: solid var(--dark-beige) 0.2rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 4rem;
+    z-index: 1;
+    text-align: end;
+
+
+}
+#renderButton span{
+    contain: content;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+
+}
+#renderButton:hover{
+    transition: ease-in-out 0.1s;
+    background-color: var(--brown);
+    border: var(--main-black-color) solid;
+    color: var(--beige);
+}
 
 /* Styling for The PlayerName */

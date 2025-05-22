@@ -111,6 +111,7 @@ h1 {
 
 .lobby .lobbyname {
     overflow-x: hidden;
+    overflow-y: hidden;
     text-overflow: ellipsis;
 }
 

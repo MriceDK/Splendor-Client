@@ -42,7 +42,7 @@ nav a {
 
 }
 .playername{
-    display: flex ;
+    display: flex;
     align-items: center;
     width: fit-content;
     max-width: 30rem;
@@ -52,7 +52,7 @@ nav a {
     border: solid var(--dark-beige) 0.2rem;
     padding: 1rem 2rem;
     border-radius: 1rem;
-    margin-top: 3.5rem;
+    margin-top: 4rem;
     margin-right: 0.5rem;
 
 }
