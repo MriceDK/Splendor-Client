@@ -120,7 +120,7 @@ body{
 #token-selector-close-button {
     font-size: 1rem;
     border-radius: 0.5rem;
-    border: none;
+    border: var(--dark-beige) solid;
     cursor: pointer;
     transition: background-color 0.3s ease;
     height: 3rem;
@@ -130,13 +130,14 @@ body{
 }
 
 #token-selector-close-button:hover {
-    background-color: #bbb;
+    background-color: var(--brown);
+    border-color: var(--main-black-color);
 }
 
 #token-selector-form input[type="submit"] {
     font-size: 1rem;
     border-radius: 0.5rem;
-    border: none;
+    border: var(--dark-beige) solid;
     cursor: pointer;
     transition: background-color 0.3s ease;
     height: 3rem;
@@ -148,6 +149,7 @@ body{
 #token-selector-form input[type="submit"]:hover {
     background-color: var(--brown);
     color: var(--beige);
+    border-color: var(--main-black-color);
 }
 
 .popup-token-selector .errormessages p {
