@@ -2,7 +2,7 @@ import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as render from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
-import {validNameForcer} from "../../../helper/utils.js";
+
 
 
 
@@ -100,11 +100,11 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     joinLobby(joinGameId, playerName)
     .then(res => {
+
         joinLobbyHelp(res);
 
     })
     .catch(() => {
-        errorHandler.handleError();
 
         numberToAddNameUniqueness++;
         uniqueNameForcer(numberToAddNameUniqueness);
@@ -119,8 +119,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
 function uniqueNameForcer(n){
 
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    const correctedPlayerName = validNameForcer(playerName);
-    const newPlayerName = `${correctedPlayerName}${n}`;
+    const newPlayerName = `${playerName}${n}`;
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
