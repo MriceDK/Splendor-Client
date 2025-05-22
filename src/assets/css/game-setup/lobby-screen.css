@@ -21,14 +21,13 @@ html, body{
 main{
     display: grid;
     height: 100%;
-    grid-template-rows: 20% 1fr;
+    grid-template-rows: 30% 1fr;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 header{
     grid-column-start: 1;
     grid-column-end: 4;
-    justify-content: space-between;
 }
 
 header img{
@@ -39,15 +38,25 @@ nav a {
     color: var(--main-white-color);
     text-decoration: none;
     font-size: 2rem;
-    margin-left: 1rem;
 }
 .playerName{
     display: flex ;
     align-items: center;
-    margin-right: 1rem;
+    width: fit-content;
+    max-width: 25rem;
     font-family: "Saira stencil one", Arial, serif;
     font-size: 2rem;
+    background-color: var(--beige);
+    border-bottom: solid var(--dark-beige) 0.2rem;
+    border-left: solid var(--dark-beige) 0.2rem;
+    padding: 2rem 2rem 1rem 2rem;
+    border-bottom-left-radius: 1rem;
 
+}
+.playerName p{
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
 }
 
 h1{
@@ -96,6 +105,7 @@ h2{
     grid-row-start: 1;
     align-self: end;
     margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .middle{

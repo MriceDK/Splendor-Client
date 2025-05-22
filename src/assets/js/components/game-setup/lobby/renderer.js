@@ -31,13 +31,11 @@ function renderPlayersLoop(playerArray, data) {
     const $target = document.querySelector(".users");
     $target.innerHTML = $template.outerHTML;
 
-    const nameCounts = {};
-
     playerArray.forEach(user => {
         
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
-        $copy.textContent = user;
+        $copy.textContent = user.charAt(0).toUpperCase() + user.slice(1).toLowerCase();
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
@@ -52,7 +50,7 @@ function started(isStarted) {
 }
 
 function renderOwnPlayerName() {
-    document.querySelector("#playerName").textContent = storageAbstractor.loadFromStorage("playerName");
+    document.querySelector("#playerName").innerHTML = storageAbstractor.loadFromStorage("playerName").charAt(0).toUpperCase() + storageAbstractor.loadFromStorage("playerName").slice(1).toLowerCase();
 }
 
 export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi};
