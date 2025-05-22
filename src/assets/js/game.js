@@ -29,7 +29,7 @@ function displayGame() {
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
-            hookUpEventListenersOnCards()
+            hookUpEventListenersOnCards();
             setUpEventlisteners();
             hookUpEventListenersOnCards()
             if (res.currentPlayer !== loadFromStorage("playerName")) {
