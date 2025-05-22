@@ -4,27 +4,28 @@ import {renderTokenSelectorForm} from "../gem-selector/renderer.js";
 
 function handleClickOnCard(e) {
     document.querySelector(".popup-container").innerHTML = document.querySelector("#popup-templates").outerHTML;
-    // TODO: make the rest of the card clickable
-    if (!e.target.classList.contains("disabled") && !e.target.classList.contains("empty")) {
 
-        if (e.target.classList.contains("reserved")) {
-            const cardName = e.target.dataset.cardName;
+    const $target = e.target.closest("article");
+
+    if (!$target.classList.contains("disabled") && !$target.classList.contains("empty")) {
+
+        if ($target.classList.contains("reserved")) {
+            const cardName = $target.dataset.cardName;
             e.target.classList.add("selected-card");
             render.renderBuyDevelopmentCardPopup(cardName);
 
-        } else if (e.target.classList.contains("deck")) {
-            const cardLevel = parseInt(e.target.dataset.level);
-            e.target.classList.add("selected-card");
+        } else if ($target.classList.contains("deck")) {
+            const cardLevel = parseInt($target.dataset.level);
+            $target.classList.add("selected-card");
             render.renderReserveDevelopmentCardPopup(cardLevel);
 
-        } else if (e.target.classList.contains("development-card")) {
-            const cardName = e.target.dataset.cardName;
-            e.target.classList.add("selected-card");
+        } else if ($target.classList.contains("development-card")) {
+            const cardName = $target.dataset.cardName;
+            $target.classList.add("selected-card");
             render.renderBuyAndReserveDevelopmentCardPopUp(cardName);
         }
 
     }
-
 
 }
 
