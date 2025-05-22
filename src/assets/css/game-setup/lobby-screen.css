@@ -45,12 +45,12 @@ nav a {
     display: flex ;
     align-items: center;
     width: fit-content;
-    max-width: 25rem;
+    max-width: 30rem;
     font-family: "Saira stencil one", Arial, serif;
     font-size: 2rem;
     background-color: var(--beige);
     border: solid var(--dark-beige) 0.2rem;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem 2rem;
     border-radius: 1rem;
     margin-top: 3.5rem;
     margin-right: 0.5rem;

@@ -1,4 +1,5 @@
 import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
+import {upperCaseFirstLetter} from "./handler.js";
 
 function dataListFromApi(data) {
 
@@ -14,7 +15,7 @@ function lobbyName(lobbyNameString) {
 
     if (lobbyNameString === null || lobbyNameString === "") {
 
-        $titleElement.innerHTML = `${storageAbstractor.loadFromStorage("playerName").charAt(0).toUpperCase() + storageAbstractor.loadFromStorage("playerName").slice(1).toLowerCase()}'s lobby`;
+        $titleElement.innerHTML = `${upperCaseFirstLetter(storageAbstractor.loadFromStorage("playerName"))}'s lobby`;
     } else {
         $titleElement.innerHTML = lobbyNameString.charAt(0).toUpperCase() + lobbyNameString.slice(1).toLowerCase();
     }
@@ -35,7 +36,7 @@ function renderPlayersLoop(playerArray, data) {
         
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
-        $copy.textContent = user.charAt(0).toUpperCase() + user.slice(1).toLowerCase();
+        $copy.textContent = upperCaseFirstLetter(user);
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
@@ -50,7 +51,7 @@ function started(isStarted) {
 }
 
 function renderOwnPlayerName() {
-    document.querySelector("#playerName").innerHTML = storageAbstractor.loadFromStorage("playerName").charAt(0).toUpperCase() + storageAbstractor.loadFromStorage("playerName").slice(1).toLowerCase();
+    upperCaseFirstLetter(document.querySelector("#playername").innerHTML = storageAbstractor.loadFromStorage("playerName"))
 }
 
 export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi};

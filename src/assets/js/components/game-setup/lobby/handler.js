@@ -18,5 +18,9 @@ function getGameDetailsForGameId() {
             setTimeout(loadJoinedGame, 2000);
         });
 }
+function upperCaseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-export {loadJoinedGame};
+
+export {loadJoinedGame, upperCaseFirstLetter};
