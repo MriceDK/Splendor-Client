@@ -156,6 +156,7 @@ h1 {
 }
 
 input[type="text"], select{
+    font-family: Inter, sans-serif;
     background-color: var(--offwhite);
     color: var(--main-black-color);
     height: 1.5rem;
