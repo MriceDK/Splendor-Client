@@ -55,13 +55,24 @@ function putInitalBuyValueInForm(devCardValues) {
         tokenArray.forEach((token) => {
 
             if (input.getAttribute("name") === token){
-                input.setAttribute("value", calculateNeededDevelopmentCost(devCardValues[token], token));
+                input.setAttribute("value", calculatePossibleDevelopmentCost(devCardValues[token], token));
 
 
             }
         });
 
     });
+}
+
+function calculatePossibleDevelopmentCost(devCardValue, token) {
+    const ownTokenValue = parseInt(document.querySelector(`.own-inventory .${token} .gem-value`).innerHTML);
+    const neededTokenValue = calculateNeededDevelopmentCost(devCardValue, token)
+
+    if (ownTokenValue < neededTokenValue) {
+        return ownTokenValue;
+    } else {
+        return neededTokenValue;
+    }
 }
 
 function calculateNeededDevelopmentCost(devCardValue, token) {
