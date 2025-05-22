@@ -17,7 +17,7 @@ main {
     grid-template-areas:    "username market header"
                             "username market info"
                             "username market bank"
-                            "user-info user-info history";
+                            ". user-info history";
     gap: 0.5rem;
 }
 
@@ -41,7 +41,7 @@ header {
 .user-info-flexcontainer {
     grid-area: user-info;
     align-self: end;
-    justify-self: end;
+    justify-self: center;
 }
 
 .history {
@@ -88,12 +88,15 @@ header {
 
 
 .noble-article {
-    width: 7.5rem;
-    height: 4.21875rem;
+    width: 6.5rem;
+    height: 3.65625rem;
     padding: .5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
 }
 
 .gem, .card, .noble-article, .development-card {
