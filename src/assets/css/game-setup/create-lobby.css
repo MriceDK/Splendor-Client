@@ -1,7 +1,7 @@
 body {
     display: grid;
     grid-template-rows: 10%  auto;
-    height: 100vh;
+    max-height: 100vh;
     font-family: "Saira stencil one", Arial, serif;
     color: var(--main-black-color);
 }
