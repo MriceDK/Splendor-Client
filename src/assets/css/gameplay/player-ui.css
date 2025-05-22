@@ -97,7 +97,7 @@
 }
 
 .nobles-container .noble-article {
-    background-color: var(--main-bg-color); /* Adjust color */
+    background-color: var(--main-bg-color);
     font-size: .75rem;
     width: 6rem;
     height: 3.375rem;
