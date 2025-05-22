@@ -5,7 +5,7 @@ function renderNotAuthorizedPopup(message) {
     $target.classList.remove("hidden");
     const $template = document.querySelector("#not-authorized-popup").content.firstElementChild.cloneNode(true);
 
-    $template.querySelector("h2").innerText = message;
+    $template.querySelector("h3").innerText = message;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 }
