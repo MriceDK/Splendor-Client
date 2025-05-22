@@ -16,9 +16,8 @@ let buyableDevCards = [];
 function displayGame() {
     getGameInfo()
         .then(res => {
-            console.log(res);
             handleGameOver(res.winner);
-            ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
+            ownPlayerCardRenderer(res);
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderTokenBank(res);
@@ -27,7 +26,6 @@ function displayGame() {
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
-            // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
