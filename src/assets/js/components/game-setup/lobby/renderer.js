@@ -36,8 +36,10 @@ function renderPlayersLoop(playerArray, data) {
         
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
-        $copy.textContent = upperCaseFirstLetter(user);
-
+        $copy.innerHTML = `
+            <img src="./images/user-logo.png" alt="playername logo" title="playername logo" class="profile-picture">
+            ${upperCaseFirstLetter(user)}
+        `;
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
     renderLobbyAmount(playerArray.length, data.numberOfPlayers);
