@@ -18,14 +18,6 @@ const currentBankTokens = {
     Diamond: 0,
 };
 
-const zeroBankTokens = {
-    Ruby: 0,
-    Emerald: 0,
-    Onyx: 0,
-    Sapphire: 0,
-    Diamond: 0,
-};
-
 function renderTokenBank(gameInfo) {
     enableOrDisableBank(gameInfo.currentPlayer);
     disableTokens();
@@ -107,8 +99,16 @@ function removeTokenBorders() {
     });
 }
 
+function initializeZero() {
+    const $gems = document.querySelectorAll(".token-bank .gem");
+    $gems.forEach($gem => {
+        const $value = $gem.querySelector(".gem-value");
+        $value.innerText = 0;
+    })
+}
+
 function setTokenMarketValues(gameInfo) {
-    Object.entries(zeroBankTokens).forEach(([token, amount]) => setTokenValue(token, amount));
+    initializeZero();
     Object.entries(gameInfo.unclaimedTokens).forEach(([token, amount]) => setTokenValue(token, amount));
 }
 
