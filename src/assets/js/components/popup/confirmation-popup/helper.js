@@ -3,7 +3,7 @@ import {closePopUp} from "./renderer.js";
 import {handleError} from "../../../data-connector/error-handler.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {displayGame} from "../../../game.js";
-import {immediateTokenCheckAfterTokenUpdate} from "../gems-overflow/handler.js";
+import {immediateTokenCheckAfterTokenUpdate} from "../too-much-gems-popup/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function checkIfPopUpIsReserveType($popupContainer) {

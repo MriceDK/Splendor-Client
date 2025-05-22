@@ -4,7 +4,7 @@ import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.
 
 import {renderOwnTokenValue} from "../own-player/renderer.js";
 import {displayGame} from "../../../game.js";
-import {immediateTokenCheckAfterTokenUpdate} from "../../popup/gems-overflow/handler.js";
+import {immediateTokenCheckAfterTokenUpdate} from "../../popup/too-much-gems-popup/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function hookUpEvents() {

@@ -10,7 +10,8 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/gems-overflow/handler.js";
+import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
+import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
 let buyableDevCards = [];
 
 function displayGame() {
@@ -30,6 +31,7 @@ function displayGame() {
                 setTimeout(displayGame, 1000);
             }
         });
+    setUpEventlisteners();
 
 }
 
