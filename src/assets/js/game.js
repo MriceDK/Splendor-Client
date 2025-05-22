@@ -15,6 +15,7 @@ import {
 } from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
+import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 let buyableDevCards = [];
 
 function displayGame() {
@@ -33,6 +34,11 @@ function displayGame() {
             setUpEventlisteners();
             hookUpEventListenersOnCards()
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+
+            document.querySelectorAll(".opponent").forEach($opponent => {
+                $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
+            });
+
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
