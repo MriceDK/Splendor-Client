@@ -27,6 +27,7 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
 
     const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
+    console.log($devCard)
     const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
     const $form = document.querySelector("#token-selector-form");
@@ -52,6 +53,7 @@ function renderCostsInPopUp(costs) {
 function putInitalBuyValueInForm(devCardValues) {
     const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
     const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
+
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
 
@@ -68,7 +70,8 @@ function putInitalBuyValueInForm(devCardValues) {
 
 function getCostFromDevelopmentCard($devCard){
     const tokenArray = ["ruby", "diamond", "sapphire", "emerald", "onyx"];
-    const $values = $devCard.querySelectorAll("span.gem-cost");
+    const $values = $devCard.querySelectorAll("li.gem");
+    console.log($values)
     const returnObj = {};
     tokenArray.forEach((token) => {
         $values.forEach(($value) => {
