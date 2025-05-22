@@ -31,22 +31,20 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
     putInitalBuyValueInForm(devCardValues);
     const $form = document.querySelector("#token-selector-form");
     const costs = helper.getGemCostObject($form);
-    renderCostsInPopUp(costs);
+    renderCostsInPopUp(devCardValues);
 
     hookupEventListeners(reservedCard);
 }
 
 function renderCostsInPopUp(costs) {
 
+    console.log(costs);
+    Object.entries(costs).forEach((cost) => {
+        const $target = document.querySelector(`#token-selector-form .${cost[0]}-cost`);
+        const costWithBonuses = calculateNeededDevelopmentCost(cost[1], cost[0]);
 
-    for (const gem in costs) {
-        const $target = document.querySelector(`#token-selector-form .${gem.toLowerCase()}-cost`);
-        if (costs[gem] > 0 && !isNaN(costs[gem])) {
-            $target.insertAdjacentHTML("beforeend", `<p>/${costs[gem]}</p>`);
-        }
-
-    }
-
+        $target.insertAdjacentHTML("beforeend", `<p>/${costWithBonuses}</p>`);
+    })
 }
 
 function putInitalBuyValueInForm(devCardValues) {
