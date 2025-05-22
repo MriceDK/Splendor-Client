@@ -32,7 +32,7 @@ function renderCostBonuses(bonusesNeeded, $target){
 }
 
 function generateCostBonus(bonusNeeded, bonusValue) {
-    return `<li class="${bonusNeeded}">${bonusValue}</li>`;
+    return `<li class="bonus-cost ${bonusNeeded}"><span>${bonusValue}</span></li>`;
 }
 
 function renderEmptyNobleSpots($target) {

@@ -145,7 +145,7 @@ header img {
 }
 
 .button-style-popup {
- width: 10rem;
+ width: 20rem;
  padding: 0.3rem;
  font-size: 2rem;
  margin-top: 1rem;
@@ -187,6 +187,8 @@ body{
 #close{
  justify-content: right;
 }
+
+
 
 .clickable{
  cursor: pointer;
