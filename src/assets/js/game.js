@@ -31,7 +31,6 @@ function displayGame() {
                 setTimeout(displayGame, 1000);
             }
         });
-    setUpEventlisteners();
 
 }
 
