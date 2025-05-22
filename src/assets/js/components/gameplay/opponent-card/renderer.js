@@ -18,7 +18,7 @@ function renderOpponentStats(opponent) {
 
 function fillOpponentStat($template, opponent) {
     $template.querySelector(".player").innerText = opponent.name;
-    $template.querySelector(".points").innerText = opponent.totalPrestigePoints;
+    $template.querySelector(".points-text").innerText = opponent.totalPrestigePoints;
     $template.querySelector(".points-bar").style.width = `${getPrestigePointsPercentage(opponent.totalPrestigePoints)}%`;
     $template.querySelector(".reserved-count").innerText = opponent.reserve.length;
 

@@ -9,7 +9,7 @@ body{
     gap: 1rem;
 }
 
-.gem {
+.gem-chooser {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;

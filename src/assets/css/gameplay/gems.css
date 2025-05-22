@@ -2,9 +2,22 @@
     font-size: 1rem;
 }
 
+.own-reserved-cards .gem-costs .gem-value {
+    font-size: .75rem;
+}
+
+.bonus svg {
+    margin-left: 1rem;
+}
+
 .bonus svg, .gem-costs svg {
     width: 1.2rem;
     height: 1.85rem;
+}
+
+.own-reserved-cards .gem-costs svg, .own-reserved-cards .bonus svg {
+    width: 0.9rem;
+    height: 1.3875rem;
 }
 
 .token-bank svg {
@@ -17,16 +30,16 @@
 }
 
 .own-inventory svg {
-    width: 2.7rem;
-    height: 4.5rem;
+    width: 2.25rem;
+    height: 3.75rem;
 }
 
 .own-inventory .gem-value {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .card .card-text {
-    font-size: 1rem;
+    font-size: .7rem;
 }
 
 .inventory svg {

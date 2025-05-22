@@ -65,7 +65,6 @@
 .own-inventory {
     position: relative;
     display: inline-block;
-    margin: 0.25rem;
 }
 
 .own-inventory .gems {
@@ -75,16 +74,17 @@
 }
 
 .own-inventory .card {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1.25rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: .7rem;
 }
 
 .nobles-container {
     display: flex;
     justify-content: left;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: .25rem;
 }
 
 .nobles-container.wrap {
@@ -100,12 +100,13 @@
     background-color: var(--main-bg-color); /* Adjust color */
     font-size: .75rem;
     width: 6rem;
-    height: 4rem;
+    height: 3.375rem;
 }
 
 .nobles-container .empty, .own-reserved-cards .empty {
     background-color: transparent;
-    border: .0625rem solid var(--main-bg-color);
+    border: .0625rem solid var(--main-black-color);
+    border-radius: .5rem;
 }
 
 .reserved-label {
@@ -117,37 +118,7 @@
     display: none;
 }
 
-.red {
-    background-color: orangered;
-    color: black;
-}
-
-.green {
-    background: lime;
-    color: black;
-}
-
-.blue {
-    background: dodgerblue;
-    color: white;
-}
-
-.white {
-    background: var(--main-white-color);
-    color: black;
-}
-
-.black {
-    background: #8d6830;
-    color: white;
-}
-
-.yellow {
-    background: #ffc600;
-    color: black;
-}
-
-.current-player .opponent-frame-container {
+.current-player #own-username, .current-player .own-player-card, .current-player .opponent-frame-container {
     background-color: var(--dark-beige);
 }
 
@@ -155,13 +126,53 @@
     border: none;
 }
 
-.opponent-player-info {
+.opponent-player-info, #own-prestige-points {
     font-size: 1.75rem;
     display: flex;
     justify-content: space-between;
 }
 
-.username-flexcontainer .points-bar-container {
+#own-prestige-points {
+    font-size: 1.75rem;
+    display: flex;
+    justify-content: center;
+}
+
+.min-points-to-win {
+    font-size: 0.75rem;
+    align-self: end;
+}
+
+.opponent-player-info .player, #own-username {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#own-username {
+    background-color: var(--main-white-color);
+    font-size: 2.25rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-top: 0.25rem;
+    width: fit-content;
+    max-width: 22rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.opponent-player-info .player {
+    max-width: 11.25rem;
+}
+
+.opponent-player-info .points {
+    display: flex;<
+}
+
+.opponent-player-info .points-text {
+    margin-left: 1rem;
+}
+
+.points-bar-container {
     content: "";
     width: 100%;
     background-color: var(--lighter-green);
@@ -177,9 +188,10 @@
     ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }
 
-.username-flexcontainer .points-bar-container .points-bar {
+.points-bar-container .points-bar {
     content: "";
     height: 0.9rem;
+    width: 40%;
     background-color: var(--dark-green);
     clip-path: polygon(
             0% 0%,
