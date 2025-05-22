@@ -28,7 +28,6 @@ function buyDevelopmentCard(e) {
     const body = helper.createBuyCardBody(devCardName, gemCost);
     API.buyDevelopmentCardRequest(body).then(buyResponse => {
         closePopUp();
-        //checkTooManyTokens(buyResponse.tokens); TODO deze functie werkt nog niet optimaal
         Object.entries(buyResponse.tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
@@ -54,7 +53,6 @@ function buyReservedDevelopmentCard(e) {
     const body = helper.createBuyReservedCardBody(gemCost);
     API.buyReservedCard(devCardName, body).then(buyResponse => {
         closePopUp();
-        //checkTooManyTokens(tokens); Deze functie werkt nogn iet optimaal
         Object.entries(buyResponse.tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
@@ -65,7 +63,6 @@ function buyReservedDevelopmentCard(e) {
     }).catch(err => {
         ErrorHandler.handleError(err);
     });
-    // TODO: Fix this implementation of the checkTooMuchGems function
 }
 
 export {buyDevelopmentCard, buyReservedDevelopmentCard};
