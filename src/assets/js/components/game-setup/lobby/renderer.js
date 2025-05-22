@@ -52,7 +52,7 @@ function started(isStarted) {
 }
 
 function renderOwnPlayerName() {
-    document.querySelector("#playername").textContent = storageAbstractor.loadFromStorage("playerName");
+    document.querySelector("#playerName").textContent = storageAbstractor.loadFromStorage("playerName");
 }
 
 export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi};

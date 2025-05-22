@@ -38,10 +38,12 @@ nav a {
     font-size: 2rem;
     margin-left: 1rem;
 }
-.playername{
+.playerName{
     display: flex ;
     align-items: center;
     margin-right: 1rem;
+    font-family: "Saira stencil one", Arial, serif
+
 }
 
 h1{
