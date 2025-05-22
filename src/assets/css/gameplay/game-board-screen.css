@@ -87,8 +87,8 @@ header {
 
 
 .noble-article {
-    width: 6.5rem; /*8*/
-    height: 3.65625rem; /*4.5*/
+    width: 6.5rem;
+    height: 3.65625rem;
     padding: .5rem;
     display: flex;
     flex-direction: column;
