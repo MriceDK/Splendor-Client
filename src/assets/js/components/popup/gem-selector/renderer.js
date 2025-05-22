@@ -54,10 +54,14 @@ function putInitalBuyValueInForm(devCardValues) {
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
 
-            if (input.getAttribute("name") === token && !isNaN(devCardValues[token])){
-                input.setAttribute("value", calculatePossibleDevelopmentCost(devCardValues[token], token));
-                input.setAttribute("max", calculateNeededDevelopmentCost(devCardValues[token], token));
-
+            if (input.getAttribute("name") === token){
+                if (!isNaN(devCardValues[token])){
+                    input.setAttribute("value", calculatePossibleDevelopmentCost(devCardValues[token], token));
+                    input.setAttribute("max", calculateNeededDevelopmentCost(devCardValues[token], token));
+                } else {
+                    console.log(input.closest(".gem-chooser"))
+                    input.closest(".gem-chooser").classList.add("hidden");
+                }
             }
         });
 
