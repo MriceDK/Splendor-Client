@@ -89,11 +89,8 @@
 
 .nobles-container.wrap {
     flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.nobles-container.wrap .noble-article:last-child {
-    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .nobles-container .noble-article {
@@ -101,6 +98,11 @@
     font-size: .75rem;
     width: 6rem;
     height: 3.375rem;
+}
+
+.opponent .noble-article {
+    width: 4.2rem;
+    height: 2.3625rem;
 }
 
 .nobles-container .empty, .own-reserved-cards .empty {
