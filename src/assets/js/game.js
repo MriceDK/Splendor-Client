@@ -18,6 +18,8 @@ import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-even
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 let buyableDevCards = [];
 
+const opponentsNotHidden = [];
+
 function displayGame() {
     getGameInfo()
         .then(res => {
@@ -39,6 +41,8 @@ function displayGame() {
                 $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
             });
 
+            console.log(opponentsNotHidden);
+
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
@@ -49,4 +53,4 @@ function displayGame() {
  displayGame();
 
 
-export {displayGame, buyableDevCards};
+export {displayGame, buyableDevCards, opponentsNotHidden};

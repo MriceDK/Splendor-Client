@@ -1,4 +1,5 @@
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
+import {opponentsNotHidden} from "../../../game.js";
 
 const MAX_UNHIDDEN_NOBLE_CONTAINERS = 1;
 let unhiddenNobleContainer = 0;
@@ -15,17 +16,19 @@ function toggleVisibilityNobles(e) {
 
     const $opponentContainer = e.target.closest(".opponent");
     const $nobleContainer = $opponentContainer.querySelector(".nobles-container");
-    toggleHidden($nobleContainer);
+    const opponentName = $opponentContainer.querySelector(".player").innerText;
+
+    toggleHidden($nobleContainer, opponentName);
 }
 
-function toggleHidden($target) {
+function toggleHidden($target, opponentName) {
     if ($target.classList.contains("hidden")) {
 
         if (unhiddenNobleContainer === MAX_UNHIDDEN_NOBLE_CONTAINERS) {
             makeEverythingHidden();
         }
 
-        showNobleContainer($target);
+        showNobleContainer($target, opponentName);
 
     } else {
         hideNobleContainer($target);
@@ -37,16 +40,19 @@ function makeEverythingHidden() {
 
     $nobleContainers.forEach($nobleContainer => {
         hideNobleContainer($nobleContainer);
+        opponentsNotHidden.pop();
     });
 }
 
 function hideNobleContainer($target) {
     $target.classList.add("hidden");
+    opponentsNotHidden.pop();
     unhiddenNobleContainer = 0;
 }
 
-function showNobleContainer($target) {
+function showNobleContainer($target, playerName) {
     $target.classList.remove("hidden");
+    opponentsNotHidden.push(playerName);
     unhiddenNobleContainer = 1;
 }
 
