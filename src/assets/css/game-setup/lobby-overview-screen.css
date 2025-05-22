@@ -47,6 +47,7 @@ h1 {
     height: 2.5rem;
     margin-right: 0.625rem;
 }
+
 #playername-changer label{
     color: var(--main-black-color);
 }
