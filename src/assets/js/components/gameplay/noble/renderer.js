@@ -14,6 +14,7 @@ function renderNoble(noble, $target){
 
     const $bonusCost = $template.querySelector(".bonus-costs");
     renderCostBonuses(noble.neededBonuses, $bonusCost);
+    $template.style.backgroundImage = `url("/src/images/noble-images/${noble.name}.jpg")`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
