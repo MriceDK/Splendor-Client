@@ -10,7 +10,6 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
 import {
     hookUpEventListenersOnCards
 } from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
