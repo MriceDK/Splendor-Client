@@ -41,7 +41,7 @@ function renderCostsInPopUp(costs) {
     console.log(costs);
     Object.entries(costs).forEach((cost) => {
         const $target = document.querySelector(`#token-selector-form .${cost[0]}-cost`);
-        const costWithBonuses = calculateNeededDevelopmentCost(cost[1], cost[0]);
+        const costWithBonuses = helper.calculateNeededDevelopmentCost(cost[1], cost[0]);
 
         $target.insertAdjacentHTML("beforeend", `<p>/${costWithBonuses}</p>`);
     })
@@ -56,8 +56,8 @@ function putInitalBuyValueInForm(devCardValues) {
 
             if (input.getAttribute("name") === token){
                 if (!isNaN(devCardValues[token])){
-                    input.setAttribute("value", calculatePossibleDevelopmentCost(devCardValues[token], token));
-                    input.setAttribute("max", calculateNeededDevelopmentCost(devCardValues[token], token));
+                    input.setAttribute("value", helper.calculatePossibleDevelopmentCost(devCardValues[token], token));
+                    input.setAttribute("max", helper.calculateNeededDevelopmentCost(devCardValues[token], token));
                 } else {
                     console.log(input.closest(".gem-chooser"))
                     input.closest(".gem-chooser").classList.add("hidden");
@@ -66,27 +66,6 @@ function putInitalBuyValueInForm(devCardValues) {
         });
 
     });
-}
-
-function calculatePossibleDevelopmentCost(devCardValue, token) {
-    const ownTokenValue = parseInt(document.querySelector(`.own-inventory .${token} .gem-value`).innerHTML);
-    const neededTokenValue = calculateNeededDevelopmentCost(devCardValue, token)
-
-    if (ownTokenValue < neededTokenValue) {
-        return ownTokenValue;
-    } else {
-        return neededTokenValue;
-    }
-}
-
-function calculateNeededDevelopmentCost(devCardValue, token) {
-    const tokenBonus = parseInt(document.querySelector(`.own-inventory .${token} .card-text`).innerHTML);
-
-    if (tokenBonus >= devCardValue) {
-        return 0;
-    }
-
-    return devCardValue - tokenBonus;
 }
 
 function getCostFromDevelopmentCard($devCard){

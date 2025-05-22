@@ -30,4 +30,25 @@ function createBuyReservedCardBody(gemCost) {
     };
 }
 
-export {getGemCostObject, createBuyCardBody, createBuyReservedCardBody};
+function calculatePossibleDevelopmentCost(devCardValue, token) {
+    const ownTokenValue = parseInt(document.querySelector(`.own-inventory .${token} .gem-value`).innerHTML);
+    const neededTokenValue = calculateNeededDevelopmentCost(devCardValue, token)
+
+    if (ownTokenValue < neededTokenValue) {
+        return ownTokenValue;
+    } else {
+        return neededTokenValue;
+    }
+}
+
+function calculateNeededDevelopmentCost(devCardValue, token) {
+    const tokenBonus = parseInt(document.querySelector(`.own-inventory .${token} .card-text`).innerHTML);
+
+    if (tokenBonus >= devCardValue) {
+        return 0;
+    }
+
+    return devCardValue - tokenBonus;
+}
+
+export {getGemCostObject, createBuyCardBody, createBuyReservedCardBody, calculatePossibleDevelopmentCost, calculateNeededDevelopmentCost};
