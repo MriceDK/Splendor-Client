@@ -99,7 +99,7 @@ function removeTokenBorders() {
     });
 }
 
-function initializeZero() {
+function initializeZeroes() {
     const $gems = document.querySelectorAll(".token-bank .gem");
     $gems.forEach($gem => {
         const $value = $gem.querySelector(".gem-value");
@@ -108,7 +108,7 @@ function initializeZero() {
 }
 
 function setTokenMarketValues(gameInfo) {
-    initializeZero();
+    initializeZeroes();
     Object.entries(gameInfo.unclaimedTokens).forEach(([token, amount]) => setTokenValue(token, amount));
 }
 
