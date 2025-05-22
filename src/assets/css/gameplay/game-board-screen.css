@@ -17,7 +17,7 @@ main {
     grid-template-areas:    "username market header"
                             "username market info"
                             "username market bank"
-                            "user-info user-info history";
+                            ". user-info history";
 }
 
 header {
@@ -40,7 +40,7 @@ header {
 .user-info-flexcontainer {
     grid-area: user-info;
     align-self: end;
-    justify-self: end;
+    justify-self: center;
 }
 
 .history {
@@ -93,6 +93,8 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .gem, .card, .noble-article, .development-card {

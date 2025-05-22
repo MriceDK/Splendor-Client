@@ -50,7 +50,9 @@
     grid-template-columns: 2rem auto 2rem;
     grid-template-rows: 1.5rem auto;
     padding: .5rem;
-    background-size: 100%
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }
 
 .development-card-title {
