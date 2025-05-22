@@ -28,6 +28,8 @@
     color: var(--main-white-color);
     align-content: flex-start;
     padding-right: 0.3rem;
+    font-family: Inter, serif;
+    font-weight: bold;
 }
 
 .deck h2 {
@@ -88,6 +90,7 @@
     font-size: 1rem;
     justify-self: right;
     color: var(--main-white-color);
+    font-family: Inter, serif;
 }
 .emerald {
     background-color: limegreen;
