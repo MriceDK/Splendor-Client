@@ -1,5 +1,7 @@
 import { needsToScrollDown } from "./helper.js";
 
+let amountOfRenders = 0;
+
 function renderHistoryLogs(history) {
     const $target = document.querySelector(".history-logs");
     $target.innerHTML = $target.querySelector("#history-log").outerHTML;
@@ -22,8 +24,17 @@ function renderHistoryLog(log, $target) {
 }
 
 function scrollToBottom($target, amountOfLogs) {
-    if (needsToScrollDown(amountOfLogs)) {
+    if (needsToScrollDown(amountOfLogs) || firstTimeRender()) {
         $target.scrollTop = $target.scrollHeight;
+    }
+}
+
+function firstTimeRender() {
+    if (amountOfRenders === 0) {
+        amountOfRenders = 1;
+        return true;
+    } else {
+        return false;
     }
 }
 
