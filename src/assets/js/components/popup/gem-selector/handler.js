@@ -4,6 +4,7 @@ import * as API from "../../../api/gameplay-api.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {displayGame} from "../../../game.js";
+import {resetBankButtons} from "../../gameplay/bank/renderer.js";
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
@@ -20,6 +21,7 @@ function buyDevelopmentCard(e) {
         });
     }).then(() => {
         displayGame();
+        resetBankButtons();
     }).catch(err => {
         ErrorHandler.handleError(err);
      
@@ -43,6 +45,7 @@ function buyReservedDevelopmentCard(e) {
         });
     }).then(() => {
         displayGame();
+        resetBankButtons();
     }).catch(err => {
         ErrorHandler.handleError(err);
     });
