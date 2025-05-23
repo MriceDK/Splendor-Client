@@ -1,16 +1,15 @@
-import { needsToScrollDown } from "./helper.js";
-
 let amountOfRenders = 0;
 
 function renderHistoryLogs(history) {
     const $target = document.querySelector(".history-logs");
+    let amountOfLogsRendered = $target.querySelectorAll(".history-log").length;
     $target.innerHTML = $target.querySelector("#history-log").outerHTML;
 
     history.forEach(log => {
         renderHistoryLog(log, $target);
     })
+    scrollToBottom(history.length, amountOfLogsRendered);
 
-    scrollToBottom($target, history.length);
 }
 
 function renderHistoryLog(log, $target) {
@@ -23,9 +22,11 @@ function renderHistoryLog(log, $target) {
     $target.insertAdjacentHTML("beforeend", $log.outerHTML);
 }
 
-function scrollToBottom($target, amountOfLogs) {
-    if (needsToScrollDown(amountOfLogs) || firstTimeRender()) {
-        $target.scrollTop = $target.scrollHeight;
+function scrollToBottom(amountOfLogs, amountOfLogsRendered) {
+    const $history = document.querySelector(".history-logs");
+    console.log(amountOfLogs, amountOfLogsRendered)
+    if (needsToScrollDown(amountOfLogs, amountOfLogsRendered) || firstTimeRender()) {
+        $history.scrollTop = $history.scrollHeight;
     }
 }
 
@@ -36,6 +37,10 @@ function firstTimeRender() {
     } else {
         return false;
     }
+}
+
+function needsToScrollDown(amountOfLogs, amountOfRenderedLogs) {
+    return amountOfLogs !== amountOfRenderedLogs;
 }
 
 export { renderHistoryLogs };
