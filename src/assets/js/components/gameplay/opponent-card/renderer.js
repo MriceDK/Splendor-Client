@@ -1,6 +1,7 @@
 import * as handler from "./handler.js";
 import * as NobleRenderer from "../noble/renderer.js";
 import {getPrestigePointsPercentage} from "./helper.js";
+import {opponentsNotHidden} from "../../../game.js";
 
 function renderOpponentsStats(players) {
     const opponents = handler.getOpponents(players);
@@ -28,6 +29,18 @@ function fillOpponentStat($template, opponent) {
     const $nobleContainer = $template.querySelector(".nobles-container");
     NobleRenderer.renderNobles(opponent.nobles, $nobleContainer);
     NobleRenderer.renderEmptyNobleSpots($nobleContainer);
+
+    makeNobleContainerVisible($nobleContainer, opponent.name);
+}
+
+function makeNobleContainerVisible($nobleContainer, opponentNameToBeChecked) {
+    opponentsNotHidden.forEach(opponentName => {
+
+        if (opponentNameToBeChecked === opponentName) {
+            $nobleContainer.classList.remove("hidden");
+        }
+
+    })
 }
 
 function fillTokens($template, tokens) {

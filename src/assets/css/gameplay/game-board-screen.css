@@ -18,6 +18,7 @@ main {
                             "username market info"
                             "username market bank"
                             ". user-info history";
+    gap: 0.5rem;
 }
 
 header {
@@ -30,6 +31,7 @@ header {
     grid-area: username;
     display: flex;
     flex-direction: column;
+    align-items: start;
     padding-top: 1rem;
 }
 
