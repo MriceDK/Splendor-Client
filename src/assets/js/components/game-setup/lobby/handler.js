@@ -1,7 +1,19 @@
 import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import * as renderer from "./renderer.js";
 
-import {getGameInfo} from "../../../api/game-setup-api.js";
+import {getGameInfo, playerLeaveLobby, stopSpectating} from "../../../api/game-setup-api.js";
+
+function leaveLobby() {
+    const gameId = storageAbstractor.loadFromStorage("gameId");
+    const playerName = storageAbstractor.loadFromStorage("playerName");
+    getGameInfo().then(data => {
+        if (data.players.includes(playerName)) {
+            playerLeaveLobby(gameId, playerName).then(() => window.location.href = "./index.html");
+        } else if (data.spectators.includes(playerName)) {
+            stopSpectating(gameId, playerName).then(() => window.location.href = "./index.html");
+        }
+    });
+}
 
 function loadJoinedGame() {
     const gameId = storageAbstractor.loadFromStorage("gameId");
@@ -23,4 +35,4 @@ function upperCaseFirstLetter(string) {
 }
 
 
-export {loadJoinedGame, upperCaseFirstLetter};
+export {loadJoinedGame, upperCaseFirstLetter, leaveLobby};
