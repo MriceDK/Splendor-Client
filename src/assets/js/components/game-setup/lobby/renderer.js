@@ -35,10 +35,9 @@ function renderPlayersLoop(playerArray, data) {
     playerArray.forEach(user => {
         
         const $copy = $template.content.firstElementChild.cloneNode(true);
-
-        $copy.innerHTML = `
-            <img src="./images/user-logo.png" alt="playername logo" title="playername logo" class="profile-picture">
-            ${upperCaseFirstLetter(user)}
+        const $profilePicture = document.querySelector(".profile-picture");
+        $copy.innerHTML = ` ${$profilePicture}
+        ${upperCaseFirstLetter(user)}
         `;
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
