@@ -37,7 +37,6 @@ function makeNobleContainerVisible($nobleContainer, opponentNameToBeChecked) {
     opponentsNotHidden.forEach(opponentName => {
 
         if (opponentNameToBeChecked === opponentName) {
-            console.log("uuuy")
             $nobleContainer.classList.remove("hidden");
         }
 
