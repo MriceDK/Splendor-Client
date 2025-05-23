@@ -82,4 +82,4 @@ function getNeededTokens(priceDevCard, bonusAndOwnTokens) {
     return tokensStillNeeded;
 }
 
-export { getListOfBuyableCards };
+export { getListOfBuyableCards, isBuyable };

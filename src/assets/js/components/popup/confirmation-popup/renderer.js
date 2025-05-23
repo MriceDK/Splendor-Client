@@ -1,12 +1,17 @@
 function renderBuyDevelopmentCardPopup(cardName) {
     const $template = document.querySelector("#buy-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
+    const $devCard = document.querySelector(`article.development-card[data-card-name="${cardName}"]`);
 
     document.querySelector(".popup-container").classList.remove("hidden");
     document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-pop-up");
     $template.querySelector(".title-popup").innerText = `Buy ${cardName}?`;
+
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
+    if (!$devCard.classList.contains("buyable")) {
+        $target.querySelector(".confirmation-popup .confirm-pop-up-button").disabled = true;
+    }
 }
 
 function renderReserveDevelopmentCardPopup(cardLevel) {
@@ -23,6 +28,7 @@ function renderReserveDevelopmentCardPopup(cardLevel) {
 function renderBuyAndReserveDevelopmentCardPopUp(cardName) {
     const $template = document.querySelector("#buy-or-reserve-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
+    const $devCard = document.querySelector(`article.development-card[data-card-name="${cardName}"]`);
 
     document.querySelector(".popup-container").classList.remove("hidden");
     document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-and-reserve-pop-up");
@@ -30,6 +36,9 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName) {
     $template.querySelector(".title-popup").innerText = `Buy or Reserve ${cardName}?`;
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
+    if (!$devCard.classList.contains("buyable")) {
+        $target.querySelector(".confirmation-popup .confirm-pop-up-button").disabled = true;
+    }
 }
 
 function closePopUp() {
