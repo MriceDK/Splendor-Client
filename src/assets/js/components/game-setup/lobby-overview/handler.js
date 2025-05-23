@@ -5,6 +5,7 @@ import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
 
 
+
 function loadUserInformation() {
     render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
@@ -99,11 +100,11 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     joinLobby(joinGameId, playerName)
     .then(res => {
+
         joinLobbyHelp(res);
 
     })
     .catch(() => {
-        errorHandler.handleError;
 
         numberToAddNameUniqueness++;
         uniqueNameForcer(numberToAddNameUniqueness);

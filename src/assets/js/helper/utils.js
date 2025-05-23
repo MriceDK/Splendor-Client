@@ -20,18 +20,21 @@ function getCurrentPlayer(players, currentPlayer){
         }
     }
     return undefined;
- }
+}
 
- function elementIsInArray(array, element) {
+function elementIsInArray(array, element) {
 
     for (const item of array) {
         if (item === element) {
             return true;
         }
     }
-
     return false;
+}
 
- }
+function makeNameValid(name){
+    const output = name.split(" ").join("");
+    return output;
+}
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray};
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid};
