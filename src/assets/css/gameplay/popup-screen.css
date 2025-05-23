@@ -15,12 +15,11 @@ body{
     gap: 0.25rem;
 }
 
-
 .input-and-cost {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 .gem-selector-input {
