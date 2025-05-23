@@ -160,7 +160,7 @@
 .interaction-indicator {
     font-family: Inter, serif;
     font-size: .8rem;
-    color: #bababa;
+    color: var(--main-white-color);
 }
 
 #own-username {
