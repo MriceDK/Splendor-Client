@@ -25,16 +25,22 @@
 <body>
 <div class="popup-container hidden">
     <div id="popup-templates" class="hidden">
+        <template id="not-authorized-popup">
+            <div class="popup">
+                <h3 class="title-popup"></h3>
+                <a class="button-style" href="index.html">Go back to start screen</a>
+            </div>
+        </template>
         <template id="buy-popup-template">
             <div class="confirmation-popup popup">
-                <h3 class="title-popup">buy ${cardname}</h3>
+                <h3 class="title-popup"></h3>
                 <button type="button" class="button-style-popup button-style close-pop-up-button">Cancel</button>
                 <button type="button" class="button-style-popup button-style confirm-pop-up-button">Buy Card</button>
             </div>
         </template>
         <template id="reserve-deck-popup-template">
             <div class="confirmation-popup popup">
-                <h3 class="title-popup">Reserve card from level ${cardname}?</h3>
+                <h3 class="title-popup">?</h3>
                 <div class="errormessages">
                     <p></p>
                 </div>
@@ -178,8 +184,8 @@
         <template id="end-of-game-template">
             <div class="popup">
                 <h3 class="title-popup">Game Over</h3>
-                <p class="winner-text">The winner was: <span class="winnner"></span></p>
-                <button type="button" class="return-to-main-menu-button button-style-popup button-style">Return to main menu</button>
+                <p class="winner-text">The winner is: <span class="winnner"></span></p>
+                <a class="button-style button-style-popup" href="index.html">Return to main menu</a>
             </div>
         </template>
     </div>
@@ -198,7 +204,10 @@
                 <div class="opponent">
                     <div class="opponent-frame-container">
                         <div class="opponent-player-info">
-                            <p class="player"></p>
+                            <div class="player-name-container">
+                                <img src="images/user-logo.png" class="profile-picture" alt="player logo">
+                                <p class="player"></p>
+                            </div>
                             <div class="points">
                                 <p class="points-text"></p>
                                 <span class="min-points-to-win">/15</span>
@@ -277,7 +286,11 @@
 
                         </div>
                     </div>
-                    <p class="reserved-label"><span class="reserved-count"></span> reserved</p>
+                    <div class="opponent-info-container">
+                        <p class="reserved-label"><span class="reserved-count"></span> reserved</p>
+                        <p class="interaction-indicator">Click to toggle nobles</p>
+                    </div>
+
                 </div>
 
             </template>
@@ -347,37 +360,37 @@
                 <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
                 </svg>
-                <span class="gem-value">0</span>
+                <span class="gem-value"></span>
             </li>
             <li class="gem emerald">
                 <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
                 </svg>
-                <span class="gem-value">0</span>
+                <span class="gem-value"></span>
             </li>
             <li class="gem onyx">
                 <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
                 </svg>
-                <span class="gem-value">0</span>
+                <span class="gem-value"></span>
             </li>
             <li class="gem sapphire">
                 <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
                 </svg>
-                <span class="gem-value">0</span>
+                <span class="gem-value"></span>
             </li>
             <li class="gem diamond">
                 <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
                 </svg>
-                <span class="gem-value">0</span>
+                <span class="gem-value"></span>
             </li>
             <li class="gem gold">
                 <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
                 </svg>
-                <span class="gem-value">0</span>
+                <span class="gem-value"></span>
             </li>
         </ul>
         <ul class="selected-tokens"></ul>
@@ -388,8 +401,10 @@
         </div>
     </section>
     <div class="user-info-flexcontainer">
-        <h2 id="own-username">Username</h2>
-        <div id="own-player-card" class="own-player-card">
+        <div class="own-user-info">
+            <img src="./images/user-logo.png" alt="User profile" class="profile-picture">
+            <h2 id="own-username">Username</h2>
+        </div>        <div id="own-player-card" class="own-player-card">
             <div class="container-1">
                 <div id="own-prestige-points" class="own-prestige-points">
                     <p></p>
