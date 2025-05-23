@@ -2,28 +2,20 @@ import {renderPickableNobles} from "./renderer.js";
 import {getNobleToInventory} from "../../../api/gameplay-api.js";
 import {checkAvailableNobles} from "./helper.js";
 import {renderDisableCard, renderEnabledCard} from "../development-card/renderer.js";
+import {displayGame} from "../../../game.js";
 
 
 function nobleCheck(gameState, unclaimedNobles, currentPlayer, ownPlayer){
-    console.log(gameState);
-    console.log(unclaimedNobles);
-    console.log(currentPlayer);
-    console.log(ownPlayer);
     if (gameState === "CHOOSE_NOBLE" && currentPlayer === ownPlayer.name){
-        console.log("nobleCHeck");
         const pickableNobles = checkAvailableNobles(unclaimedNobles, ownPlayer);
-        console.log(pickableNobles);
         renderPickableNobles(pickableNobles); 
     }
 }
 
 
 function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
-    console.log("hookingup");
     const $pickableNobles = document.querySelectorAll(".pickable-noble");
-    console.log($pickableNobles);
     $pickableNobles.forEach( (pickableNoble) => {
-        console.log("hooking up event listener on pickablenoble");
         pickableNoble.addEventListener("click", e => {getNobleToInventory(e, gameId, playerName, noble)})
     }); 
 
@@ -36,6 +28,7 @@ function removePickableFromNobles(){
         pickableNoble.classList.remove("pickable-noble");
         
     });
+    displayGame();
 }
 
 function handleClickability(clickable, targetContainerClass) {

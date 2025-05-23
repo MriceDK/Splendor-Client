@@ -36,7 +36,6 @@ function renderPickableNobles(nobles){
     // TODO Wanneer we dit makkelijk kunnen testen, zou ik dit in het noble component steken en het onderstaande verbeteren
     const $allNobles = document.querySelectorAll(".market-grid-container .noble-article");
     nobles.forEach(noble => {
-        console.log(noble);
         nameChecker(noble, $allNobles);
 
     });
@@ -56,10 +55,8 @@ function nameChecker(noble, $allNobles){
 }
 
 function renderPickableNoblesHelp($nobleInDom, noble){
-    console.log("renderpickablenobleshelp");
 
     $nobleInDom.classList.add("pickable-noble");
-    console.log($nobleInDom);
     const forceNameFromServer = convertToKebabCase(noble.name);
     $nobleInDom.classList.add(`${forceNameFromServer}`);
     hookUpEventListenersOnPickableNoble(loadFromStorage("gameId"), loadFromStorage("playerName"), noble);

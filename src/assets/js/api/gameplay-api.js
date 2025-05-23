@@ -1,8 +1,8 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import {createReserveCardBody} from "./helper.js";
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
-import {getCurrentPlayer} from "../helper/utils.js";
 import {removePickableFromNobles} from "../components/gameplay/market/handler.js";
+import {displayGame} from "../game.js";
 
 
 function reserveCard(cardNameOrLevel, level = false) {
