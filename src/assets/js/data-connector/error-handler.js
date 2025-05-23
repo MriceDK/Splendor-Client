@@ -11,9 +11,9 @@ function handleError(error){
 }
 
 function getCorrectMessageFromError(error) {
-    if (error.cause !== undefined) {
+    if (error.cause !== undefined && error.cause !== null) {
         return error.cause;
-    } else if (error.message !== undefined) {
+    } else if (error.message !== undefined && error.message !== null) {
         return error.message;
     } else {
         return "Something went wrong";
