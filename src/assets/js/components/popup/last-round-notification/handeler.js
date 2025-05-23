@@ -2,10 +2,10 @@ import {renderLastRoundNotification, closeLastRoundNotification} from "./rendere
 
 
     let hasLastRoundBeenShownAlready = false
-function lastRoundCheck(isLastRound){
+function lastRoundCheck(isLastRound, res){
 
     if(isLastRound && hasLastRoundBeenShownAlready === false){
-        renderLastRoundNotification();
+        renderLastRoundNotification(res);
         setTimeout(closeLastRoundNotification, 3000);
         hasLastRoundBeenShownAlready = true
     }

@@ -27,7 +27,7 @@ function displayGame() {
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
             renderBuyableCards();
             // checkTooMuchGems(res.players, res.currentPlayer);
-            lastRoundCheck(res.lastRound);
+            lastRoundCheck(res.lastRound, res);
             // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
