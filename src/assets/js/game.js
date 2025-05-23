@@ -52,10 +52,10 @@ function displayGame() {
                 setTimeout(displayGame, 1000);
             }
         })
-        .catch(err => {
-            document.querySelector("main").innerHTML = "";
-            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
-    })
+    //     .catch(err => {
+    //         document.querySelector("main").innerHTML = "";
+    //         NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
+    // })
 
 }
 
