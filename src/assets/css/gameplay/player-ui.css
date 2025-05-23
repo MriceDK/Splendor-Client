@@ -151,6 +151,18 @@
     text-overflow: ellipsis;
 }
 
+.opponent-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.interaction-indicator {
+    font-family: Inter, serif;
+    font-size: .8rem;
+    color: #bababa;
+}
+
 #own-username {
     background-color: var(--main-white-color);
     font-size: 2.25rem;
