@@ -4,7 +4,7 @@ import {getNobleToInventory} from "../../../../api/gameplay-api.js";
 import {displayGame} from "../../../../game.js";
 
 
-function nobleCheck(gameState, unclaimedNobles, currentPlayer, ownPlayer){
+function chooseNobleCheck(gameState, unclaimedNobles, currentPlayer, ownPlayer){
     if (gameState === "CHOOSE_NOBLE" && currentPlayer === ownPlayer.name){
         const pickableNobles = checkAvailableNobles(unclaimedNobles, ownPlayer);
         renderPickableNobles(pickableNobles);
@@ -30,4 +30,4 @@ function removePickableFromNobles(){
     displayGame();
 }
 
-export {nobleCheck, hookUpEventListenersOnPickableNoble, removePickableFromNobles}
+export {chooseNobleCheck, hookUpEventListenersOnPickableNoble, removePickableFromNobles}
