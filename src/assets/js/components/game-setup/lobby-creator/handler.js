@@ -1,6 +1,6 @@
 import {loadFromStorage, saveToStorage} from "../../../data-connector/local-storage-abstractor.js";
 import {createLobby as createLobby1} from "../../../api/game-setup-api.js";
-import {validNameForcer} from "../../../helper/utils.js";
+import {makeNameValid} from "../../../helper/utils.js";
 
 function createLobby(e) {
     e.preventDefault();
@@ -10,8 +10,8 @@ function createLobby(e) {
 
     const lobbyName = document.querySelector("#lobby-name").value;
     const playerAmount = document.querySelector(".radio-option input:checked").value;
-    const originalPlayerName = validNameForcer(loadFromStorage("playerName"));
-    saveToStorage("playerName", originalPlayerName);
+    const validatedName = makeNameValid(loadFromStorage("playerName"));
+    saveToStorage("playerName", validatedName);
 
     const playerName = loadFromStorage("playerName");
 

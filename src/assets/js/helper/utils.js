@@ -32,9 +32,9 @@ function elementIsInArray(array, element) {
     return false;
 }
 
-function validNameForcer(name){
+function makeNameValid(name){
     const output = name.split(" ").join("");
     return output;
 }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, validNameForcer};
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid};
