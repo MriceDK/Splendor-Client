@@ -6,7 +6,7 @@ import {renderActivePlayer} from "./components/gameplay/active-player/renderer.j
 
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
-import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
+import {getCurrentPlayerInfo, getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
@@ -22,15 +22,21 @@ let buyableDevCards = [];
 const opponentsNotHidden = [];
 
 function displayGame() {
+    const spectatorName = loadFromStorage("playerName");
     getGameInfo()
         .then(res => {
+            let ownPlayer = getOwnPlayerInfo(res);
+            let isSpectating = false;
+            if (res.spectators.includes(spectatorName)) {
+                ownPlayer = getCurrentPlayerInfo( res);
+                isSpectating = true;
+            }
             handleGameOver(res.winner);
-            ownPlayerCardRenderer(res);
+            ownPlayerCardRenderer(ownPlayer, isSpectating);
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
-            const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
             hookUpEventListenersOnCards();
@@ -45,7 +51,8 @@ function displayGame() {
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
-        }).catch(err => {
+        })
+        .catch(err => {
             document.querySelector("main").innerHTML = "";
             NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
     })

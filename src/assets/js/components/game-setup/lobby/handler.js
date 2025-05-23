@@ -4,12 +4,13 @@ import * as renderer from "./renderer.js";
 import {getGameInfo, playerLeaveLobby, stopSpectating} from "../../../api/game-setup-api.js";
 
 function leaveLobby() {
-    const gameId = storageAbstractor.loadFromStorage("gameId");
+    const isSpectating = storageAbstractor.loadFromStorage("spectate");
     const playerName = storageAbstractor.loadFromStorage("playerName");
-    getGameInfo().then(data => {
-        if (data.players.includes(playerName)) {
+    const gameId = storageAbstractor.loadFromStorage("gameId");
+    getGameInfo().then(() => {
+        if (!isSpectating) {
             playerLeaveLobby(gameId, playerName).then(() => window.location.href = "./index.html");
-        } else if (data.spectators.includes(playerName)) {
+        } else if (isSpectating) {
             stopSpectating(gameId, playerName).then(() => window.location.href = "./index.html");
         }
     });
