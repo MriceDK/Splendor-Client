@@ -1,11 +1,14 @@
+import { needsToScrollDown } from "./helper.js";
+
 function renderHistoryLogs(history) {
     const $target = document.querySelector(".history-logs");
     $target.innerHTML = $target.querySelector("#history-log").outerHTML;
 
-    console.log(history);
     history.forEach(log => {
         renderHistoryLog(log, $target);
     })
+
+    scrollToBottom($target, history.length);
 }
 
 function renderHistoryLog(log, $target) {
@@ -16,6 +19,12 @@ function renderHistoryLog(log, $target) {
     $log.querySelector(".log-time").innerText = log.timeOfCreation;
 
     $target.insertAdjacentHTML("beforeend", $log.outerHTML);
+}
+
+function scrollToBottom($target, amountOfLogs) {
+    if (needsToScrollDown(amountOfLogs)) {
+        $target.scrollTop = $target.scrollHeight;
+    }
 }
 
 export { renderHistoryLogs };
