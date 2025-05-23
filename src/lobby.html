@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/game-setup/lobby-screen.css">
     <script type="module" src="assets/js/components/game-setup/lobby/lobby.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="grid">
@@ -18,17 +19,20 @@
             <a href="index.html">⬅</a>
         </nav>
         <div class="playername">
-            <img src="./images/playername-logo.png" alt="profile photo">
-            <p id="playername">John Doe</p>
+            <img src="images/user-logo.png" class="profile-picture-name" alt="player logo">
+            <p id="playername"></p>
         </div>
     </header>
     <main>
-        <h2>Creator</h2>
+        <h2>Creator:</h2>
         <h1 id="title">'s Lobby</h1>
         <div class="middle">
             <ol class="users">
                 <template id="player">
-                    <li id="creator">Player1</li>
+                    <li id="creator">
+                        <img src="images/user-logo.png" class="profile-picture" alt="player logo">
+                        <p>Player1</p>
+                    </li>
                 </template>
             </ol>
             <div class="bottom">

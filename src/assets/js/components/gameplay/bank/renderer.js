@@ -53,11 +53,33 @@ function enableOrDisableBank(playerName) {
 }
 
 function setDisable(boolean) {
-    document.querySelector(".token-bank .ruby").disabled = boolean;
-    document.querySelector(".token-bank .emerald").disabled = boolean;
-    document.querySelector(".token-bank .onyx").disabled = boolean;
-    document.querySelector(".token-bank .sapphire").disabled = boolean;
-    document.querySelector(".token-bank .diamond").disabled = boolean;
+    const $tokenListItems = document.querySelectorAll(".token-bank .gem");
+
+    $tokenListItems.forEach($tokenListItem => {
+        if (!$tokenListItem.classList.contains("gold")) {
+            if (boolean) {
+                makeDisabled($tokenListItem);
+            } else {
+                makeClickable($tokenListItem);
+            }
+        } else {
+            if (boolean) {
+                $tokenListItem.classList.remove("disabled");
+            } else {
+                $tokenListItem.classList.add("disabled")
+            }
+        }
+    })
+}
+
+function makeDisabled($target) {
+    $target.classList.remove("clickable");
+    $target.classList.add("disabled");
+}
+
+function makeClickable($target) {
+    $target.classList.add("clickable");
+    $target.classList.remove("disabled");
 }
 
 function enableTokens() {
@@ -70,13 +92,23 @@ function disableTokens() {
 }
 
 function removeTokenBorders() {
-    const $tokenBanks = document.querySelectorAll(".token-bank button");
+    const $tokenBanks = document.querySelectorAll(".token-bank li");
     $tokenBanks.forEach($tokenBank => {
         $tokenBank.classList.remove("clickable");
+        $tokenBank.classList.remove("disabled");
     });
 }
 
+function initializeZeroes() {
+    const $gems = document.querySelectorAll(".token-bank .gem");
+    $gems.forEach($gem => {
+        const $value = $gem.querySelector(".gem-value");
+        $value.innerText = 0;
+    })
+}
+
 function setTokenMarketValues(gameInfo) {
+    initializeZeroes();
     Object.entries(gameInfo.unclaimedTokens).forEach(([token, amount]) => setTokenValue(token, amount));
 }
 
@@ -85,42 +117,46 @@ function setTokenValue(token, amount) {
         currentBankTokens[token] = amount;
     }
 
-    document.querySelector(`.token-bank .${token.toLowerCase()} `).innerText = amount;
+    document.querySelector(`.token-bank .gem.${token.toLowerCase()} .gem-value`).innerText = amount;
 }
 
-function getChosenTokenColour(e) {
-    if (e.target.classList.contains("ruby")) {
+function getChosenTokenColour($tokenFromBank) {
+
+    if ($tokenFromBank.classList.contains("ruby")) {
         showChosenBankToken("Ruby");
-    } else if (e.target.classList.contains("emerald")) {
+    } else if ($tokenFromBank.classList.contains("emerald")) {
         showChosenBankToken("Emerald");
-    } else if (e.target.classList.contains("onyx")) {
+    } else if ($tokenFromBank.classList.contains("onyx")) {
         showChosenBankToken("Onyx");
-    } else if (e.target.classList.contains("sapphire")) {
+    } else if ($tokenFromBank.classList.contains("sapphire")) {
         showChosenBankToken("Sapphire");
-    } else if (e.target.classList.contains("diamond")) {
+    } else if ($tokenFromBank.classList.contains("diamond")) {
         showChosenBankToken("Diamond");
     }
+
 }
 
 function showChosenBankToken(gem) {
     updateToken(gem, true);
-    const chosenToken = document.createElement("button");
-    chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
-    chosenToken.classList.add("clickable");
-    chosenToken.classList.add(gem.toLowerCase());
-    chosenToken.addEventListener("click", handler.removeChosenBankToken);
-    document.querySelector(".selected-tokens").appendChild(chosenToken);
+    const $chosenToken = document.querySelector("#token").content.firstElementChild.cloneNode(true);
+    $chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
+    $chosenToken.classList.add("clickable");
+    $chosenToken.classList.add(gem.toLowerCase());
+    $chosenToken.classList.add("gem");
+    $chosenToken.querySelector("span").outerHTML = "";
+    $chosenToken.addEventListener("click", handler.removeChosenBankToken);
+    document.querySelector(".selected-tokens").appendChild($chosenToken);
     chosenBankTokens[gem]++;
 }
 
 function enableOrDisableToken(token) {
-    const $tokenButton = document.querySelector(`.token-bank .${token.toLowerCase()} `);
+    const $tokenButton = document.querySelector(`.token-bank .gem.${token.toLowerCase()}`);
     if (isLegalToken(token)) {
-        $tokenButton.disabled = false;
         $tokenButton.classList.add("clickable");
+        $tokenButton.classList.remove("disabled");
     } else {
-        $tokenButton.disabled = true;
         $tokenButton.classList.remove("clickable");
+        $tokenButton.classList.add("disabled");
     }
 }
 
@@ -143,7 +179,7 @@ function updateToken(gem, remove) {
     } else {
         currentBankTokens[gem]++;
     }
-    document.querySelector(`.token-bank .${gem.toLowerCase()} `).innerHTML = currentBankTokens[gem];
+    document.querySelector(`.token-bank .gem.${gem.toLowerCase()} .gem-value`).innerHTML = currentBankTokens[gem];
 }
 
 export {

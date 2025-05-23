@@ -1,0 +1,151 @@
+.gem-costs .gem-value {
+    font-size: 0.8rem;
+}
+
+.own-reserved-cards .gem-costs .gem-value {
+    font-size: .75rem;
+}
+
+.bonus svg {
+    margin-left: 1rem;
+}
+
+.bonus svg, .gem-costs svg {
+    width: 0.9rem;
+    height: 1.3875rem;
+}
+
+.own-reserved-cards .gem-costs svg, .own-reserved-cards .bonus svg {
+    width: 0.9rem;
+    height: 1.3875rem;
+}
+
+.token-bank svg {
+    width: 4rem;
+    height: 7.35rem;
+}
+
+.token-bank .gem.clickable {
+    border: none;
+}
+
+.own-inventory svg {
+    width: 2.25rem;
+    height: 3.75rem;
+}
+
+.own-inventory .gem-value {
+    font-size: 1.1rem;
+}
+
+.card .card-text {
+    font-size: .7rem;
+}
+
+.inventory svg {
+    width: 1.62rem;
+    height: 2.7rem;
+}
+
+.inventory .gem-value {
+    font-size: 1rem;
+}
+
+.inventory .card .card-text {
+    font-size: .7rem;
+}
+
+.selected-tokens svg {
+    width: 1.134rem;
+    height: 1.89rem;
+}
+
+.selected-tokens .gem.clickable {
+    border: none;
+    background-color: transparent;
+}
+
+.gem {
+    width: max-content;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas: "gem";
+}
+
+.gem svg {
+    grid-area: gem;
+}
+
+.gem-value {
+    font-size: 2rem;
+    grid-area: gem;
+    z-index: 1;
+}
+
+.ruby path {
+    fill: var(--ruby-token-color);
+    stroke: var(--ruby-token-color-border);
+}
+
+.card.ruby, .bonus-cost.ruby {
+    background-color: var(--ruby-token-color);
+    border-color: var(--ruby-token-color-border);
+}
+
+.sapphire path {
+    fill: var(--sapphire-token-color);
+    stroke: var(--sapphire-token-color-border);
+}
+
+.card.sapphire, .bonus-cost.sapphire {
+    background-color: var(--sapphire-token-color);
+    border-color: var(--sapphire-token-color-border);
+}
+
+.emerald path {
+    fill: var(--emerald-token-color);
+    stroke: var(--emerald-token-color-border);
+}
+
+.card.emerald, .bonus-cost.emerald {
+    background-color: var(--emerald-token-color);
+    border-color: var(--emerald-token-color-border);
+}
+
+.diamond path {
+    fill: var(--diamond-token-color);
+    stroke: var(--diamond-token-color-border);
+}
+
+.card.diamond, .bonus-cost.diamond {
+    background-color: var(--diamond-token-color);
+    border-color: var(--diamond-token-color-border);
+}
+
+.onyx path {
+    fill: var(--onyx-token-color);
+    stroke: var(--onyx-token-color-border);
+}
+
+.card.onyx, .bonus-cost.onyx {
+    background-color: var(--onyx-token-color);
+    border-color: var(--onyx-token-color-border);
+}
+
+.onyx, .emerald, .ruby, .sapphire {
+    color: var(--main-white-color);
+}
+
+.gold path {
+    fill: var(--gold-token-color);
+    stroke: var(--gold-token-color-border);
+}
+
+.token-bank .disabled path {
+    opacity: 25%;
+}
+
+.token-bank .disabled .gem-value {
+    color: #d6d6d6;
+}

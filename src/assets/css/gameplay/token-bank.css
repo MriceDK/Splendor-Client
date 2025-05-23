@@ -5,18 +5,14 @@
 }
 
 .bank-flexcontainer .token-bank{
-    width: 80%;
+    width: max-content;
     display: grid;
-    height: 12rem;
+    grid-gap: .5rem;
     margin: 1rem auto auto;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:    "red-token green-token black-token"
-                            "blue-token white-token joker-token";
 }
 
 .bank-flexcontainer .token-bank button{
-    border-radius: 100%;
     font-size: 3rem;
     margin: 0.5rem;
 }
@@ -24,6 +20,8 @@
 .bank-flexcontainer .selected-tokens{
     display: flex;
     justify-content: center;
+    gap: .5rem;
+    margin-top: 0.5rem;
 }
 
 .bank-flexcontainer .selected-tokens button{
@@ -46,24 +44,4 @@
     width: 40%;
     border-radius: 0.5rem;
     font-size: 1.25rem;
-}
-
-.bank-flexcontainer .selected-tokens .selected-ruby-token{
-    background-color: orangered;
-}
-
-.bank-flexcontainer .selected-tokens .selected-emerald-token{
-    background-color: limegreen;
-}
-
-.bank-flexcontainer .selected-tokens .selected-onyx-token{
-    background-color: #8d6830;
-}
-
-.bank-flexcontainer .selected-tokens .selected-sapphire-token{
-    background-color: dodgerblue;
-}
-
-.bank-flexcontainer .selected-tokens .selected-diamond-token{
-    background-color: white;
 }

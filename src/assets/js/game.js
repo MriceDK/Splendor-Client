@@ -10,33 +10,51 @@ import {getListOfBuyableCards} from "./components/gameplay/development-card/help
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
 import {lastRoundCheck} from "./components/popup/last-round-notification/handeler.js";
-// import {checkTooMuchGems} from "./components/gameplay/own-player/gems-overflow/handler.js";
-
+import {
+    hookUpEventListenersOnCards
+} from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
+import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
+import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
+import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
+import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 let buyableDevCards = [];
+
+const opponentsNotHidden = [];
 
 function displayGame() {
     getGameInfo()
         .then(res => {
             handleGameOver(res.winner);
-            ownPlayerCardRenderer(res); // TODO dit nog verder uitwerken
+            ownPlayerCardRenderer(res);
             renderOpponentsStats(res.players);
             renderMarket(res);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
             const ownPlayer = getOwnPlayerInfo(res);
-            buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer.tokens);
+            buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
-            // checkTooMuchGems(res.players, res.currentPlayer);
+            hookUpEventListenersOnCards();
+            setUpEventlisteners();
+            hookUpEventListenersOnCards()
+            immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+
+            document.querySelectorAll(".opponent").forEach($opponent => {
+                $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
+            });
+
             lastRoundCheck(res.lastRound, res);
             // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
-        });
+        }).catch(err => {
+            document.querySelector("main").innerHTML = "";
+            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
+    })
 
 }
 
  displayGame();
 
 
-export {displayGame, buyableDevCards};
+export {displayGame, buyableDevCards, opponentsNotHidden};

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Splendor Lobbyname</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
@@ -12,35 +13,41 @@
     <link rel="stylesheet" href="assets/css/gameplay/token-bank.css">
     <link rel="stylesheet" href="assets/css/gameplay/lobby-name-game-board.css">
     <link rel="stylesheet" href="assets/css/gameplay/confirmation-popup.css">
+    <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
+    <link rel="stylesheet" href="assets/css/gameplay/gems.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/gameplay/settings-screen.css">
     <link rel="stylesheet" href="assets/css/gameplay/last-round-notification.css">
 
-    <script src="assets/js/components/popup/confirmation-popup/confirmation-popup-init.js" type="module"></script>
     <script type="module" src="./assets/js/game.js"></script>
-    <script src="assets/js/components/popup/settings-popup/init.js" type="module"></script>
-
 </head>
 <body>
 <div class="popup-container hidden">
     <div id="popup-templates" class="hidden">
+        <template id="not-authorized-popup">
+            <div class="popup">
+                <h3 class="title-popup"></h3>
+                <a class="button-style" href="index.html">Go back to start screen</a>
+            </div>
+        </template>
         <template id="buy-popup-template">
             <div class="confirmation-popup popup">
-                <h3 class="title-popup">buy ${cardname}</h3>
-                <button type="button" class="button-style-popup close-pop-up-button">Cancel</button>
-                <button type="button" class="button-style-popup confirm-pop-up-button">Buy Card</button>
+                <h3 class="title-popup"></h3>
+                <button type="button" class="button-style-popup button-style close-pop-up-button">Cancel</button>
+                <button type="button" class="button-style-popup button-style confirm-pop-up-button">Buy Card</button>
             </div>
         </template>
         <template id="reserve-deck-popup-template">
             <div class="confirmation-popup popup">
-                <h3 class="title-popup">Reserve card from level ${cardname}?</h3>
+                <h3 class="title-popup">?</h3>
                 <div class="errormessages">
                     <p></p>
                 </div>
-                <button type="button" class="close-pop-up-button">Cancel</button>
-                <button type="button" class="confirm-pop-up-button">Reserve Card</button>
+                <button type="button" class="confirm-pop-up-button button-style button-style-popup">Reserve Card</button>
+                <button type="button" class="close-pop-up-button button-style button-style-popup">Cancel</button>
 
             </div>
         </template>
@@ -57,38 +64,36 @@
         </template>
         <template id="too-many-gems-pop-up-template">
             <form id="too-many-gems-pop-up-form" action="#" method="GET" class="popup">
+                <h2>These will be your remaining gems:</h2>
+                <div class="errormessages">
+                    <p></p>
+                </div>
+
                 <label for="token-remover-emerald">
                     Emerald
                 </label>
                 <input class="gem-remover-input" id="token-remover-emerald" type="number" name="emerald" min="0">
-
                 <label for="token-remover-ruby">
                     Ruby
                 </label>
                 <input class="gem-remover-input" id="token-remover-ruby" type="number" name="ruby" min="0">
-
                 <label for="token-remover-sapphire">
                     Sapphire
                 </label>
                 <input class="gem-remover-input" id="token-remover-sapphire" type="number" name="sapphire" min="0">
-
                 <label for="token-remover-diamond">
                     Diamond
                 </label>
                 <input class="gem-remover-input" id="token-remover-diamond" type="number" name="diamond" min="0">
-
                 <label for="token-remover-onyx">
                     Onyx
                 </label>
                 <input class="gem-remover-input" id="token-remover-onyx" type="number" name="onyx" min="0">
-
                 <label for="token-remover-gold">
                     Gold
                 </label>
                 <input class="gem-remover-input" id="token-remover-gold" type="number" name="gold" min="0">
-
-                <button type="submit" id="gem-remover-button" value="confirm-removal">Remove Gems</button>
-
+                <button type="submit" id="gem-remover-button" class="button-style button-style-popup" value="confirm-removal">Remove Gems</button>
 
             </form>
         </template>
@@ -109,45 +114,71 @@
                 <div class="errormessages">
                     <p></p>
                 </div>
-                <form id="token-selector-form" action="#" method="GET">
+                <form id="token-selector-form" class="form-flex" action="#" method="GET">
                     <input id="token-selector-dev-card" type="hidden" name="dev-card" value="">
-                    <label for="token-selector-emerald">
-                        Emerald
-                        <input class="gem-selector-input" id="token-selector-emerald" type="number" name="emerald"
-                               value="0"
-                               min="0">
-                    </label>
-                    <label for="token-selector-ruby">
+                    <div class="gem-chooser">
+                        <label for="token-selector-emerald" class="emerald-name">
+                            Emerald
+                        </label>
+                        <div class="input-and-cost">
+                            <input class="gem-selector-input" id="token-selector-emerald" type="number" name="emerald"
+                                   value="0"
+                                   min="0">
+                            <p class="total emerald-cost"></p>
+                        </div>
+                    </div>
+                    <div class="gem-chooser">
+                    <label for="token-selector-ruby" class="ruby-name">
                         Ruby
-                        <input class="gem-selector-input" id="token-selector-ruby" type="number" name="ruby" value="0"
-                               min="0">
                     </label>
-                    <label for="token-selector-sapphire">
+                        <div class="input-and-cost">
+                        <input class="gem-selector-input" id="token-selector-ruby" type="number" name="ruby" value="0"
+                               min="0"><p class="total ruby-cost"></p>
+                        </div>
+                    </div>
+                    <div class="gem-chooser">
+                    <label for="token-selector-sapphire" class="sapphire-name">
                         Sapphire
+                    </label>
+                        <div class="input-and-cost">
                         <input class="gem-selector-input" id="token-selector-sapphire" type="number" name="sapphire"
                                value="0"
-                               min="0">
-                    </label>
-                    <label for="token-selector-diamond">
+                               min="0"><p class="total sapphire-cost"></p>
+                        </div>
+                    </div>
+                    <div class="gem-chooser">
+                    <label for="token-selector-diamond" class="diamond-name">
                         Diamond
-                        <input class="gem-selector-input" id="token-selector-diamond" type="number" name="diamond"
-                               value="0"
-                               min="0">
                     </label>
-                    <label for="token-selector-onyx">
+                        <div class="input-and-cost">
+                            <input class="gem-selector-input" id="token-selector-diamond" type="number" name="diamond"
+                                   value="0"
+                                   min="0">
+                            <p class="total diamond-cost"></p>
+                        </div>
+                    </div>
+                    <div class="gem-chooser">
+                    <label for="token-selector-onyx" class="onyx-name">
                         Onyx
-                        <input class="gem-selector-input" id="token-selector-onyx" type="number" name="onyx" value="0"
-                               min="0">
                     </label>
-                    <label for="token-selector-gold">
+                        <div class="input-and-cost">
+                        <input class="gem-selector-input" id="token-selector-onyx" type="number" name="onyx" value="0"
+                               min="0"><p class="total onyx-cost"></p>
+                        </div>
+                    </div>
+                    <label for="token-selector-gold" class="gold-name">
                         Gold
                         <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0"
                                min="0">
                     </label>
-                    <button type="button" id="token-selector-close-button">Cancel</button>
-                    <input type="submit" value="confirm-payment">
-                    <p>The costs are:</p>
-                    <dl></dl>
+                    <div class="total-container">
+
+
+                    </div>
+                    <div class="button-row">
+                        <button type="button" id="token-selector-close-button" class="button-style button-style-popup">Cancel</button>
+                        <input type="submit" value="confirm-payment" class="button-style button-style-popup">
+                    </div>
                 </form>
 
             </div>
@@ -161,8 +192,8 @@
         <template id="end-of-game-template">
             <div class="popup">
                 <h3 class="title-popup">Game Over</h3>
-                <p class="winner-text">The winner was: <span class="winnner"></span></p>
-                <button type="button" class="return-to-main-menu-button">Return to main menu</button>
+                <p class="winner-text">The winner is: <span class="winnner"></span></p>
+                <a class="button-style button-style-popup" href="index.html">Return to main menu</a>
             </div>
         </template>
     </div>
@@ -181,56 +212,80 @@
                 <div class="opponent">
                     <div class="opponent-frame-container">
                         <div class="opponent-player-info">
-                            <p class="player"></p>
-                            <p class="points"></p>
+                            <div class="player-name-container">
+                                <img src="images/user-logo.png" class="profile-picture" alt="player logo">
+                                <p class="player"></p>
+                            </div>
+                            <div class="points">
+                                <p class="points-text"></p>
+                                <span class="min-points-to-win">/15</span>
+                            </div>
                         </div>
                         <div class="points-bar-container">
                             <div class="points-bar"></div>
                         </div>
                         <div class="inventory-collection">
                             <div class="inventory">
-                                <div class="token gems red">
-                                    <p class="token-text"></p>
+                                <div class="gem ruby">
+                                    <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                    </svg>
+                                    <span class="gem-value">0</span>
                                 </div>
-                                <div class="card red">
-                                    <p class="token-text"></p>
-                                </div>
-                            </div>
-                            <div class="inventory">
-                                <div class="gems green">
-                                    <p class="token-text"></p>
-                                </div>
-                                <div class="card green">
-                                    <p class="token-text"></p>
+                                <div class="card ruby">
+                                    <p class="card-text">0</p>
                                 </div>
                             </div>
                             <div class="inventory">
-                                <div class="gems black">
-                                    <p class="token-text"></p>
+                                <div class="gem emerald">
+                                    <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                    </svg>
+                                    <span class="gem-value">0</span>
                                 </div>
-                                <div class="card black">
-                                    <p class="token-text"></p>
-                                </div>
-                            </div>
-                            <div class="inventory">
-                                <div class="gems blue">
-                                    <p class="token-text"></p>
-                                </div>
-                                <div class="card blue">
-                                    <p class="token-text"></p>
+                                <div class="card emerald">
+                                    <p class="card-text">0</p>
                                 </div>
                             </div>
                             <div class="inventory">
-                                <div class="gems white">
-                                    <p class="token-text"></p>
+                                <div class="gem onyx">
+                                    <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                    </svg>
+                                    <span class="gem-value">0</span>
                                 </div>
-                                <div class="card white">
-                                    <p class="token-text"></p>
+                                <div class="card onyx">
+                                    <p class="card-text">0</p>
                                 </div>
                             </div>
                             <div class="inventory">
-                                <div class="gems yellow">
-                                    <p class="token-text"></p>
+                                <div class="gem sapphire">
+                                    <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                    </svg>
+                                    <span class="gem-value">0</span>
+                                </div>
+                                <div class="card sapphire">
+                                    <p class="card-text">0</p>
+                                </div>
+                            </div>
+                            <div class="inventory">
+                                <div class="gem diamond">
+                                    <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                    </svg>
+                                    <span class="gem-value">0</span>
+                                </div>
+                                <div class="card diamond">
+                                    <p class="card-text">0</p>
+                                </div>
+                            </div>
+                            <div class="inventory">
+                                <div class="gem gold">
+                                    <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                    </svg>
+                                    <span class="gem-value">0</span>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +294,11 @@
 
                         </div>
                     </div>
-                    <p class="reserved-label"><span class="reserved-count"></span> reserved</p>
+                    <div class="opponent-info-container">
+                        <p class="reserved-label"><span class="reserved-count"></span> reserved</p>
+                        <p class="interaction-indicator">Click to toggle nobles</p>
+                    </div>
+
                 </div>
 
             </template>
@@ -247,6 +306,16 @@
     </section>
     <div class="market-grid-container">
         <div id="market-templates" class="hidden">
+
+            <template id="token">
+                <li class="gem">
+                    <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                    </svg>
+                    <span class="gem-value">1</span>
+                </li>
+            </template>
+
             <template id="noble">
 
                 <article class="noble-article">
@@ -263,7 +332,7 @@
 
                 <article class="deck">
                     <h2>Level <span class="level-title"></span></h2>
-                    <p><span class="card-amount"></span> left</p>
+                    <p class="card-amount-left"><span class="card-amount"></span> left</p>
                 </article>
 
             </template>
@@ -273,7 +342,11 @@
                 <article class="development-card">
                     <h2 class="development-card-title hidden">title</h2>
                     <span class="prestige-point">1</span>
-                    <img class="bonus" src="#" alt="bonus">
+                    <div class="bonus gem">
+                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <div class="gem-costs">
                     </div>
                 </article>
@@ -290,75 +363,131 @@
     </div>
     <section class="bank-flexcontainer">
         <h2>Bank</h2>
-        <div class="token-bank">
-            <button class="ruby">0</button>
-            <button class="emerald">0</button>
-            <button class="onyx">0</button>
-            <button class="sapphire">0</button>
-            <button class="diamond">0</button>
-            <button class="gold" disabled>0</button>
-        </div>
-        <div class="selected-tokens"></div>
+        <ul class="token-bank">
+            <li class="gem ruby">
+                <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                </svg>
+                <span class="gem-value"></span>
+            </li>
+            <li class="gem emerald">
+                <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                </svg>
+                <span class="gem-value"></span>
+            </li>
+            <li class="gem onyx">
+                <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                </svg>
+                <span class="gem-value"></span>
+            </li>
+            <li class="gem sapphire">
+                <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                </svg>
+                <span class="gem-value"></span>
+            </li>
+            <li class="gem diamond">
+                <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                </svg>
+                <span class="gem-value"></span>
+            </li>
+            <li class="gem gold">
+                <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                </svg>
+                <span class="gem-value"></span>
+            </li>
+        </ul>
+        <ul class="selected-tokens"></ul>
         <div class="bank-buttons">
-            <button class="hidden cancel-button">Cancel</button>
-            <button class="clickable take-gems-button">Take Gems</button>
-            <button class="hidden collect-gems-button" disabled>Collect Gems</button>
+            <button class="hidden cancel-button button-style">Cancel</button>
+            <button class="clickable take-gems-button button-style">Take Gems</button>
+            <button class="hidden collect-gems-button button-style" disabled>Collect</button>
         </div>
     </section>
     <div class="user-info-flexcontainer">
-        <div id="own-player-card" class="own-player-card">
+        <div class="own-user-info">
+            <img src="./images/user-logo.png" alt="User profile" class="profile-picture">
+            <h2 id="own-username">Username</h2>
+        </div>        <div id="own-player-card" class="own-player-card">
             <div class="container-1">
-                <h2 id="own-username">Username</h2>
-                <div id="own-prestige-points" class="own-prestige-points"><p></p></div>
+                <div id="own-prestige-points" class="own-prestige-points">
+                    <p></p>
+                    <span class="min-points-to-win">/15</span>
+                </div>
+                <div class="points-bar-container">
+                    <div class="points-bar"></div>
+                </div>
                 <div class="nobles-container"></div>
             </div>
-            <div class="own-purse">
-                <div class="own-inventory">
-                    <div class="gems ruby">
-                        <p class="token-text">0</p>
+            <ul class="own-purse">
+                <li class="own-inventory">
+                    <div class="gem ruby">
+                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                        </svg>
+                        <span class="gem-value">1</span>
                     </div>
                     <div class="card ruby">
                         <p class="card-text">0</p>
                     </div>
-                </div>
-                <div class="own-inventory">
-                    <div class="gems emerald">
-                        <p class="token-text">0</p>
+                </li>
+                <li class="own-inventory">
+                    <div class="gem emerald">
+                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                        </svg>
+                        <span class="gem-value">1</span>
                     </div>
                     <div class="card emerald">
                         <p class="card-text">0</p>
                     </div>
-                </div>
-                <div class="own-inventory">
-                    <div class="gems onyx">
-                        <p class="token-text">0</p>
+                </li>
+                <li class="own-inventory">
+                    <div class="gem onyx">
+                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                        </svg>
+                        <span class="gem-value">1</span>
                     </div>
                     <div class="card onyx">
                         <p class="card-text">0</p>
                     </div>
-                </div>
-                <div class="own-inventory">
-                    <div class="gems sapphire">
-                        <p class="token-text">0</p>
+                </li>
+                <li class="own-inventory">
+                    <div class="gem sapphire">
+                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                        </svg>
+                        <span class="gem-value">1</span>
                     </div>
                     <div class="card sapphire">
                         <p class="card-text">0</p>
                     </div>
-                </div>
-                <div class="own-inventory">
-                    <div class="gems diamond">
-                        <p class="token-text">0</p>
+                </li>
+                <li class="own-inventory">
+                    <div class="gem diamond">
+                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                        </svg>
+                        <span class="gem-value">1</span>
                     </div>
                     <div class="card diamond">
                         <p class="card-text">0</p>
                     </div>
-                </div>
-                <div class="own-inventory">
-                    <div class="gems gold">
-                        <p class="token-text">0</p>
+                </li>
+                <li class="own-inventory">
+                    <div class="gem gold">
+                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                        </svg>
+                        <span class="gem-value">1</span>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
             <div class="own-reserved-cards"></div>
         </div>
 

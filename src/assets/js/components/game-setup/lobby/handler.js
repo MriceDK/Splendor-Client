@@ -1,6 +1,7 @@
 import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import * as renderer from "./renderer.js";
 
+
 import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function loadJoinedGame() {
@@ -18,5 +19,6 @@ function getGameDetailsForGameId() {
             setTimeout(loadJoinedGame, 2000);
         });
 }
+
 
 export {loadJoinedGame};

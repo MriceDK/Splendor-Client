@@ -16,18 +16,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
 
     <script src="assets/js/index.js" type="module"></script>
+    <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
 </head>
 <body>
 <div class="popup-container hidden">
     <template id="username-popup-template">
         <div class="popup">
-            <a href="#" id="closePopup">
-                <p>X</p>
+            <a href="#" id="close-popup">
+                <p id="close-popup-text">Close</p>
             </a>
             <form id="playername-changer">
                 <label for="playername-text">Username: </label>
-                <input type="text" id="playername-text" name="playername">
-                <button type="submit" id="playername-button">Change Username</button>
+                <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
+                <p class="error-username-selector"></p>
+                <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
             </form>
         </div>
     </template>

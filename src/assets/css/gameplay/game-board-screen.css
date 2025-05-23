@@ -10,7 +10,7 @@ body{
 
 main {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 0.75fr 2fr 0.75fr;
     grid-template-rows: 5% 1fr 1.75fr auto;
     height: 100vh;
     width: 100vw;
@@ -18,6 +18,7 @@ main {
                             "username market info"
                             "username market bank"
                             ". user-info history";
+    gap: 0.5rem;
 }
 
 header {
@@ -30,18 +31,18 @@ header {
     grid-area: username;
     display: flex;
     flex-direction: column;
+    align-items: start;
     padding-top: 1rem;
 }
 
 .market-grid-container {
     grid-area: market;
-    /*background-color: blueviolet; Dit mag inprincipe al weg*/
 }
 
 .user-info-flexcontainer {
     grid-area: user-info;
-    /*background-color: red;*/
     align-self: end;
+    justify-self: center;
 }
 
 .history {
@@ -68,24 +69,50 @@ header {
 
 .own-player-card {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
     align-items: center;
-    padding: 1rem;
-
+    padding: 0.5rem;
+    border-radius: 0 0.5rem 0 0;
+    background-color: var(--main-white-color);
 }
 
 .own-purse {
     display: grid;
-    gap: 1rem;
+    gap: .5rem;
     grid-template-columns: repeat(3, auto);
 }
 
 .own-reserved-cards {
     display: flex;
-    gap: 2rem;
+    gap: 0.5rem;
 }
 
-.own-prestige-points {
-    margin-top: .5rem;
+
+.noble-article {
+    width: 6.5rem;
+    height: 3.65625rem;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
 }
 
+.gem, .card, .noble-article, .development-card {
+    font-family: 'Inter', serif;
+}
+
+.player-name-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-picture {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+}

@@ -1,4 +1,4 @@
-const MAX_NOBLE_DISPLAY = 3;
+const MAX_NOBLE_DISPLAY = 5;
 
 function renderNobles(nobles, $target) {
     nobles.forEach(noble => {
@@ -14,6 +14,7 @@ function renderNoble(noble, $target){
 
     const $bonusCost = $template.querySelector(".bonus-costs");
     renderCostBonuses(noble.neededBonuses, $bonusCost);
+    $template.style.backgroundImage = `url("/src/images/noble-images/${noble.name}.jpg")`;
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
@@ -32,7 +33,7 @@ function renderCostBonuses(bonusesNeeded, $target){
 }
 
 function generateCostBonus(bonusNeeded, bonusValue) {
-    return `<li class="${bonusNeeded}">${bonusValue}</li>`;
+    return `<li class="bonus-cost ${bonusNeeded}"><span>${bonusValue}</span></li>`;
 }
 
 function renderEmptyNobleSpots($target) {
