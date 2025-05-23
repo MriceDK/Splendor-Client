@@ -3,7 +3,6 @@ import {closePopUp} from "../confirmation-popup/renderer.js";
 import {buyDevelopmentCard, buyReservedDevelopmentCard} from "./handler.js";
 import * as helper from "./helper.js";
 
-
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
 
 function hookupEventListeners(reservedCard) {
@@ -19,32 +18,26 @@ function hookupEventListeners(reservedCard) {
 function renderTokenSelectorForm(devCardName, reservedCard) {
     Utils.showPopupContainer();
 
-
     const $target = document.querySelector(".popup-container");
 
     $tokenSelector.querySelector("#token-selector-dev-card").value = devCardName;
     $target.insertAdjacentHTML("beforeend", $tokenSelector.outerHTML);
 
-
     const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
     const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
-    const $form = document.querySelector("#token-selector-form");
-    const costs = helper.getGemCostObject($form);
     renderCostsInPopUp(devCardValues);
 
     hookupEventListeners(reservedCard);
 }
 
 function renderCostsInPopUp(costs) {
-
-    console.log(costs);
     Object.entries(costs).forEach((cost) => {
         const $target = document.querySelector(`#token-selector-form .${cost[0]}-cost`);
         const costWithBonuses = helper.calculateNeededDevelopmentCost(cost[1], cost[0]);
 
         $target.insertAdjacentHTML("beforeend", `<p>/${costWithBonuses}</p>`);
-    })
+    });
 }
 
 function putInitalBuyValueInForm(devCardValues) {
@@ -53,13 +46,11 @@ function putInitalBuyValueInForm(devCardValues) {
 
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
-
             if (input.getAttribute("name") === token){
                 if (!isNaN(devCardValues[token])){
                     input.setAttribute("value", helper.calculatePossibleDevelopmentCost(devCardValues[token], token));
                     input.setAttribute("max", helper.calculateNeededDevelopmentCost(devCardValues[token], token));
                 } else {
-                    console.log(input.closest(".gem-chooser"))
                     input.closest(".gem-chooser").classList.add("hidden");
                 }
             }
@@ -71,7 +62,6 @@ function putInitalBuyValueInForm(devCardValues) {
 function getCostFromDevelopmentCard($devCard){
     const tokenArray = ["ruby", "diamond", "sapphire", "emerald", "onyx"];
     const $values = $devCard.querySelectorAll("li.gem");
-    console.log($values)
     const returnObj = {};
     tokenArray.forEach((token) => {
         $values.forEach(($value) => {
@@ -89,5 +79,6 @@ function getCostFromDevelopmentCard($devCard){
 export {
     renderTokenSelectorForm,
     hookupEventListeners,
-    renderCostsInPopUp
+    renderCostsInPopUp,
+    getCostFromDevelopmentCard
 };

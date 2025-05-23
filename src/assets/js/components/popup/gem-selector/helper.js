@@ -1,4 +1,5 @@
 import * as Utils from "../../../helper/utils.js";
+import {getCostFromDevelopmentCard} from "./renderer.js";
 
 function getGemCostObject($form) {
     const $inputs = $form.querySelectorAll(".gem-selector-input");
@@ -51,4 +52,32 @@ function calculateNeededDevelopmentCost(devCardValue, token) {
     return devCardValue - tokenBonus;
 }
 
-export {getGemCostObject, createBuyCardBody, createBuyReservedCardBody, calculatePossibleDevelopmentCost, calculateNeededDevelopmentCost};
+function checkIfPaymentIsCorrect($devCard, payment) {
+    const developmentCost = getCostFromDevelopmentCard($devCard);
+    let totalCost = calculateTotalGemCost(developmentCost);
+
+    Object.entries(developmentCost).forEach(([key, value]) => {
+        const tokenName = key.replace(key[0], key[0].toUpperCase());
+        const usedBonuses = developmentCost[key] - calculateNeededDevelopmentCost(developmentCost[key], key);
+
+        if (payment[tokenName] > value) {
+            return false;
+        }
+        totalCost -= payment[tokenName];
+        totalCost -= usedBonuses;
+    });
+
+    return totalCost === payment["Gold"];
+}
+
+function calculateTotalGemCost(developmentCost) {
+    let totalGemCost = 0;
+
+    Object.values(developmentCost).forEach((value) => {
+        totalGemCost += parseInt(value);
+    });
+
+    return totalGemCost;
+}
+
+export {getGemCostObject, createBuyCardBody, createBuyReservedCardBody, calculatePossibleDevelopmentCost, calculateNeededDevelopmentCost, checkIfPaymentIsCorrect};
