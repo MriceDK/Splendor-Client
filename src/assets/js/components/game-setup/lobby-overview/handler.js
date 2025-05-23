@@ -91,6 +91,7 @@ function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
         localStorageAbstractor.saveToStorage("gameId", joinGameId);
+        localStorageAbstractor.saveToStorage("spectate", false);
         addPlayerToGame(joinGameId);        
     } else if (e.target.nodeName === "BUTTON" && e.target.classList.contains("spectate-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");

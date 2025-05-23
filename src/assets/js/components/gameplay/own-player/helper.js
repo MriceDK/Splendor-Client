@@ -12,7 +12,15 @@ function getOwnPlayerInfo(gameinfo) {
             return player;
         }
     }
+    return null;
+}
 
+function getCurrentPlayerInfo(gameinfo) {
+    for (const player of gameinfo.players) {
+        if (player.name === gameinfo.currentPlayer) {
+            return player;
+        }
+    }
     return null;
 }
 
@@ -33,4 +41,4 @@ function getAllOwnPlayerTokens(ownPlayer) {
     return ownPlayer.tokens;
 }
 
-export {putInitalValue, getOwnPlayerInfo, getAllOwnPlayerTokens};
+export {putInitalValue, getOwnPlayerInfo, getAllOwnPlayerTokens, getCurrentPlayerInfo};
