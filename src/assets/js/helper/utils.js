@@ -34,7 +34,6 @@ function elementIsInArray(array, element) {
 
 function validNameForcer(name){
     const output = name.split(" ").join("");
-    console.log(output);
     return output;
 }
 
