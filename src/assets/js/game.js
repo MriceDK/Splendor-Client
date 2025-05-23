@@ -38,7 +38,7 @@ function displayGame() {
             renderBuyableCards();
             hookUpEventListenersOnCards();
             setUpEventlisteners();
-            hookUpEventListenersOnCards()
+            hookUpEventListenersOnCards();
             chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
 
