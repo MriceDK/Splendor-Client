@@ -1,4 +1,4 @@
-const MAX_NOBLE_DISPLAY = 3;
+const MAX_NOBLE_DISPLAY = 5;
 
 function renderNobles(nobles, $target) {
     nobles.forEach(noble => {

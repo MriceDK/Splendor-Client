@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     width: min-content;
-    border-radius: .5rem;
+    border-radius: 5%;
 }
 
 .inventory-collection {
@@ -89,18 +89,20 @@
 
 .nobles-container.wrap {
     flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.nobles-container.wrap .noble-article:last-child {
-    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .nobles-container .noble-article {
-    background-color: var(--main-bg-color); /* Adjust color */
+    background-color: var(--main-bg-color);
     font-size: .75rem;
     width: 6rem;
     height: 3.375rem;
+}
+
+.opponent .noble-article {
+    width: 4.2rem;
+    height: 2.3625rem;
 }
 
 .nobles-container .empty, .own-reserved-cards .empty {
@@ -114,7 +116,7 @@
     margin-top: 0.25rem;
 }
 
-.current-player #own-username, .current-player .own-player-card, .current-player .opponent-frame-container {
+.current-player #own-username, .current-player .own-player-card, .current-player .opponent-frame-container, .current-player .own-user-info {
     background-color: var(--dark-beige);
 }
 
@@ -145,13 +147,35 @@
     text-overflow: ellipsis;
 }
 
+.opponent-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.interaction-indicator {
+    font-family: Inter, serif;
+    font-size: .8rem;
+    color: var(--main-white-color);
+}
+
+.own-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.3rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: fit-content;
+    background-color: var(--main-white-color);
+
+}
+
 #own-username {
     background-color: var(--main-white-color);
     font-size: 2.25rem;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
     padding-top: 0.25rem;
-    width: fit-content;
     max-width: 22rem;
     border-radius: 0.5rem 0.5rem 0 0;
 }

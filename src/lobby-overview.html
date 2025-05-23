@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/screen.css">
   <link rel="stylesheet" href="assets/css/game-setup/lobby-overview-screen.css">
   <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
   <script src="assets/js/components/game-setup/lobby-overview/lobby-overview.js" type="module"></script>
   <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
@@ -23,11 +23,11 @@
   <template id="username-popup-template">
     <div class="popup">
       <a href="#" id="close-popup">
-        <p>Close</p>
+        <p id="close-popup-text">Close</p>
       </a>
       <form id="playername-changer">
         <label for="playername-text">Username: </label>
-        <input type="text" id="playername-text" name="playername" maxlength="15">
+        <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
         <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
       </form>
       <p class="error-username-selector"></p>
@@ -38,49 +38,64 @@
     <nav>
       <a href="index.html">⬅</a>
     </nav>
-    <h1>Select a game to join or spectate</h1>
     <div class="playername">
       <a href="#" id="renderButton">
-        <img src="./images/playername-logo.png" alt="playername logo" title="playername logo" id="profile-picture">
+        <img src="./images/user-logo.png" alt="playername logo" title="playername logo" id="profile-picture">
         <span id="playername">Select Username</span>
       </a>
 
     </div>
   </header>
   <main>
-  <form id="filter">
-    <div id="search">
-      <label for="searchbar">Search for a lobby by name</label>
-      <input type="text" placeholder="Enter lobby name" id="searchbar">
-    </div>
+    <h1>Select a game to join or spectate</h1>
 
-    <input type="checkbox" id="show-started-filter">
-    <label for="show-started-filter">Show started</label>
+    <form id="filter">
+      <div id="search">
+        <label for="searchbar">Lobby Name:</label>
+        <input type="text" placeholder="Enter lobby name" id="searchbar">
+      </div>
 
-    <input type="checkbox" id="show-unstarted-filter" checked>
-    <label for="show-unstarted-filter">Show unstarted</label>
+      <div id="player-amount">
+        <label for="amount-of-players-in-lobby-filter">Amount of players:</label>
+        <select id="amount-of-players-in-lobby-filter">
+          <option value="isAny" selected>Any amount of players</option>
+          <option value="2">2 Players</option>
+          <option value="3">3 Players</option>
+          <option value="4">4 Players</option>
+        </select>
+      </div>
 
-    <input type="checkbox" id="show-full-filter">
-    <label for="show-full-filter">Show full lobbies</label>
+      <div class="checkboxes">
+        <label for="show-started-filter" class="bomb-check">
+          <input type="checkbox" id="show-started-filter" class="bomb-check">
+          <span class="bomb-shape"></span>
+          Show started
+        </label>
 
-    <input type="checkbox" id="show-joinable-filter" checked>
-    <label for="show-joinable-filter">Show joinable lobbies</label>
+        <label for="show-unstarted-filter" class="bomb-check">
+          <input type="checkbox" id="show-unstarted-filter" checked>
+          <span class="bomb-shape"></span>
+          Show unstarted
+        </label>
 
-<!--    <input type="checkbox" id="show-public-filter" checked>-->
-<!--    <label for="show-public-filter">Show public lobbies</label>-->
+        <label for="show-full-filter" class="bomb-check">
+          <input type="checkbox" id="show-full-filter">
+          <span class="bomb-shape"></span>
+          Show full lobbies
+        </label>
 
-<!--    <input type="checkbox" id="show-private-filter">-->
-<!--    <label for="show-private-filter">Show private lobbies</label>-->
+        <label for="show-joinable-filter" class="bomb-check">
+          <input type="checkbox" id="show-joinable-filter" checked>
+          <span class="bomb-shape"></span>
+          Show joinable lobbies
+        </label>
 
-    <div id="player-amount">
-      <label for="amount-of-players-in-lobby-filter">Amount of players:</label>
-      <select id="amount-of-players-in-lobby-filter">
-        <option value="isAny" selected>Any amount of players</option>
-        <option value="2">2 Players</option>
-        <option value="3">3 Players</option>
-        <option value="4">4 Players</option>
-      </select>
-    </div>
+        <!--    <input type="checkbox" id="show-public-filter" checked>-->
+        <!--    <label for="show-public-filter">Show public lobbies</label>-->
+
+        <!--    <input type="checkbox" id="show-private-filter">-->
+        <!--    <label for="show-private-filter">Show private lobbies</label>-->
+      </div>
   </form>
 
   <div class="lobby-overview-container">
