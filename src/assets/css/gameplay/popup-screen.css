@@ -208,3 +208,13 @@ body{
 }
 
 /*end region*/
+
+#settings{
+    width: 2rem;
+    height: 2rem;
+}
+
+
+#settings img{
+    margin-left: 1.4rem;
+}

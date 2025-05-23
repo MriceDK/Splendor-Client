@@ -1,7 +1,6 @@
 import * as DevelopmentCardRenderer from "../development-card/renderer.js";
 import { convertToKebabCase } from "../../../helper/utils.js";
 import * as NobleRenderer from "../noble/renderer.js";
-import {hookUpEventListenersOnPickableNoble}  from "./handler.js";
 
 function renderMarket(gameInfo) {
     const $target = document.querySelector(".market-grid-container");
@@ -31,36 +30,4 @@ function renderLevelCard(level, cardStackSize, $target) {
 }
 
 
-function renderPickableNobles(nobles){
-    // TODO Wanneer we dit makkelijk kunnen testen, zou ik dit in het noble component steken en het onderstaande verbeteren
-    // Hier wordt er geselecteerd op ALLE elementen met de klasse noble-article, is het niet de bedoeling dat er enkel
-    // geselecteerd wordt op elementen BINNEN de market-grid-container ?
-    const $allNobles = document.querySelectorAll(".market-grid-container .noble-article");
-    nobles.forEach(noble => {
-        nameChecker(noble, $allNobles);
-
-    });
-
-}
-
-function nameChecker(noble, $allNobles){
-    
-    $allNobles.forEach($nobleInDom => {
-        if ($nobleInDom.querySelector(".noble-name").innerHTML === noble.name){
-            renderPickableNoblesHelp($nobleInDom, noble);
-
-        }
-    });
-    
-}
-
-function renderPickableNoblesHelp($nobleInDom, noble){
-
-    $nobleInDom.classList.add("pickable-noble");
-    const forceNameFromServer = convertToKebabCase(noble.name);
-    $nobleInDom.classList.add(`${forceNameFromServer}`);
-    hookUpEventListenersOnPickableNoble(gameId, playerName, noble);
-
-}
-
-export { renderMarket, renderPickableNobles };
+export { renderMarket};

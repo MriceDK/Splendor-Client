@@ -15,12 +15,15 @@ function checkAvailableNobles(nobles, playerInfo) {
 }
 
 function nobleQualification(nobleRequirements, playerBonuses) {
-    for (const [bonus, requiredAmount] of Object.entries(nobleRequirements)) {
+    for (const bonus in nobleRequirements) {
+        const bonusExistsInPlayer = bonus in playerBonuses;
+        const bonusCheck = playerBonuses[bonus] >= nobleRequirements[bonus];
 
-        if (playerBonuses[bonus] < requiredAmount) {
+        if (!bonusExistsInPlayer || !bonusCheck) {
             return false;
         }
     }
+
     return true;
 
 }

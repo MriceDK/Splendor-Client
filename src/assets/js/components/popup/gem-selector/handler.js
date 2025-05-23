@@ -8,6 +8,7 @@ import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {nobleCheck} from "../../gameplay/market/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
 import {displayGame} from "../../../game.js";
+import {resetBankButtons} from "../../gameplay/bank/renderer.js";
 import {checkIfPaymentIsCorrect} from "./helper.js";
 
 function immediateNobleCheckAfterBuy(){
@@ -35,10 +36,10 @@ function buyDevelopmentCard(e) {
             Object.entries(buyResponse.tokens).forEach((token) => {
                 renderOwnTokenValue(token);
             });
-
             immediateNobleCheckAfterBuy();
         }).then(() => {
             displayGame();
+            resetBankButtons();
         }).catch(err => {
             ErrorHandler.handleError(err);
 
@@ -62,10 +63,10 @@ function buyReservedDevelopmentCard(e) {
             Object.entries(buyResponse.tokens).forEach((token) => {
                 renderOwnTokenValue(token);
             });
-
             immediateNobleCheckAfterBuy();
         }).then(() => {
             displayGame();
+            resetBankButtons();
         }).catch(err => {
             ErrorHandler.handleError(err);
         });

@@ -1,8 +1,7 @@
 import * as APIAbstractor from "../data-connector/api-communication-abstractor.js";
 import {createReserveCardBody} from "./helper.js";
 import * as LocalStorageAbstractor from "../data-connector/local-storage-abstractor.js";
-import {getCurrentPlayer} from "../helper/utils.js";
-import {removePickableFromNobles} from "../components/gameplay/market/handler.js";
+import {removePickableFromNobles} from "../components/gameplay/noble/pickable/handler.js";
 
 
 function reserveCard(cardNameOrLevel, level = false) {
@@ -26,20 +25,16 @@ function buyReservedCard(cardName, body) {
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve/${cardName}`, "DELETE", body);
 }
 
-function getNobleToInventory(gameId, playerName, noble){
+function getNobleToInventory(e, gameId, playerName, noble){
+    e.preventDefault();
 
-    if (playerName === getCurrentPlayer(playerName)){
+    const body = {
+        "name": noble.name,
+        "prestigePoints": noble.prestigePoints,
+        "neededBonuses":noble.neededBonuses
+    };
+    APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body).then(() => removePickableFromNobles());
 
-        const body = {
-            "name": noble.name,
-            "prestigePoints": noble.prestigePoints,
-            "neededBonuses":noble.neededBonuses
-        };
-        APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body).then(() => removePickableFromNobles());
-
-    } else {
-        throw "TurnError";
-    }
 }
 
 function updateTokens(gameId, playerName, body) {
