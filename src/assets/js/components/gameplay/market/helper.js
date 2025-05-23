@@ -8,6 +8,7 @@ function checkAvailableNobles(nobles, playerInfo) {
 
 
     });
+    console.log("endOfCheckAvailableNobles");
 
     return qualifiedNobles;
 
@@ -21,6 +22,7 @@ function nobleQualification(nobleRequirements, playerBonuses) {
             return false;
         }
     }
+    console.log("noblequalification");
     return true;
 
 }

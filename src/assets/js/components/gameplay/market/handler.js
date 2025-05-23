@@ -4,9 +4,10 @@ import {checkAvailableNobles} from "./helper.js";
 import {renderDisableCard, renderEnabledCard} from "../development-card/renderer.js";
 
 
-function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
-    if (nobleCheck){
-        const pickableNobles = checkAvailableNobles(unclaimedNobles, currentPlayerInfo);
+function nobleCheck(gameState, unclaimedNobles, currentPlayer, ownPlayer){
+    if (gameState === "CHOOSE_NOBLE" && currentPlayer === ownPlayer.name){
+        console.log("nobleCHeck");
+        const pickableNobles = checkAvailableNobles(unclaimedNobles, ownPlayer);
         renderPickableNobles(pickableNobles); 
     }
 }
@@ -15,6 +16,7 @@ function nobleCheck(nobleCheck, unclaimedNobles, currentPlayerInfo){
 function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
     const $pickableNobles = document.querySelectorAll(".pickable-nobles");
     $pickableNobles.forEach( (pickableNoble) => {
+        console.log("hooking up event listener on pickablenoble");
         pickableNoble.addEventListener("click", () => {getNobleToInventory(gameId, playerName, noble)})
     }); 
 
