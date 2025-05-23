@@ -98,7 +98,7 @@ header a:hover{
  color: var(--beige);
 }
 
-header img {
+header #profile-picture {
  width: 5rem;
  margin-right: 0.75rem;
 }
