@@ -41,8 +41,6 @@ function displayGame() {
                 $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
             });
 
-            console.log(opponentsNotHidden);
-
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }

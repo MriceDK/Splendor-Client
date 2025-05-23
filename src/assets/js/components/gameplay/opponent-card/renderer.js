@@ -35,11 +35,7 @@ function fillOpponentStat($template, opponent) {
 
 function makeNobleContainerVisible($nobleContainer, opponentNameToBeChecked) {
     opponentsNotHidden.forEach(opponentName => {
-        console.log($nobleContainer);
-        console.log("-----");
-        console.log(opponentName);
-        console.log("$$$$$$");
-        console.log(opponentNameToBeChecked);
+
         if (opponentNameToBeChecked === opponentName) {
             console.log("uuuy")
             $nobleContainer.classList.remove("hidden");
