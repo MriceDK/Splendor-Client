@@ -16,7 +16,7 @@ import {
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
-import {nobleCheck} from "./components/gameplay/market/handler.js";
+import {nobleCheck} from "./components/gameplay/noble/pickable/handler.js";
 let buyableDevCards = [];
 
 function displayGame() {

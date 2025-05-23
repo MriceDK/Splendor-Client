@@ -1,8 +1,6 @@
 import * as DevelopmentCardRenderer from "../development-card/renderer.js";
 import { convertToKebabCase } from "../../../helper/utils.js";
 import * as NobleRenderer from "../noble/renderer.js";
-import {hookUpEventListenersOnPickableNoble}  from "./handler.js";
-import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 function renderMarket(gameInfo) {
     const $target = document.querySelector(".market-grid-container");
@@ -32,35 +30,4 @@ function renderLevelCard(level, cardStackSize, $target) {
 }
 
 
-function renderPickableNobles(nobles){
-    // TODO Wanneer we dit makkelijk kunnen testen, zou ik dit in het noble component steken en het onderstaande verbeteren
-    const $allNobles = document.querySelectorAll(".market-grid-container .noble-article");
-    nobles.forEach(noble => {
-        nameChecker(noble, $allNobles);
-
-    });
-
-}
-
-function nameChecker(noble, $allNobles){
-    
-    $allNobles.forEach($nobleInDom => {
-        if ($nobleInDom.querySelector(".noble-name").innerHTML === noble.name){
-
-            renderPickableNoblesHelp($nobleInDom, noble);
-
-        }
-    });
-    
-}
-
-function renderPickableNoblesHelp($nobleInDom, noble){
-
-    $nobleInDom.classList.add("pickable-noble");
-    const forceNameFromServer = convertToKebabCase(noble.name);
-    $nobleInDom.classList.add(`${forceNameFromServer}`);
-    hookUpEventListenersOnPickableNoble(loadFromStorage("gameId"), loadFromStorage("playerName"), noble);
-
-}
-
-export { renderMarket, renderPickableNobles };
+export { renderMarket};
