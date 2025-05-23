@@ -17,24 +17,19 @@ main {
 }
 
 h1{
-    flex-grow: 1;
-    align-items: flex-start;
+    flex-grow: 0.75;
+    align-content: center;
     text-align: center;
     font-size: 4rem;
 }
 
 .lobby-create-form {
-    margin-top: 10%;
-    margin-bottom: 15%;
+    margin-bottom: 7.5rem;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     font-size: 2rem;
-}
-
-.lobby-create-form .submit {
-    margin-top: 3rem;
 }
 
 .disabled {
