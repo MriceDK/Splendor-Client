@@ -135,3 +135,7 @@
 .buyable, .pickable-noble {
     box-shadow: 0 0 0.5rem 0.25rem var(--main-yellow-color);
 }
+
+.pickable-noble:hover {
+    border: 1rem solid var(--main-yellow-color);
+}
