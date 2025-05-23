@@ -1,5 +1,5 @@
-function uppercaseFirstLetterOfWord(word) {
-    return word.replace(word[0], word[0].toUpperCase());
+function uppercaseFirstLetterOfWord(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function showPopupContainer() {

@@ -1,5 +1,5 @@
 import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {upperCaseFirstLetter} from "./handler.js";
+import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
 function dataListFromApi(data) {
 
@@ -15,7 +15,7 @@ function lobbyName(lobbyNameString) {
 
     if (lobbyNameString === null || lobbyNameString === "") {
 
-        $titleElement.innerHTML = `${upperCaseFirstLetter(storageAbstractor.loadFromStorage("playerName"))}'s lobby`;
+        $titleElement.innerHTML = `${uppercaseFirstLetterOfWord(storageAbstractor.loadFromStorage("playerName"))}'s lobby`;
     } else {
         $titleElement.innerHTML = lobbyNameString.charAt(0).toUpperCase() + lobbyNameString.slice(1).toLowerCase();
     }
@@ -36,7 +36,7 @@ function renderPlayersLoop(playerArray, data) {
         
         const $copy = $template.content.firstElementChild.cloneNode(true);
 
-        $copy.textContent = upperCaseFirstLetter(user);
+        $copy.textContent = uppercaseFirstLetterOfWord(user);
 
         $target.insertAdjacentHTML("beforeend", $copy.outerHTML);
     });
@@ -51,7 +51,7 @@ function started(isStarted) {
 }
 
 function renderOwnPlayerName() {
-    upperCaseFirstLetter(document.querySelector("#playername").innerHTML = storageAbstractor.loadFromStorage("playerName"))
+    uppercaseFirstLetterOfWord(document.querySelector("#playername").innerHTML = storageAbstractor.loadFromStorage("playerName"))
 }
 
 export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi};
