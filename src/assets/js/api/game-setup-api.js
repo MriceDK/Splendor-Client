@@ -15,7 +15,11 @@ function getAllLobbies() {
 }
 
 function joinLobby(joinGameId, playerName) {
-    return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST");
+    const body = {
+        "wantsToLeave": false,
+        "isSpectator": false,
+    }
+    return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST", body);
 }
 
 export {

@@ -182,6 +182,21 @@ function updateToken(gem, remove) {
     document.querySelector(`.token-bank .gem.${gem.toLowerCase()} .gem-value`).innerHTML = currentBankTokens[gem];
 }
 
+function resetBankButtons(){
+    const cancelBtn = document.querySelector(".bank-buttons .cancel-button");
+    const takeBtn = document.querySelector(".bank-buttons .take-gems-button");
+    const collectBtn = document.querySelector(".bank-buttons .collect-gems-button");
+
+    cancelBtn.classList.add("hidden");
+    cancelBtn.classList.remove("clickable");
+
+    takeBtn.classList.remove("hidden");
+    takeBtn.classList.add("clickable");
+
+    collectBtn.classList.add("hidden");
+    collectBtn.classList.remove("clickable");
+}
+
 export {
     renderTokenBank,
     changeButtons,
@@ -194,5 +209,6 @@ export {
     enableOrDisableToken,
     toggleCollectGemsButton,
     chosenBankTokens,
-    currentBankTokens
+    currentBankTokens,
+    resetBankButtons
 };

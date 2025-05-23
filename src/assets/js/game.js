@@ -3,6 +3,8 @@ import {renderTokenBank} from "./components/gameplay/bank/renderer.js";
 import {ownPlayerCardRenderer} from "./components/gameplay/own-player/renderer.js";
 import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
+import {renderHistoryLogs} from "./components/gameplay/history/renderer.js";
+
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
 import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
@@ -16,7 +18,9 @@ import {
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
+import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js";
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
+import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
 let buyableDevCards = [];
 
 const opponentsNotHidden = [];
@@ -30,12 +34,14 @@ function displayGame() {
             renderMarket(res);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
+            renderHistoryLogs(res.history);
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
             hookUpEventListenersOnCards();
             setUpEventlisteners();
-            hookUpEventListenersOnCards()
+            hookUpEventListenersOnCards();
+            chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
             lastRoundCheck(res.lastRound, res);
 
@@ -45,10 +51,12 @@ function displayGame() {
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
-        }).catch(err => {
+        })
+        .catch(err => {
             document.querySelector("main").innerHTML = "";
-            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
-    })
+            const message = getCorrectMessageFromError(err);
+            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(message);
+     })
 
 }
 
