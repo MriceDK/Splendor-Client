@@ -45,6 +45,10 @@ function renderCostsInPopUp(costs) {
 function putInitalBuyValueInForm(devCardValues) {
     const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
     const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
+    const ownTokenValue = parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerHTML);
+
+
+    console.log($allInputs);
 
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
@@ -58,6 +62,9 @@ function putInitalBuyValueInForm(devCardValues) {
             }
         });
 
+        if (input.getAttribute("name") === "gold") {
+            input.setAttribute("max", parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerHTML));
+        }
     });
 }
 
