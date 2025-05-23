@@ -1,6 +1,6 @@
 import { saveToStorage } from "../../../data-connector/local-storage-abstractor.js";
 import { changePlayerNameText } from "./renderer.js";
-import {makeNameValid} from "../../../helper/utils.js";
+import {makeNameValid, uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
 function changePlayerName(e){
     e.preventDefault();
@@ -10,7 +10,7 @@ function changePlayerName(e){
     document.querySelector(".error-username-selector").innerHTML = "Please enter a username";
     }
     else{
-        saveToStorage("playerName", makeNameValid($usernameForm));
+        saveToStorage("playerName", uppercaseFirstLetterOfWord(makeNameValid($usernameForm)));
         changePlayerNameText();
     }
 }

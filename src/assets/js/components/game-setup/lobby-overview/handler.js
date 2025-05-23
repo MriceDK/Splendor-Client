@@ -4,8 +4,6 @@ import * as localStorageAbstractor from "../../../data-connector/local-storage-a
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
 
-
-
 function loadUserInformation() {
     render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
@@ -119,7 +117,12 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
 function uniqueNameForcer(n){
 
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    const newPlayerName = `${playerName}${n}`;
+    const resettedPlayerName = playerName.substring(0, playerName.length - 1);
+    let newPlayerName = `${resettedPlayerName}${n}`;
+    if (n === 1){
+        newPlayerName = `${playerName}${n}`;
+
+    }
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
