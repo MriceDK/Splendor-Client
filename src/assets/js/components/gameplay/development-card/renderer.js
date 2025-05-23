@@ -86,4 +86,4 @@ function renderBuyableCard($card) {
     $card.classList.add("buyable");
 }
 
-export {renderDevelopmentCards, renderEmptyDevelopmentCardSpots, renderEnabledCard, renderDisableCard, renderBuyableCards};
+export {renderDevelopmentCards, renderEmptyDevelopmentCardSpots, renderEnabledCard, renderDisableCard, renderBuyableCards, MAX_RESERVED_CARDS};

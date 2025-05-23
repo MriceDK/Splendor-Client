@@ -1,3 +1,5 @@
+import {MAX_RESERVED_CARDS} from "../../gameplay/development-card/renderer.js";
+
 function renderBuyDevelopmentCardPopup(cardName) {
     const $template = document.querySelector("#buy-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
@@ -25,7 +27,7 @@ function renderReserveDevelopmentCardPopup(cardLevel) {
     $template.querySelector(".title-popup").innerText = `Reserve card from level ${cardLevel}?`;
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
 
-    if (numberOfReservedCards.length >= 3) {
+    if (numberOfReservedCards.length >= MAX_RESERVED_CARDS) {
         $target.querySelector(".confirmation-popup .confirm-pop-up-button").disabled = true;
     }
 }
@@ -46,7 +48,7 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName) {
         $target.querySelector(".confirmation-popup .confirm-pop-up-button").disabled = true;
     }
 
-    if (numberOfReservedCards.length >= 3) {
+    if (numberOfReservedCards.length >= MAX_RESERVED_CARDS) {
         console.log($target);
         $target.querySelector(".confirmation-popup .cancel-pop-up-button").disabled = true;
     }
