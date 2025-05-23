@@ -17,18 +17,24 @@ function renderBuyDevelopmentCardPopup(cardName) {
 function renderReserveDevelopmentCardPopup(cardLevel) {
     const $template = document.querySelector("#reserve-deck-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
+    const numberOfReservedCards = document.querySelectorAll(".own-reserved-cards .reserved");
 
     document.querySelector(".popup-container").classList.remove("hidden");
     document.querySelector(".popup-container").setAttribute("data-pop-up-type", "reserve-deck-pop-up");
 
     $template.querySelector(".title-popup").innerText = `Reserve card from level ${cardLevel}?`;
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
+
+    if (numberOfReservedCards.length >= 3) {
+        $target.querySelector(".confirmation-popup .confirm-pop-up-button").disabled = true;
+    }
 }
 
 function renderBuyAndReserveDevelopmentCardPopUp(cardName) {
     const $template = document.querySelector("#buy-or-reserve-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
     const $devCard = document.querySelector(`article.development-card[data-card-name="${cardName}"]`);
+    const numberOfReservedCards = document.querySelectorAll(".own-reserved-cards .reserved");
 
     document.querySelector(".popup-container").classList.remove("hidden");
     document.querySelector(".popup-container").setAttribute("data-pop-up-type", "buy-and-reserve-pop-up");
@@ -38,6 +44,11 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName) {
 
     if (!$devCard.classList.contains("buyable")) {
         $target.querySelector(".confirmation-popup .confirm-pop-up-button").disabled = true;
+    }
+
+    if (numberOfReservedCards.length >= 3) {
+        console.log($target);
+        $target.querySelector(".confirmation-popup .cancel-pop-up-button").disabled = true;
     }
 }
 
