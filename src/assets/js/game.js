@@ -17,6 +17,7 @@ import {
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
+import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js";
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 let buyableDevCards = [];
 
@@ -37,7 +38,8 @@ function displayGame() {
             renderBuyableCards();
             hookUpEventListenersOnCards();
             setUpEventlisteners();
-            hookUpEventListenersOnCards()
+            hookUpEventListenersOnCards();
+            chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
 
             document.querySelectorAll(".opponent").forEach($opponent => {
@@ -49,8 +51,8 @@ function displayGame() {
             }
         }).catch(err => {
             document.querySelector("main").innerHTML = "";
-            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
-    })
+            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.message);
+     })
 
 }
 
