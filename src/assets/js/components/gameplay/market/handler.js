@@ -5,6 +5,10 @@ import {renderDisableCard, renderEnabledCard} from "../development-card/renderer
 
 
 function nobleCheck(gameState, unclaimedNobles, currentPlayer, ownPlayer){
+    console.log(gameState);
+    console.log(unclaimedNobles);
+    console.log(currentPlayer);
+    console.log(ownPlayer);
     if (gameState === "CHOOSE_NOBLE" && currentPlayer === ownPlayer.name){
         console.log("nobleCHeck");
         const pickableNobles = checkAvailableNobles(unclaimedNobles, ownPlayer);
