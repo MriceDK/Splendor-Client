@@ -26,20 +26,16 @@ function buyReservedCard(cardName, body) {
     return APIAbstractor.fetchFromServer(`/games/${gameId}/players/${playerName}/reserve/${cardName}`, "DELETE", body);
 }
 
-function getNobleToInventory(gameId, playerName, noble){
+function getNobleToInventory(e, gameId, playerName, noble){
+    e.preventDefault();
 
-    if (playerName === getCurrentPlayer(playerName)){
+    const body = {
+        "name": noble.name,
+        "prestigePoints": noble.prestigePoints,
+        "neededBonuses":noble.neededBonuses
+    };
+    APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body).then(() => removePickableFromNobles());
 
-        const body = {
-            "name": noble.name,
-            "prestigePoints": noble.prestigePoints,
-            "neededBonuses":noble.neededBonuses
-        };
-        APIAbstractor.fetchFromServer(`/games/${parseInt(gameId)}/players/${playerName}/nobles`, "POST", body).then(() => removePickableFromNobles());
-
-    } else {
-        throw "TurnError";
-    }
 }
 
 function updateTokens(gameId, playerName, body) {

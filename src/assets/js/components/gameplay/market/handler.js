@@ -24,7 +24,7 @@ function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
     console.log($pickableNobles);
     $pickableNobles.forEach( (pickableNoble) => {
         console.log("hooking up event listener on pickablenoble");
-        pickableNoble.addEventListener("click", () => {getNobleToInventory(gameId, playerName, noble)})
+        pickableNoble.addEventListener("click", e => {getNobleToInventory(e, gameId, playerName, noble)})
     }); 
 
 }
