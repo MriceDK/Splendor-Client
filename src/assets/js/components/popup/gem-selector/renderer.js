@@ -28,6 +28,7 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
     const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
     renderCostsInPopUp(devCardValues);
+    checkIfPaymentIsValidForConfirm();
 
     hookupEventListeners(reservedCard);
 }

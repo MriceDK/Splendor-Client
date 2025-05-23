@@ -72,9 +72,7 @@ function buyReservedDevelopmentCard(e) {
     }
 }
 
-function checkIfPaymentIsValidForConfirm(e) {
-    e.preventDefault();
-
+function checkIfPaymentIsValidForConfirm() {
     const $form = document.querySelector("#token-selector-form");
     const $confirmButton = document.querySelector("#token-selector-form .button-row input");
 
