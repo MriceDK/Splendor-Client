@@ -37,13 +37,11 @@ function displayGame() {
             setUpEventlisteners();
             hookUpEventListenersOnCards()
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+            lastRoundCheck(res.lastRound, res);
 
             document.querySelectorAll(".opponent").forEach($opponent => {
                 $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
             });
-
-            lastRoundCheck(res.lastRound, res);
-            // TODO: ask how to implement this function
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
