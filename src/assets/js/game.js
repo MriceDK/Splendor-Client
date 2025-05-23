@@ -3,6 +3,7 @@ import {renderTokenBank} from "./components/gameplay/bank/renderer.js";
 import {ownPlayerCardRenderer} from "./components/gameplay/own-player/renderer.js";
 import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
+import {renderHistoryLogs} from "./components/gameplay/history/renderer.js";
 
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
@@ -30,6 +31,7 @@ function displayGame() {
             renderMarket(res);
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
+            renderHistoryLogs(res.history);
             const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();

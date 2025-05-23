@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/gameplay/confirmation-popup.css">
     <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
     <link rel="stylesheet" href="assets/css/gameplay/gems.css">
+    <link rel="stylesheet" href="assets/css/gameplay/history.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -484,9 +485,19 @@
         </div>
 
     </div>
-    <div class="history">
-        <p>History</p>
-    </div>
+    <section class="history">
+        <h3>History</h3>
+        <ol class="history-logs">
+            <template id="history-log">
+                <li class="history-log">
+                    <div class="action-container">
+                        <span class="log-player">Alice</span><span class="log-message">did something.</span>
+                    </div>
+                    <p class="log-time"></p>
+                </li>
+            </template>
+        </ol>
+    </section>
 </main>
 </body>
 </html>

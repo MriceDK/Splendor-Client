@@ -7,7 +7,7 @@ function generateVisualAPIErrorInConsole(error){
 
 function handleError(error){
     generateVisualAPIErrorInConsole(error);
-    document.querySelector(ERRORHANDLERSELECTOR).innerText = error.cause;
+    document.querySelector(ERRORHANDLERSELECTOR).innerText = error.message; /* Oorspronkelijk stond dit op error.cause, maar aangezien onze excepties geen err.cause bevatten, maar wel err.message hebben we dit voorlopig aangepast */
 }
 
 export { handleError };
