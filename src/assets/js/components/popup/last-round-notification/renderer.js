@@ -1,7 +1,10 @@
 function renderLastRoundNotification(res) {
-        const $template = document.querySelector("#last-round-notification-template").content.firstElementChild.cloneNode(true);
-        const previousPlayer = res.players[((res.players.findIndex(player => player.name === res.currentPlayer)- 1 + res.numberOfPlayers) % res.numberOfPlayers)].name;
-        $template.querySelector(".last-round-text").innerHTML = `${previousPlayer} has reached enough points to win <br> last turn starts now`;
+    const $template = document.querySelector("#last-round-notification-template").content.firstElementChild.cloneNode(true);
+    const indexOfCurrentPlayer = res.players.findIndex(player => player.name === res.currentPlayer);
+    const indexOfPreviousPlayer = (indexOfCurrentPlayer - 1 + res.numberOfPlayers) % res.numberOfPlayers;
+    const previousPlayer = res.players[indexOfPreviousPlayer].name;
+
+    $template.querySelector(".last-round-text").innerHTML = `${previousPlayer} has reached enough points to win <br> last turn starts now`;
         const $target = document.querySelector(".popup-container")
         $target.classList.remove("hidden");
         $target.innerHTML = document.querySelector("#last-round-notification-template").outerHTML;
