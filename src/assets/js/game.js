@@ -16,7 +16,10 @@ import {
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
+import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 let buyableDevCards = [];
+
+const opponentsNotHidden = [];
 
 function displayGame() {
     getGameInfo()
@@ -34,6 +37,11 @@ function displayGame() {
             setUpEventlisteners();
             hookUpEventListenersOnCards()
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+
+            document.querySelectorAll(".opponent").forEach($opponent => {
+                $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
+            });
+
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
@@ -47,4 +55,4 @@ function displayGame() {
  displayGame();
 
 
-export {displayGame, buyableDevCards};
+export {displayGame, buyableDevCards, opponentsNotHidden};
