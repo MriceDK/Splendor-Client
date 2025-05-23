@@ -39,12 +39,10 @@ function displayGame() {
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
-        })
-    //     .catch(err => {
-    //         console.log(err);
-    //         document.querySelector("main").innerHTML = "";
-    //         NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.message);
-    // })
+        }).catch(err => {console.log(err);
+            document.querySelector("main").innerHTML = "";
+            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.message);
+     })
 
 }
 
