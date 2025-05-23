@@ -102,16 +102,18 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
         joinLobbyHelp(res);
 
     })
-    .catch(() => {
-        errorHandler.handleError;
+    .catch((err) => {
+        if (err.cause === "There already exists a player with the same name in this game."){
 
-        numberToAddNameUniqueness++;
-        uniqueNameForcer(numberToAddNameUniqueness);
-        addPlayerToGame(joinGameId, numberToAddNameUniqueness);
+            numberToAddNameUniqueness++;
+            uniqueNameForcer(numberToAddNameUniqueness);
+            addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
+        } else {
+            //TODO show pop up saying the error, something like lobby is full
         }
-        
-    );
+        }
+    )
 }
 
 
