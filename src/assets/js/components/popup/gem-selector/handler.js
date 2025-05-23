@@ -76,16 +76,13 @@ function checkIfPaymentIsValidForConfirm(e) {
     e.preventDefault();
 
     const $form = document.querySelector("#token-selector-form");
+    const $confirmButton = document.querySelector("#token-selector-form .button-row input");
 
     const devCardName = $form.querySelector("#token-selector-dev-card").value;
     const devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
     const gemCost = helper.getGemCostObject($form);
 
-    if (checkIfPaymentIsCorrect(devCard, gemCost)) {
-        document.querySelector("#token-selector-form .button-row input").disabled = false;
-    } else {
-        document.querySelector("#token-selector-form .button-row input").disabled = true;
-    }
+    $confirmButton.disabled = !checkIfPaymentIsCorrect(devCard, gemCost);
 }
 
 export {buyDevelopmentCard, buyReservedDevelopmentCard, checkIfPaymentIsValidForConfirm};
