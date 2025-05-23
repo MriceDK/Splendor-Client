@@ -72,4 +72,20 @@ function buyReservedDevelopmentCard(e) {
     }
 }
 
-export {buyDevelopmentCard, buyReservedDevelopmentCard};
+function checkIfPaymentIsValidForConfirm(e) {
+    e.preventDefault();
+
+    const $form = document.querySelector("#token-selector-form");
+
+    const devCardName = $form.querySelector("#token-selector-dev-card").value;
+    const devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
+    const gemCost = helper.getGemCostObject($form);
+
+    if (checkIfPaymentIsCorrect(devCard, gemCost)) {
+        document.querySelector("#token-selector-form .button-row input").disabled = false;
+    } else {
+        document.querySelector("#token-selector-form .button-row input").disabled = true;
+    }
+}
+
+export {buyDevelopmentCard, buyReservedDevelopmentCard, checkIfPaymentIsValidForConfirm};

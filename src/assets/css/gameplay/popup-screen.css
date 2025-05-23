@@ -146,11 +146,10 @@ body{
     justify-content: center;
 }
 
-#token-selector-form input[type="submit"]:hover {
-    background-color: var(--brown);
-    color: var(--beige);
-    border-color: var(--main-black-color);
+#token-selector-form input[type="submit"]:disabled {
+    cursor: auto;
 }
+
 
 .popup-token-selector .errormessages p {
     color: red;
