@@ -132,6 +132,6 @@
     border-radius: 50%;
 }
 
-.buyable {
+.buyable, .pickable-noble {
     box-shadow: 0 0 0.5rem 0.25rem var(--main-yellow-color);
 }
