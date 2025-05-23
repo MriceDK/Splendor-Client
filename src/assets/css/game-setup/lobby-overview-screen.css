@@ -22,6 +22,7 @@ header a{
 }
 
 nav a {
+    color: var(--main-white-color);
     text-decoration: none;
     font-size: 2rem;
     margin-left: 1rem;
@@ -34,17 +35,6 @@ h1 {
     font-size: 2.5rem;
 }
 
-.playername {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-}
-
-.playername img {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-right: 0.625rem;
-}
 #playername-changer label{
     color: var(--main-black-color);
 }
@@ -111,6 +101,7 @@ h1 {
 
 .lobby .lobbyname {
     overflow-x: hidden;
+    overflow-y: hidden;
     text-overflow: ellipsis;
 }
 

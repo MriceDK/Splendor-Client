@@ -17,7 +17,10 @@ import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-g
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
 import {nobleCheck} from "./components/gameplay/noble/pickable/handler.js";
+import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 let buyableDevCards = [];
+
+const opponentsNotHidden = [];
 
 function displayGame() {
     getGameInfo()
@@ -36,6 +39,11 @@ function displayGame() {
             hookUpEventListenersOnCards()
             nobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+
+            document.querySelectorAll(".opponent").forEach($opponent => {
+                $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
+            });
+
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
@@ -49,4 +57,4 @@ function displayGame() {
  displayGame();
 
 
-export {displayGame, buyableDevCards};
+export {displayGame, buyableDevCards, opponentsNotHidden};

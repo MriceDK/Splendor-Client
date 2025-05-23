@@ -99,6 +99,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     joinLobby(joinGameId, playerName)
     .then(res => {
+
         joinLobbyHelp(res);
 
     })
@@ -120,7 +121,12 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
 function uniqueNameForcer(n){
 
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    const newPlayerName = `${playerName}${n}`;
+    const resettedPlayerName = playerName.substring(0, playerName.length - 1);
+    let newPlayerName = `${resettedPlayerName}${n}`;
+    if (n === 1){
+        newPlayerName = `${playerName}${n}`;
+
+    }
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 

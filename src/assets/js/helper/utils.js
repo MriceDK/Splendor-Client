@@ -1,5 +1,5 @@
-function uppercaseFirstLetterOfWord(word) {
-    return word.replace(word[0], word[0].toUpperCase());
+function uppercaseFirstLetterOfWord(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function showPopupContainer() {
@@ -20,18 +20,21 @@ function getCurrentPlayer(players, currentPlayer){
         }
     }
     return undefined;
- }
+}
 
- function elementIsInArray(array, element) {
+function elementIsInArray(array, element) {
 
     for (const item of array) {
         if (item === element) {
             return true;
         }
     }
-
     return false;
+}
 
- }
+function makeNameValid(name){
+    const output = name.split(" ").join("");
+    return output;
+}
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray};
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid};
