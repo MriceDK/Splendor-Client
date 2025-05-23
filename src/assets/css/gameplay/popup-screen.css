@@ -15,11 +15,29 @@ body{
     gap: 0.25rem;
 }
 
+.gem-chooser p {
+    align-self: center;
+    padding: 0.2rem;
+}
+
+.gem-chooser .gem-chooser-own-gems-text {
+    width: 6rem;
+}
+
+.gem-chooser .input-and-cost {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gem-chooser .gem-chooser-input,  .gem-chooser .gem-chooser-own-gems {
+    display: flex;
+}
+
 .input-and-cost {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 3rem;
+    gap: 1rem;
 }
 
 .gem-selector-input {
