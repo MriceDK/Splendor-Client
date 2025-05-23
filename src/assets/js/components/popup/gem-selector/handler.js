@@ -2,23 +2,11 @@ import * as helper from "./helper.js";
 import * as ErrorHandler from "../../../data-connector/error-handler.js";
 import * as API from "../../../api/gameplay-api.js";
 
-import {getCurrentPlayer} from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
 import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
-import {nobleCheck} from "../../gameplay/market/handler.js";
-import {getGameInfo} from "../../../api/game-setup-api.js";
 import {displayGame} from "../../../game.js";
 import {resetBankButtons} from "../../gameplay/bank/renderer.js";
 import {checkIfPaymentIsCorrect} from "./helper.js";
-
-function immediateNobleCheckAfterBuy(){
-    getGameInfo().then(res => {
-
-        const currentPlayer = getCurrentPlayer(res.players, res.currentPlayer);
-        nobleCheck(res.pickNobleRequired, res.unclaimedNobles, currentPlayer);
-    }
-    );
-}
 
 function buyDevelopmentCard(e) {
     e.preventDefault();
