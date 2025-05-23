@@ -12,9 +12,9 @@ function handleGameOver(winner) {
 }
 
 function handleClickOnPopup(e) {
-    if (e.target.classList.contains("return-to-main-menu-button")) {
-        window.location.href = "index.html";
-    }
+    // if (e.target.classList.contains("return-to-main-menu-button")) {
+    //     window.location.href = "index.html";
+    // }
 }
 
 export {handleGameOver, handleClickOnPopup};

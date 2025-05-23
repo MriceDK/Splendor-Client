@@ -8,7 +8,7 @@ function setUpEventlisteners() {
 
     document.querySelector("#settings").addEventListener("click", renderSettingsPopup);
     document.querySelector(".popup-container").addEventListener("click", handleSettingsPopupClicks);
-    document.querySelector(".popup-container").addEventListener("click", handleClickOnPopup);
+    //document.querySelector(".popup-container").addEventListener("click", handleClickOnPopup);
 
 }
 
