@@ -12,13 +12,16 @@ function nobleCheck(gameState, unclaimedNobles, currentPlayer, ownPlayer){
     if (gameState === "CHOOSE_NOBLE" && currentPlayer === ownPlayer.name){
         console.log("nobleCHeck");
         const pickableNobles = checkAvailableNobles(unclaimedNobles, ownPlayer);
+        console.log(pickableNobles);
         renderPickableNobles(pickableNobles); 
     }
 }
 
 
 function hookUpEventListenersOnPickableNoble(gameId, playerName, noble){
-    const $pickableNobles = document.querySelectorAll(".pickable-nobles");
+    console.log("hookingup");
+    const $pickableNobles = document.querySelectorAll(".pickable-noble");
+    console.log($pickableNobles);
     $pickableNobles.forEach( (pickableNoble) => {
         console.log("hooking up event listener on pickablenoble");
         pickableNoble.addEventListener("click", () => {getNobleToInventory(gameId, playerName, noble)})

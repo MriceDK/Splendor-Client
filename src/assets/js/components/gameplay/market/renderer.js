@@ -59,9 +59,10 @@ function renderPickableNoblesHelp($nobleInDom, noble){
     console.log("renderpickablenobleshelp");
 
     $nobleInDom.classList.add("pickable-noble");
+    console.log($nobleInDom);
     const forceNameFromServer = convertToKebabCase(noble.name);
     $nobleInDom.classList.add(`${forceNameFromServer}`);
-    hookUpEventListenersOnPickableNoble(loadFromStorage(gameId), loadFromStorage(playerName), noble);
+    hookUpEventListenersOnPickableNoble(loadFromStorage("gameId"), loadFromStorage("playerName"), noble);
 
 }
 
