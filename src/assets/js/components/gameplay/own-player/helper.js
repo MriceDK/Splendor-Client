@@ -4,8 +4,8 @@ function getOwnPlayerName() {
     return loadFromStorage("playerName");
 }
 
-function getOwnPlayerInfo(gameinfo) {
-    const players = gameinfo.players;
+function getOwnPlayerInfo(gameInfo) {
+    const players = gameInfo.players;
 
     for (const player of players) {
         if (player.name === getOwnPlayerName()) {
@@ -15,9 +15,9 @@ function getOwnPlayerInfo(gameinfo) {
     return null;
 }
 
-function getCurrentPlayerInfo(gameinfo) {
-    for (const player of gameinfo.players) {
-        if (player.name === gameinfo.currentPlayer) {
+function getCurrentPlayerInfo(gameInfo) {
+    for (const player of gameInfo.players) {
+        if (player.name === gameInfo.currentPlayer) {
             return player;
         }
     }
