@@ -479,9 +479,19 @@
         </div>
 
     </div>
-    <div class="history">
-        <p>History</p>
-    </div>
+    <section class="history">
+        <h3>History</h3>
+        <ol class="history-logs">
+            <template id="history-log">
+                <li class="history-log">
+                    <div class="action-container">
+                        <p><span class="log-player">Alice</span> <span class="log-message">did something.</span></p>
+                    </div>
+                    <p class="log-time"></p>
+                </li>
+            </template>
+        </ol>
+    </section>
 </main>
 </body>
 </html>
