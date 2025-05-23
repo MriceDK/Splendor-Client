@@ -36,6 +36,7 @@ function renderPlayersLoop(playerArray, data) {
         
         const $copy = $template.content.firstElementChild.cloneNode(true);
         const $profilePicture = document.querySelector(".profile-picture");
+        $profilePicture.setAttribute("src", "images/user-logo.png");
         $copy.innerHTML = ` ${$profilePicture}
         ${upperCaseFirstLetter(user)}
         `;
