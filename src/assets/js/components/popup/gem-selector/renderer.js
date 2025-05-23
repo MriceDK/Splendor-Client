@@ -28,6 +28,7 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
     const devCardValues =  getCostFromDevelopmentCard($devCard);
     putInitalBuyValueInForm(devCardValues);
     renderCostsInPopUp(devCardValues);
+    renderOwnTokenValuesInGems();
     checkIfPaymentIsValidForConfirm();
 
     hookupEventListeners(reservedCard);
@@ -46,9 +47,6 @@ function putInitalBuyValueInForm(devCardValues) {
     const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
     const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
     const ownTokenValue = parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerHTML);
-
-
-    console.log($allInputs);
 
     $allInputs.forEach((input) => {
         tokenArray.forEach((token) => {
@@ -83,6 +81,22 @@ function getCostFromDevelopmentCard($devCard){
     });
 
     return returnObj;
+}
+
+function renderOwnTokenValuesInGems() {
+    const $ownPurse = document.querySelectorAll(".user-info-flexcontainer .own-inventory");
+
+    console.log($ownPurse);
+
+    $ownPurse.forEach((tokenValues) => {
+        const token = tokenValues.querySelector(".gem").classList[1];
+
+        document.querySelector(`.popup-token-selector .inventory .${token} .gem-value`).innerHTML = tokenValues.querySelector(".gem-value").innerHTML;
+
+        if (token !== "gold") {
+            document.querySelector(`.popup-token-selector .inventory .${token} .card-text`).innerHTML = tokenValues.querySelector(".card-text").innerHTML;
+        }
+    });
 }
 
 export {
