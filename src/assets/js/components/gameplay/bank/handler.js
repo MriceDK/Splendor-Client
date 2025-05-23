@@ -67,6 +67,7 @@ function collectTokens() {
         });
     }).then(() => {
         displayGame();
+        renderer.resetBankButtons();
     });
 
 
