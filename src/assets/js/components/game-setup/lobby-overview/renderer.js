@@ -19,11 +19,11 @@ function renderOwnPlayerName(name){
     document.querySelector("#playername").innerHTML = name;
 }
 
-function renderLobbyFullPopup(gameId, playerName){
+function renderLobbyFullPopup(gameName, playerName){
 
     const $popup = document.querySelector(".popup-container:first-of-type");
     const $template = document.querySelector("#lobby-full-popup-template").content.firstElementChild.cloneNode(true);
-    $template.querySelector("h2").innerText = `We're sorry ${playerName}, but the game with gameId ${gameId} is full.`;
+    $template.querySelector("h2").innerText = `We're sorry ${playerName}, but the game with the name ${gameName}  is full.`;
     const $target = document.querySelector(".popup-container:first-of-type");
     $popup.classList.remove("hidden");
     $template.addEventListener("submit", e => {handleLobbyFullPopupClick(e, $popup)});

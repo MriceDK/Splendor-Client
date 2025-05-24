@@ -13,7 +13,7 @@ function getMatchingGames() {
     getAllLobbies()
         .then((res) => {
             handleFilters(addGameName(res.games));
-            setTimeout(getMatchingGames, 1000);
+            setTimeout(getMatchingGames, 5000);
         })
         .catch(errorHandler.handleError);
 }
@@ -111,7 +111,8 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
             addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
         } else {
-            RenderLobbyOverview.renderLobbyFullPopup(joinGameId, playerName);
+            const gameName = "bleh";
+            RenderLobbyOverview.renderLobbyFullPopup(gameName, playerName);
         }
         }
     )
@@ -140,7 +141,7 @@ function joinLobbyHelp(res){
 function handleLobbyFullPopupClick(e, $popup){
     e.preventDefault();
     $popup.classList.add("hidden");
-    document.querySelector("#lobby-full-popup-template").remove();
+    document.querySelector(".lobby-popup").remove();
 
 }
 
