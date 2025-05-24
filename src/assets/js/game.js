@@ -4,6 +4,7 @@ import {ownPlayerCardRenderer} from "./components/gameplay/own-player/renderer.j
 import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 import {renderHistoryLogs} from "./components/gameplay/history/renderer.js";
+import {renderTimer} from "./components/gameplay/timer/renderer.js";
 
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
@@ -27,7 +28,7 @@ const opponentsNotHidden = [];
 function displayGame(renderAll = true) {
     getGameInfo()
         .then(res => {
-
+            renderTimer(res.currentPlayer, res.timeEndTurn);
             if (renderAll) {
                 document.title = `Splendor ${res.gameName}`;
                 document.querySelector(".lobby-name").innerText = res.gameName;
