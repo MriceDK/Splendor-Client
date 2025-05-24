@@ -53,7 +53,7 @@ function putInitialBuyValueInForm(devCardValues) {
             if (input.getAttribute("name") === token){
                 if (!isNaN(devCardValues[token])){
                     input.setAttribute("value", helper.calculatePossibleDevelopmentCost(devCardValues[token], token));
-                    input.setAttribute("max", helper.calculateNeededDevelopmentCost(devCardValues[token], token));
+                    input.setAttribute("max", helper.calculatePossibleDevelopmentCost(devCardValues[token], token));
                 } else {
                     input.closest(".gem-chooser").classList.add("hidden");
                 }
