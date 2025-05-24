@@ -4,7 +4,7 @@ function renderLastRoundNotification(res) {
     const indexOfPreviousPlayer = (indexOfCurrentPlayer - 1 + res.numberOfPlayers) % res.numberOfPlayers;
     const previousPlayer = res.players[indexOfPreviousPlayer].name;
 
-    $template.querySelector(".last-round-text").innerHTML = `${previousPlayer} has reached enough points to win <br> last turn starts now`;
+    $template.querySelector(".last-round-text").innerText = `${previousPlayer} has reached enough points to win last turn starts now`;
         const $target = document.querySelector(".popup-container")
         $target.classList.remove("hidden");
         $target.innerHTML = document.querySelector("#last-round-notification-template").outerHTML;
