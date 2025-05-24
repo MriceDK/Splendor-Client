@@ -8,7 +8,7 @@ import {displayGame} from "../../../game.js";
 import {resetBankButtons} from "../../gameplay/bank/renderer.js";
 import {checkIfPaymentIsCorrect} from "./helper.js";
 
-function buyDevelopmentCard(e) {
+function getDevelopment(e, reserved) {
     e.preventDefault();
 
     const $form = document.querySelector("#token-selector-form");
@@ -19,46 +19,43 @@ function buyDevelopmentCard(e) {
     const body = helper.createBuyCardBody(devCardName, gemCost);
 
     if (checkIfPaymentIsCorrect(devCard, gemCost)) {
-        API.buyDevelopmentCardRequest(body).then(buyResponse => {
-            closePopUp();
-            Object.entries(buyResponse.tokens).forEach((token) => {
-                renderOwnTokenValue(token);
-            });
-            immediateNobleCheckAfterBuy();
-        }).then(() => {
-            displayGame();
-            resetBankButtons();
-        }).catch(err => {
-            ErrorHandler.handleError(err);
-
-        });
+        if (reserved) {
+            buyReservedDevelopmentCard(body, devCardName);
+        } else {
+            buyDevelopmentCard(body)
+        }
     }
 }
 
-function buyReservedDevelopmentCard(e) {
-    e.preventDefault();
-
-    const $form = document.querySelector("#token-selector-form");
-
-    const devCardName = $form.querySelector("#token-selector-dev-card").value;
-    const devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
-    const gemCost = helper.getGemCostObject($form);
-    const body = helper.createBuyReservedCardBody(gemCost);
-
-    if (checkIfPaymentIsCorrect(devCard, gemCost)) {
-        API.buyReservedCard(devCardName, body).then(buyResponse => {
-            closePopUp();
-            Object.entries(buyResponse.tokens).forEach((token) => {
-                renderOwnTokenValue(token);
-            });
-            immediateNobleCheckAfterBuy();
-        }).then(() => {
-            displayGame();
-            resetBankButtons();
-        }).catch(err => {
-            ErrorHandler.handleError(err);
+function buyDevelopmentCard(body) {
+    API.buyDevelopmentCardRequest(body).then(buyResponse => {
+        closePopUp();
+        Object.entries(buyResponse.tokens).forEach((token) => {
+            renderOwnTokenValue(token);
         });
-    }
+        immediateNobleCheckAfterBuy();
+    }).then(() => {
+        displayGame();
+        resetBankButtons();
+    }).catch(err => {
+        ErrorHandler.handleError(err);
+
+    });
+}
+
+function buyReservedDevelopmentCard(body, devCardName) {
+    API.buyReservedCard(devCardName, body).then(buyResponse => {
+        closePopUp();
+        Object.entries(buyResponse.tokens).forEach((token) => {
+            renderOwnTokenValue(token);
+        });
+        immediateNobleCheckAfterBuy();
+    }).then(() => {
+        displayGame();
+        resetBankButtons();
+    }).catch(err => {
+        ErrorHandler.handleError(err);
+    });
 }
 
 function checkIfPaymentIsValidForConfirm() {
@@ -72,4 +69,4 @@ function checkIfPaymentIsValidForConfirm() {
     $confirmButton.disabled = !checkIfPaymentIsCorrect(devCard, gemCost);
 }
 
-export {buyDevelopmentCard, buyReservedDevelopmentCard, checkIfPaymentIsValidForConfirm};
+export {getDevelopment, checkIfPaymentIsValidForConfirm};

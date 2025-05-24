@@ -1,6 +1,6 @@
 import * as Utils from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
-import {buyDevelopmentCard, buyReservedDevelopmentCard, checkIfPaymentIsValidForConfirm} from "./handler.js";
+import {buyDevelopmentCard, buyReservedDevelopmentCard, checkIfPaymentIsValidForConfirm, getDevelopment} from "./handler.js";
 import * as helper from "./helper.js";
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
 
@@ -8,10 +8,10 @@ const TOKEN_VALES = ["ruby", "emerald", "onyx", "sapphire", "diamond"];
 
 function hookupEventListeners(reservedCard) {
     if (reservedCard) {
-        document.querySelector("#token-selector-form").addEventListener("submit", buyReservedDevelopmentCard);
+        document.querySelector("#token-selector-form").addEventListener("submit", e => getDevelopment(e, true));
 
     } else if (!reservedCard) {
-        document.querySelector("#token-selector-form").addEventListener("submit", buyDevelopmentCard);
+        document.querySelector("#token-selector-form").addEventListener("submit", e => getDevelopment(e, false));
     }
     document.querySelector("#token-selector-close-button").addEventListener("click", closePopUp);
     document.querySelectorAll(".gem-selector-input").forEach(input => {input.addEventListener("input", checkIfPaymentIsValidForConfirm)});
