@@ -21,6 +21,7 @@ import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-even
 import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js";
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
+import {closePopUp} from "./components/popup/confirmation-popup/renderer.js";
 let buyableDevCards = [];
 
 const opponentsNotHidden = [];
@@ -28,7 +29,7 @@ const opponentsNotHidden = [];
 function displayGame(renderAll = true) {
     getGameInfo()
         .then(res => {
-            renderTimer(res.currentPlayer, res.timeEndTurn);
+            const secondsLeft = renderTimer(res.currentPlayer, res.timeEndTurn);
             if (renderAll) {
                 document.title = `Splendor ${res.gameName}`;
                 document.querySelector(".lobby-name").innerText = res.gameName;
@@ -56,8 +57,14 @@ function displayGame(renderAll = true) {
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(() => displayGame(true), 1000);
             } else {
-                setTimeout(() => displayGame(false), 1000);
+                if (secondsLeft <= 1) {
+                    setTimeout(() => displayGame(true), 1000);
+                } else {
+                    setTimeout(() => displayGame(false), 1000);
+                }
+
             }
+
 
         })
         .catch(err => {
