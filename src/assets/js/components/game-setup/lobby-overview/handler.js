@@ -140,7 +140,7 @@ function joinLobbyHelp(res){
 function handleLobbyFullPopupClick(e, $popup){
     e.preventDefault();
     $popup.classList.add("hidden");
-    document.querySelector("#lobby-full-popup").remove();
+    document.querySelector("#lobby-full-popup-template").remove();
 
 }
 
