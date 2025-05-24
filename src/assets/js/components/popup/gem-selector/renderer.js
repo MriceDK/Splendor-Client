@@ -1,6 +1,6 @@
 import * as Utils from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
-import {buyDevelopmentCard, buyReservedDevelopmentCard, checkIfPaymentIsValidForConfirm, getDevelopment} from "./handler.js";
+import {checkIfPaymentIsValidForConfirm, getDevelopment} from "./handler.js";
 import * as helper from "./helper.js";
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
 
