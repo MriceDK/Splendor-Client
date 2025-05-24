@@ -11,7 +11,7 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-import {lastRoundCheck} from "./components/popup/last-round-notification/handeler.js";
+import {lastRoundCheck} from "./components/popup/last-round-notification/handler.js";
 import {
     hookUpEventListenersOnCards
 } from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
