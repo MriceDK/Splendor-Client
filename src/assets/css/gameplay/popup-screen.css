@@ -15,6 +15,23 @@ body{
     gap: 0.25rem;
 }
 
+.gem-chooser p {
+    align-self: center;
+    padding: 0.2rem;
+}
+
+.gem-chooser .gem-chooser-own-gems-text {
+    width: 6rem;
+}
+
+.gem-chooser .input-and-cost {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gem-chooser .gem-chooser-input,  .gem-chooser .gem-chooser-own-gems {
+    display: flex;
+}
 
 .input-and-cost {
     display: flex;
@@ -120,7 +137,7 @@ body{
 #token-selector-close-button {
     font-size: 1rem;
     border-radius: 0.5rem;
-    border: none;
+    border: var(--dark-beige) solid;
     cursor: pointer;
     transition: background-color 0.3s ease;
     height: 3rem;
@@ -130,13 +147,14 @@ body{
 }
 
 #token-selector-close-button:hover {
-    background-color: #bbb;
+    background-color: var(--brown);
+    border-color: var(--main-black-color);
 }
 
 #token-selector-form input[type="submit"] {
     font-size: 1rem;
     border-radius: 0.5rem;
-    border: none;
+    border: var(--dark-beige) solid;
     cursor: pointer;
     transition: background-color 0.3s ease;
     height: 3rem;
@@ -145,9 +163,12 @@ body{
     justify-content: center;
 }
 
-#token-selector-form input[type="submit"]:hover {
-    background-color: var(--brown);
-    color: var(--beige);
+#token-selector-form input[type="submit"]:disabled {
+    cursor: auto;
+}
+
+.popup-token-selector .button-style {
+    padding: 0 0.5rem;
 }
 
 .popup-token-selector .errormessages p {
@@ -191,9 +212,4 @@ body{
 #settings{
     width: 2rem;
     height: 2rem;
-}
-
-
-#settings img{
-    margin-left: 1.4rem;
 }

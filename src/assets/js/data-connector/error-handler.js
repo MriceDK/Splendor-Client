@@ -7,7 +7,17 @@ function generateVisualAPIErrorInConsole(error){
 
 function handleError(error){
     generateVisualAPIErrorInConsole(error);
-    document.querySelector(ERRORHANDLERSELECTOR).innerText = error.message; /* Oorspronkelijk stond dit op error.cause, maar aangezien onze excepties geen err.cause bevatten, maar wel err.message hebben we dit voorlopig aangepast */
+    document.querySelector(ERRORHANDLERSELECTOR).innerText = getCorrectMessageFromError(error);
 }
 
-export { handleError };
+function getCorrectMessageFromError(error) {
+    if (error.cause !== undefined && error.cause !== null) {
+        return error.cause;
+    } else if (error.message !== undefined && error.message !== null) {
+        return error.message;
+    } else {
+        return "Something went wrong";
+    }
+}
+
+export { handleError, getCorrectMessageFromError };

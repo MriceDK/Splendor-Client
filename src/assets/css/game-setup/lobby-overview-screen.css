@@ -1,9 +1,5 @@
 header{
-    height: 10%
-}
-
-header img {
-    width: 5rem;
+    height: 10%;
 }
 
 body{
@@ -126,6 +122,10 @@ h1 {
     border: var(--brown) solid 0.063rem;
     background-color: var(--dark-green);
     color: white;
+}
+
+.join-button:disabled{
+    opacity: 0.3;
 }
 
 .join-button:hover {

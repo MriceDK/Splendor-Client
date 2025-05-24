@@ -29,19 +29,6 @@ function handleClickOnCard(e) {
 
 }
 
-// function checkIfReservedCardWasClicked(e) {
-//    TODO: Make these functions work for each type of card
-// }
-//
-// function checkIfDeckCardWasClicked(e) {
-//
-// }
-//
-// function checkIfDevelopmentCardWasClicked(e) {
-//
-// }
-
-
 function handlePopUpClicks(e) {
     const $popupContainer = document.querySelector(".popup-container");
     let isCardLevel = false;

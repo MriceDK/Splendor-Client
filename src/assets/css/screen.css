@@ -48,7 +48,7 @@
 }
 
 body {
- background-image: url("../../images/background-images/army-background.png");
+ background-image: url("../images/background-images/army-background.png");
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
@@ -98,7 +98,7 @@ header a:hover{
  color: var(--beige);
 }
 
-header img {
+header #profile-picture {
  width: 5rem;
  margin-right: 0.75rem;
 }
@@ -193,9 +193,10 @@ header img {
 /*end region*/
 
 
-.hidden{
+body .hidden{
  display: none;
 }
+
 body{
  position: relative;
 }
@@ -223,11 +224,10 @@ body{
 .popup-container.hidden{
  display: none;
 }
+
 #close{
  justify-content: right;
 }
-
-
 
 .clickable{
  cursor: pointer;

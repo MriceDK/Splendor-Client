@@ -14,7 +14,9 @@ import {hookUpEventListenersOnCards} from "./components/popup/confirmation-popup
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
+import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js";
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
+import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
 import {renderSpectators} from "./components/gameplay/info/spectators/renderer.js";
 
 let buyableDevCards = [];
@@ -42,8 +44,10 @@ function displayGame() {
             renderBuyableCards();
             hookUpEventListenersOnCards();
             setUpEventlisteners();
-            hookUpEventListenersOnCards()
+            hookUpEventListenersOnCards();
+            chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
             immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+            lastRoundCheck(res.lastRound, res);
 
             document.querySelectorAll(".opponent").forEach($opponent => {
                 $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
@@ -54,11 +58,11 @@ function displayGame() {
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
-        })
-        .catch(err => {
+        }).catch(err => {
             document.querySelector("main").innerHTML = "";
-            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
-    })
+            const message = getCorrectMessageFromError(err);
+            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(message);
+     })
 
 }
 

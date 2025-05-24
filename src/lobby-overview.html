@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Splendor Lobby Overview</title>
 
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
   <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/screen.css">
@@ -33,6 +33,14 @@
       <p class="error-username-selector"></p>
     </div>
   </template>
+  <template id="lobby-full-popup-template">
+    <div class="popup lobby-popup">
+      <form id="back-to-lobby-overview">
+        <h2></h2>
+        <button type="submit" id="close-lobby-full-popup" class="button-style-popup button-style">Go Back</button>
+      </form>
+    </div>
+  </template>
 </div>
   <header>
     <nav>
@@ -40,7 +48,7 @@
     </nav>
     <div class="playername">
       <a href="#" id="renderButton">
-        <img src="./images/user-logo.png" alt="playername logo" title="playername logo" id="profile-picture">
+        <img src="assets/images/user-logo.png" alt="playername logo" title="playername logo" id="profile-picture">
         <span id="playername">Select Username</span>
       </a>
 
