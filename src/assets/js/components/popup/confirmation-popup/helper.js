@@ -5,6 +5,7 @@ import {renderOwnTokenValue} from "../../gameplay/own-player/renderer.js";
 import {displayGame} from "../../../game.js";
 import {immediateTokenCheckAfterTokenUpdate} from "../too-much-gems-popup/handler.js";
 import {getGameInfo} from "../../../api/game-setup-api.js";
+import * as renderer from "../../../components/gameplay/bank/renderer.js"
 
 function checkIfPopUpIsReserveType($popupContainer) {
     return $popupContainer.dataset.popUpType === "reserve-deck-pop-up";
@@ -39,6 +40,7 @@ function reserveCard(cardLevelorName, reserveFromLevel) {
         }).then(() => {
             getGameInfo().then(res => {
                 displayGame();
+                renderer.resetBankButtons();
             })
 
         }).catch(error => {

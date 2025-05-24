@@ -4,6 +4,7 @@ import * as localStorageAbstractor from "../../../data-connector/local-storage-a
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
 
+
 function loadUserInformation() {
     render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
@@ -102,15 +103,18 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
         joinLobbyHelp(res);
 
     })
-    .catch(() => {
+    .catch((err) => {
+        if (err.cause === "There already exists a player with the same name in this game."){
 
-        numberToAddNameUniqueness++;
-        uniqueNameForcer(numberToAddNameUniqueness);
-        addPlayerToGame(joinGameId, numberToAddNameUniqueness);
+            numberToAddNameUniqueness++;
+            uniqueNameForcer(numberToAddNameUniqueness);
+            addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
+        } else {
+            //TODO show pop up saying the error, something like lobby is full
         }
-        
-    );
+        }
+    )
 }
 
 
