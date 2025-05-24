@@ -73,17 +73,17 @@
 
 .level-3 {
     grid-row-start: 2;
-    background-image: url("../../../images/background-images/level-3.png");
+    background-image: url("../../images/background-images/level-3.png");
 }
 
 .level-2 {
     grid-row-start: 3;
-    background-image: url("../../../images/background-images/level-2.png");
+    background-image: url("../../images/background-images/level-2.png");
 }
 
 .level-1 {
     grid-row-start: 4;
-    background-image: url("../../../images/background-images/level-1.png");
+    background-image: url("../../images/background-images/level-1.png");
 }
 
 .bonus {

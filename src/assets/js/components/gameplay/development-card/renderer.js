@@ -18,7 +18,7 @@ function renderDevelopmentCard(card, $target, isReserved = false) {
     $devCard.querySelector("h2").innerText = card.name;
     $devCard.querySelector(".prestige-point").innerText = card.prestigePoints;
     $devCard.querySelector(".bonus").classList.add(card.bonus.toLowerCase());
-    $devCard.style.backgroundImage = `url("/src/images/development-card-images/${card.name}.jpg")`;
+    $devCard.style.backgroundImage = `url("/src/assets/images/development-card-images/${card.name}.jpg")`;
 
     const $devCardCostGemCollection = $devCard.querySelector(".gem-costs");
     renderCostGems(card.cost, $devCardCostGemCollection);

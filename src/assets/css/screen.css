@@ -48,7 +48,7 @@
 }
 
 body {
- background-image: url("../../images/background-images/army-background.png");
+ background-image: url("../images/background-images/army-background.png");
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;

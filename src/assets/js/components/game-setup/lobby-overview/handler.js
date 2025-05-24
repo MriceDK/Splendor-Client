@@ -1,19 +1,19 @@
 import * as errorHandler from "../../../data-connector/error-handler.js";
-import * as render from "./renderer.js";
+import * as RenderLobbyOverview from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
 
 
 function loadUserInformation() {
-    render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
+    RenderLobbyOverview.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
 
 function getMatchingGames() {
     getAllLobbies()
         .then((res) => {
             handleFilters(addGameName(res.games));
-            setTimeout(getMatchingGames, 1000);
+            setTimeout(getMatchingGames, 5000);
         })
         .catch(errorHandler.handleError);
 }
@@ -83,7 +83,7 @@ function filterGames(games, filters) {
 function handleFilters(games) {
     const filters = getFilterValues();
     const filteredGames = filterGames(games, filters);
-    render.renderGames(filteredGames);
+    RenderLobbyOverview.renderGames(filteredGames);
 }
 
 function handleLobbyJoinClick(e) {
@@ -111,7 +111,8 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
             addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
         } else {
-            //TODO show pop up saying the error, something like lobby is full
+            const gameName = document.querySelector(`[data-gameId = "${joinGameId}"]`).getAttribute("data-gameName");
+            RenderLobbyOverview.renderLobbyFullPopup(gameName, playerName);
         }
         }
     )
@@ -135,7 +136,21 @@ function joinLobbyHelp(res){
     localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
     window.location.assign("./lobby.html");
 
+}
+
+function handleLobbyFullPopupClick(e, $popup){
+    e.preventDefault();
+    $popup.classList.add("hidden");
+    document.querySelector(".lobby-popup").remove();
 
 }
 
-export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
+function joinDisableCheck($button, started){
+    if (started){
+        $button.disabled = true;
+    }
+
+}
+
+
+export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation, handleLobbyFullPopupClick, joinDisableCheck};

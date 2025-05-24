@@ -124,6 +124,10 @@ h1 {
     color: white;
 }
 
+.join-button:disabled{
+    opacity: 0.3;
+}
+
 .join-button:hover {
     color: var(--beige);
     border: var(--off-black) solid 0.063rem;
