@@ -1,12 +1,12 @@
 import * as errorHandler from "../../../data-connector/error-handler.js";
-import * as render from "./renderer.js";
+import * as RenderLobbyOverview from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
 
 
 
 function loadUserInformation() {
-    render.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
+    RenderLobbyOverview.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
 }
 
 function getMatchingGames() {
@@ -83,7 +83,7 @@ function filterGames(games, filters) {
 function handleFilters(games) {
     const filters = getFilterValues();
     const filteredGames = filterGames(games, filters);
-    render.renderGames(filteredGames);
+    RenderLobbyOverview.renderGames(filteredGames);
 }
 
 function handleLobbyJoinClick(e) {
@@ -111,7 +111,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
             addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
         } else {
-            render.renderLobbyFullPopup(joinGameId, playerName);
+            RenderLobbyOverview.renderLobbyFullPopup(joinGameId, playerName);
         }
         }
     )
