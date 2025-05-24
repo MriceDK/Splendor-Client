@@ -4,20 +4,19 @@ import {ownPlayerCardRenderer} from "./components/gameplay/own-player/renderer.j
 import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 import {renderHistoryLogs} from "./components/gameplay/history/renderer.js";
-
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
 import {getCurrentPlayerInfo, getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-import {
-    hookUpEventListenersOnCards
-} from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
+import {hookUpEventListenersOnCards} from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
+import {renderSpectators} from "./components/gameplay/info/spectators/renderer.js";
+
 let buyableDevCards = [];
 
 const opponentsNotHidden = [];
@@ -50,14 +49,16 @@ function displayGame() {
                 $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
             });
 
+            renderSpectators(res.spectators);
+
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
         })
-        .catch(err => {
-            document.querySelector("main").innerHTML = "";
-            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
-    })
+    //     .catch(err => {
+    //         document.querySelector("main").innerHTML = "";
+    //         NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.cause);
+    // })
 
 }
 
