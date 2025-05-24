@@ -19,6 +19,7 @@ function renderOwnPlayerName(name){
 }
 
 function renderLobbyFullPopup(gameId, playerName){
+
     console.log("renderlobbyfullpopup");
     const $popup = document.querySelector(".popup-container:first-of-type");
     const $template = document.querySelector("#lobby-full-popup-template").content.firstElementChild.cloneNode(true);
