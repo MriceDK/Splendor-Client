@@ -144,5 +144,12 @@ function handleLobbyFullPopupClick(e, $popup){
 
 }
 
+function joinDisableCheck($button, started){
+    if (started){
+        $button.disabled = true;
+    }
 
-export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation, handleLobbyFullPopupClick};
+}
+
+
+export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation, handleLobbyFullPopupClick, joinDisableCheck};

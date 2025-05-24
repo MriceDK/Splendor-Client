@@ -1,4 +1,4 @@
-import {handleLobbyFullPopupClick} from "./handler.js";
+import {handleLobbyFullPopupClick, joinDisableCheck} from "./handler.js";
 
 function renderGames(games) {
     const $template = document.querySelector("#join-lobby-template");
@@ -7,6 +7,7 @@ function renderGames(games) {
     const $lobby = $template.content.firstElementChild.cloneNode(true);
 
     games.forEach((game) => {
+        joinDisableCheck($lobby.querySelector(".join-button"), game.started);
         $lobby.setAttribute("data-gameId", game.gameId);
         $lobby.querySelector(".lobbyname").innerText = game.gameName;
         $lobby.querySelector(".playercount").innerText = `${game.players.length} / ${game.numberOfPlayers}`;
