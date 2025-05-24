@@ -46,6 +46,10 @@ header button {
     border-radius: .5rem;
 }
 
+.timer {
+    width: 3rem;
+}
+
 .opponents-info {
     grid-area: username;
 }
