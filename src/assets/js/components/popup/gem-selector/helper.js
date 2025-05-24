@@ -32,7 +32,7 @@ function createBuyReservedCardBody(gemCost) {
 }
 
 function calculatePossibleDevelopmentCost(devCardValue, token) {
-    const ownTokenValue = parseInt(document.querySelector(`.own-inventory .${token} .gem-value`).innerHTML);
+    const ownTokenValue = parseInt(document.querySelector(`.own-inventory .${token} .gem-value`).innerText);
     const neededTokenValue = calculateNeededDevelopmentCost(devCardValue, token)
 
     if (ownTokenValue < neededTokenValue) {
@@ -43,7 +43,7 @@ function calculatePossibleDevelopmentCost(devCardValue, token) {
 }
 
 function calculateNeededDevelopmentCost(devCardValue, token) {
-    const tokenBonus = parseInt(document.querySelector(`.own-inventory .${token} .card-text`).innerHTML);
+    const tokenBonus = parseInt(document.querySelector(`.own-inventory .${token} .card-text`).innerText);
 
     if (tokenBonus >= devCardValue) {
         return 0;

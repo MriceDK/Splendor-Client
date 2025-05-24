@@ -46,7 +46,7 @@ function renderCostsInPopUp(costs) {
 
 function putInitialBuyValueInForm(devCardValues) {
     const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
-    const ownTokenValue = parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerHTML);
+    const ownTokenValueGold = parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerText);
 
     $allInputs.forEach((input) => {
         TOKEN_VALES.forEach((token) => {
@@ -61,7 +61,7 @@ function putInitialBuyValueInForm(devCardValues) {
         });
 
         if (input.getAttribute("name") === "gold") {
-            input.setAttribute("max", ownTokenValue);
+            input.setAttribute("max", ownTokenValueGold);
         }
     });
 }
@@ -88,10 +88,10 @@ function renderOwnTokenValuesInGems() {
     $ownPurse.forEach((tokenValues) => {
         const token = tokenValues.querySelector(".gem").classList[1];
 
-        document.querySelector(`.popup-token-selector .inventory .${token} .gem-value`).innerHTML = tokenValues.querySelector(".gem-value").innerHTML;
+        document.querySelector(`.popup-token-selector .inventory .${token} .gem-value`).innerText = tokenValues.querySelector(".gem-value").innerText;
 
         if (token !== "gold") {
-            document.querySelector(`.popup-token-selector .inventory .${token} .card-text`).innerHTML = tokenValues.querySelector(".card-text").innerHTML;
+            document.querySelector(`.popup-token-selector .inventory .${token} .card-text`).innerText = tokenValues.querySelector(".card-text").innerText;
         }
     });
 }
