@@ -117,31 +117,3 @@ header {
     object-fit: cover;
 }
 
-/* Styling for the spectators hover */
-.spectators {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.spectators #spectator-names {
-    visibility: hidden;
-    background-color: #333;
-    font-family: Inter, serif;
-    color: var(--offwhite);
-    text-align: left;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    position: absolute;
-    z-index: 1;
-    top: 1.5rem;
-    left: 0;
-    white-space: pre-line;
-    font-size: 0.875rem;
-}
-
-.spectators:hover #spectator-names {
-    visibility: visible;
-}
-/* Styling for the spectators hover */
