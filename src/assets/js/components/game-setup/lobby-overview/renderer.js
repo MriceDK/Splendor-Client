@@ -20,7 +20,9 @@ function renderOwnPlayerName(name){
     document.querySelector("#playername").innerHTML = name;
 }
 
-function renderLobbyFullPopup(gameName, playerName){
+function renderLobbyFullPopup(playerName){
+
+    const gameName = document.querySelector(`[data-gameId = "${joinGameId}"]`).getAttribute("data-gameName");
 
     const $popup = document.querySelector(".popup-container:first-of-type");
     const $template = document.querySelector("#lobby-full-popup-template").content.firstElementChild.cloneNode(true);
