@@ -111,7 +111,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
             addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
         } else {
-            //TODO show pop up saying the error, something like lobby is full
+            render.renderLobbyFullPopup(joinGameId);
         }
         }
     )

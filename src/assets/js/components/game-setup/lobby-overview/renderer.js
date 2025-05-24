@@ -11,9 +11,14 @@ function renderGames(games) {
         $results.insertAdjacentHTML("beforeend", $lobby.outerHTML);
     });
 }
+
 function renderOwnPlayerName(name){
     document.querySelector("#playername").innerHTML = name;
 }
 
+function renderLobbyFullPopup(gameId){
 
-export { renderGames, renderOwnPlayerName };
+}
+
+
+export { renderGames, renderOwnPlayerName, renderLobbyFullPopup };
