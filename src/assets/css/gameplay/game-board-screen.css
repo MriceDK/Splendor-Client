@@ -14,7 +14,7 @@ main {
     grid-template-rows: 5% 1fr 1.75fr auto;
     height: 100vh;
     width: 100vw;
-    grid-template-areas:    "username market header"
+    grid-template-areas:    "username timer header"
                             "username market info"
                             "username market bank"
                             ". user-info history";
@@ -32,6 +32,10 @@ header button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.timer-container {
+    grid-area: timer;
 }
 
 .username-flexcontainer {
