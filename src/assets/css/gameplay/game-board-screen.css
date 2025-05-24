@@ -11,7 +11,7 @@ body{
 main {
     display: grid;
     grid-template-columns: 0.75fr 2fr 0.75fr;
-    grid-template-rows: 5% 1fr 1.75fr auto;
+    grid-template-rows: auto 1fr 1.75fr auto;
     height: 100vh;
     width: 100vw;
     grid-template-areas:    "username timer header"
@@ -38,8 +38,11 @@ header button {
     grid-area: timer;
 }
 
-.username-flexcontainer {
+.opponents-info {
     grid-area: username;
+}
+
+.username-flexcontainer {
     display: flex;
     flex-direction: column;
     align-items: start;
