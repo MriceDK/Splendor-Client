@@ -1,5 +1,6 @@
 import * as storageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
+import {renderSpectators} from "../../gameplay/info/spectators/renderer.js";
 
 function dataListFromApi(data) {
 
@@ -7,6 +8,7 @@ function dataListFromApi(data) {
     started(data.started);
     renderPlayersLoop(data.players, data);
     renderOwnPlayerName();
+    renderSpectators(data.spectators);
 }
 
 function lobbyName(lobbyNameString) {
