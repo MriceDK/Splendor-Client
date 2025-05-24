@@ -26,7 +26,7 @@ function renderLobbyFullPopup(gameName, playerName){
     $template.querySelector("h2").innerText = `We're sorry ${playerName}, but the game with the name ${gameName}  is full.`;
     const $target = document.querySelector(".popup-container:first-of-type");
     $popup.classList.remove("hidden");
-    $template.addEventListener("submit", e => {handleLobbyFullPopupClick(e, $popup)});
+    $template.addEventListener("submit", e => handleLobbyFullPopupClick(e, $popup));
 
 
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
