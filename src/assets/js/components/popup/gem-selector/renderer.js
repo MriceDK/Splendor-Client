@@ -27,7 +27,7 @@ function renderTokenSelectorForm(devCardName, reservedCard) {
 
     const $devCard = document.querySelector(`article.development-card[data-card-name="${devCardName}"]`);
     const devCardValues =  getCostFromDevelopmentCard($devCard);
-    putInitalBuyValueInForm(devCardValues);
+    putInitialBuyValueInForm(devCardValues);
     renderCostsInPopUp(devCardValues);
     renderOwnTokenValuesInGems();
     checkIfPaymentIsValidForConfirm();
@@ -44,7 +44,7 @@ function renderCostsInPopUp(costs) {
     });
 }
 
-function putInitalBuyValueInForm(devCardValues) {
+function putInitialBuyValueInForm(devCardValues) {
     const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
     const ownTokenValue = parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerHTML);
 
