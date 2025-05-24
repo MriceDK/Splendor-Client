@@ -5,7 +5,6 @@ import * as DevelopmentCardRenderer from "../development-card/renderer.js";
 import {getPrestigePointsPercentage} from "../opponent-card/helper.js";
 
 function ownPlayerCardRenderer(ownPlayer, spectating = false) {
-    // const ownPlayer = getOwnInfo.getOwnPlayerInfo(gameInfo);
     if (!spectating) {
         const $playerCard = document.querySelector("#own-player-card");
 
