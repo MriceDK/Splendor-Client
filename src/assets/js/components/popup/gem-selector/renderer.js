@@ -2,8 +2,9 @@ import * as Utils from "../../../helper/utils.js";
 import {closePopUp} from "../confirmation-popup/renderer.js";
 import {buyDevelopmentCard, buyReservedDevelopmentCard, checkIfPaymentIsValidForConfirm} from "./handler.js";
 import * as helper from "./helper.js";
-
 const $tokenSelector = document.querySelector("#token-selector").content.firstElementChild.cloneNode(true);
+
+const TOKEN_VALES = ["ruby", "emerald", "onyx", "sapphire", "diamond"];
 
 function hookupEventListeners(reservedCard) {
     if (reservedCard) {
@@ -44,12 +45,11 @@ function renderCostsInPopUp(costs) {
 }
 
 function putInitalBuyValueInForm(devCardValues) {
-    const tokenArray = ["emerald", "ruby", "sapphire", "diamond", "onyx"];
     const $allInputs = document.querySelectorAll("#token-selector-form input.gem-selector-input");
     const ownTokenValue = parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerHTML);
 
     $allInputs.forEach((input) => {
-        tokenArray.forEach((token) => {
+        TOKEN_VALES.forEach((token) => {
             if (input.getAttribute("name") === token){
                 if (!isNaN(devCardValues[token])){
                     input.setAttribute("value", helper.calculatePossibleDevelopmentCost(devCardValues[token], token));
@@ -61,16 +61,15 @@ function putInitalBuyValueInForm(devCardValues) {
         });
 
         if (input.getAttribute("name") === "gold") {
-            input.setAttribute("max", parseInt(document.querySelector(`.own-inventory .gold .gem-value`).innerHTML));
+            input.setAttribute("max", ownTokenValue);
         }
     });
 }
 
 function getCostFromDevelopmentCard($devCard){
-    const tokenArray = ["ruby", "diamond", "sapphire", "emerald", "onyx"];
     const $values = $devCard.querySelectorAll("li.gem");
     const returnObj = {};
-    tokenArray.forEach((token) => {
+    TOKEN_VALES.forEach((token) => {
         $values.forEach(($value) => {
             if ($value.classList.contains(token)) {
                 returnObj[token] = $value.innerText;
@@ -85,8 +84,6 @@ function getCostFromDevelopmentCard($devCard){
 
 function renderOwnTokenValuesInGems() {
     const $ownPurse = document.querySelectorAll(".user-info-flexcontainer .own-inventory");
-
-    console.log($ownPurse);
 
     $ownPurse.forEach((tokenValues) => {
         const token = tokenValues.querySelector(".gem").classList[1];
