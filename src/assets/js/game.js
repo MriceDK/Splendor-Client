@@ -53,7 +53,6 @@ function displayGame(renderAll = true) {
                 });
             }
 
-
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(() => displayGame(true), 1000);
             } else {

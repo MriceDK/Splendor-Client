@@ -1,20 +1,43 @@
 import {toTwoDigit} from "../../../helper/utils.js";
 
+const MILLISECONDS_IN_A_SECOND = 1000;
+const AMOUNT_OF_SECONDS_NEEDED_TO_RENDER_RED = 20;
+
 function renderTimer(currentPlayer, timeEndTurn) {
     const $target = document.querySelector(".timer-container");
 
+    const secondsLeft = calculateSecondsLeft(timeEndTurn);
+    makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target.querySelector(".timer"));
+
     $target.querySelector(".current-player-name").innerText = currentPlayer;
-    $target.querySelector(".timer").innerText = calculateTimeLeft(timeEndTurn);
+    $target.querySelector(".timer").innerText = convertToTimer(secondsLeft);
 }
 
-function calculateTimeLeft(timeEndTurn) {
-    const deadline = Date.parse(timeEndTurn);
-    const timeLeftDateObject = new Date(deadline - Date.now());
+function makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target) {
+    if (secondsLeft <= AMOUNT_OF_SECONDS_NEEDED_TO_RENDER_RED) {
+        $target.classList.add("turn-almost-done");
+    } else {
+        $target.classList.remove("turn-almost-done");
+    }
+}
+
+function convertToTimer(secondsLeft) {
+    const timeLeftDateObject = new Date(secondsLeft * MILLISECONDS_IN_A_SECOND);
 
     const minutes = toTwoDigit(timeLeftDateObject.getMinutes());
     const seconds = toTwoDigit(timeLeftDateObject.getSeconds());
 
     return `${minutes}:${seconds}`;
+}
+
+// Hier houd ik enkel rekening met de minuten en de seconden, omdat Date.now() standaard de tijd terug geeft volgens timezone UTC
+function calculateSecondsLeft(timeEndTurn) {
+    const deadline = Date.parse(timeEndTurn);
+    const timeLeftDateObject = new Date(deadline - Date.now());
+
+    const minutes = timeLeftDateObject.getMinutes();
+
+    return timeLeftDateObject.getSeconds() + (minutes * 60);
 }
 
 export {renderTimer};

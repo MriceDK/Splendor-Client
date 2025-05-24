@@ -50,6 +50,10 @@ header button {
     width: 3rem;
 }
 
+.turn-almost-done {
+    color: var(--main-red-color);
+}
+
 .opponents-info {
     grid-area: username;
 }
