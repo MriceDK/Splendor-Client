@@ -1,4 +1,5 @@
 import {toTwoDigit} from "../../../helper/utils.js";
+import {closePopUp} from "../../popup/confirmation-popup/renderer.js";
 
 const MILLISECONDS_IN_A_SECOND = 1000;
 const AMOUNT_OF_SECONDS_NEEDED_TO_RENDER_RED = 20;
@@ -11,6 +12,12 @@ function renderTimer(currentPlayer, timeEndTurn) {
 
     $target.querySelector(".current-player-name").innerText = currentPlayer;
     $target.querySelector(".timer").innerText = convertToTimer(secondsLeft);
+
+    if (secondsLeft <= 0) {
+        closePopUp();
+    }
+
+    return secondsLeft;
 }
 
 function makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target) {
