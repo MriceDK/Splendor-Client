@@ -33,4 +33,4 @@ function getGameDetailsForGameId() {
 }
 
 
-export {loadJoinedGame};
+export {loadJoinedGame, leaveLobby};
