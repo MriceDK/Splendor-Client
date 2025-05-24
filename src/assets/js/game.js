@@ -19,6 +19,7 @@ import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-p
 import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-eventlisteners.js";
 import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js";
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
+import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
 let buyableDevCards = [];
 
 const opponentsNotHidden = [];
@@ -49,9 +50,11 @@ function displayGame() {
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(displayGame, 1000);
             }
-        }).catch(err => {
+        })
+        .catch(err => {
             document.querySelector("main").innerHTML = "";
-            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(err.message);
+            const message = getCorrectMessageFromError(err);
+            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(message);
      })
 
 }
