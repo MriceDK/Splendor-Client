@@ -10,7 +10,11 @@ function renderTimer(currentPlayer, timeEndTurn) {
 function calculateTimeLeft(timeEndTurn) {
     const deadline = Date.parse(timeEndTurn);
     const timeLeftDateObject = new Date(deadline - Date.now());
-    return `${toTwoDigit(timeLeftDateObject.getMinutes())}:${toTwoDigit(timeLeftDateObject.getSeconds())}`;
+
+    const minutes = toTwoDigit(timeLeftDateObject.getMinutes());
+    const seconds = toTwoDigit(timeLeftDateObject.getSeconds());
+
+    return `${minutes}:${seconds}`;
 }
 
 export {renderTimer};
