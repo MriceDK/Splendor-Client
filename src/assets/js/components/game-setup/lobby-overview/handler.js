@@ -135,7 +135,11 @@ function joinLobbyHelp(res){
     localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
     window.location.assign("./lobby.html");
 
-
 }
 
-export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation};
+function handleLobbyFullPopupClick(e){
+    e.preventDefault();
+}
+
+
+export {getMatchingGames, handleFilters, handleLobbyJoinClick, loadUserInformation, handleLobbyFullPopupClick};
