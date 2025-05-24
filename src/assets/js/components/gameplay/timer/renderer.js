@@ -1,3 +1,4 @@
+import {toTwoDigit} from "../../../helper/utils.js";
 
 function renderTimer(currentPlayer, timeEndTurn) {
     const $target = document.querySelector(".timer-container");
@@ -9,8 +10,7 @@ function renderTimer(currentPlayer, timeEndTurn) {
 function calculateTimeLeft(timeEndTurn) {
     const deadline = Date.parse(timeEndTurn);
     const timeLeftDateObject = new Date(deadline - Date.now());
-    return `${timeLeftDateObject.getMinutes()}:${timeLeftDateObject.getSeconds()}`;
-
+    return `${toTwoDigit(timeLeftDateObject.getMinutes())}:${toTwoDigit(timeLeftDateObject.getSeconds())}`;
 }
 
 export {renderTimer};
