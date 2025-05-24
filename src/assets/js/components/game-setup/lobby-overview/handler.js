@@ -111,7 +111,8 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
             addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
         } else {
-            RenderLobbyOverview.renderLobbyFullPopup(playerName);
+            const gameName = document.querySelector(`[data-gameId = "${joinGameId}"]`).getAttribute("data-gameName");
+            RenderLobbyOverview.renderLobbyFullPopup(gameName, playerName);
         }
         }
     )
