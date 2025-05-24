@@ -18,6 +18,7 @@ import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js"
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
 import {renderSpectators} from "./components/gameplay/info/spectators/renderer.js";
+import {lastRoundCheck} from "./components/popup/last-round-notification/handler.js";
 
 let buyableDevCards = [];
 
