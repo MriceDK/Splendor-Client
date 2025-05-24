@@ -33,7 +33,6 @@ function buyDevelopmentCard(body) {
         Object.entries(buyResponse.tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
-        immediateNobleCheckAfterBuy();
     }).then(() => {
         displayGame();
         resetBankButtons();
@@ -49,7 +48,6 @@ function buyReservedDevelopmentCard(body, devCardName) {
         Object.entries(buyResponse.tokens).forEach((token) => {
             renderOwnTokenValue(token);
         });
-        immediateNobleCheckAfterBuy();
     }).then(() => {
         displayGame();
         resetBankButtons();
