@@ -7,7 +7,7 @@ const AMOUNT_OF_SECONDS_NEEDED_TO_RENDER_RED = 20;
 function renderTimer(currentPlayer, timeEndTurn) {
     const $target = document.querySelector(".timer-container");
 
-    const secondsLeft = calculateSecondsLeft(timeEndTurn);
+    const secondsLeft = calculateSecondsLeft(timeEndTurn) +1;
     makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target.querySelector(".timer"));
 
     $target.querySelector(".current-player-name").innerText = currentPlayer;
