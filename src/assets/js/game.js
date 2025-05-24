@@ -68,6 +68,7 @@ function displayGame(renderAll = true) {
 
         })
         .catch(err => {
+            closePopUp();
             document.querySelector("main").innerHTML = "";
             const message = getCorrectMessageFromError(err);
             NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(message);
