@@ -36,6 +36,14 @@ header button {
 
 .timer-container {
     grid-area: timer;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: var(--dark-beige);
+    padding: 1rem;
+    border-radius: .5rem;
 }
 
 .opponents-info {
