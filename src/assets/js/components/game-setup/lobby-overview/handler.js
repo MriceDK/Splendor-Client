@@ -111,7 +111,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
             addPlayerToGame(joinGameId, numberToAddNameUniqueness);
 
         } else {
-            render.renderLobbyFullPopup(joinGameId);
+            render.renderLobbyFullPopup(joinGameId, playerName);
         }
         }
     )

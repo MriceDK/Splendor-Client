@@ -16,7 +16,15 @@ function renderOwnPlayerName(name){
     document.querySelector("#playername").innerHTML = name;
 }
 
-function renderLobbyFullPopup(gameId){
+function renderLobbyFullPopup(gameId, playerName){
+    const $popup = document.querySelector(".popup-container:first-of-type");
+    const $template = document.querySelector("#lobby-full-popup").content.firstElementChild.cloneNode(true);
+    $template.querySelector("h2").innerText = `We're sorry ${playerName}, but the game with gameId ${gameId} is full.`;
+    const $target = document.querySelector(".popup-container:first-of-type");
+    $popup.classList.remove("hidden");
+
+    $target.insertAdjacentHTML("beforeend", $template.outerHTML);
+
 
 }
 
