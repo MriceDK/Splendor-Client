@@ -27,6 +27,8 @@ const opponentsNotHidden = [];
 function displayGame() {
     getGameInfo()
         .then(res => {
+            document.title = `Splendor ${res.gameName}`;
+            document.querySelector(".lobby-name").innerText = res.gameName;
             handleGameOver(res.winner);
             ownPlayerCardRenderer(res);
             renderOpponentsStats(res.players);
