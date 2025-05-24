@@ -12,6 +12,7 @@ import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
+import {lastRoundCheck} from "./components/popup/last-round-notification/handler.js";
 import {
     hookUpEventListenersOnCards
 } from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
@@ -41,13 +42,14 @@ function displayGame(renderAll = true) {
                 renderActivePlayer(res.currentPlayer);
                 renderHistoryLogs(res.history);
                 const ownPlayer = getOwnPlayerInfo(res);
-                buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
+                buyableDevCards = getListOfBuyableCards(res.market, ownPlayer);
                 renderBuyableCards();
                 hookUpEventListenersOnCards();
                 setUpEventlisteners();
                 hookUpEventListenersOnCards();
                 chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
                 immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+                lastRoundCheck(res.lastRound, res);
 
                 document.querySelectorAll(".opponent").forEach($opponent => {
                     $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
@@ -64,8 +66,6 @@ function displayGame(renderAll = true) {
                 }
 
             }
-
-
         })
         .catch(err => {
             closePopUp();

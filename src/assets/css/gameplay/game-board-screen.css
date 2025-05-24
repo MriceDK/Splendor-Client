@@ -78,6 +78,10 @@ header button {
 .history {
     grid-area: history;
 }
+.last-round-text{
+    padding-top: 0.5rem;
+    display: block;
+}
 
 .lobby-info {
     grid-area: info;
