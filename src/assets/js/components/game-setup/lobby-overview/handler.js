@@ -137,8 +137,11 @@ function joinLobbyHelp(res){
 
 }
 
-function handleLobbyFullPopupClick(e){
+function handleLobbyFullPopupClick(e, $popup){
     e.preventDefault();
+    $popup.classList.add("hidden");
+    document.querySelector("#lobby-full-popup").remove();
+
 }
 
 

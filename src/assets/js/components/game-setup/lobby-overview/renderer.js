@@ -23,7 +23,7 @@ function renderLobbyFullPopup(gameId, playerName){
     const $template = document.querySelector("#lobby-full-popup").content.firstElementChild.cloneNode(true);
     $template.querySelector("h2").innerText = `We're sorry ${playerName}, but the game with gameId ${gameId} is full.`;
     const $target = document.querySelector(".popup-container:first-of-type");
-    $template.querySelector("form").addEventListener("submit", handleLobbyFullPopupClick);
+    $template.querySelector("form").addEventListener("submit", e => {handleLobbyFullPopupClick(e, $popup)});
     $popup.classList.remove("hidden");
 
 
