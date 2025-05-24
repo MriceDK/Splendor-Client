@@ -57,12 +57,7 @@ function displayGame(renderAll = true) {
             if (res.currentPlayer !== loadFromStorage("playerName")) {
                 setTimeout(() => displayGame(true), 1000);
             } else {
-                if (secondsLeft <= 1) {
-                    setTimeout(() => displayGame(true), 1000);
-                } else {
-                    setTimeout(() => displayGame(false), 1000);
-                }
-
+                setTimeout(() => displayGame(false), 1000);
             }
         })
         .catch(err => {
