@@ -193,9 +193,10 @@ header #profile-picture {
 /*end region*/
 
 
-.hidden{
+body .hidden{
  display: none;
 }
+
 body{
  position: relative;
 }
@@ -223,11 +224,10 @@ body{
 .popup-container.hidden{
  display: none;
 }
+
 #close{
  justify-content: right;
 }
-
-
 
 .clickable{
  cursor: pointer;

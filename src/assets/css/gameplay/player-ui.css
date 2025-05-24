@@ -116,10 +116,6 @@
     margin-top: 0.25rem;
 }
 
-.hidden{
-    display: none;
-}
-
 .current-player #own-username, .current-player .own-player-card, .current-player .opponent-frame-container, .current-player .own-user-info {
     background-color: var(--dark-beige);
 }

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="assets/css/gameplay/player-ui.css">
     <link rel="stylesheet" href="assets/css/gameplay/token-bank.css">
     <link rel="stylesheet" href="assets/css/gameplay/lobby-name-game-board.css">
-    <link rel="stylesheet" href="assets/css/gameplay/confirmation-popup.css">
     <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
     <link rel="stylesheet" href="assets/css/gameplay/gems.css">
     <link rel="stylesheet" href="assets/css/gameplay/history.css">
@@ -115,68 +114,164 @@
                 </div>
                 <form id="token-selector-form" class="form-flex" action="#" method="GET">
                     <input id="token-selector-dev-card" type="hidden" name="dev-card" value="">
+
+                    <div class="gem-chooser">
+                        <label for="token-selector-ruby" class="ruby-name">
+                            Ruby
+                        </label>
+                        <div class="input-and-cost">
+                            <div class="gem-chooser-input">
+                                <input class="gem-selector-input" id="token-selector-ruby" type="number" name="ruby" value="0" min="0" max="0">
+                                <p class="total ruby-cost"></p>
+                            </div>
+                            <div class="gem-chooser-own-gems">
+                                <p class="gem-chooser-own-gems-text">Own gems:</p>
+                                <div class="inventory">
+                                    <div class="gem ruby">
+                                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                        </svg>
+                                        <span class="gem-value">0</span>
+                                    </div>
+                                    <div class="card ruby">
+                                        <p class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="gem-chooser">
                         <label for="token-selector-emerald" class="emerald-name">
                             Emerald
                         </label>
                         <div class="input-and-cost">
-                            <input class="gem-selector-input" id="token-selector-emerald" type="number" name="emerald"
-                                   value="0"
-                                   min="0">
-                            <p class="total emerald-cost"></p>
+                            <div class="gem-chooser-input">
+                                <input class="gem-selector-input" id="token-selector-emerald" type="number" name="emerald" value="0" min="0" max="0">
+                                <p class="total emerald-cost"></p>
+                            </div>
+                            <div class="gem-chooser-own-gems">
+                                <p class="gem-chooser-own-gems-text">Own gems:</p>
+                                <div class="inventory">
+                                    <div class="gem emerald">
+                                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                        </svg>
+                                        <span class="gem-value">0</span>
+                                    </div>
+                                    <div class="card emerald">
+                                        <p class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="gem-chooser">
-                    <label for="token-selector-ruby" class="ruby-name">
-                        Ruby
-                    </label>
-                        <div class="input-and-cost">
-                        <input class="gem-selector-input" id="token-selector-ruby" type="number" name="ruby" value="0"
-                               min="0"><p class="total ruby-cost"></p>
-                        </div>
-                    </div>
-                    <div class="gem-chooser">
-                    <label for="token-selector-sapphire" class="sapphire-name">
-                        Sapphire
-                    </label>
-                        <div class="input-and-cost">
-                        <input class="gem-selector-input" id="token-selector-sapphire" type="number" name="sapphire"
-                               value="0"
-                               min="0"><p class="total sapphire-cost"></p>
-                        </div>
-                    </div>
-                    <div class="gem-chooser">
-                    <label for="token-selector-diamond" class="diamond-name">
-                        Diamond
-                    </label>
-                        <div class="input-and-cost">
-                            <input class="gem-selector-input" id="token-selector-diamond" type="number" name="diamond"
-                                   value="0"
-                                   min="0">
-                            <p class="total diamond-cost"></p>
-                        </div>
-                    </div>
-                    <div class="gem-chooser">
-                    <label for="token-selector-onyx" class="onyx-name">
-                        Onyx
-                    </label>
-                        <div class="input-and-cost">
-                        <input class="gem-selector-input" id="token-selector-onyx" type="number" name="onyx" value="0"
-                               min="0"><p class="total onyx-cost"></p>
-                        </div>
-                    </div>
-                    <label for="token-selector-gold" class="gold-name">
-                        Gold
-                        <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0"
-                               min="0">
-                    </label>
-                    <div class="total-container">
 
-
+                    <div class="gem-chooser">
+                        <label for="token-selector-onyx" class="onyx-name">
+                            Onyx
+                        </label>
+                        <div class="input-and-cost">
+                            <div class="gem-chooser-input">
+                                <input class="gem-selector-input" id="token-selector-onyx" type="number" name="onyx" value="0" min="0" max="0">
+                                <p class="total onyx-cost"></p>
+                            </div>
+                            <div class="gem-chooser-own-gems">
+                                <p class="gem-chooser-own-gems-text">Own gems:</p>
+                                <div class="inventory">
+                                    <div class="gem onyx">
+                                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                        </svg>
+                                        <span class="gem-value">0</span>
+                                    </div>
+                                    <div class="card onyx">
+                                        <p class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="gem-chooser">
+                        <label for="token-selector-sapphire" class="sapphire-name">
+                            Sapphire
+                        </label>
+                        <div class="input-and-cost">
+                            <div class="gem-chooser-input">
+                                <input class="gem-selector-input" id="token-selector-sapphire" type="number" name="sapphire" value="0" min="0" max="0">
+                                <p class="total sapphire-cost"></p>
+                            </div>
+                            <div class="gem-chooser-own-gems">
+                                <p class="gem-chooser-own-gems-text">Own gems:</p>
+                                <div class="inventory">
+                                    <div class="gem sapphire">
+                                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                        </svg>
+                                        <span class="gem-value">0</span>
+                                    </div>
+                                    <div class="card sapphire">
+                                        <p class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gem-chooser">
+                        <label for="token-selector-diamond" class="diamond-name">
+                            Diamond
+                        </label>
+                        <div class="input-and-cost">
+                            <div class="gem-chooser-input">
+                                <input class="gem-selector-input" id="token-selector-diamond" type="number" name="diamond" value="0" min="0" max="0">
+                                <p class="total diamond-cost"></p>
+                            </div>
+                            <div class="gem-chooser-own-gems">
+                                <p class="gem-chooser-own-gems-text">Own gems:</p>
+                                <div class="inventory">
+                                    <div class="gem diamond">
+                                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                        </svg>
+                                        <span class="gem-value">0</span>
+                                    </div>
+                                    <div class="card diamond">
+                                        <p class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gem-chooser">
+                        <label for="token-selector-gold" class="gold-name">
+                            Gold
+                        </label>
+                        <div class="input-and-cost">
+                            <div class="gem-chooser-input">
+                                <input class="gem-selector-input" id="token-selector-gold" type="number" name="gold" value="0" min="0">
+                            </div>
+                            <div class="gem-chooser-own-gems">
+                                <p class="gem-chooser-own-gems-text">Own gems:</p>
+                                <div class="inventory">
+                                    <div class="gem gold">
+                                        <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
+                                        </svg>
+                                        <span class="gem-value">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="total-container"></div>
+
                     <div class="button-row">
-                        <button type="button" id="token-selector-close-button" class="button-style button-style-popup">Cancel</button>
-                        <input type="submit" value="confirm-payment" class="button-style button-style-popup">
+                        <button type="button" id="token-selector-close-button" class="button-style">Cancel</button>
+                        <input type="submit" value="Confirm payment" class="button-style">
                     </div>
                 </form>
 
@@ -422,7 +517,7 @@
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                         </svg>
-                        <span class="gem-value">1</span>
+                        <span class="gem-value">0</span>
                     </div>
                     <div class="card ruby">
                         <p class="card-text">0</p>
@@ -433,7 +528,7 @@
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                         </svg>
-                        <span class="gem-value">1</span>
+                        <span class="gem-value">0</span>
                     </div>
                     <div class="card emerald">
                         <p class="card-text">0</p>
@@ -444,7 +539,7 @@
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                         </svg>
-                        <span class="gem-value">1</span>
+                        <span class="gem-value">0</span>
                     </div>
                     <div class="card onyx">
                         <p class="card-text">0</p>
@@ -455,7 +550,7 @@
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                         </svg>
-                        <span class="gem-value">1</span>
+                        <span class="gem-value">0</span>
                     </div>
                     <div class="card sapphire">
                         <p class="card-text">0</p>
@@ -466,7 +561,7 @@
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                         </svg>
-                        <span class="gem-value">1</span>
+                        <span class="gem-value">0</span>
                     </div>
                     <div class="card diamond">
                         <p class="card-text">0</p>
@@ -477,7 +572,7 @@
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                         </svg>
-                        <span class="gem-value">1</span>
+                        <span class="gem-value">0</span>
                     </div>
                 </li>
             </ul>

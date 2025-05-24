@@ -74,7 +74,7 @@ function getNeededTokens(priceDevCard, bonusAndOwnTokens) {
         const value = obj[1];
 
         if (bonusAndOwnTokens[name] < value ) {
-            const tokensNeeded = value - bonusAndOwnTokens;
+            const tokensNeeded = value - bonusAndOwnTokens[name];
             tokensStillNeeded += tokensNeeded;
         }
     });
@@ -82,4 +82,4 @@ function getNeededTokens(priceDevCard, bonusAndOwnTokens) {
     return tokensStillNeeded;
 }
 
-export { getListOfBuyableCards };
+export { getListOfBuyableCards, isBuyable };
