@@ -39,7 +39,6 @@ function displayGame() {
             renderTokenBank(res);
             renderActivePlayer(res.currentPlayer);
             renderHistoryLogs(res.history);
-            const ownPlayer = getOwnPlayerInfo(res);
             buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
             renderBuyableCards();
             hookUpEventListenersOnCards();
