@@ -5,14 +5,12 @@ import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 import {renderHistoryLogs} from "./components/gameplay/history/renderer.js";
 import {renderTimer} from "./components/gameplay/timer/renderer.js";
-
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
-import {getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
+import {getCurrentPlayerInfo, getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
 import {getListOfBuyableCards} from "./components/gameplay/development-card/helper.js";
 import {renderBuyableCards} from "./components/gameplay/development-card/renderer.js";
 import {handleGameOver} from "./components/popup/end-game-popup/handler.js";
-import {lastRoundCheck} from "./components/popup/last-round-notification/handler.js";
 import {hookUpEventListenersOnCards} from "./components/popup/confirmation-popup/confirmation-popup-event-listener-hookup.js";
 import {immediateTokenCheckAfterTokenUpdate} from "./components/popup/too-much-gems-popup/handler.js";
 import * as NotAuthorizedPopupRenderer from "./components/popup/not-authorized-popup/renderer.js";
@@ -21,38 +19,48 @@ import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js"
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
 import {closePopUp} from "./components/popup/confirmation-popup/renderer.js";
+import {renderSpectators} from "./components/gameplay/info/spectators/renderer.js";
+import {lastRoundCheck} from "./components/popup/last-round-notification/handler.js";
+
 let buyableDevCards = [];
 
 function displayGame(renderAll = true) {
+    const username = loadFromStorage("playerName");
     getGameInfo()
         .then(res => {
-            renderTimer(res.currentPlayer, res.timeEndTurn);
+            document.title = `Splendor ${res.gameName}`;
+            document.querySelector(".lobby-name").innerText = res.gameName;
+            renderSpectators(res.spectators);
+            renderTimer(res.currentPlayer, res.timeEndTurn, res.gameState);
+            let ownPlayer = getOwnPlayerInfo(res);
+            let isSpectating = false;
+            if (res.spectators.includes(username)) {
+                ownPlayer = getCurrentPlayerInfo(res);
+                isSpectating = true;
+            }
             if (renderAll) {
-                document.title = `Splendor ${res.gameName}`;
-                document.querySelector(".lobby-name").innerText = res.gameName;
                 handleGameOver(res.winner);
-                ownPlayerCardRenderer(res);
+                ownPlayerCardRenderer(ownPlayer, isSpectating);
                 renderOpponentsStats(res.players);
                 renderMarket(res);
                 renderTokenBank(res);
                 renderActivePlayer(res.currentPlayer);
                 renderHistoryLogs(res.history);
-                const ownPlayer = getOwnPlayerInfo(res);
-                buyableDevCards = getListOfBuyableCards(res.market, ownPlayer);
-                renderBuyableCards();
                 hookUpEventListenersOnCards();
                 setUpEventlisteners();
                 hookUpEventListenersOnCards();
                 chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
                 immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
-                lastRoundCheck(res.lastRound, res);
-
                 document.querySelectorAll(".opponent").forEach($opponent => {
                     $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
                 });
             }
 
-            if (res.currentPlayer !== loadFromStorage("playerName")) {
+            buyableDevCards = getListOfBuyableCards(res.market, ownPlayer);
+            renderBuyableCards();
+            lastRoundCheck(res.lastRound, res);
+
+            if (res.currentPlayer !== loadFromStorage("playerName") || isSpectating) {
                 setTimeout(() => displayGame(true), 1000);
             } else {
                 setTimeout(() => displayGame(false), 1000);

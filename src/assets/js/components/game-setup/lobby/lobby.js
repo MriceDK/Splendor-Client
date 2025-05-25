@@ -1,8 +1,8 @@
-import * as handler from "./handler.js";
+import {leaveLobby, loadJoinedGame} from "./handler.js";
 
 function init() {
-
-    handler.loadJoinedGame();
+    document.querySelector(".leave-lobby").addEventListener("click", leaveLobby)
+    loadJoinedGame();
 }
 
 init();

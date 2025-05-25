@@ -63,23 +63,21 @@ body {
 
 header {
  width: 100%;
-
  color: var(--main-white-color);
  display: flex;
- align-items: center;
+ align-items: start;
  justify-content: space-between;
 }
 
 /*region Styling for The playerName */
 
 header a{
+ cursor: pointer;
  display: flex;
  transition: ease-in-out 0.1s;
 
  align-items: center;
  justify-content: center;
- margin-top: 1.625rem;
- margin-right: 0.625rem;
  padding: 0.5rem;
 
  text-decoration: none;
@@ -89,6 +87,13 @@ header a{
  background-color: var(--beige);
  border: solid var(--dark-beige) 0.2rem;
  border-radius: 1rem;
+
+ margin-left: 1rem;
+ margin-top: 1rem;
+}
+
+header nav a {
+ color: var(--main-white-color);
 }
 
 header a:hover{
@@ -121,7 +126,7 @@ header #profile-picture {
  padding: 1rem 2rem 1rem 0.75rem;
  border-radius: 1rem;
  margin-right: 0.5rem;
- margin-top: 4rem;
+ margin-top: 0.5rem;
  z-index: 1;
  text-align: end;
 
@@ -246,3 +251,38 @@ input[type="text"]:focus {
  border: 0.125rem solid #e53935;
  box-shadow: 0 0 0.5rem 0.125rem #ff5252;
 }
+
+/* Styling for the spectators hover */
+.spectators {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ font-size: 1rem;
+}
+
+.spectators .spectator-names {
+ display: none;
+ background-color: var(--beige);
+ text-align: left;
+ padding: 0.5rem;
+ border-radius: 0.5rem;
+ position: absolute;
+ z-index: 1;
+ top: 100%;
+ left: 50%;
+ margin-top: .5rem;
+ transform: translateX(-50%);
+ white-space: pre-line;
+}
+
+.spectators:hover .spectator-names, .spectator-names:hover {
+ display: block;
+}
+
+.spectators #spectator-names li {
+ color: var(--main-black-color);
+ font-family: Inter, sans-serif;
+ font-size: 0.875rem;
+
+}
+/* Styling for the spectators hover */

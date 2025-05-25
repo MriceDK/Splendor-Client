@@ -4,15 +4,23 @@ function getOwnPlayerName() {
     return loadFromStorage("playerName");
 }
 
-function getOwnPlayerInfo(gameinfo) {
-    const players = gameinfo.players;
+function getOwnPlayerInfo(gameInfo) {
+    const players = gameInfo.players;
 
     for (const player of players) {
         if (player.name === getOwnPlayerName()) {
             return player;
         }
     }
+    return null;
+}
 
+function getCurrentPlayerInfo(gameInfo) {
+    for (const player of gameInfo.players) {
+        if (player.name === gameInfo.currentPlayer) {
+            return player;
+        }
+    }
     return null;
 }
 
@@ -32,4 +40,4 @@ function getAllOwnPlayerTokens(ownPlayer) {
     return ownPlayer.tokens;
 }
 
-export {putInitalValue, getOwnPlayerInfo, getAllOwnPlayerTokens};
+export {putInitalValue, getOwnPlayerInfo, getAllOwnPlayerTokens, getCurrentPlayerInfo};

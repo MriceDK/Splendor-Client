@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Splendor Lobbyname</title>
+
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/gameplay/game-board-screen.css">
@@ -15,11 +16,12 @@
     <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
     <link rel="stylesheet" href="assets/css/gameplay/gems.css">
     <link rel="stylesheet" href="assets/css/gameplay/history.css">
+    <link rel="stylesheet" href="assets/css/gameplay/last-round-notification.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/gameplay/last-round-notification.css">
 
     <script type="module" src="./assets/js/game.js"></script>
 </head>
@@ -35,8 +37,8 @@
         <template id="buy-popup-template">
             <div class="confirmation-popup popup">
                 <h3 class="title-popup"></h3>
-                <button type="button" class="button-style-popup button-style close-pop-up-button">Cancel</button>
                 <button type="button" class="button-style-popup button-style confirm-pop-up-button">Buy Card</button>
+                <button type="button" class="button-style-popup button-style close-pop-up-button">Cancel</button>
             </div>
         </template>
         <template id="reserve-deck-popup-template">
@@ -457,7 +459,8 @@
         <h1 class="splendor-name">Splendor</h1>
         <h2 class="lobby-name">Lobby Name</h2>
         <div class="spectators">
-            <p id="spectators">spectators:</p>
+            <p class="spectators">spectators: <span class="spectator-count"></span></p>
+            <ul class="spectator-names"></ul>
         </div>
     </div>
     <section class="bank-flexcontainer">
@@ -523,6 +526,7 @@
                 <div class="nobles-container"></div>
             </div>
             <ul class="own-purse">
+                <li class="max-tokens-reached-text hidden">Reached max allowed tokens!</li>
                 <li class="own-inventory">
                     <div class="gem ruby">
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">

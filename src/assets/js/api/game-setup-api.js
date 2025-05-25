@@ -16,14 +16,41 @@ function getAllLobbies() {
 
 function joinLobby(joinGameId, playerName) {
     const body = {
-        "wantsToLeave": false,
-        "isSpectator": false,
+        "wantsToLeave" : false,
+        "isSpectator" : false
     }
     return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST", body);
 }
 
+function spectateLobby(joinGameId, playerName) {
+    const body = {
+        "wantsToLeave" : false,
+        "isSpectator" : true
+    }
+    return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST", body);
+}
+
+function playerLeaveLobby(leaveGameId, playerName) {
+    const body = {
+        "wantsToLeave" : true,
+        "isSpectator" : false
+    }
+    return APIAbstractor.fetchFromServer(`/games/${leaveGameId}/players/${playerName}`, "POST", body);
+}
+
+function stopSpectating(leaveGameId, playerName) {
+    const body = {
+        "wantsToLeave" : true,
+        "isSpectator" : true
+    }
+    return APIAbstractor.fetchFromServer(`/games/${leaveGameId}/players/${playerName}`, "POST", body);
+}
+
 export {
+    playerLeaveLobby,
+    stopSpectating,
     joinLobby,
+    spectateLobby,
     getAllLobbies,
     createLobby,
     getGameInfo

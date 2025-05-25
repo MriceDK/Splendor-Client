@@ -8,7 +8,7 @@ import {showChosenBankToken} from "../../gameplay/bank/renderer.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
 function immediateTokenCheckAfterTokenUpdate(gameState, currentPlayer, ownPlayer){
-     if (gameState === "RETURN_GEMS" && currentPlayer === ownPlayer.name) {
+     if (gameState === "ReturnGems" && currentPlayer === ownPlayer.name) {
          checkTooManyTokens(ownPlayer);
      }
 }

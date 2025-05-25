@@ -1,8 +1,7 @@
 import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as RenderLobbyOverview from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {getAllLobbies, joinLobby} from "../../../api/game-setup-api.js";
-
+import {getAllLobbies, joinLobby, spectateLobby} from "../../../api/game-setup-api.js";
 
 
 function loadUserInformation() {
@@ -13,7 +12,7 @@ function getMatchingGames() {
     getAllLobbies()
         .then((res) => {
             handleFilters(addGameName(res.games));
-            setTimeout(getMatchingGames, 5000);
+            setTimeout(getMatchingGames, 1000);
         })
         .catch(errorHandler.handleError);
 }
@@ -90,18 +89,32 @@ function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
         localStorageAbstractor.saveToStorage("gameId", joinGameId);
-        addPlayerToGame(joinGameId);        
+        localStorageAbstractor.saveToStorage("spectate", false);
+        addPlayerToGame(joinGameId);
+    } else if (e.target.nodeName === "BUTTON" && e.target.classList.contains("spectate-button")) {
+        const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
+        localStorageAbstractor.saveToStorage("gameId", joinGameId);
+        localStorageAbstractor.saveToStorage("spectate", true);
+        addSpectatorToGame(joinGameId);
     }
+}
 
+function addSpectatorToGame(joinGameId, numberToAddNameUniqueness = 0) {
+    const spectatorName = localStorageAbstractor.loadFromStorage("playerName");
+    spectateLobby(joinGameId, spectatorName).then(res => {
+        redirectToLobby(res)
+    }).catch(() => {
+        numberToAddNameUniqueness++;
+        uniqueNameForcer(numberToAddNameUniqueness);
+        addSpectatorToGame(joinGameId, numberToAddNameUniqueness);
+    })
 }
 
 function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     joinLobby(joinGameId, playerName)
     .then(res => {
-
-        joinLobbyHelp(res);
-
+        redirectToLobby(res);
     })
     .catch((err) => {
         if (err.cause === "There already exists a player with the same name in this game."){
@@ -114,8 +127,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
             const gameName = document.querySelector(`[data-gameId = "${joinGameId}"]`).getAttribute("data-gameName");
             RenderLobbyOverview.renderLobbyFullPopup(gameName, playerName);
         }
-        }
-    )
+    });
 }
 
 
@@ -131,11 +143,9 @@ function uniqueNameForcer(n){
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
-function joinLobbyHelp(res){
-
+function redirectToLobby(res){
     localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
     window.location.assign("./lobby.html");
-
 }
 
 function handleLobbyFullPopupClick(e, $popup){
@@ -146,10 +156,7 @@ function handleLobbyFullPopupClick(e, $popup){
 }
 
 function joinDisableCheck($button, started){
-    if (started){
-        $button.disabled = true;
-    }
-
+    $button.disabled = started;
 }
 
 
