@@ -2,7 +2,7 @@ import {toTwoDigit} from "../../../helper/utils.js";
 import {closePopUp} from "../../popup/confirmation-popup/renderer.js";
 
 const MILLISECONDS_IN_A_SECOND = 1000;
-const AMOUNT_OF_SECONDS_NEEDED_TO_RENDER_RED = 20;
+const AMOUNT_OF_SECONDS_TO_RENDER_TIME_IS_ALMOST_UP = 20;
 
 function renderTimer(currentPlayer, timeEndTurn) {
     const $target = document.querySelector(".timer-container");
@@ -21,7 +21,7 @@ function renderTimer(currentPlayer, timeEndTurn) {
 }
 
 function makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target) {
-    if (secondsLeft <= AMOUNT_OF_SECONDS_NEEDED_TO_RENDER_RED) {
+    if (secondsLeft <= AMOUNT_OF_SECONDS_TO_RENDER_TIME_IS_ALMOST_UP) {
         $target.classList.add("turn-almost-done");
     } else {
         $target.classList.remove("turn-almost-done");
