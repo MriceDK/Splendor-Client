@@ -143,4 +143,13 @@ h2{
     background-repeat: no-repeat;
 }
 
+.password {
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: solid var(--dark-beige) 0.2rem;
+    background-color: var(--beige);
+    font-size: 1.5rem;
+}
+
 
