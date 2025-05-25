@@ -4,7 +4,7 @@ function renderUsernamePopup(){
     const $template = document.querySelector("#username-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
     $target.classList.remove("hidden");
-    $target.innerHTML = document.querySelector("#username-popup-template").outerHTML
+    $target.innerHTML = document.querySelector(".popup-templates").outerHTML
     $target.insertAdjacentHTML("beforeend", $template.outerHTML);
     if (loadFromStorage("playerName") === null || loadFromStorage("playerName") === undefined || loadFromStorage("playerName") === ""){
         document.querySelector("#close-popup-text").classList.add("hidden");
