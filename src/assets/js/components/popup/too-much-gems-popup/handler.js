@@ -3,7 +3,7 @@ import * as LocalStorageAbstractor from "../../../data-connector/local-storage-a
 import {renderTooManyGemsPopUp, updatePopupTokens} from "./renderer.js";
 import {displayGame} from "../../../game.js";
 import {handleError} from "../../../data-connector/error-handler.js";
-import {getDiffTokensObject, returnTokensBody, disableOrEnableGems} from "./helper.js";
+import {getDiffTokensObject, returnTokensBody, disableOrEnableGems, checkIfReturnIsAllowed} from "./helper.js";
 import {showChosenBankToken} from "../../gameplay/bank/renderer.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
@@ -21,7 +21,7 @@ function checkTooManyTokens(player) {
 
     $form.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", removeOwnToken));
     disableOrEnableGems();
-
+    checkIfReturnIsAllowed();
 }
 
 function updateAndDisplay(e, player) {
@@ -52,6 +52,7 @@ function removeOwnToken(e) {
     if ($tokenType.classList.contains("clickable")) {
         showChosenBankToken(uppercaseFirstLetterOfWord($tokenType.classList[1]), true);
         updatePopupTokens($tokenValue, true);
+        checkIfReturnIsAllowed();
     }
 }
 
@@ -62,6 +63,7 @@ function removeChosenPopupToken(e) {
 
     $target.remove();
     updatePopupTokens($tokenValue, false);
+    checkIfReturnIsAllowed();
 }
 
 export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate, removeChosenPopupToken};

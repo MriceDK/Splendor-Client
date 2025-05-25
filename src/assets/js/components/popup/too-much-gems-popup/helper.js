@@ -2,6 +2,7 @@ import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
 function getDiffTokensObject(tokens) {
     const returnObject = {};
+    //const $tokensForm = document.querySelectorAll(".too-many-gems-pop-up-form .token-bank li");
     const $tokensForm = document.querySelectorAll(".gem-remover-input");
     $tokensForm.forEach(token => {
         const tokenName = uppercaseFirstLetterOfWord(token.getAttribute("name"));
@@ -40,4 +41,15 @@ function disableOrEnableGems() {
     })
 }
 
-export {returnTokensBody, getDiffTokensObject, disableOrEnableGems}
+function checkIfReturnIsAllowed() {
+    let totalRemainingTokens = 0;
+    const $remainingTokensSelector = document.querySelectorAll("#too-many-gems-pop-up-form .token-bank .gem-value");
+
+    $remainingTokensSelector.forEach(token => {
+        totalRemainingTokens += parseInt(token.innerText);
+    });
+
+    document.querySelector("#too-many-gems-pop-up-form #gem-remover-button").disabled = totalRemainingTokens !== 10;
+}
+
+export {returnTokensBody, getDiffTokensObject, disableOrEnableGems, checkIfReturnIsAllowed};
