@@ -19,7 +19,6 @@ function getOwnPlayerInfo(gameinfo) {
 function putInitalValue($tooMuchGemsTemplate, token) {
     const $inputSelector = $tooMuchGemsTemplate.querySelector(`.token-bank .${token[0].toLowerCase()} .gem-value`);
     $inputSelector.innerText = token[1];
-
 }
 
 function getAllOwnPlayerTokens(ownPlayer) {
