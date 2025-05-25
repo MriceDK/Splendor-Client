@@ -5,8 +5,9 @@ import {displayGame} from "../../../../game.js";
 
 
 function chooseNobleCheck(gameState, unclaimedNobles, currentPlayer, ownPlayer){
-    if (gameState === "CHOOSE_NOBLE" && currentPlayer === ownPlayer.name){
+    if (gameState === "ChooseNoble" && currentPlayer === ownPlayer.name){
         const pickableNobles = checkAvailableNobles(unclaimedNobles, ownPlayer);
+        console.log(pickableNobles);
         renderPickableNobles(pickableNobles);
     }
 }

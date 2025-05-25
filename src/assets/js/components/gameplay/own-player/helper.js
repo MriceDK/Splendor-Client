@@ -25,9 +25,8 @@ function getCurrentPlayerInfo(gameInfo) {
 }
 
 function putInitalValue($tooMuchGemsTemplate, token) {
-    const selector = `#token-remover-${token[0].toLowerCase()}`;
-    $tooMuchGemsTemplate.querySelector(selector).setAttribute("value", token[1]);
-
+    const $inputSelector = $tooMuchGemsTemplate.querySelector(`.token-bank .${token[0].toLowerCase()} .gem-value`);
+    $inputSelector.innerText = token[1];
 }
 
 function getAllOwnPlayerTokens(ownPlayer) {

@@ -2,6 +2,7 @@ import * as handler from "./handler.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {isLegalToken} from "./helper.js";
+import {removeChosenPopupToken} from "../../popup/too-much-gems-popup/handler.js";
 
 const chosenBankTokens = {
     Ruby: 0,
@@ -136,17 +137,25 @@ function getChosenTokenColour($tokenFromBank) {
 
 }
 
-function showChosenBankToken(gem) {
-    updateToken(gem, true);
+function showChosenBankToken(gem, toMuchGemsPopup = false) {
     const $chosenToken = document.querySelector("#token").content.firstElementChild.cloneNode(true);
+
     $chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
     $chosenToken.classList.add("clickable");
     $chosenToken.classList.add(gem.toLowerCase());
     $chosenToken.classList.add("gem");
     $chosenToken.querySelector("span").outerHTML = "";
-    $chosenToken.addEventListener("click", handler.removeChosenBankToken);
-    document.querySelector(".selected-tokens").appendChild($chosenToken);
-    chosenBankTokens[gem]++;
+
+    if (!toMuchGemsPopup) {
+        $chosenToken.addEventListener("click", handler.removeChosenBankToken);
+        document.querySelector(".bank-flexcontainer .selected-tokens").appendChild($chosenToken);
+        updateToken(gem, true);
+        chosenBankTokens[gem]++;
+    } else {
+        $chosenToken.addEventListener("click", removeChosenPopupToken);
+        document.querySelector("#too-many-gems-pop-up-form .selected-tokens").appendChild($chosenToken);
+    }
+
 }
 
 function enableOrDisableToken(token) {
@@ -210,5 +219,6 @@ export {
     toggleCollectGemsButton,
     chosenBankTokens,
     currentBankTokens,
-    resetBankButtons
+    resetBankButtons,
+    showChosenBankToken
 };

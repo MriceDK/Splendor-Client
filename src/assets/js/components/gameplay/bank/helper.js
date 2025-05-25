@@ -40,4 +40,16 @@ function checkOnlyTwoOfSameColourWhenValueOfMinFour(gem) {
     return !(render.chosenBankTokens[gem] + render.currentBankTokens[gem] < minValueTwoOfSameColourAllowed && render.chosenBankTokens[gem] === maxTokensOfAColourWhenColourValuesLessThanFour);
 }
 
-export { isLegalToken};
+function checkIfAllTokensDisabled() {
+    const $tokens = document.querySelectorAll(".bank-flexcontainer .token-bank li");
+
+    for (const token of $tokens) {
+        if (!token.classList.contains("disabled")) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+export {isLegalToken, checkIfAllTokensDisabled};

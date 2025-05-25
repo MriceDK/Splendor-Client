@@ -1,13 +1,8 @@
 import {showEndGamePopup} from "./renderer.js";
 
-function checkIfGameOver(winner) {
-    return winner !== null;
-}
-
-function handleGameOver(winner) {
-    const gameOver = checkIfGameOver(winner);
-    if (gameOver) {
-        showEndGamePopup(winner);
+function handleGameOver(res) {
+    if (res.gameState === "WinnerFound") {
+        showEndGamePopup(res.winner);
     }
 }
 

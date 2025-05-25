@@ -89,10 +89,6 @@ function renderOwnTokenValuesInGems() {
         const token = tokenValues.querySelector(".gem").classList[1];
 
         document.querySelector(`.popup-token-selector .inventory .${token} .gem-value`).innerText = tokenValues.querySelector(".gem-value").innerText;
-
-        if (token !== "gold") {
-            document.querySelector(`.popup-token-selector .inventory .${token} .card-text`).innerText = tokenValues.querySelector(".card-text").innerText;
-        }
     });
 }
 

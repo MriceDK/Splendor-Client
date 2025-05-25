@@ -38,8 +38,8 @@ function displayGame(renderAll = true) {
                 ownPlayer = getCurrentPlayerInfo(res);
                 isSpectating = true;
             }
+            handleGameOver(res);
             if (renderAll) {
-                handleGameOver(res.winner);
                 ownPlayerCardRenderer(ownPlayer, isSpectating);
                 renderOpponentsStats(res.players);
                 renderMarket(res);
@@ -48,7 +48,6 @@ function displayGame(renderAll = true) {
                 renderHistoryLogs(res.history);
                 hookUpEventListenersOnCards();
                 setUpEventlisteners();
-                hookUpEventListenersOnCards();
                 chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
                 immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
                 document.querySelectorAll(".opponent").forEach($opponent => {
