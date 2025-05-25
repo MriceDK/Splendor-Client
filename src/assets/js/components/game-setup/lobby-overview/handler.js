@@ -2,6 +2,7 @@ import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as RenderLobbyOverview from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {getAllLobbies, joinLobby, spectateLobby} from "../../../api/game-setup-api.js";
+import {changePlayerName} from "../username-selector/handler.js";
 
 function loadUserInformation() {
     RenderLobbyOverview.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
@@ -101,7 +102,7 @@ function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         if (e.target.closest("section").querySelector(".lobbyname").classList.contains("private")) {
             // render the password popup
-            RenderLobbyOverview.renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gameid"));
+            RenderLobbyOverview.renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gameid"), false);
         } else {
             const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
             localStorageAbstractor.saveToStorage("gameId", joinGameId);
@@ -109,9 +110,9 @@ function handleLobbyJoinClick(e) {
             addPlayerToGame(joinGameId);
         }
     } else if (e.target.nodeName === "BUTTON" && e.target.classList.contains("spectate-button")) {
-        if (e.target.closest("section").querySelector(".lobby").classList.contains("private")) {
+        if (e.target.closest(".lobby").querySelector(".lobbyname").classList.contains("private")) {
             // render the password popup
-            RenderLobbyOverview.renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gameid"));
+            RenderLobbyOverview.renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gameid"), true);
         } else {
             const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
             localStorageAbstractor.saveToStorage("gameId", joinGameId);
@@ -125,7 +126,7 @@ function addSpectatorToGame(joinGameId, password = null, numberToAddNameUniquene
     const spectatorName = localStorageAbstractor.loadFromStorage("playerName");
     spectateLobby(joinGameId, spectatorName, password).then(res => {
         redirectToLobby(res)
-    }).catch(() => {
+    }).catch(err => {
         if (err.cause === "There already exists a player with the same name in this game."){
             numberToAddNameUniqueness++;
             uniqueNameForcer(numberToAddNameUniqueness);
@@ -184,15 +185,26 @@ function handlePopupClick(e) {
     } else if (e.target.nodeName === "INPUT" && e.target.classList.contains("close-password-popup")) {
         hidePopup();
     } else if (e.target.nodeName === "INPUT" && e.target.classList.contains("join-private-game-button")) {
-        handleJoinPrivateLobby();
+        if (e.target.closest(".password-popup").querySelector("form").getAttribute("data-isSpectator")) {
+            handerSpectatePrivateLobby();
+        } else {
+            handleJoinPrivateLobby();
+        }
+    } else if (e.target.nodeName === "BUTTON" && e.target.id === "playername-button") {
+        changePlayerName(e);
     }
 }
 
 function handleJoinPrivateLobby() {
     const password = document.querySelector("#private-lobby-password-input").value;
     const gameId = document.querySelector("#private-lobby-password-form").getAttribute("data-gameId");
-    console.log(gameId);
     addPlayerToGame(gameId, password);
+}
+
+function handerSpectatePrivateLobby() {
+    const password = document.querySelector("#private-lobby-password-input").value;
+    const gameId = document.querySelector("#private-lobby-password-form").getAttribute("data-gameId");
+    addSpectatorToGame(gameId, password);
 }
 
 function hidePopup() {
