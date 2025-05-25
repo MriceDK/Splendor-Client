@@ -1,4 +1,4 @@
-import {hideUserNamePopup} from "../../popup/usernameselector-popup/renderer.js";
+import {hideProfilePopup} from "../../popup/profile-selector-popup/renderer.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 const avatars = [
@@ -70,25 +70,27 @@ function updateAvatarDisplay() {
 function changeProfileSection(countryCode) {
     setProfilePicture(countryCode);
     document.querySelector("#playername").innerText = loadFromStorage("playerName");
-    closePlayerNamePopup()
+    hideProfilePopup();
 }
 
-function setProfilePicture(countryCode){
-    const image = `assets/images/avatars/${countryCode}.jpg`;
+function setProfilePicture(countryCode) {
+    let image = `assets/images/avatars/${countryCode}.jpg`;
+    if (countryCode === undefined || countryCode === null || countryCode === "") {
+        image = `assets/images/avatars/un.jpg`;
+    }
+
     const $img = document.querySelector("header img");
     $img.src = image;
     $img.alt = `Avatar for ${countryCode}`;
     $img.title = countryCode;
 }
 
-function closePlayerNamePopup(){
-    hideUserNamePopup();
-}
 
 function renderAvatar() {
     const countryCode = loadFromStorage("avatar");
     if (!countryCode) return;
     setProfilePicture(countryCode);
+
 }
 
 export {changeProfileSection, setupAvatarSlider, renderAvatar };
