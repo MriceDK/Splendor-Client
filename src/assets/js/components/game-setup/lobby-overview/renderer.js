@@ -29,7 +29,7 @@ function renderLobbyFullPopup(gameName, playerName){
 
     const $popup = document.querySelector(".popup-container:first-of-type");
     const $template = document.querySelector("#lobby-full-popup-template").content.firstElementChild.cloneNode(true);
-    $popup.innerHTML = document.querySelector(".popup-templates").outerHTML;
+    $popup.innerHTML = document.querySelector(".setup-popup-templates").outerHTML;
     $template.querySelector("h2").innerText = `We're sorry ${playerName}, but the game with the name ${gameName} is full.`;
     $popup.classList.remove("hidden");
 
@@ -44,7 +44,7 @@ function renderPasswordPopup(gameId, isSpectator= false) {
     const $target = document.querySelector(".popup-container:first-of-type");
     const $template = document.querySelector("#private-lobby-password-popup-template").content.firstElementChild.cloneNode(true);
 
-    $target.innerHTML = document.querySelector(".popup-templates").outerHTML;
+    $target.innerHTML = document.querySelector(".setup-popup-templates").outerHTML;
     $template.querySelector("#private-lobby-password-form").setAttribute("data-gameId", gameId);
     $template.querySelector("#private-lobby-password-form").setAttribute("data-isSpectator", isSpectator);
     $template.querySelector("#private-lobby-password-form label").innerText = `Please enter the password for the private lobby:`;

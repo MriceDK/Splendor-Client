@@ -220,7 +220,7 @@ function handerSpectatePrivateLobby() {
 function hidePopup() {
     const $popup = document.querySelector(".popup-container:first-of-type");
     $popup.classList.add("hidden");
-    $popup.innerHTML = document.querySelector(".popup-templates").outerHTML;
+    $popup.innerHTML = document.querySelector(".setup-popup-templates").outerHTML;
 }
 
 function joinDisableCheck($button, started){
