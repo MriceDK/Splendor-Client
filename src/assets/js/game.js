@@ -48,7 +48,6 @@ function displayGame(renderAll = true) {
                 renderHistoryLogs(res.history);
                 hookUpEventListenersOnCards();
                 setUpEventlisteners();
-                hookUpEventListenersOnCards();
                 chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
                 immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
                 document.querySelectorAll(".opponent").forEach($opponent => {
