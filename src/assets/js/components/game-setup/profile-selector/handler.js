@@ -4,7 +4,7 @@ import * as LocalStorageAbstractor from "../../../data-connector/local-storage-a
 
 function changeProfile(e) {
     e.preventDefault();
-    const countryCode = document.querySelector("#avatar-display").title
+    const countryCode = document.querySelector("#avatar-display").title;
     changeAvatar(countryCode);
     const $usernameForm = document.querySelector("#playername-text").value.trim();
     if ($usernameForm === "") {
