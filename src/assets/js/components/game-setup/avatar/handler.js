@@ -11,6 +11,7 @@ function handleClickOnFlag(e) {
     if (img) {
         const countryCode = img.title;
         changeAvatar(e, countryCode);
+        window.location.href = "index.html";
     }
 }
 
