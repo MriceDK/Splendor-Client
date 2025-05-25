@@ -7,6 +7,10 @@ function init() {
     checkUserName();
     eventListenerUsernameSelector()
     document.querySelector("#lobby-create-form").addEventListener("submit", LobbyCreatorHandler.createLobby);
+    document.querySelector("#private").addEventListener("change", LobbyCreatorHandler.togglePasswordField);
+    document.querySelector("#public").addEventListener("change", LobbyCreatorHandler.togglePasswordField);
+
+
 }
 
 init();

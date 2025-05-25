@@ -14,8 +14,10 @@ function createLobby(e) {
     saveToStorage("playerName", validatedName);
 
     const playerName = loadFromStorage("playerName");
+    const isPrivate = document.querySelector("#private").checked;
+    const password = isPrivate ? document.querySelector("#password").value : null;
 
-    const body = createBody(lobbyName, playerAmount, playerName);
+    const body = createBody(lobbyName, playerAmount, playerName, password);
 
     createLobby1(body)
         .then(res => {
@@ -26,8 +28,7 @@ function createLobby(e) {
         });
 }
 
-function createBody(lobbyName, playerAmount, playerName) {
-
+function createBody(lobbyName, playerAmount, playerName, password) {
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
         "playerName": playerName
@@ -47,4 +48,10 @@ function disableSubmitButton(target) {
     target.setAttribute("disabled", "true");
 }
 
-export {createLobby};
+function togglePasswordField(e) {
+    const passwordField = document.querySelector(".password");
+    const isPrivate = document.querySelector("#private").checked
+    passwordField.hidden = !isPrivate;
+}
+
+export {createLobby, togglePasswordField};
