@@ -6,7 +6,7 @@ import {handleError} from "../../../data-connector/error-handler.js";
 import {getDiffTokensObject, returnTokensBody} from "./helper.js";
 
 function immediateTokenCheckAfterTokenUpdate(gameState, currentPlayer, ownPlayer){
-     if (gameState === "RETURN_GEMS" && currentPlayer === ownPlayer.name) {
+     if (gameState === "ReturnGems" && currentPlayer === ownPlayer.name) {
          checkTooManyTokens(ownPlayer);
      }
 }

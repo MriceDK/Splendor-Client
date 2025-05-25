@@ -1,8 +1,6 @@
 body {
-    display: grid;
-    max-height: 100vh;
-    max-width: 100vw;
-
+    height: 100vh;
+    width: 100vw;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,32 +8,35 @@ body {
     color: var(--main-black-color);
 }
 
+
+header {
+    display: flex;
+    justify-content: end;
+    flex-flow: row-reverse;
+    align-self: start;
+    justify-self: start;
+    grid-area: container;
+}
+
 main {
     display: flex;
     flex-direction: column;
-}
-
-.grid-container {
-    height: 100%
-}
-
-header {
-    flex-flow: row-reverse;
-    height: 100%;
+    justify-content: start;
+    height: fit-content;
+    grid-area: container;
+    align-self: center;
 }
 
 
 .grid {
-    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 10% 1fr;
+    grid-template-areas: "container";
+    height: 100%;
 }
 
 h1 {
     font-size: 6rem;
     text-align: center;
-    margin-top: 2rem;
     font-family: "Saira stencil one", Arial, serif;
     font-style: italic;
     font-weight: bold;
@@ -49,13 +50,4 @@ h3 {
     font-weight: bold;
 }
 
-.grid-container {
-    display: grid;
-    height: fit-content;
-}
-
-.container div {
-    align-self: center;
-    justify-self: center;
-}
 

@@ -11,10 +11,10 @@ body{
 main {
     display: grid;
     grid-template-columns: 0.75fr 2fr 0.75fr;
-    grid-template-rows: 5% 1fr 1.75fr auto;
+    grid-template-rows: auto 1fr 1.75fr auto;
     height: 100vh;
     width: 100vw;
-    grid-template-areas:    "username market header"
+    grid-template-areas:    "username timer header"
                             "username market info"
                             "username market bank"
                             ". user-info history";
@@ -34,8 +34,31 @@ header button {
     align-items: center;
 }
 
-.username-flexcontainer {
+.timer-container {
+    grid-area: timer;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: var(--dark-beige);
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.timer {
+    width: 3rem;
+}
+
+.turn-almost-done {
+    color: var(--main-red-color);
+}
+
+.opponents-info {
     grid-area: username;
+}
+
+.username-flexcontainer {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -117,3 +140,4 @@ header button {
     border-radius: 50%;
     object-fit: cover;
 }
+
