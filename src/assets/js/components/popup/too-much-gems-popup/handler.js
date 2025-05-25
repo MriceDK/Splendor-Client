@@ -51,10 +51,17 @@ function removeOwnToken(e) {
 
     if ($tokenType.classList.contains("clickable")) {
         showChosenBankToken(uppercaseFirstLetterOfWord($tokenType.classList[1]), true);
-        updatePopupTokens($tokenValue);
+        updatePopupTokens($tokenValue, true);
     }
-
-
 }
 
-export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate};
+function removeChosenPopupToken(e) {
+    const $target = e.target.closest(".gem");
+    const $tokenName = $target.classList[3];
+    const $tokenValue = document.querySelector(`#too-many-gems-pop-up-form .${$tokenName} .gem-value`);
+
+    $target.remove();
+    updatePopupTokens($tokenValue, false);
+}
+
+export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate, removeChosenPopupToken};

@@ -11,8 +11,13 @@ function renderTooManyGemsPopUp(playerTokens) {
     $target.insertAdjacentHTML("beforeend", $tooMuchGemsTemplate.outerHTML);
 }
 
-function updatePopupTokens($tokenValue) {
-    $tokenValue.innerText--;
+function updatePopupTokens($tokenValue, remove) {
+    if (remove) {
+        $tokenValue.innerText--;
+    } else {
+        $tokenValue.innerText++;
+    }
+
     disableOrEnableGems();
 }
 
