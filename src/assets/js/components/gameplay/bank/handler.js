@@ -4,6 +4,7 @@ import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.
 
 import {renderOwnTokenValue} from "../own-player/renderer.js";
 import {displayGame} from "../../../game.js";
+import {checkIfAllTokensDisabled} from "./helper.js";
 
 function hookUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", openBank);
@@ -21,8 +22,8 @@ function openBank() {
 function closeBank() {
     renderer.changeButtons();
     renderer.removeChosenTokens();
-    checkConfirmButton();
     checkAllowedTokens();
+    checkConfirmButton();
     renderer.disableTokens();
 }
 
@@ -31,8 +32,8 @@ function chooseBankToken(e) {
 
     if ($tokenFromBank.classList.contains("clickable")) {
         renderer.getChosenTokenColour($tokenFromBank);
-        checkConfirmButton();
         checkAllowedTokens();
+        checkConfirmButton();
     }
 
 }
@@ -47,8 +48,8 @@ function removeChosenBankToken(e) {
     $target.remove();
 
     renderer.updateToken(classNameWithCapitalLetter, false);
-    checkConfirmButton();
     checkAllowedTokens();
+    checkConfirmButton();
 }
 
 function collectTokens() {
@@ -82,7 +83,11 @@ function checkConfirmButton() {
     if (numberOfChosenTokens === maxTokensOfDiffColour || Object.values(renderer.chosenBankTokens).includes(2)) {
         renderer.toggleCollectGemsButton(false);
     } else {
-        renderer.toggleCollectGemsButton(true);
+        if (checkIfAllTokensDisabled()) {
+            renderer.toggleCollectGemsButton(false);
+        } else {
+            renderer.toggleCollectGemsButton(true);
+        }
     }
 }
 
