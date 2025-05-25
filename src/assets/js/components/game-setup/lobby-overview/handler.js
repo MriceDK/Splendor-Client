@@ -194,7 +194,8 @@ function handlePopupClick(e) {
     } else if (e.target.nodeName === "INPUT" && e.target.classList.contains("close-password-popup")) {
         hidePopup();
     } else if (e.target.nodeName === "INPUT" && e.target.classList.contains("join-private-game-button")) {
-        if (e.target.closest(".password-popup").querySelector("form").getAttribute("data-isSpectator")) {
+        const isSpectator = e.target.closest(".password-popup").querySelector("form").getAttribute("data-isSpectator");
+        if (isSpectator === "true") {
             handerSpectatePrivateLobby();
         } else {
             handleJoinPrivateLobby();

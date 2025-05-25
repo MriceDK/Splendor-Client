@@ -28,12 +28,14 @@ function loadJoinedGame() {
 function getGameDetailsForGameId() {
     getGameInfo()
         .then(data => {
-            const password = loadFromStorage("password");
-            if (password !== null && password !== "") {
-                renderer.renderPassword(password);
-                renderer.renderPrivate();
-            } else {
-                document.querySelector(".password").hidden = true;
+            if (data.isPrivate) {
+                const password = loadFromStorage("password");
+                if (password !== null && password !== "") {
+                    renderer.renderPassword(password);
+                    renderer.renderPrivate();
+                } else {
+                    document.querySelector(".password").hidden = true;
+                }
             }
             renderer.dataListFromApi(data);
             setTimeout(loadJoinedGame, 2000);
