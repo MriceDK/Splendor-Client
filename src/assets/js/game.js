@@ -28,7 +28,6 @@ function displayGame(renderAll = true) {
     const username = loadFromStorage("playerName");
     getGameInfo()
         .then(res => {
-            console.log(res);
             document.title = `Splendor ${res.gameName}`;
             document.querySelector(".lobby-name").innerText = res.gameName;
             renderSpectators(res.spectators);
@@ -39,7 +38,7 @@ function displayGame(renderAll = true) {
                 ownPlayer = getCurrentPlayerInfo(res);
                 isSpectating = true;
             }
-            handleGameOver(res.winner);
+            handleGameOver(res);
             if (renderAll) {
                 ownPlayerCardRenderer(ownPlayer, isSpectating);
                 renderOpponentsStats(res.players);
@@ -67,12 +66,7 @@ function displayGame(renderAll = true) {
                 setTimeout(() => displayGame(false), 1000);
             }
         })
-        .catch(err => {
-            closePopUp();
-            document.querySelector("main").innerHTML = "";
-            const message = getCorrectMessageFromError(err);
-            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(message);
-     })
+
 
 }
 
