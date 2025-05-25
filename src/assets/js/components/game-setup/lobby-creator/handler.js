@@ -48,8 +48,8 @@ function createBody(lobbyName, playerAmount, playerName, password) {
 }
 
 function disableSubmitButton() {
-    document.querySelector(".button-style .submit").disabled ?     document.querySelector(".button-style .submit").disabled = false
-:     document.querySelector(".button-style .submit").disabled = true;
+    document.querySelector(".submit").disabled ?     document.querySelector(" .submit").disabled = false
+:     document.querySelector(".submit").disabled = true;
 }
 
 function togglePasswordField() {
