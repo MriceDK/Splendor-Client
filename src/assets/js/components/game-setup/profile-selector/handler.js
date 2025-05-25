@@ -1,11 +1,9 @@
-import {changePlayerNameText, renderAvatars} from "./renderer.js";
+import {changePlayerNameText, renderAvatar} from "./renderer.js";
 import {makeNameValid, uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 
 function changePlayerName(e){
     e.preventDefault();
-    renderAvatars();
-
     const $usernameForm = document.querySelector("#playername-text").value.trim();
     if ($usernameForm === "") {
     document.querySelector(".error-profile-selector").innerHTML = "Please enter a username";
@@ -28,6 +26,7 @@ function handleClickOnFlag(e) {
         const countryCode = img.title;
         changeAvatar(e, countryCode);
         window.location.href = "index.html";
+
     }
 }
 

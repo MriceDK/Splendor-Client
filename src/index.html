@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
 </head>
 <body>
+<template id="avatar-template">
+    <div class="avatar-container">
+        <img src="" alt="" title="">
+    </div>
+</template>
 <div class="popup-container hidden">
     <template id="username-popup-template">
         <div class="popup">
@@ -30,16 +35,11 @@
                 <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
                 <p class="error-username-selector"></p>
                 <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
+                <section id="avatar-selector-container">
+                </section>
             </form>
         </div>
     </template>
-    <section id="avatar-selector-container">
-        <template id="avatar-template">
-            <div class="avatar-container">
-                <img src="" alt="" title="">
-            </div>
-        </template>
-    </section>
 </div>
 <div class="grid">
     <header>
