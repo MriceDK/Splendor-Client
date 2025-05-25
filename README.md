@@ -41,4 +41,8 @@ https://grid.layoutit.com/
 
 - We didn't prevent users from using a username with invalid characters in it, so when you set your username with an invalid character in it, you get an error when trying to join/create a game
     - The reason why we didn't fix this, is because we found out too late, and decided to focus on the more important stuff.
+
+## Token scheme
+
+We used the JWT Tokens
     
