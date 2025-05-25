@@ -16,22 +16,26 @@ function createLobby(e) {
     const playerName = loadFromStorage("playerName");
     const isPrivate = document.querySelector("#private").checked;
     const password = isPrivate ? document.querySelector("#password").value : null;
+    const avatar = loadFromStorage("avatar");
 
-    const body = createBody(lobbyName, playerAmount, playerName, password);
+    const body = createBody(lobbyName, playerAmount, playerName, avatar, password);
 
     createLobby1(body)
         .then(res => {
             saveToStorage("gameId", res.gameId);
             saveToStorage("playerToken", res.playerToken);
             saveToStorage("password", res.password);
+            saveToStorage("spectate", false);
+
             window.location.href = "./lobby.html";
         });
 }
 
-function createBody(lobbyName, playerAmount, playerName, password) {
+function createBody(lobbyName, playerAmount, playerName, avatar, password) {
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
-        "playerName": playerName
+        "playerName": playerName,
+        "avatar": avatar
     };
 
     if (!(lobbyName === "" || lobbyName == null)) {

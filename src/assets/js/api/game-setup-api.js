@@ -14,10 +14,11 @@ function getAllLobbies() {
     return APIAbstractor.fetchFromServer("/games", "GET");
 }
 
-function joinLobby(joinGameId, playerName, password = null) {
+function joinLobby(joinGameId, playerName, avatar, password = null) {
     const body = {
-        "wantsToLeave" : false,
-        "isSpectator" : false
+        "wantsToLeave": false,
+        "isSpectator": false,
+        "avatar": avatar
     }
     if (password !== null) {
         body["password"] = password;

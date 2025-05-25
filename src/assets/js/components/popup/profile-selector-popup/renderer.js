@@ -1,6 +1,6 @@
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
-function renderUsernamePopup(){
+function renderProfilePopup(){
     const $template = document.querySelector("#username-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
     $target.classList.remove("hidden");
@@ -14,9 +14,9 @@ function renderUsernamePopup(){
     }
 }
 
-function hideUserNamePopup() {
+function hideProfilePopup() {
         const $target = document.querySelector(".popup-container");
         $target.classList.add("hidden");
 }
 
-export {renderUsernamePopup, hideUserNamePopup}
+export {renderProfilePopup, hideProfilePopup}

@@ -140,7 +140,8 @@ function addSpectatorToGame(joinGameId, password = null, numberToAddNameUniquene
 
 function addPlayerToGame(joinGameId, password = null, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    joinLobby(joinGameId, playerName, password)
+    const avatar = localStorageAbstractor.loadFromStorage("avatar");
+    joinLobby(joinGameId, playerName, avatar, password)
     .then(res => {
         redirectToLobby(res);
     })
@@ -214,10 +215,7 @@ function hidePopup() {
 }
 
 function joinDisableCheck($button, started){
-    if (started){
-        $button.disabled = true;
-    }
-
+    $button.disabled = started;
 }
 
 

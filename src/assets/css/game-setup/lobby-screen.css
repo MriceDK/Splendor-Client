@@ -15,7 +15,7 @@ html, body{
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 1fr;
+    grid-template-rows: min-content auto;
 }
 
 main{
@@ -52,9 +52,8 @@ nav a {
     border: solid var(--dark-beige) 0.2rem;
     padding: 1rem 2rem 1rem 0.75rem;
     border-radius: 1rem;
-    margin-top: 4rem;
     margin-right: 0.5rem;
-
+    margin-top: 0.5rem;
 }
 
 .profile-picture {
@@ -132,6 +131,7 @@ h2{
 .bottom{
     display: flex;
     justify-content: space-between;
+    gap: .5rem;
     margin-top: 1rem;
     font-family: Inter, sans-serif;
     font-weight: bold;
