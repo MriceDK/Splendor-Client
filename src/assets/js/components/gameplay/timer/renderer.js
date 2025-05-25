@@ -13,10 +13,9 @@ function renderTimer(currentPlayer, timeEndTurn, gameState) {
     }
 
     const secondsLeft = calculateSecondsLeft(timeEndTurn) +1;
-    makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target.querySelector(".timer"));
-
     $target.querySelector(".current-player-name").innerText = currentPlayer;
     $target.querySelector(".timer").innerText = convertToTimer(secondsLeft);
+    makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target.querySelector(".timer"));
 
     if (secondsLeft <= 0) {
         closePopUp();
