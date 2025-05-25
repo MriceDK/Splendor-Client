@@ -31,7 +31,7 @@ function displayGame() {
             let ownPlayer = getOwnPlayerInfo(res);
             let isSpectating = false;
             if (res.spectators.includes(spectatorName)) {
-                ownPlayer = getCurrentPlayerInfo( res);
+                ownPlayer = getCurrentPlayerInfo(res);
                 isSpectating = true;
             }
             handleGameOver(res.winner);
