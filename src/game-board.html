@@ -65,35 +65,50 @@
         </template>
         <template id="too-many-gems-pop-up-template">
             <form id="too-many-gems-pop-up-form" action="#" method="GET" class="popup">
-                <h2>These will be your remaining gems:</h2>
+                <h2>You have exceeded the gem limit of 10!</h2>
+                <p>Choose gems to remove:</p>
                 <div class="errormessages">
                     <p></p>
                 </div>
-
-                <label for="token-remover-emerald">
-                    Emerald
-                </label>
-                <input class="gem-remover-input" id="token-remover-emerald" type="number" name="emerald" min="0">
-                <label for="token-remover-ruby">
-                    Ruby
-                </label>
-                <input class="gem-remover-input" id="token-remover-ruby" type="number" name="ruby" min="0">
-                <label for="token-remover-sapphire">
-                    Sapphire
-                </label>
-                <input class="gem-remover-input" id="token-remover-sapphire" type="number" name="sapphire" min="0">
-                <label for="token-remover-diamond">
-                    Diamond
-                </label>
-                <input class="gem-remover-input" id="token-remover-diamond" type="number" name="diamond" min="0">
-                <label for="token-remover-onyx">
-                    Onyx
-                </label>
-                <input class="gem-remover-input" id="token-remover-onyx" type="number" name="onyx" min="0">
-                <label for="token-remover-gold">
-                    Gold
-                </label>
-                <input class="gem-remover-input" id="token-remover-gold" type="number" name="gold" min="0">
+                <ul class="token-bank">
+                    <li class="gem ruby">
+                        <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                        </svg>
+                        <span class="gem-value"></span>
+                    </li>
+                    <li class="gem emerald">
+                        <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                        </svg>
+                        <span class="gem-value"></span>
+                    </li>
+                    <li class="gem onyx">
+                        <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                        </svg>
+                        <span class="gem-value"></span>
+                    </li>
+                    <li class="gem sapphire">
+                        <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                        </svg>
+                        <span class="gem-value"></span>
+                    </li>
+                    <li class="gem diamond">
+                        <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                        </svg>
+                        <span class="gem-value"></span>
+                    </li>
+                    <li class="gem gold">
+                        <svg viewBox="0 0 73 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M67.4404 35.6738V98.3252L36.5 127.165L5.55957 98.3252V35.6738L36.5 6.83398L67.4404 35.6738Z" stroke-width="10"/>
+                        </svg>
+                        <span class="gem-value"></span>
+                    </li>
+                </ul>
+                <ul class="selected-tokens"></ul>
                 <button type="submit" id="gem-remover-button" class="button-style button-style-popup" value="confirm-removal">Remove Gems</button>
 
             </form>
@@ -136,9 +151,6 @@
                                         </svg>
                                         <span class="gem-value">0</span>
                                     </div>
-                                    <div class="card ruby">
-                                        <p class="card-text">0</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -161,9 +173,6 @@
                                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                                         </svg>
                                         <span class="gem-value">0</span>
-                                    </div>
-                                    <div class="card emerald">
-                                        <p class="card-text">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -188,9 +197,6 @@
                                         </svg>
                                         <span class="gem-value">0</span>
                                     </div>
-                                    <div class="card onyx">
-                                        <p class="card-text">0</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -214,9 +220,6 @@
                                         </svg>
                                         <span class="gem-value">0</span>
                                     </div>
-                                    <div class="card sapphire">
-                                        <p class="card-text">0</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -239,9 +242,6 @@
                                             <path d="M25.0576 11.9395V34.0596L13.5 44.6436L1.94238 34.0596V11.9395L13.5 1.35547L25.0576 11.9395Z" stroke-width="2"/>
                                         </svg>
                                         <span class="gem-value">0</span>
-                                    </div>
-                                    <div class="card diamond">
-                                        <p class="card-text">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -526,7 +526,7 @@
                 <div class="nobles-container"></div>
             </div>
             <ul class="own-purse">
-                <li class="max-tokens-reached-text hidden">Reached max allowed tokens!</li>
+                <li class="max-tokens-reached-text hidden">Reached max allowed gems!</li>
                 <li class="own-inventory">
                     <div class="gem ruby">
                         <svg viewBox="0 0 27 46" fill="none" xmlns="http://www.w3.org/2000/svg">

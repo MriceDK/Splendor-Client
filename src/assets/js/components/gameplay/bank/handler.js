@@ -4,14 +4,12 @@ import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.
 
 import {renderOwnTokenValue} from "../own-player/renderer.js";
 import {displayGame} from "../../../game.js";
-import {immediateTokenCheckAfterTokenUpdate} from "../../popup/too-much-gems-popup/handler.js";
-import {getGameInfo} from "../../../api/game-setup-api.js";
 
 function hookUpEvents() {
     document.querySelector(".bank-buttons .take-gems-button").addEventListener("click", openBank);
     document.querySelector(".bank-buttons .cancel-button").addEventListener("click", closeBank);
     document.querySelector(".bank-buttons .collect-gems-button").addEventListener("click", collectTokens);
-    document.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", chooseBankToken));
+    document.querySelectorAll(".bank-flexcontainer .token-bank li").forEach(li => li.addEventListener("click", chooseBankToken));
 }
 
 function openBank() {
@@ -29,7 +27,7 @@ function closeBank() {
 }
 
 function chooseBankToken(e) {
-    let $tokenFromBank = e.target.closest(".gem");
+    const $tokenFromBank = e.target.closest(".gem");
 
     if ($tokenFromBank.classList.contains("clickable")) {
         renderer.getChosenTokenColour($tokenFromBank);

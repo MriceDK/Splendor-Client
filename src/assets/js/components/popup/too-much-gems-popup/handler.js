@@ -1,9 +1,11 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {renderTooManyGemsPopUp} from "./renderer.js";
+import {renderTooManyGemsPopUp, updatePopupTokens} from "./renderer.js";
 import {displayGame} from "../../../game.js";
 import {handleError} from "../../../data-connector/error-handler.js";
-import {getDiffTokensObject, returnTokensBody} from "./helper.js";
+import {getDiffTokensObject, returnTokensBody, disableOrEnableGems, checkIfReturnIsAllowed} from "./helper.js";
+import {showChosenBankToken} from "../../gameplay/bank/renderer.js";
+import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
 function immediateTokenCheckAfterTokenUpdate(gameState, currentPlayer, ownPlayer){
      if (gameState === "ReturnGems" && currentPlayer === ownPlayer.name) {
@@ -16,6 +18,10 @@ function checkTooManyTokens(player) {
 
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     $form.addEventListener("submit", e => updateAndDisplay(e, player));
+
+    $form.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", removeOwnToken));
+    disableOrEnableGems();
+    checkIfReturnIsAllowed();
 }
 
 function updateAndDisplay(e, player) {
@@ -39,4 +45,25 @@ function updateTokensAfterTooMany(gameId, player) {
     return api.updateTokens(gameId, player.name, body);
 }
 
-export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate};
+function removeOwnToken(e) {
+    const $tokenType = e.target.closest(".gem");
+    const $tokenValue = $tokenType.querySelector(".gem-value");
+
+    if ($tokenType.classList.contains("clickable")) {
+        showChosenBankToken(uppercaseFirstLetterOfWord($tokenType.classList[1]), true);
+        updatePopupTokens($tokenValue, true);
+        checkIfReturnIsAllowed();
+    }
+}
+
+function removeChosenPopupToken(e) {
+    const $target = e.target.closest(".gem");
+    const $tokenName = $target.classList[3];
+    const $tokenValue = document.querySelector(`#too-many-gems-pop-up-form .${$tokenName} .gem-value`);
+
+    $target.remove();
+    updatePopupTokens($tokenValue, false);
+    checkIfReturnIsAllowed();
+}
+
+export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate, removeChosenPopupToken};
