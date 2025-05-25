@@ -40,15 +40,19 @@ function createBody(lobbyName, playerAmount, playerName, password) {
         body.gameName = playerName + "'s lobby";
     }
 
+    if (password !== null && password !== "") {
+        body.password = password;
+    }
+
     return body;
 }
 
-function disableSubmitButton(target) {
-    target.classList.add("disabled");
-    target.setAttribute("disabled", "true");
+function disableSubmitButton() {
+    document.querySelector(".button-style .submit").disabled ?     document.querySelector(".button-style .submit").disabled = false
+:     document.querySelector(".button-style .submit").disabled = true;
 }
 
-function togglePasswordField(e) {
+function togglePasswordField() {
     const passwordField = document.querySelector(".password");
     const isPrivate = document.querySelector("#private").checked
     passwordField.hidden = !isPrivate;
