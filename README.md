@@ -32,3 +32,9 @@ https://learncssgrid.com/
 
 And for your convenience, yet use with caution
 https://grid.layoutit.com/ 
+
+## Bugs client
+
+- The buttons of the tokenbank don't disapear when you're still using the token selector after your time is up.
+    - You can trigger this by opening the tokenbank selector, and wait until the timer is up (grab a snack while you wait)
+    
