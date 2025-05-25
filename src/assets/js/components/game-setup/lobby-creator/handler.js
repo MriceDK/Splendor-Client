@@ -23,7 +23,7 @@ function createLobby(e) {
         .then(res => {
             saveToStorage("gameId", res.gameId);
             saveToStorage("playerToken", res.playerToken);
-
+            saveToStorage("password", res.password);
             window.location.href = "./lobby.html";
         });
 }
