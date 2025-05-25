@@ -20,6 +20,10 @@ function renderOpponentStats(opponent) {
 
 function fillOpponentStat($template, opponent) {
     $template.querySelector(".player").innerText = opponent.name;
+    const $avatar = $template.querySelector(".player-name-container img");
+    $avatar.src= `assets/images/avatars/${opponent.avatar.toLowerCase()}.jpg`;
+    $avatar.title= opponent.avatar;
+    $avatar.alt= `Avatar with flag ${opponent.avatar}`;
     $template.querySelector(".points-text").innerText = opponent.totalPrestigePoints;
     $template.querySelector(".points-bar").style.width = `${getPrestigePointsPercentage(opponent.totalPrestigePoints)}%`;
     $template.querySelector(".reserved-count").innerText = opponent.reserve.length;
