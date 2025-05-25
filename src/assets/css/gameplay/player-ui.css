@@ -225,9 +225,13 @@
 }
 
 .max-tokens-reached-text {
-    color: var(--gold-token-color);
+    font-size: .8rem;
+    color: var(--ruby-token-color);
+    background-color: var(--beige);
     position: absolute;
     bottom: 100%;
     margin-bottom: 1rem;
     text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 }
