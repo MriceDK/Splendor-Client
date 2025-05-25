@@ -14,18 +14,24 @@ function getAllLobbies() {
     return APIAbstractor.fetchFromServer("/games", "GET");
 }
 
-function joinLobby(joinGameId, playerName) {
+function joinLobby(joinGameId, playerName, password = null) {
     const body = {
         "wantsToLeave" : false,
         "isSpectator" : false
     }
+    if (password !== null) {
+        body["password"] = password;
+    }
     return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST", body);
 }
 
-function spectateLobby(joinGameId, playerName) {
+function spectateLobby(joinGameId, playerName, password = null) {
     const body = {
         "wantsToLeave" : false,
         "isSpectator" : true
+    }
+    if (password !== null) {
+        body["password"] = password;
     }
     return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST", body);
 }

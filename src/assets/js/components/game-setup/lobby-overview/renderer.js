@@ -40,11 +40,12 @@ function renderLobbyFullPopup(gameName, playerName){
 
 
 
-function renderPasswordPopup() {
+function renderPasswordPopup(gameId) {
     const $target = document.querySelector(".popup-container:first-of-type");
     const $template = document.querySelector("#private-lobby-password-popup-template").content.firstElementChild.cloneNode(true);
 
     $target.innerHTML = document.querySelector(".popup-templates").outerHTML;
+    $template.querySelector("#private-lobby-password-form").setAttribute("data-gameId", gameId);
     $template.querySelector("#private-lobby-password-form label").innerText = `Please enter the password for the private lobby:`;
     $target.classList.remove("hidden");
 

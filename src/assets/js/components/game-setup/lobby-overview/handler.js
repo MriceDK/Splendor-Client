@@ -2,8 +2,6 @@ import * as errorHandler from "../../../data-connector/error-handler.js";
 import * as RenderLobbyOverview from "./renderer.js";
 import * as localStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
 import {getAllLobbies, joinLobby, spectateLobby} from "../../../api/game-setup-api.js";
-import {renderPasswordPopup} from "./renderer.js";
-
 
 function loadUserInformation() {
     RenderLobbyOverview.renderOwnPlayerName(localStorageAbstractor.loadFromStorage("playerName"));
@@ -103,7 +101,7 @@ function handleLobbyJoinClick(e) {
     if (e.target.nodeName === "BUTTON" && e.target.classList.contains("join-button")) {
         if (e.target.closest("section").querySelector(".lobbyname").classList.contains("private")) {
             // render the password popup
-            RenderLobbyOverview.renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gamename"));
+            RenderLobbyOverview.renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gameid"));
         } else {
             const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
             localStorageAbstractor.saveToStorage("gameId", joinGameId);
@@ -111,9 +109,9 @@ function handleLobbyJoinClick(e) {
             addPlayerToGame(joinGameId);
         }
     } else if (e.target.nodeName === "BUTTON" && e.target.classList.contains("spectate-button")) {
-        if (e.target.closest("section").querySelector(".lobbyname").classList.contains("private")) {
+        if (e.target.closest("section").querySelector(".lobby").classList.contains("private")) {
             // render the password popup
-            renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gamename"));
+            RenderLobbyOverview.renderPasswordPopup(e.target.closest(".lobby").getAttribute("data-gameid"));
         } else {
             const joinGameId = e.target.closest(".lobby").getAttribute("data-gameId");
             localStorageAbstractor.saveToStorage("gameId", joinGameId);
@@ -123,20 +121,25 @@ function handleLobbyJoinClick(e) {
     }
 }
 
-function addSpectatorToGame(joinGameId, numberToAddNameUniqueness = 0) {
+function addSpectatorToGame(joinGameId, password = null, numberToAddNameUniqueness = 0) {
     const spectatorName = localStorageAbstractor.loadFromStorage("playerName");
-    spectateLobby(joinGameId, spectatorName).then(res => {
+    spectateLobby(joinGameId, spectatorName, password).then(res => {
         redirectToLobby(res)
     }).catch(() => {
-        numberToAddNameUniqueness++;
-        uniqueNameForcer(numberToAddNameUniqueness);
-        addSpectatorToGame(joinGameId, numberToAddNameUniqueness);
+        if (err.cause === "There already exists a player with the same name in this game."){
+            numberToAddNameUniqueness++;
+            uniqueNameForcer(numberToAddNameUniqueness);
+            addSpectatorToGame(joinGameId, password, numberToAddNameUniqueness);
+
+        } if (err.cause === "Wrong password") {
+            document.querySelector(".error-message").innerText = "Wrong password, please try again.";
+        }
     })
 }
 
-function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
+function addPlayerToGame(joinGameId, password = null, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    joinLobby(joinGameId, playerName)
+    joinLobby(joinGameId, playerName, password)
     .then(res => {
         redirectToLobby(res);
     })
@@ -145,9 +148,11 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
 
             numberToAddNameUniqueness++;
             uniqueNameForcer(numberToAddNameUniqueness);
-            addPlayerToGame(joinGameId, numberToAddNameUniqueness);
+            addPlayerToGame(joinGameId, password, numberToAddNameUniqueness);
 
-        } else {
+        } if (err.cause === "Wrong password") {
+            document.querySelector(".error-message").innerText = "Wrong password, please try again.";
+        } else{
             const gameName = document.querySelector(`[data-gameId = "${joinGameId}"]`).getAttribute("data-gameName");
             RenderLobbyOverview.renderLobbyFullPopup(gameName, playerName);
         }
@@ -178,14 +183,16 @@ function handlePopupClick(e) {
         hidePopup();
     } else if (e.target.nodeName === "INPUT" && e.target.classList.contains("close-password-popup")) {
         hidePopup();
-    } else if (e.target.nodeName === "INPUT" && e.target.classList.contains("join-password-popup")) {
+    } else if (e.target.nodeName === "INPUT" && e.target.classList.contains("join-private-game-button")) {
         handleJoinPrivateLobby();
     }
 }
 
 function handleJoinPrivateLobby() {
     const password = document.querySelector("#private-lobby-password-input").value;
-    console.log(password);
+    const gameId = document.querySelector("#private-lobby-password-form").getAttribute("data-gameId");
+    console.log(gameId);
+    addPlayerToGame(gameId, password);
 }
 
 function hidePopup() {
