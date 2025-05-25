@@ -219,3 +219,15 @@
             0% 0%
     ); /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path*/
 }
+
+.own-purse {
+    position: relative;
+}
+
+.max-tokens-reached-text {
+    color: var(--gold-token-color);
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 1rem;
+    text-align: center;
+}
