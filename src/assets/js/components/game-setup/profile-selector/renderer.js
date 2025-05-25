@@ -1,5 +1,4 @@
 import {hideUserNamePopup} from "../../popup/usernameselector-popup/renderer.js";
-import {hookUpEventListenerToImages} from "./handler.js";
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 const avatars = [
@@ -28,7 +27,47 @@ const avatars = [
     "za.jpg"
 ]
 
-function changePlayerNameText() {
+let currentIndex = 0;
+
+function updateAvatarDisplay() {
+    const avatarDisplay= document.querySelector("#avatar-display");
+    const avatarFile = avatars[currentIndex];
+    const countryCode = avatarFile.substring(0, 2);
+
+    avatarDisplay.src = `assets/images/avatars/${avatarFile}`;
+    avatarDisplay.alt = `Avatar for ${countryCode}`;
+    avatarDisplay.title = countryCode;
+}
+
+function hookUpAvatarSliderEvents() {
+    const leftBtn = document.querySelector("#left-btn");
+    const rightBtn = document.querySelector("#right-btn");
+
+    leftBtn.addEventListener("click", e => buttonHandler(e, "left"));
+
+    rightBtn.addEventListener("click", e => buttonHandler(e, "right"));
+}
+
+function buttonHandler(e, direction){
+    e.preventDefault();
+    if (direction === "right"){
+        currentIndex = (currentIndex + 1) % avatars.length;
+        updateAvatarDisplay();
+
+    } else {
+        currentIndex = (currentIndex - 1 + avatars.length) % avatars.length;
+        updateAvatarDisplay();
+
+    }
+
+}
+
+function changeProfileSection(countryCode) {
+
+    const $avatar = document.querySelector("#profile-picture");
+    $avatar.title = countryCode;
+    $avatar.src = `assets/images/avatars/${countryCode}.jpg`;
+    $avatar.alt = `Avatar for ${countryCode}`;
 
     document.querySelector("#playername").innerText = loadFromStorage("playerName");
     closePlayerNamePopup()
@@ -38,29 +77,20 @@ function closePlayerNamePopup(){
     hideUserNamePopup();
 }
 
-function renderAvatars(){
-    const $container = document.querySelector(".popup-container #avatar-selector-container");
-    const $template = document.querySelector("#avatar-template").content.firstElementChild.cloneNode(true);
-    avatars.forEach(avatar => {
-        const countryCode = avatar.substring(0, 2);
-        $template.querySelector("img").src = `assets/images/avatars/${avatar}`;
-        $template.querySelector("img").title = `${countryCode}`;
-        $template.querySelector("img").alt = `Avatar for ${countryCode}`;
-        $container.insertAdjacentHTML("beforeend", $template.outerHTML);
-    });
-
-    hookUpEventListenerToImages()
-
-
+function setupAvatarSlider() {
+    updateAvatarDisplay();
+    hookUpAvatarSliderEvents();
 }
 
-function renderAvatar(){
+function renderAvatar() {
     const countryCode = loadFromStorage("avatar");
+    if (!countryCode) return;
+
     const image = `assets/images/avatars/${countryCode}.jpg`;
     const $img = document.querySelector("header img");
     $img.src = image;
     $img.alt = `Avatar for ${countryCode}`;
-    $img.title = `${countryCode}`;
+    $img.title = countryCode;
 }
 
-export {changePlayerNameText, renderAvatars, renderAvatar };
+export {changeProfileSection, setupAvatarSlider, renderAvatar };
