@@ -4,14 +4,18 @@ import {closePopUp} from "../../popup/confirmation-popup/renderer.js";
 const MILLISECONDS_IN_A_SECOND = 1000;
 const AMOUNT_OF_SECONDS_TO_RENDER_TIME_IS_ALMOST_UP = 20;
 
-function renderTimer(currentPlayer, timeEndTurn) {
+function renderTimer(currentPlayer, timeEndTurn, gameState) {
     const $target = document.querySelector(".timer-container");
 
-    const secondsLeft = calculateSecondsLeft(timeEndTurn) +1;
-    makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target.querySelector(".timer"));
+    if (gameState === "WinnerFound") {
+        $target.innerHTML = "<p>End of game</p>";
+        return;
+    }
 
+    const secondsLeft = calculateSecondsLeft(timeEndTurn) +1;
     $target.querySelector(".current-player-name").innerText = currentPlayer;
     $target.querySelector(".timer").innerText = convertToTimer(secondsLeft);
+    makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target.querySelector(".timer"));
 
     if (secondsLeft <= 0) {
         closePopUp();

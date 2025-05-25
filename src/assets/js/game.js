@@ -31,7 +31,7 @@ function displayGame(renderAll = true) {
             document.title = `Splendor ${res.gameName}`;
             document.querySelector(".lobby-name").innerText = res.gameName;
             renderSpectators(res.spectators);
-            renderTimer(res.currentPlayer, res.timeEndTurn);
+            renderTimer(res.currentPlayer, res.timeEndTurn, res.gameState);
             let ownPlayer = getOwnPlayerInfo(res);
             let isSpectating = false;
             if (res.spectators.includes(username)) {
