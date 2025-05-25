@@ -29,14 +29,9 @@ const avatars = [
 
 let currentIndex = 0;
 
-function updateAvatarDisplay() {
-    const avatarDisplay= document.querySelector("#avatar-display");
-    const avatarFile = avatars[currentIndex];
-    const countryCode = avatarFile.substring(0, 2);
-
-    avatarDisplay.src = `assets/images/avatars/${avatarFile}`;
-    avatarDisplay.alt = `Avatar for ${countryCode}`;
-    avatarDisplay.title = countryCode;
+function setupAvatarSlider() {
+    updateAvatarDisplay();
+    hookUpAvatarSliderEvents();
 }
 
 function hookUpAvatarSliderEvents() {
@@ -62,35 +57,38 @@ function buttonHandler(e, direction){
 
 }
 
+function updateAvatarDisplay() {
+    const avatarDisplay= document.querySelector("#avatar-display");
+    const avatarFile = avatars[currentIndex];
+    const countryCode = avatarFile.substring(0, 2);
+
+    avatarDisplay.src = `assets/images/avatars/${avatarFile}`;
+    avatarDisplay.alt = `Avatar for ${countryCode}`;
+    avatarDisplay.title = countryCode;
+}
+
 function changeProfileSection(countryCode) {
-
-    const $avatar = document.querySelector("#profile-picture");
-    $avatar.title = countryCode;
-    $avatar.src = `assets/images/avatars/${countryCode}.jpg`;
-    $avatar.alt = `Avatar for ${countryCode}`;
-
+    setProfilePicture(countryCode);
     document.querySelector("#playername").innerText = loadFromStorage("playerName");
     closePlayerNamePopup()
+}
+
+function setProfilePicture(countryCode){
+    const image = `assets/images/avatars/${countryCode}.jpg`;
+    const $img = document.querySelector("#profile-picture");
+    $img.src = image;
+    $img.alt = `Avatar for ${countryCode}`;
+    $img.title = countryCode;
 }
 
 function closePlayerNamePopup(){
     hideUserNamePopup();
 }
 
-function setupAvatarSlider() {
-    updateAvatarDisplay();
-    hookUpAvatarSliderEvents();
-}
-
 function renderAvatar() {
     const countryCode = loadFromStorage("avatar");
     if (!countryCode) return;
-
-    const image = `assets/images/avatars/${countryCode}.jpg`;
-    const $img = document.querySelector("header img");
-    $img.src = image;
-    $img.alt = `Avatar for ${countryCode}`;
-    $img.title = countryCode;
+    setProfilePicture(countryCode);
 }
 
 export {changeProfileSection, setupAvatarSlider, renderAvatar };
