@@ -131,6 +131,7 @@ h2{
 .bottom{
     display: flex;
     justify-content: space-between;
+    gap: .5rem;
     margin-top: 1rem;
     font-family: Inter, sans-serif;
     font-weight: bold;
