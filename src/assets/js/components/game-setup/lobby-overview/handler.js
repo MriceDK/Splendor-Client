@@ -97,7 +97,8 @@ function handleLobbyJoinClick(e) {
 
 function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
-    joinLobby(joinGameId, playerName)
+    const avatar = localStorageAbstractor.loadFromStorage("avatar");
+    joinLobby(joinGameId, playerName, avatar)
     .then(res => {
 
         joinLobbyHelp(res);

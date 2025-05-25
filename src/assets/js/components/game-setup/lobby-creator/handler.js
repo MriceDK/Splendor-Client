@@ -14,8 +14,9 @@ function createLobby(e) {
     saveToStorage("playerName", validatedName);
 
     const playerName = loadFromStorage("playerName");
+    const avatar = loadFromStorage("avatar");
 
-    const body = createBody(lobbyName, playerAmount, playerName);
+    const body = createBody(lobbyName, playerAmount, playerName, avatar);
 
     createLobby1(body)
         .then(res => {
@@ -26,11 +27,12 @@ function createLobby(e) {
         });
 }
 
-function createBody(lobbyName, playerAmount, playerName) {
+function createBody(lobbyName, playerAmount, playerName, avatar) {
 
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
-        "playerName": playerName
+        "playerName": playerName,
+        "avatar": avatar
     };
 
     if (!(lobbyName === "" || lobbyName == null)) {

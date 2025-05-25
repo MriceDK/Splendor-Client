@@ -14,10 +14,11 @@ function getAllLobbies() {
     return APIAbstractor.fetchFromServer("/games", "GET");
 }
 
-function joinLobby(joinGameId, playerName) {
+function joinLobby(joinGameId, playerName, avatar) {
     const body = {
         "wantsToLeave": false,
         "isSpectator": false,
+        "avatar": avatar
     }
     return APIAbstractor.fetchFromServer(`/games/${joinGameId}/players/${playerName}`, "POST", body);
 }
