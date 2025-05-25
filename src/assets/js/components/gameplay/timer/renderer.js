@@ -16,8 +16,6 @@ function renderTimer(currentPlayer, timeEndTurn) {
     if (secondsLeft <= 0) {
         closePopUp();
     }
-
-    return secondsLeft;
 }
 
 function makeTimerRedWhenTimeIsAlmostUp(secondsLeft, $target) {

@@ -28,7 +28,7 @@ const opponentsNotHidden = [];
 function displayGame(renderAll = true) {
     getGameInfo()
         .then(res => {
-            const secondsLeft = renderTimer(res.currentPlayer, res.timeEndTurn);
+            renderTimer(res.currentPlayer, res.timeEndTurn);
             if (renderAll) {
                 document.title = `Splendor ${res.gameName}`;
                 document.querySelector(".lobby-name").innerText = res.gameName;
