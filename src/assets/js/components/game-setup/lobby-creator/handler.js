@@ -14,22 +14,24 @@ function createLobby(e) {
     saveToStorage("playerName", validatedName);
 
     const playerName = loadFromStorage("playerName");
+    const isPrivate = document.querySelector("#private").checked;
+    const password = isPrivate ? document.querySelector("#password").value : null;
     const avatar = loadFromStorage("avatar");
 
-    const body = createBody(lobbyName, playerAmount, playerName, avatar);
+    const body = createBody(lobbyName, playerAmount, playerName, avatar, password);
 
     createLobby1(body)
         .then(res => {
             saveToStorage("gameId", res.gameId);
             saveToStorage("playerToken", res.playerToken);
+            saveToStorage("password", res.password);
             saveToStorage("spectate", false);
 
             window.location.href = "./lobby.html";
         });
 }
 
-function createBody(lobbyName, playerAmount, playerName, avatar) {
-
+function createBody(lobbyName, playerAmount, playerName, avatar, password) {
     const body = {
         "numberOfPlayers": parseInt(playerAmount),
         "playerName": playerName,
@@ -42,12 +44,22 @@ function createBody(lobbyName, playerAmount, playerName, avatar) {
         body.gameName = playerName + "'s lobby";
     }
 
+    if (password !== null && password !== "") {
+        body.password = password;
+    }
+
     return body;
 }
 
-function disableSubmitButton(target) {
-    target.classList.add("disabled");
-    target.setAttribute("disabled", "true");
+function disableSubmitButton() {
+    document.querySelector(".submit").disabled ?     document.querySelector(" .submit").disabled = false
+:     document.querySelector(".submit").disabled = true;
 }
 
-export {createLobby};
+function togglePasswordField() {
+    const passwordField = document.querySelector(".password");
+    const isPrivate = document.querySelector("#private").checked
+    passwordField.hidden = !isPrivate;
+}
+
+export {createLobby, togglePasswordField};

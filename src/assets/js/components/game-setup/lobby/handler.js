@@ -2,6 +2,7 @@ import * as storageAbstractor from "../../../data-connector/local-storage-abstra
 import * as renderer from "./renderer.js";
 
 import {getGameInfo, playerLeaveLobby, stopSpectating} from "../../../api/game-setup-api.js";
+import {loadFromStorage, saveToStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 function leaveLobby() {
     const isSpectating = storageAbstractor.loadFromStorage("spectate");
@@ -9,9 +10,19 @@ function leaveLobby() {
     const gameId = storageAbstractor.loadFromStorage("gameId");
     getGameInfo().then(() => {
         if (!isSpectating) {
-            playerLeaveLobby(gameId, playerName).then(() => window.location.href = "./index.html");
+            playerLeaveLobby(gameId, playerName).then(() => {    const playername = loadFromStorage("playerName");
+                const avatar = loadFromStorage("avatar");
+                localStorage.clear();
+                saveToStorage("playerName", playername);
+                saveToStorage("avatar", avatar);
+                window.location.href = "index.html";});
         } else if (isSpectating) {
-            stopSpectating(gameId, playerName).then(() => window.location.href = "./index.html");
+            stopSpectating(gameId, playerName).then(() => {    const playername = loadFromStorage("playerName");
+                const avatar = loadFromStorage("avatar");
+                localStorage.clear();
+                saveToStorage("playerName", playername);
+                saveToStorage("avatar", avatar);
+                window.location.href = "index.html";});
         }
     });
 }
@@ -27,6 +38,15 @@ function loadJoinedGame() {
 function getGameDetailsForGameId() {
     getGameInfo()
         .then(data => {
+            if (data.isPrivate) {
+                const password = loadFromStorage("password");
+                if (password !== null && password !== "") {
+                    renderer.renderPassword(password);
+                    renderer.renderPrivate();
+                } else {
+                    document.querySelector(".password").hidden = true;
+                }
+            }
             renderer.dataListFromApi(data);
             setTimeout(loadJoinedGame, 2000);
         });

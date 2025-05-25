@@ -12,6 +12,18 @@ function dataListFromApi(data) {
     renderSpectators(data.spectators);
 }
 
+function renderPassword(password) {
+    const $passwordElement = document.querySelector(".password");
+    $passwordElement.hidden = false;
+    $passwordElement.querySelector("#password").value = "";
+    $passwordElement.querySelector("#password").value = password;
+}
+
+function renderPrivate() {
+    const $title = document.querySelector("#title");
+    $title.classList.add("private");
+}
+
 function lobbyName(lobbyNameString) {
     const $titleElement = document.querySelector("#title");
     $titleElement.innerHTML = ``;
@@ -56,5 +68,5 @@ function renderOwnPlayerName() {
     uppercaseFirstLetterOfWord(document.querySelector("#playername").innerHTML = storageAbstractor.loadFromStorage("playerName"))
 }
 
-export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi};
+export {lobbyName, renderLobbyAmount, renderOwnPlayerName, started, renderPlayersLoop, dataListFromApi, renderPassword, renderPrivate};
 

@@ -2,9 +2,6 @@ import {closePopUp} from "../confirmation-popup/renderer.js";
 import {hideForfeitCloseButtons, showForfeitOption} from "./renderer.js";
 import {leaveLobby} from "../../game-setup/lobby/handler.js";
 
-function redirectToStartScreen() {
-    window.location.href = "index.html";
-}
 
 function handleSettingsPopupClicks(e){
     if (e.target.closest(".forfeit")){
@@ -14,7 +11,6 @@ function handleSettingsPopupClicks(e){
     if (e.target.closest(".forfeit-yes")){
         leaveLobby();
         window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0");
-        redirectToStartScreen();
     }
     if (e.target.closest(".forfeit-no")){
         closePopUp();
@@ -25,6 +21,5 @@ function handleSettingsPopupClicks(e){
 }
 
 export {
-    redirectToStartScreen,
     handleSettingsPopupClicks
 };

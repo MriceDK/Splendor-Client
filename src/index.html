@@ -20,26 +20,28 @@
 </head>
 <body>
 <div class="popup-container hidden">
-    <template id="username-popup-template">
-        <div class="popup">
-            <a href="#" id="close-popup">
-                <p id="close-popup-text">Close</p>
-            </a>
-            <form id="playername-changer">
-                <label for="playername-text">Username: </label>
-                <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
-                <p class="error-username-selector"></p>
-                <section id="avatar-selector-container">
-                    <div class="avatar-selector">
-                        <button id="left-btn">&larr;</button>
-                        <img id="avatar-display" src="" alt="Avatar" />
-                        <button id="right-btn">&rarr;</button>
-                    </div>
-                </section>
-                <button type="submit" id="playername-button" class="button-style-popup button-style">Change Profile</button>
-            </form>
-        </div>
-    </template>
+    <div class="setup-popup-templates">
+        <template id="username-popup-template">
+            <div class="popup">
+                <a href="#" id="close-popup">
+                    <p id="close-popup-text">Close</p>
+                </a>
+                <form id="playername-changer">
+                    <label for="playername-text">Username: </label>
+                    <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
+                    <p class="error-username-selector"></p>
+                    <section id="avatar-selector-container">
+                        <div class="avatar-selector">
+                            <button id="left-btn">&larr;</button>
+                            <img id="avatar-display" src="" alt="Avatar">
+                            <button id="right-btn">&rarr;</button>
+                        </div>
+                    </section>
+                    <button type="submit" id="playername-button" class="button-style-popup button-style">Change Profile</button>
+                </form>
+            </div>
+        </template>
+    </div>
 </div>
 <div class="grid">
     <header>

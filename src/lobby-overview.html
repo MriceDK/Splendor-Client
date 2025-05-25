@@ -20,35 +20,49 @@
 <!--  Splendor  deployment test
   Create your amazing and wonderful interface here. Have fun!-->
 <div class="popup-container hidden">
-  <template id="username-popup-template">
-    <div class="popup">
-      <a href="#" id="close-popup">
-        <p id="close-popup-text">Close</p>
-      </a>
-      <form id="playername-changer">
-        <label for="playername-text">Username: </label>
-        <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
+  <div class="setup-popup-templates">
+    <template id="username-popup-template">
+      <div class="popup">
+        <a href="#" id="close-popup">
+          <p id="close-popup-text">Close</p>
+        </a>
+        <form id="playername-changer">
+          <label for="playername-text">Username: </label>
+          <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
+          <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
+            <section id="avatar-selector-container">
+                <div class="avatar-selector">
+                    <button id="left-btn">&larr;</button>
+                    <img id="avatar-display" src="" alt="Avatar">
+                    <button id="right-btn">&rarr;</button>
+                </div>
+            </section>
+        </form>
         <p class="error-username-selector"></p>
-        <section id="avatar-selector-container">
-          <div class="avatar-selector">
-            <button id="left-btn">&larr;</button>
-            <img id="avatar-display" src="" alt="Avatar" />
-            <button id="right-btn">&rarr;</button>
-          </div>
-        </section>
-        <button type="submit" id="playername-button" class="button-style-popup button-style">Change Profile</button>
-      </form>
-      <p class="error-username-selector"></p>
-    </div>
-  </template>
-  <template id="lobby-full-popup-template">
-    <div class="popup lobby-popup">
-      <form id="back-to-lobby-overview">
-        <h2></h2>
-        <button type="submit" id="close-lobby-full-popup" class="button-style-popup button-style">Go Back</button>
-      </form>
-    </div>
-  </template>
+      </div>
+    </template>
+    <template id="lobby-full-popup-template">
+      <div class="popup lobby-popup">
+        <form id="back-to-lobby-overview">
+          <h2></h2>
+          <button type="submit" class="close-lobby-full-popup button-style-popup button-style">Go Back</button>
+        </form>
+      </div>
+    </template>
+    <template id="private-lobby-password-popup-template">
+      <div class="popup password-popup">
+        <form id="private-lobby-password-form">
+          <label for="private-lobby-password-input">Enter Password</label>
+          <input type="password" id="private-lobby-password-input" name="private-lobby-password-input" maxlength="20" autocomplete="off">
+          <p class="error-message"></p>
+
+          <input type="submit" class="join-private-game-button button-style" value="Join Lobby">
+          <input type="button" class="close-password-popup button-style" value="Cancel">
+        </form>
+      </div>
+
+    </template>
+  </div>
 </div>
   <header>
     <nav>
@@ -106,11 +120,19 @@
           Show joinable lobbies
         </label>
 
-        <!--    <input type="checkbox" id="show-public-filter" checked>-->
-        <!--    <label for="show-public-filter">Show public lobbies</label>-->
+        <label for="show-private-filter" class="bomb-check">
+          <input type="checkbox" id="show-private-filter">
+          <span class="bomb-shape"></span>
+          Show private lobbies
+        </label>
 
-        <!--    <input type="checkbox" id="show-private-filter">-->
-        <!--    <label for="show-private-filter">Show private lobbies</label>-->
+        <label for="show-public-filter" class="bomb-check">
+            <input type="checkbox" id="show-public-filter" checked>
+          <span class="bomb-shape"></span>
+          Show public lobbies
+        </label>
+
+
       </div>
   </form>
 
@@ -126,16 +148,6 @@
         </div>
       </section>
     </template>
-
-    <div class="lobby locked">
-      <p class="lobbyname">Jane doe's Lobby</p>
-      <p class="locked">🔒</p>
-<!--      TODO: Make the lock css background image-->
-      <p class="playercount">2/4</p>
-        <button class="join-button">JOIN</button>
-        <button class="spectate-button">SPECTATE</button>
-
-    </div>
 
   </div>
   </main>

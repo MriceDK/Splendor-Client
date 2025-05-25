@@ -49,7 +49,6 @@ function renderBuyAndReserveDevelopmentCardPopUp(cardName) {
     }
 
     if (numberOfReservedCards.length >= MAX_RESERVED_CARDS) {
-        console.log($target);
         $target.querySelector(".confirmation-popup .cancel-pop-up-button").disabled = true;
     }
 }

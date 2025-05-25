@@ -19,6 +19,7 @@
 </head>
 <body>
 <div class="popup-container hidden">
+    <div class="setup-popup-templates">
     <template id="username-popup-template">
         <div class="popup">
             <a href="#" id="close-popup">
@@ -31,7 +32,7 @@
                 <section id="avatar-selector-container">
                     <div class="avatar-selector">
                         <button id="left-btn">&larr;</button>
-                        <img id="avatar-display" src="" alt="Avatar" />
+                        <img id="avatar-display" src="" alt="Avatar">
                         <button id="right-btn">&rarr;</button>
                     </div>
                 </section>
@@ -40,83 +41,91 @@
             <p class="error-username-selector"></p>
         </div>
     </template>
-</div>
-<div class="grid">
-    <header>
-        <nav>
-            <a href="index.html">⬅</a>
-        </nav>
-        <a href="#" id="renderButton">
-            <img src="assets/images/user-logo.png" alt="username logo" title="username logo" id="profile-picture">
-            <span id="playername">Select Username</span>
-        </a>
-    </header>
-    <main>
-        <h1>Create lobby</h1>
-
-            <form id="lobby-create-form" class="lobby-create-form" action="#" method="GET">
-
-                <div class="lobby-name">
-                    <label for="lobby-name" class="form-title">Lobby name:</label>
-                    <input id="lobby-name" name="lobby-name" type="text" autocomplete="off">
-                </div>
-
-                <section class="amount-of-players">
-                    <h2 class="form-title">Amount of players</h2>
-
-                    <div class="options">
-                        <div class="radio-option bomb-radio">
-                            <label for="player-amount-2">
-                                <input required id="player-amount-2" name="player-amount" type="radio" value="2">
-                                <span class="bomb-shape"></span>
-                                2
-                            </label>
-                        </div>
-                        <div class="radio-option bomb-radio">
-                            <label for="player-amount-3">
-                                <input required id="player-amount-3" name="player-amount" type="radio" value="3">
-                                <span class="bomb-shape"></span>
-                                3
-                            </label>
-                        </div>
-                        <div class="radio-option bomb-radio">
-                            <label for="player-amount-4">
-                                <input required id="player-amount-4" name="player-amount" type="radio" value="4">
-                                <span class="bomb-shape"></span>
-                                4
-                            </label>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- TEMPORARILY COMMENTED OUT
-                            <div class="amount-of-seconds">
-                                <label for="seconds-per-turn" class="form-title">Max seconds per turn:</label>
-                                <input id="seconds-per-turn" type="number" value="60" max="600" min="60">
-                            </div>
-
-                            <section>
-                                <h2 class="form-title">Match type:</h2>
-
-                                <div class="options">
-                                    <div class="radio-option">
-                                        <input type="radio" name="public-or-private" id="public" value="public">
-                                        <label for="public">Public</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" name="public-or-private" id="private" value="private">
-                                        <label for="private">Private</label>
-                                    </div>
-                                </div>
-                            </section>
-                -->
-
-                <input class="button-style submit" type="submit" value="Create game">
-            </form>
-        </main>
-        <div class="errormessages">
-            <p></p>
         </div>
     </div>
+<div class="grid">
+<header>
+    <nav>
+        <a href="index.html">⬅</a>
+    </nav>
+    <a href="#" id="renderButton">
+        <img src="assets/images/user-logo.png" alt="username logo" title="username logo" id="profile-picture">
+        <span id="playername">Select Username</span>
+    </a>
+</header>
+<main>
+    <h1>Create lobby</h1>
+
+    <form id="lobby-create-form" class="lobby-create-form" action="#" method="GET">
+
+        <div class="lobby-name">
+            <label for="lobby-name" class="form-title">Lobby name:</label>
+            <input id="lobby-name" name="lobby-name" type="text" autocomplete="off">
+        </div>
+
+        <section class="amount-of-players">
+            <h2 class="form-title">Amount of players</h2>
+
+            <div class="options">
+                <div class="radio-option bomb-radio">
+                    <label for="player-amount-2">
+                        <input required id="player-amount-2" name="player-amount" type="radio" value="2">
+                        <span class="bomb-shape"></span>
+                        2
+                    </label>
+                </div>
+                <div class="radio-option bomb-radio">
+                    <label for="player-amount-3">
+                        <input required id="player-amount-3" name="player-amount" type="radio" value="3">
+                        <span class="bomb-shape"></span>
+                        3
+                    </label>
+                </div>
+                <div class="radio-option bomb-radio">
+                    <label for="player-amount-4">
+                        <input required id="player-amount-4" name="player-amount" type="radio" value="4">
+                        <span class="bomb-shape"></span>
+                        4
+                    </label>
+                </div>
+            </div>
+        </section>
+        <!--                    <div class="amount-of-seconds">-->
+        <!--                        <label for="seconds-per-turn" class="form-title">Max seconds per turn:</label>-->
+        <!--                        <input id="seconds-per-turn" type="number" value="60" max="600" min="60">-->
+        <!--                    </div>-->
+
+        <section>
+            <h2 class="form-title">Match type:</h2>
+
+            <div class="options">
+                <div class="radio-option bomb-radio">
+                    <label for="public">
+                        <input type="radio" name="public-or-private" id="public" value="public">
+                        <span class="bomb-shape"></span>
+                        Public
+                    </label>
+                </div>
+                <div class="radio-option bomb-radio">
+                    <label for="private">
+                        <input type="radio" name="public-or-private" id="private" value="private">
+                        <span class="bomb-shape"></span>
+                        Private
+                    </label>
+                </div>
+            </div>
+        </section>
+        <div class="password" hidden>
+            <label for="password" class="form-title">lobby password:</label>
+            <input id="password" name="password" type="password" autocomplete="off">
+        </div>
+        <input class="button-style submit" type="submit" value="Create game">
+    </form>
+</main>
+
+<!-- <div class="errormessages">
+    <p></p>
+</div> -->
+</div>
 </body>
 </html>

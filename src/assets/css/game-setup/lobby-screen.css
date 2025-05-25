@@ -138,4 +138,29 @@ h2{
     font-size: 1.1rem;
 }
 
+input[type="text"]{
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.private {
+    background-image: url("../../images/background-images/lock.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.password {
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: solid var(--dark-beige) 0.2rem;
+    background-color: var(--beige);
+    font-size: 1.5rem;
+}
+
 
