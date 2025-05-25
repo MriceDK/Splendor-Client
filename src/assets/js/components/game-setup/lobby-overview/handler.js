@@ -156,10 +156,7 @@ function handleLobbyFullPopupClick(e, $popup){
 }
 
 function joinDisableCheck($button, started){
-    if (started){
-        $button.disabled = true;
-    }
-
+    $button.disabled = started;
 }
 
 
