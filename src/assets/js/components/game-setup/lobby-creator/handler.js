@@ -21,6 +21,7 @@ function createLobby(e) {
         .then(res => {
             saveToStorage("gameId", res.gameId);
             saveToStorage("playerToken", res.playerToken);
+            saveToStorage("spectate", false);
 
             window.location.href = "./lobby.html";
         });
