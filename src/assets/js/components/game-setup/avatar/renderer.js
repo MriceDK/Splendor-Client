@@ -1,3 +1,5 @@
+import {changeAvatar} from "./handler.js";
+
 const avatars = [
     "ar.jpg",
     "au.jpg",
@@ -32,7 +34,7 @@ function renderAvatars(){
         $template.querySelector("img").src = `assets/images/avatars/${avatar}`;
         $template.querySelector("img").title = `${countryCode}`;
         $template.querySelector("img").alt = `Avatar for ${countryCode}`;
-        $template.addEventListener("click", e => changeAvatar(e, avatar))
+        $template.addEventListener("click", e => changeAvatar(e, countryCode))
         $container.insertAdjacentHTML("beforeend", $template.outerHTML);
     })
 
