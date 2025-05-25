@@ -4,11 +4,11 @@ import * as LocalStorageAbstractor from "../../../data-connector/local-storage-a
 
 function changePlayerName(e){
     e.preventDefault();
-    renderAvatars()
+    renderAvatars();
 
     const $usernameForm = document.querySelector("#playername-text").value.trim();
     if ($usernameForm === "") {
-    document.querySelector(".error-username-selector").innerHTML = "Please enter a username";
+    document.querySelector(".error-profile-selector").innerHTML = "Please enter a username";
     }
     else{
         LocalStorageAbstractor.saveToStorage("playerName", uppercaseFirstLetterOfWord(makeNameValid($usernameForm)));

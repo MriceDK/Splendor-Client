@@ -1,17 +1,15 @@
 import * as CommunicationAbstractor from "./data-connector/api-communication-abstractor.js";
 import * as ErrorHandler from "./data-connector/error-handler.js";
-import {changePlayerNameText} from "./components/game-setup/username-selector/renderer.js";
+import {changePlayerNameText} from "./components/game-setup/profile-selector/renderer.js";
 import {renderPopup} from "./components/popup/usernameselector-popup/handler.js";
-import {usernameInit} from "./components/game-setup/username-selector/username-init.js";
+import {usernameInit} from "./components/game-setup/profile-selector/username-init.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
-import {renderAvatar} from "./components/game-setup/avatar/renderer.js";
 
 function init() {
     testConnection();
     changePlayerNameText();
     checkUserName();
     eventListenerUsernameSelector();
-    renderAvatar();
 }
 
 function testConnection() {

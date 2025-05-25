@@ -39,7 +39,7 @@ function closePlayerNamePopup(){
 }
 
 function renderAvatars(){
-    const $container = document.querySelector("#avatar-selector-container");
+    const $container = document.querySelector(".popup-container #avatar-selector-container");
     const $template = document.querySelector("#avatar-template").content.firstElementChild.cloneNode(true);
     avatars.forEach(avatar => {
         const countryCode = avatar.substring(0, 2);
