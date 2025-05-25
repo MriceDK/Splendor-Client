@@ -31,6 +31,7 @@ function getGameDetailsForGameId() {
             const password = loadFromStorage("password");
             if (password !== null && password !== "") {
                 renderer.renderPassword(password);
+                renderer.renderPrivate();
             } else {
                 document.querySelector(".password").hidden = true;
             }
