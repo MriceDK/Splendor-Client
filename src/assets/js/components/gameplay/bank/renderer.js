@@ -52,9 +52,7 @@ function enableOrDisableBank(playerName) {
     }
 }
 
-function setDisable(boolean) {
-    const $tokenListItems = document.querySelectorAll(".token-bank .gem");
-
+function setDisable(boolean, $tokenListItems) {
     $tokenListItems.forEach($tokenListItem => {
         if (!$tokenListItem.classList.contains("gold")) {
             if (boolean) {
@@ -83,11 +81,15 @@ function makeClickable($target) {
 }
 
 function enableTokens() {
-    setDisable(false);
+    const $tokenListItems = document.querySelectorAll(".token-bank .gem");
+
+    setDisable(false, $tokenListItems);
 }
 
 function disableTokens() {
-    setDisable(true);
+    const $tokenListItems = document.querySelectorAll(".token-bank .gem");
+
+    setDisable(true, $tokenListItems);
     removeTokenBorders();
 }
 

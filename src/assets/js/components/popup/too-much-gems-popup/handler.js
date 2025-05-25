@@ -4,6 +4,7 @@ import {renderTooManyGemsPopUp} from "./renderer.js";
 import {displayGame} from "../../../game.js";
 import {handleError} from "../../../data-connector/error-handler.js";
 import {getDiffTokensObject, returnTokensBody} from "./helper.js";
+import {chooseBankToken} from "../../gameplay/bank/handler.js";
 
 function immediateTokenCheckAfterTokenUpdate(gameState, currentPlayer, ownPlayer){
      if (gameState === "RETURN_GEMS" && currentPlayer === ownPlayer.name) {
@@ -16,6 +17,9 @@ function checkTooManyTokens(player) {
 
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     $form.addEventListener("submit", e => updateAndDisplay(e, player));
+
+    $form.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", chooseBankToken));
+
 }
 
 function updateAndDisplay(e, player) {
