@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="assets/css/game-setup/avatar-selector.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
 
@@ -28,7 +29,14 @@
                 <label for="playername-text">Username: </label>
                 <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
                 <p class="error-username-selector"></p>
-                <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
+                <section id="avatar-selector-container">
+                    <div class="avatar-selector">
+                        <button id="left-btn">&larr;</button>
+                        <img id="avatar-display" src="" alt="Avatar" />
+                        <button id="right-btn">&rarr;</button>
+                    </div>
+                </section>
+                <button type="submit" id="playername-button" class="button-style-popup button-style">Change Profile</button>
             </form>
         </div>
     </template>
