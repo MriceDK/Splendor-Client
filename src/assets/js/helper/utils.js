@@ -47,4 +47,14 @@ function toTwoDigit(str) {
     return str;
 }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid, toTwoDigit};
+function calculateTotalTokens(tokens) {
+    let res = 0;
+
+    Object.entries(tokens).forEach(([name, value]) => {
+        res += value;
+    })
+
+    return res;
+}
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid, toTwoDigit, calculateTotalTokens};
