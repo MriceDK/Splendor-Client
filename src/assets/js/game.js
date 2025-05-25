@@ -38,8 +38,8 @@ function displayGame(renderAll = true) {
                 ownPlayer = getCurrentPlayerInfo(res);
                 isSpectating = true;
             }
+            handleGameOver(res);
             if (renderAll) {
-                handleGameOver(res.winner);
                 ownPlayerCardRenderer(ownPlayer, isSpectating);
                 renderOpponentsStats(res.players);
                 renderMarket(res);
