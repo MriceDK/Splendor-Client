@@ -28,6 +28,7 @@ function displayGame(renderAll = true) {
     const username = loadFromStorage("playerName");
     getGameInfo()
         .then(res => {
+            console.log(res);
             document.title = `Splendor ${res.gameName}`;
             document.querySelector(".lobby-name").innerText = res.gameName;
             renderSpectators(res.spectators);
@@ -38,8 +39,8 @@ function displayGame(renderAll = true) {
                 ownPlayer = getCurrentPlayerInfo(res);
                 isSpectating = true;
             }
+            handleGameOver(res.winner);
             if (renderAll) {
-                handleGameOver(res.winner);
                 ownPlayerCardRenderer(ownPlayer, isSpectating);
                 renderOpponentsStats(res.players);
                 renderMarket(res);
