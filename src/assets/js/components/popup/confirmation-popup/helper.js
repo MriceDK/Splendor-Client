@@ -30,12 +30,6 @@ function handleReserveCardResponse(response) {
 function reserveCard(cardLevelorName, reserveFromLevel) {
     api.reserveCard(cardLevelorName, reserveFromLevel)
         .then(response => {
-            if (reserveFromLevel) {
-                console.log(`Card from level ${cardLevelorName} reserved successfully`);
-            } else {
-                console.log(`${cardLevelorName} reserved successfully`);
-
-            }
             handleReserveCardResponse(response);
         }).then(() => {
             getGameInfo().then(res => {
