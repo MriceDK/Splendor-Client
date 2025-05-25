@@ -1,8 +1,9 @@
 import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
-import {opponentsNotHidden} from "../../../game.js";
 
 const MAX_UNHIDDEN_NOBLE_CONTAINERS = 1;
 let unhiddenNobleContainer = 0;
+
+const opponentsNotHidden = [];
 
 function getOpponents(players) {
     const ownName = loadFromStorage("playerName");
@@ -56,4 +57,4 @@ function showNobleContainer($target, playerName) {
     unhiddenNobleContainer = 1;
 }
 
-export {getOpponents, toggleVisibilityNobles};
+export {getOpponents, toggleVisibilityNobles, opponentsNotHidden};

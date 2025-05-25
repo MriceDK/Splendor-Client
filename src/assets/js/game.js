@@ -23,8 +23,6 @@ import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
 import {closePopUp} from "./components/popup/confirmation-popup/renderer.js";
 let buyableDevCards = [];
 
-const opponentsNotHidden = [];
-
 function displayGame(renderAll = true) {
     getGameInfo()
         .then(res => {
@@ -72,4 +70,4 @@ function displayGame(renderAll = true) {
  displayGame();
 
 
-export {displayGame, buyableDevCards, opponentsNotHidden};
+export {displayGame, buyableDevCards};
