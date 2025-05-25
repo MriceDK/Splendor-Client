@@ -2,6 +2,7 @@ import * as storageAbstractor from "../../../data-connector/local-storage-abstra
 import * as renderer from "./renderer.js";
 
 import {getGameInfo, playerLeaveLobby, stopSpectating} from "../../../api/game-setup-api.js";
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 function leaveLobby() {
     const isSpectating = storageAbstractor.loadFromStorage("spectate");
@@ -27,6 +28,12 @@ function loadJoinedGame() {
 function getGameDetailsForGameId() {
     getGameInfo()
         .then(data => {
+            const password = loadFromStorage("password");
+            if (password !== null && password !== "") {
+                renderer.renderPassword(password);
+            } else {
+                document.querySelector(".password").hidden = true;
+            }
             renderer.dataListFromApi(data);
             setTimeout(loadJoinedGame, 2000);
         });
