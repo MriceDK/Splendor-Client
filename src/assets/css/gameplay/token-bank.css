@@ -4,7 +4,7 @@
     padding-top: 0.2rem;
 }
 
-.bank-flexcontainer .token-bank{
+.token-bank{
     width: max-content;
     display: grid;
     grid-gap: .5rem;

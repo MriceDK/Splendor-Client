@@ -178,6 +178,19 @@ body{
 }
 /*end region*/
 
+/*To-many-gems popup*/
+
+#too-many-gems-pop-up-form {
+}
+
+#too-many-gems-pop-up-form label{
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+/*end region*/
+
 /*username popup*/
 
 #playername-text{
