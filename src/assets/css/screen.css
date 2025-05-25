@@ -263,12 +263,14 @@ input[type="text"]:focus {
  border-radius: 0.5rem;
  position: absolute;
  z-index: 1;
- top: 1.5rem;
- left: 0;
+ top: 100%;
+ left: 50%;
+ margin-top: .5rem;
+ transform: translateX(-50%);
  white-space: pre-line;
 }
 
-.spectators:hover .spectator-names {
+.spectators:hover .spectator-names, .spectator-names:hover {
  display: block;
 }
 
