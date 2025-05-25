@@ -72,6 +72,7 @@ header {
 /*region Styling for The playerName */
 
 header a{
+ cursor: pointer;
  display: flex;
  transition: ease-in-out 0.1s;
 
@@ -89,6 +90,10 @@ header a{
 
  margin-left: 1rem;
  margin-top: 1rem;
+}
+
+header nav a {
+ color: var(--main-white-color);
 }
 
 header a:hover{
