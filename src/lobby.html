@@ -16,7 +16,7 @@
 <div class="grid">
     <header>
         <nav>
-            <a href="index.html">⬅</a>
+            <a class="leave-lobby">Back</a>
         </nav>
         <div class="playername">
             <img src="assets/images/user-logo.png" class="profile-picture-name" alt="player logo">
@@ -37,7 +37,10 @@
             </ol>
             <div class="bottom">
                 <p id="playerCount">1/4 Players</p>
-                <p id="specators">Spectators</p>
+                <div class="spectators">
+                    <p class="spectators">spectators: <span class="spectator-count"></span></p>
+                    <ul class="spectator-names"></ul>
+                </div>
                 <p>Waiting for all players to join</p>
             </div>
         </div>

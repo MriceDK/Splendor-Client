@@ -24,7 +24,6 @@ function renderHistoryLog(log, $target) {
 
 function scrollToBottom(amountOfLogs, amountOfLogsRendered) {
     const $history = document.querySelector(".history-logs");
-    console.log(amountOfLogs, amountOfLogsRendered)
     if (needsToScrollDown(amountOfLogs, amountOfLogsRendered) || firstTimeRender()) {
         $history.scrollTop = $history.scrollHeight;
     }
