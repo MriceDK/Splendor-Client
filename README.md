@@ -37,4 +37,8 @@ https://grid.layoutit.com/
 
 - The buttons of the tokenbank don't disapear when you're still using the token selector after your time is up.
     - You can trigger this by opening the tokenbank selector, and wait until the timer is up (grab a snack while you wait)
+    - The reason why we didn't fix this, is because we found only implemented the timer a day before the deadline, and didn't have enough time to fix this problem.
+
+- We didn't prevent users from using a username with invalid characters in it, so when you set your username with an invalid character in it, you get an error when trying to join/create a game
+    - The reason why we didn't fix this, is because we found out too late, and decided to focus on the more important stuff.
     
