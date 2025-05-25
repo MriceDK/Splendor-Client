@@ -98,11 +98,19 @@
           Show joinable lobbies
         </label>
 
-        <!--    <input type="checkbox" id="show-public-filter" checked>-->
-        <!--    <label for="show-public-filter">Show public lobbies</label>-->
+        <label for="show-private-filter" class="bomb-check">
+          <input type="checkbox" id="show-private-filter">
+          <span class="bomb-shape"></span>
+          Show private lobbies
+        </label>
 
-        <!--    <input type="checkbox" id="show-private-filter">-->
-        <!--    <label for="show-private-filter">Show private lobbies</label>-->
+        <label for="show-public-filter" class="bomb-check">
+            <input type="checkbox" id="show-public-filter" checked>
+          <span class="bomb-shape"></span>
+          Show public lobbies
+        </label>
+
+
       </div>
   </form>
 
@@ -121,8 +129,6 @@
 
     <div class="lobby locked">
       <p class="lobbyname">Jane doe's Lobby</p>
-      <p class="locked">🔒</p>
-<!--      TODO: Make the lock css background image-->
       <p class="playercount">2/4</p>
         <button class="join-button">JOIN</button>
         <button class="spectate-button">SPECTATE</button>

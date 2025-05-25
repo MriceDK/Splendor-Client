@@ -33,7 +33,9 @@ function getFilterValues() {
         showUnStarted: document.querySelector("#show-unstarted-filter").checked,
         showFull: document.querySelector("#show-full-filter").checked,
         showJoinable: document.querySelector("#show-joinable-filter").checked,
-        showAmountOfPlayers: document.querySelector("#amount-of-players-in-lobby-filter").value
+        showAmountOfPlayers: document.querySelector("#amount-of-players-in-lobby-filter").value,
+        showPrivate: document.querySelector("#show-private-filter").checked,
+        showPublic: document.querySelector("#show-public-filter").checked
     };
 }
 
@@ -70,12 +72,23 @@ function matchesPlayerCountFilter(game, showAmountOfPlayers) {
     }
 }
 
+function matchesPrivacyFilter(game, showPrivate, showPublic) {
+    if (showPrivate && !showPublic) {
+        return game.private;
+    } else if (!showPrivate && showPublic) {
+        return !game.private;
+    } else {
+        return true;
+    }
+}
+
 function filterGames(games, filters) {
     return games.filter(game =>
         matchesSearch(game, filters.searchValue) &&
         matchesStartedFilter(game, filters.showStarted, filters.showUnStarted) &&
         matchesJoinabilityFilter(game, filters.showFull, filters.showJoinable) &&
-        matchesPlayerCountFilter(game, filters.showAmountOfPlayers)
+        matchesPlayerCountFilter(game, filters.showAmountOfPlayers) &&
+        matchesPrivacyFilter(game, filters.showPrivate, filters.showPublic)
     );
 }
 
