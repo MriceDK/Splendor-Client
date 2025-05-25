@@ -20,27 +20,42 @@
 <!--  Splendor  deployment test
   Create your amazing and wonderful interface here. Have fun!-->
 <div class="popup-container hidden">
-  <template id="username-popup-template">
-    <div class="popup">
-      <a href="#" id="close-popup">
-        <p id="close-popup-text">Close</p>
-      </a>
-      <form id="playername-changer">
-        <label for="playername-text">Username: </label>
-        <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
-        <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
-      </form>
-      <p class="error-username-selector"></p>
-    </div>
-  </template>
-  <template id="lobby-full-popup-template">
-    <div class="popup lobby-popup">
-      <form id="back-to-lobby-overview">
-        <h2></h2>
-        <button type="submit" id="close-lobby-full-popup" class="button-style-popup button-style">Go Back</button>
-      </form>
-    </div>
-  </template>
+  <div class="popup-templates">
+    <template id="username-popup-template">
+      <div class="popup">
+        <a href="#" id="close-popup">
+          <p id="close-popup-text">Close</p>
+        </a>
+        <form id="playername-changer">
+          <label for="playername-text">Username: </label>
+          <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
+          <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
+        </form>
+        <p class="error-username-selector"></p>
+      </div>
+    </template>
+    <template id="lobby-full-popup-template">
+      <div class="popup lobby-popup">
+        <form id="back-to-lobby-overview">
+          <h2></h2>
+          <button type="submit" class="close-lobby-full-popup button-style-popup button-style">Go Back</button>
+        </form>
+      </div>
+    </template>
+    <template id="private-lobby-password-popup-template">
+      <div class="popup password-popup">
+        <form id="private-lobby-password-form">
+          <label for="private-lobby-password-input">Enter Password</label>
+          <input type="password" id="private-lobby-password-input" name="private-lobby-password-input" maxlength="20" autocomplete="off">
+
+          <input type="button" class="close-password-popup button-style" value="Cancel">
+          <input type="submit" class="join-password-popup button-style" value="Join Lobby">
+        </form>
+        <p class="error-message"></p>
+      </div>
+
+    </template>
+  </div>
 </div>
   <header>
     <nav>
