@@ -102,7 +102,7 @@ function handleLobbyJoinClick(e) {
 function addSpectatorToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const spectatorName = localStorageAbstractor.loadFromStorage("playerName");
     spectateLobby(joinGameId, spectatorName).then(res => {
-        joinLobbyHelp(res)
+        redirectToLobby(res)
     }).catch(() => {
         numberToAddNameUniqueness++;
         uniqueNameForcer(numberToAddNameUniqueness);
@@ -114,7 +114,7 @@ function addPlayerToGame(joinGameId, numberToAddNameUniqueness = 0) {
     const playerName = localStorageAbstractor.loadFromStorage("playerName");
     joinLobby(joinGameId, playerName)
     .then(res => {
-        joinLobbyHelp(res);
+        redirectToLobby(res);
     })
     .catch((err) => {
         if (err.cause === "There already exists a player with the same name in this game."){
@@ -143,11 +143,9 @@ function uniqueNameForcer(n){
     localStorageAbstractor.saveToStorage("playerName", newPlayerName);
 }
 
-function joinLobbyHelp(res){
-
+function redirectToLobby(res){
     localStorageAbstractor.saveToStorage("playerToken", res["playerToken"]);
     window.location.assign("./lobby.html");
-
 }
 
 function handleLobbyFullPopupClick(e, $popup){
