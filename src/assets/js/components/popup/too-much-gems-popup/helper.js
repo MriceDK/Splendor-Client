@@ -26,4 +26,18 @@ function returnTokensBody(tokensToReturn) {
     };
 }
 
-export {returnTokensBody, getDiffTokensObject}
+function disableOrEnableGems() {
+    const $ownTokens = document.querySelectorAll("#too-many-gems-pop-up-form .token-bank li");
+
+    $ownTokens.forEach($ownToken => {
+        if ($ownToken.querySelector(".gem-value").innerText === 0) {
+            $ownToken.classList.remove("clickable");
+            $ownToken.classList.add("disabled");
+        } else {
+            $ownToken.classList.add("clickable");
+            $ownToken.classList.remove("disabled");
+        }
+    })
+}
+
+export {returnTokensBody, getDiffTokensObject, disableOrEnableGems}

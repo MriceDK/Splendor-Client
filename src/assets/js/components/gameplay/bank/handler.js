@@ -29,7 +29,7 @@ function closeBank() {
 }
 
 function chooseBankToken(e) {
-    let $tokenFromBank = e.target.closest(".gem");
+    const $tokenFromBank = e.target.closest(".gem");
 
     if ($tokenFromBank.classList.contains("clickable")) {
         renderer.getChosenTokenColour($tokenFromBank);
