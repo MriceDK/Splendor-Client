@@ -5,15 +5,18 @@ function changeAvatar(e, countryCode){
     LocalStorageAbstractor.saveToStorage("avatar", countryCode);
 }
 
+function handleClickOnFlag(e) {
+    e.preventDefault();
+    const img = e.target.closest("img");
+    if (img) {
+        const countryCode = img.title;
+        changeAvatar(e, countryCode);
+    }
+}
+
 function hookUpEventListenerToImages(){
     const $container = document.querySelector("#avatar-selector-container");
-    $container.addEventListener("click", e => {
-        const img = e.target.closest("img");
-        if (img && $container.contains(img)) {
-            const countryCode = img.title;
-            changeAvatar(e, countryCode);
-        }
-    });
+    $container.addEventListener("click", handleClickOnFlag);
 }
 
 export { hookUpEventListenerToImages }
