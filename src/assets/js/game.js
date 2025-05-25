@@ -66,7 +66,12 @@ function displayGame(renderAll = true) {
                 setTimeout(() => displayGame(false), 1000);
             }
         })
-
+        .catch(err => {
+            closePopUp();
+            document.querySelector("main").innerHTML = "";
+            const message = getCorrectMessageFromError(err);
+            NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(message);
+     })
 
 }
 
