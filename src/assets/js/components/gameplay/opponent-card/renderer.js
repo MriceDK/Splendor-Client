@@ -1,7 +1,8 @@
 import * as handler from "./handler.js";
 import * as NobleRenderer from "../noble/renderer.js";
 import {getPrestigePointsPercentage} from "./helper.js";
-import {opponentsNotHidden} from "../../../game.js";
+import {opponentsNotHidden} from "./handler.js";
+
 
 function renderOpponentsStats(players) {
     const opponents = handler.getOpponents(players);
