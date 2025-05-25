@@ -11,6 +11,7 @@ function init() {
         e.preventDefault();
         handler.getMatchingGames();
     });
+    document.querySelector(".popup-container").addEventListener("click", handler.handlePopupClick);
     handler.loadUserInformation();
     checkUserName();
     eventListenerUsernameSelector()
