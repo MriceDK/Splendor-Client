@@ -3,8 +3,7 @@ import {hideUserNamePopup} from "../../popup/usernameselector-popup/renderer.js"
 
 function changePlayerNameText() {
 
-    const playerName = loadFromStorage("playerName");
-    document.querySelector("#playername").innerText = playerName;
+    document.querySelector("#playername").innerText = loadFromStorage("playerName");
     closePlayerNamePopup()
 }
 

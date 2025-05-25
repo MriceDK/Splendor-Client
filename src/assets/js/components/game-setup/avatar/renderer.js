@@ -1,4 +1,5 @@
-import { hookUpEventListenerToImages} from "./handler.js";
+import {hookUpEventListenerToImages} from "./handler.js";
+import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.js";
 
 const avatars = [
     "ar.jpg",
@@ -42,4 +43,13 @@ function renderAvatars(){
 
 }
 
-export { renderAvatars };
+function renderAvatar(){
+    const countryCode = loadFromStorage("avatar");
+    const image = `assets/images/avatars/${countryCode}.jpg`;
+    const $img = document.querySelector("header img");
+    $img.src = image;
+    $img.alt = `Avatar for ${countryCode}`;
+    $img.title = `${countryCode}`;
+}
+
+export { renderAvatars, renderAvatar };

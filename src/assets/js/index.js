@@ -4,12 +4,14 @@ import {changePlayerNameText} from "./components/game-setup/username-selector/re
 import {renderPopup} from "./components/popup/usernameselector-popup/handler.js";
 import {usernameInit} from "./components/game-setup/username-selector/username-init.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
+import {renderAvatar} from "./components/game-setup/avatar/renderer.js";
 
 function init() {
     testConnection();
     changePlayerNameText();
     checkUserName();
     eventListenerUsernameSelector();
+    renderAvatar();
 }
 
 function testConnection() {
