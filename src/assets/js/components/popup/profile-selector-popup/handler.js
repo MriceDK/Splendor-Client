@@ -1,13 +1,13 @@
-import {hideUserNamePopup, renderUsernamePopup} from "./renderer.js"
+import {hideProfilePopup, renderProfilePopup} from "./renderer.js"
 
 function renderPopup(){
- renderUsernamePopup();
+ renderProfilePopup();
  closePopupButton();
 }
 
 function handleClosePopup(e){
  e.preventDefault();
- hideUserNamePopup();
+ hideProfilePopup();
 }
 
 function closePopupButton() {

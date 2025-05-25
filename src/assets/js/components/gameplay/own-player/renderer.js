@@ -12,6 +12,10 @@ function ownPlayerCardRenderer(ownPlayer, spectating = false) {
         const $playerCard = document.querySelector("#own-player-card");
 
         document.querySelector("#own-username").textContent = ownPlayer.name;
+        const $avatar = document.querySelector(".own-user-info img");
+        $avatar.src= `assets/images/avatars/${ownPlayer.avatar.toLowerCase()}.jpg`;
+        $avatar.title= ownPlayer.avatar;
+        $avatar.alt= `Avatar with flag ${ownPlayer.avatar}`;
         document.querySelector("#own-prestige-points p").textContent = ownPlayer.totalPrestigePoints;
         document.querySelector("#own-player-card .points-bar").style.width = `${getPrestigePointsPercentage(ownPlayer.totalPrestigePoints)}%`;
 
