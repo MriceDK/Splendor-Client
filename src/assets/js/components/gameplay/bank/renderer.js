@@ -136,8 +136,8 @@ function getChosenTokenColour($tokenFromBank) {
 
 }
 
-function showChosenBankToken(gem) {
-    updateToken(gem, true);
+function showChosenBankToken(gem, toMuchGemsPopup = false) {
+
     const $chosenToken = document.querySelector("#token").content.firstElementChild.cloneNode(true);
     $chosenToken.classList.add(`selected-${gem.toLowerCase()}-token`);
     $chosenToken.classList.add("clickable");
@@ -145,8 +145,14 @@ function showChosenBankToken(gem) {
     $chosenToken.classList.add("gem");
     $chosenToken.querySelector("span").outerHTML = "";
     $chosenToken.addEventListener("click", handler.removeChosenBankToken);
-    document.querySelector(".selected-tokens").appendChild($chosenToken);
-    chosenBankTokens[gem]++;
+    if (!toMuchGemsPopup) {
+        updateToken(gem, true);
+        document.querySelector(".token-bank .selected-tokens").appendChild($chosenToken);
+        chosenBankTokens[gem]++;
+    } else {
+        document.querySelector("#too-many-gems-pop-up-form .selected-tokens").appendChild($chosenToken);
+    }
+
 }
 
 function enableOrDisableToken(token) {
@@ -210,5 +216,6 @@ export {
     toggleCollectGemsButton,
     chosenBankTokens,
     currentBankTokens,
-    resetBankButtons
+    resetBankButtons,
+    showChosenBankToken
 };

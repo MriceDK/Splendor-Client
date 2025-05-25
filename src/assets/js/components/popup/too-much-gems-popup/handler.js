@@ -4,6 +4,8 @@ import {renderTooManyGemsPopUp} from "./renderer.js";
 import {displayGame} from "../../../game.js";
 import {handleError} from "../../../data-connector/error-handler.js";
 import {getDiffTokensObject, returnTokensBody, disableOrEnableGems} from "./helper.js";
+import {showChosenBankToken} from "../../gameplay/bank/renderer.js";
+import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
 function immediateTokenCheckAfterTokenUpdate(gameState, currentPlayer, ownPlayer){
      if (gameState === "RETURN_GEMS" && currentPlayer === ownPlayer.name) {
@@ -17,7 +19,7 @@ function checkTooManyTokens(player) {
     const $form = document.querySelector("#too-many-gems-pop-up-form");
     $form.addEventListener("submit", e => updateAndDisplay(e, player));
 
-    $form.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", removeOwnToken()));
+    $form.querySelectorAll(".token-bank li").forEach(li => li.addEventListener("click", removeOwnToken));
     disableOrEnableGems();
 
 }
@@ -43,8 +45,10 @@ function updateTokensAfterTooMany(gameId, player) {
     return api.updateTokens(gameId, player.name, body);
 }
 
-function removeOwnToken() {
+function removeOwnToken(e) {
+    const $tokenType = e.target.closest(".gem");
 
+    showChosenBankToken(uppercaseFirstLetterOfWord($tokenType.classList[1]), true)
 }
 
 export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate};
