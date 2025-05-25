@@ -37,4 +37,14 @@ function makeNameValid(name){
     return output;
 }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid};
+function toTwoDigit(str) {
+    str = str + "";
+    if (str.length < 2) {
+        str = `0${str}`;
+        str = toTwoDigit(str);
+    }
+
+    return str;
+}
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid, toTwoDigit};

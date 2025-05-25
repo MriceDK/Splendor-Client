@@ -4,6 +4,7 @@ import {ownPlayerCardRenderer} from "./components/gameplay/own-player/renderer.j
 import {renderMarket} from "./components/gameplay/market/renderer.js";
 import {renderActivePlayer} from "./components/gameplay/active-player/renderer.js";
 import {renderHistoryLogs} from "./components/gameplay/history/renderer.js";
+import {renderTimer} from "./components/gameplay/timer/renderer.js";
 import {getGameInfo} from "./api/game-setup-api.js";
 import {loadFromStorage} from "./data-connector/local-storage-abstractor.js";
 import {getCurrentPlayerInfo, getOwnPlayerInfo} from "./components/gameplay/own-player/helper.js";
@@ -17,49 +18,57 @@ import {setUpEventlisteners} from "./components/popup/settings-popup/set-up-even
 import {chooseNobleCheck} from "./components/gameplay/noble/pickable/handler.js";
 import * as OpponentCardHandler from "./components/gameplay/opponent-card/handler.js";
 import {getCorrectMessageFromError} from "./data-connector/error-handler.js";
+import {closePopUp} from "./components/popup/confirmation-popup/renderer.js";
 import {renderSpectators} from "./components/gameplay/info/spectators/renderer.js";
 import {lastRoundCheck} from "./components/popup/last-round-notification/handler.js";
 
 let buyableDevCards = [];
 
-const opponentsNotHidden = [];
-
-function displayGame() {
-    const spectatorName = loadFromStorage("playerName");
+function displayGame(renderAll = true) {
+    const username = loadFromStorage("playerName");
     getGameInfo()
         .then(res => {
-            let ownPlayer = getOwnPlayerInfo(res);
-            let isSpectating = false;
-            if (res.spectators.includes(spectatorName)) {
-                ownPlayer = getCurrentPlayerInfo(res);
-                isSpectating = true;
+            renderTimer(res.currentPlayer, res.timeEndTurn);
+            renderSpectators(res.spectators);
+            document.title = `Splendor ${res.gameName}`;
+
+            if (renderAll) {
+                let ownPlayer = getOwnPlayerInfo(res);
+                let isSpectating = false;
+                if (res.spectators.includes(username)) {
+                    ownPlayer = getCurrentPlayerInfo(res);
+                    isSpectating = true;
+                }
+                document.querySelector(".lobby-name").innerText = res.gameName;
+                handleGameOver(res.winner);
+                ownPlayerCardRenderer(ownPlayer, isSpectating);
+                renderOpponentsStats(res.players);
+                renderMarket(res);
+                renderTokenBank(res);
+                renderActivePlayer(res.currentPlayer);
+                renderHistoryLogs(res.history);
+                hookUpEventListenersOnCards();
+                setUpEventlisteners();
+                hookUpEventListenersOnCards();
+                chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
+                immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
+                document.querySelectorAll(".opponent").forEach($opponent => {
+                    $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
+                });
             }
-            handleGameOver(res.winner);
-            ownPlayerCardRenderer(ownPlayer, isSpectating);
-            renderOpponentsStats(res.players);
-            renderMarket(res);
-            renderTokenBank(res);
-            renderActivePlayer(res.currentPlayer);
-            renderHistoryLogs(res.history);
-            buyableDevCards = getListOfBuyableCards(res.market ,ownPlayer);
+
+            buyableDevCards = getListOfBuyableCards(res.market, ownPlayer);
             renderBuyableCards();
-            hookUpEventListenersOnCards();
-            setUpEventlisteners();
-            hookUpEventListenersOnCards();
-            chooseNobleCheck(res.gameState, res.unclaimedNobles, res.currentPlayer, ownPlayer);
-            immediateTokenCheckAfterTokenUpdate(res.gameState, res.currentPlayer, ownPlayer);
             lastRoundCheck(res.lastRound, res);
 
-            document.querySelectorAll(".opponent").forEach($opponent => {
-                $opponent.addEventListener("click", OpponentCardHandler.toggleVisibilityNobles);
-            });
-
-            renderSpectators(res.spectators);
-
             if (res.currentPlayer !== loadFromStorage("playerName")) {
-                setTimeout(displayGame, 1000);
+                setTimeout(() => displayGame(true), 1000);
+            } else {
+                setTimeout(() => displayGame(false), 1000);
             }
-        }).catch(err => {
+        })
+        .catch(err => {
+            closePopUp();
             document.querySelector("main").innerHTML = "";
             const message = getCorrectMessageFromError(err);
             NotAuthorizedPopupRenderer.renderNotAuthorizedPopup(message);
@@ -70,4 +79,4 @@ function displayGame() {
  displayGame();
 
 
-export {displayGame, buyableDevCards, opponentsNotHidden};
+export {displayGame, buyableDevCards};
