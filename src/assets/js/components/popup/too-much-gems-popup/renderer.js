@@ -1,4 +1,5 @@
 import {putInitalValue} from "../../gameplay/own-player/helper.js";
+import {disableOrEnableGems} from "./helper.js";
 
 function renderTooManyGemsPopUp(playerTokens) {
     const $tooMuchGemsTemplate = document.querySelector("#too-many-gems-pop-up-template").content.firstElementChild.cloneNode(true);
@@ -10,4 +11,9 @@ function renderTooManyGemsPopUp(playerTokens) {
     $target.insertAdjacentHTML("beforeend", $tooMuchGemsTemplate.outerHTML);
 }
 
-export {renderTooManyGemsPopUp};
+function updatePopupTokens($tokenValue) {
+    $tokenValue.innerText--;
+    disableOrEnableGems();
+}
+
+export {renderTooManyGemsPopUp, updatePopupTokens};

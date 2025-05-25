@@ -1,6 +1,6 @@
 import * as api from "../../../api/gameplay-api.js";
 import * as LocalStorageAbstractor from "../../../data-connector/local-storage-abstractor.js";
-import {renderTooManyGemsPopUp} from "./renderer.js";
+import {renderTooManyGemsPopUp, updatePopupTokens} from "./renderer.js";
 import {displayGame} from "../../../game.js";
 import {handleError} from "../../../data-connector/error-handler.js";
 import {getDiffTokensObject, returnTokensBody, disableOrEnableGems} from "./helper.js";
@@ -47,8 +47,14 @@ function updateTokensAfterTooMany(gameId, player) {
 
 function removeOwnToken(e) {
     const $tokenType = e.target.closest(".gem");
+    const $tokenValue = $tokenType.querySelector(".gem-value");
 
-    showChosenBankToken(uppercaseFirstLetterOfWord($tokenType.classList[1]), true)
+    if ($tokenType.classList.contains("clickable")) {
+        showChosenBankToken(uppercaseFirstLetterOfWord($tokenType.classList[1]), true);
+        updatePopupTokens($tokenValue);
+    }
+
+
 }
 
 export {checkTooManyTokens, updateTokensAfterTooMany, updateAndDisplay, immediateTokenCheckAfterTokenUpdate};

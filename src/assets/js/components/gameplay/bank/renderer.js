@@ -147,7 +147,7 @@ function showChosenBankToken(gem, toMuchGemsPopup = false) {
     $chosenToken.addEventListener("click", handler.removeChosenBankToken);
     if (!toMuchGemsPopup) {
         updateToken(gem, true);
-        document.querySelector(".token-bank .selected-tokens").appendChild($chosenToken);
+        document.querySelector(".bank-flexcontainer .selected-tokens").appendChild($chosenToken);
         chosenBankTokens[gem]++;
     } else {
         document.querySelector("#too-many-gems-pop-up-form .selected-tokens").appendChild($chosenToken);
