@@ -75,7 +75,7 @@ function changeProfileSection(countryCode) {
 
 function setProfilePicture(countryCode){
     const image = `assets/images/avatars/${countryCode}.jpg`;
-    const $img = document.querySelector("#profile-picture");
+    const $img = document.querySelector("header img");
     $img.src = image;
     $img.alt = `Avatar for ${countryCode}`;
     $img.title = countryCode;
