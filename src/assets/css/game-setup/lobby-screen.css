@@ -137,6 +137,7 @@ h2{
     font-weight: bold;
     font-size: 1.1rem;
 }
+
 .private {
     background-image: url("../../images/background-images/lock.png");
     background-size: contain;

@@ -8,6 +8,9 @@ function renderGames(games) {
 
     games.forEach((game) => {
         joinDisableCheck($lobby.querySelector(".join-button"), game.started);
+        if (game.private) {
+            $lobby.querySelector(".lobbyname").classList.add("private");
+        }
         $lobby.setAttribute("data-gameId", game.gameId);
         $lobby.setAttribute("data-gameName", game.gameName);
         $lobby.querySelector(".lobbyname").innerText = game.gameName;

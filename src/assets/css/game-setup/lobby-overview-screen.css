@@ -224,3 +224,10 @@ select {
 }
 
 /*END BOMB RADIO BUTTON*/
+
+.private {
+    background-image: url("../../images/background-images/lock.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 2rem;
+}
