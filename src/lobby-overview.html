@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/screen.css">
   <link rel="stylesheet" href="assets/css/game-setup/lobby-overview-screen.css">
+  <link rel="stylesheet" href="assets/css/game-setup/avatar-selector.css">
   <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
   <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -27,7 +28,15 @@
       <form id="playername-changer">
         <label for="playername-text">Username: </label>
         <input type="text" id="playername-text" name="playername" maxlength="15" autocomplete="off">
-        <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
+        <p class="error-username-selector"></p>
+        <section id="avatar-selector-container">
+          <div class="avatar-selector">
+            <button id="left-btn">&larr;</button>
+            <img id="avatar-display" src="" alt="Avatar" />
+            <button id="right-btn">&rarr;</button>
+          </div>
+        </section>
+        <button type="submit" id="playername-button" class="button-style-popup button-style">Change Profile</button>
       </form>
       <p class="error-username-selector"></p>
     </div>
