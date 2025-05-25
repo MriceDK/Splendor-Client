@@ -21,13 +21,13 @@ function eventListenerUsernameSelector(){
     document.querySelector("#renderButton").addEventListener("click", (e) => {
         e.preventDefault();
         renderPopup();
-        usernameInit(e)
+        usernameInit();
     });
 }
 function checkUserName() {
     if (loadFromStorage("playerName") === null || loadFromStorage("playerName") === undefined || loadFromStorage("playerName") === "") {
         renderPopup();
-        usernameInit()
+        usernameInit();
     }
 }
 
