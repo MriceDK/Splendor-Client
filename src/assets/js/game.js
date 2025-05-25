@@ -32,13 +32,13 @@ function displayGame(renderAll = true) {
             document.querySelector(".lobby-name").innerText = res.gameName;
             renderSpectators(res.spectators);
             renderTimer(res.currentPlayer, res.timeEndTurn);
+            let ownPlayer = getOwnPlayerInfo(res);
+            let isSpectating = false;
+            if (res.spectators.includes(username)) {
+                ownPlayer = getCurrentPlayerInfo(res);
+                isSpectating = true;
+            }
             if (renderAll) {
-                let ownPlayer = getOwnPlayerInfo(res);
-                let isSpectating = false;
-                if (res.spectators.includes(username)) {
-                    ownPlayer = getCurrentPlayerInfo(res);
-                    isSpectating = true;
-                }
                 handleGameOver(res.winner);
                 ownPlayerCardRenderer(ownPlayer, isSpectating);
                 renderOpponentsStats(res.players);
@@ -60,7 +60,7 @@ function displayGame(renderAll = true) {
             renderBuyableCards();
             lastRoundCheck(res.lastRound, res);
 
-            if (res.currentPlayer !== loadFromStorage("playerName")) {
+            if (res.currentPlayer !== loadFromStorage("playerName") || isSpectating) {
                 setTimeout(() => displayGame(true), 1000);
             } else {
                 setTimeout(() => displayGame(false), 1000);
