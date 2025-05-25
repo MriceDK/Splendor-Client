@@ -19,11 +19,6 @@
     <link rel="stylesheet" href="assets/css/gameplay/popup-screen.css">
 </head>
 <body>
-<template id="avatar-template">
-    <div class="avatar-container">
-        <img src="" alt="" title="">
-    </div>
-</template>
 <div class="popup-container hidden">
     <template id="username-popup-template">
         <div class="popup">
@@ -36,6 +31,11 @@
                 <p class="error-username-selector"></p>
                 <button type="submit" id="playername-button" class="button-style-popup button-style">Change Username</button>
                 <section id="avatar-selector-container">
+                    <div class="avatar-selector">
+                        <button id="left-btn">&larr;</button>
+                        <img id="avatar-display" src="" alt="Avatar" />
+                        <button id="right-btn">&rarr;</button>
+                    </div>
                 </section>
             </form>
         </div>
