@@ -2,11 +2,10 @@ import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 
 function getDiffTokensObject(tokens) {
     const returnObject = {};
-    //const $tokensForm = document.querySelectorAll(".too-many-gems-pop-up-form .token-bank li");
-    const $tokensForm = document.querySelectorAll(".gem-remover-input");
-    $tokensForm.forEach(token => {
-        const tokenName = uppercaseFirstLetterOfWord(token.getAttribute("name"));
-        returnObject[tokenName] = tokens[tokenName] - parseInt(token.value);
+    const $tokenValues = document.querySelectorAll("#too-many-gems-pop-up-form .token-bank li");
+    $tokenValues.forEach(token => {
+        const tokenName = uppercaseFirstLetterOfWord(token.classList[1]);
+        returnObject[tokenName] = tokens[tokenName] - parseInt(token.querySelector(".gem-value").innerText);
     });
     return returnObject;
 }
