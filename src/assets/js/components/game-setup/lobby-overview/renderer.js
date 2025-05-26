@@ -6,9 +6,9 @@ function renderGames(games) {
     const $template = document.querySelector("#join-lobby-template");
     const $results = document.querySelector(".lobby-overview-container");
     $results.innerHTML = $template.outerHTML;
-    const $lobby = $template.content.firstElementChild.cloneNode(true);
 
     games.forEach((game) => {
+        const $lobby = $template.content.firstElementChild.cloneNode(true);
         joinDisableCheck($lobby.querySelector(".join-button"), game.started);
         if (game.private) {
             $lobby.querySelector(".lobbyname").classList.add("private");
