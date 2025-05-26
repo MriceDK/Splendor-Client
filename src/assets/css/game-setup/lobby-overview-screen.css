@@ -54,10 +54,9 @@ h1 {
 #filter div {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin-bottom: 1rem;
     gap: 1rem;
-
 }
 
 #search {
@@ -146,33 +145,27 @@ h1 {
     background-color: var(--brown);
 }
 
-input[type="text"], select{
+#filter input[type="text"], #filter select, #filter select option{
     font-family: Inter, sans-serif;
-    background-color: var(--offwhite);
     color: var(--main-black-color);
-    height: 1.5rem;
-    width: 12rem;
+    padding: .5rem 1rem .5rem .5rem;
     border-radius: 0.3125rem;
     border: 0.063rem solid var(--main-black-color);
     font-size: 1rem;
 }
 
-.checkboxes {
+#filter div.checkboxes {
     display: flex;
-    flex-direction: row;
-}
-
-select {
-
+    justify-content: center;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
 }
 
 /* BOMB RADIO BUTTON */
 
 .bomb-check {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     align-items: center;
-    justify-items: center;
     gap: 0.5rem;
 }
 
