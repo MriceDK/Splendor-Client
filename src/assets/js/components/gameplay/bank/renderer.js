@@ -21,6 +21,9 @@ const currentBankTokens = {
 
 function renderTokenBank(gameInfo) {
     enableOrDisableBank(gameInfo.currentPlayer);
+    if (document.querySelector(".bank-buttons .cancel-button").classList.contains("hidden")) {
+        setTokenMarketValues(gameInfo.unclaimedTokens);
+    }
     disableTokens();
     setTokenMarketValues(gameInfo);
 

@@ -59,11 +59,12 @@ function displayGame(renderAll = true) {
             renderBuyableCards();
             lastRoundCheck(res.lastRound, res);
 
-            if (res.currentPlayer !== loadFromStorage("playerName") || isSpectating || secondsLeft <= 2) {
+            if (res.currentPlayer !== loadFromStorage("playerName") || isSpectating || secondsLeft <= 1) {
                 setTimeout(() => displayGame(true), 1000);
             } else {
                 setTimeout(() => displayGame(false), 1000);
             }
+
         })
         .catch(err => {
             closePopUp();
