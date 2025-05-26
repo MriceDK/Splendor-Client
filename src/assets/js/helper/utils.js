@@ -10,7 +10,6 @@ function showPopupContainer() {
 
 function convertToKebabCase(string){
     return string.trim().toLowerCase().split(" ").join("-");
-
 }
 
 function getCurrentPlayer(players, currentPlayer){
