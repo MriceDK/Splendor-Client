@@ -244,8 +244,19 @@ h1 {
 /*END BOMB RADIO BUTTON*/
 
 .private {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.private:before {
+    content: "";
     background-image: url("../../images/background-images/lock.png");
     background-size: contain;
     background-repeat: no-repeat;
-    padding-left: 2rem;
+    margin-right: 1rem;
+    min-width: 1rem;
+    min-height: 1rem;
+    width: 1rem;
+    height: 1rem;
 }
