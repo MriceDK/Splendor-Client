@@ -3,7 +3,6 @@ import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.
 
 function renderSettingsPopup(){
     const isSpectating = loadFromStorage("spectate");
-    console.log(isSpectating);
     const $template = document.querySelector("#settings-popup-template").content.firstElementChild.cloneNode(true);
     const $target = document.querySelector(".popup-container");
     if (isSpectating) {
