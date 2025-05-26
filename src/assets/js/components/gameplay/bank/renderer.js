@@ -111,9 +111,9 @@ function initializeZeroes() {
     })
 }
 
-function setTokenMarketValues(gameInfo) {
+function setTokenMarketValues(unclaimedTokens) {
     initializeZeroes();
-    Object.entries(gameInfo.unclaimedTokens).forEach(([token, amount]) => setTokenValue(token, amount));
+    Object.entries(unclaimedTokens).forEach(([token, amount]) => setTokenValue(token, amount));
 }
 
 function setTokenValue(token, amount) {
