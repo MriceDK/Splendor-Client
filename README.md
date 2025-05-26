@@ -35,14 +35,18 @@ https://grid.layoutit.com/
 
 ## Bugs client
 
-- The buttons of the tokenbank don't disapear when you're still using the token selector after your time is up.
-    - You can trigger this by opening the tokenbank selector, and wait until the timer is up (grab a snack while you wait)
-    - The reason why we didn't fix this, is because we found only implemented the timer a day before the deadline, and didn't have enough time to fix this problem.
-
-- We didn't prevent users from using a username with invalid characters in it, so when you set your username with an invalid character in it, you get an error when trying to join/create a game
-    - The reason why we didn't fix this, is because we found out too late, and decided to focus on the more important stuff.
+| Bug behaviour                                                                                                                                                                                   | How to reproduce                                                                                                     | Why it hasn't been fixed                                                                                                                                      |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The buttons of the tokenbank don't disapear when you're still using the token selector after your time is up.                                                                                   | You can trigger this by opening the tokenbank selector, and wait until the timer is up (grab a snack while you wait) | The reason why we didn't fix this, is because we found only implemented the timer a day before the deadline, and didn't have enough time to fix this problem. |
+| We didn't prevent users from using a username with invalid characters in it, so when you set your username with an invalid character in it, you get an error when trying to join/create a game. | Enter a name with illegal characters                                                                                 | The reason why we didn't fix this, is because we found out too late, and decided to focus on the more important stuff.                                        |
 
 ## Token scheme
 
-We used the JWT Tokens
-    
+For the playerTokens we used JWT (Json Web Token)
+- The tokens are encoded with the `HMAC SHA256` algorithm.
+- The token is signed with a `256 byte` long secret key that is securely randomly generated each time the server starts.
+- The tokens each have a `jti` (JWT ID) claim that is a unique identifier for the token.
+- The tokens also have a `iat` (issued at) claim that is the time when the token was issued.
+- The reason we added these 2 'claims' is to ensure that any JWT we generate will be completely unique.
+- We also store the playerName and the gameId in this token, so that we can use it to identify the player in the game.
+- Because we use JWT we can verify that the token wasn't tampered with, and that it was issued by the server. This is the biggest advantage of using JWT.
