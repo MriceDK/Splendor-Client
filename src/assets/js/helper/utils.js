@@ -62,7 +62,6 @@ function hasValidCharacters(string) {
     for (const letter of letterArray) {
 
         if (!letter.match("[a-zA-Z0-9]+")) {
-            console.log(letter);
             return false;
         }
 
