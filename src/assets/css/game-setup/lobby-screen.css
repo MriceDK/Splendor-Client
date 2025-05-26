@@ -149,9 +149,21 @@ input[type="text"]{
 }
 
 .private {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.private:before {
+    content: "";
     background-image: url("../../images/background-images/lock.png");
     background-size: contain;
     background-repeat: no-repeat;
+    margin-right: 1rem;
+    min-width: 2rem;
+    min-height: 2rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 .password {
