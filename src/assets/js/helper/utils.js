@@ -33,8 +33,7 @@ function elementIsInArray(array, element) {
 }
 
 function makeNameValid(name){
-    const output = name.split(" ").join("");
-    return output;
+    return name.split(" ").join("");
 }
 
 function toTwoDigit(str) {
@@ -57,4 +56,18 @@ function calculateTotalTokens(tokens) {
     return res;
 }
 
-export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid, toTwoDigit, calculateTotalTokens};
+function hasValidCharacters(string) {
+    const letterArray = string.split("");
+
+    for (const letter of letterArray) {
+
+        if (!letter.match("[a-zA-Z0-9]+")) {
+            return false;
+        }
+
+    }
+
+    return true;
+}
+
+export {uppercaseFirstLetterOfWord, showPopupContainer, convertToKebabCase, getCurrentPlayer, elementIsInArray, makeNameValid, toTwoDigit, calculateTotalTokens, hasValidCharacters};

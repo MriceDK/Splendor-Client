@@ -211,8 +211,8 @@ body{
     font-family: "Saira stencil one", Arial, serif;
 }
 
-.error-username-selector{
-    font-size: 1.5rem;
+.error-profile-selector{
+    font-size: .8rem;
     color: var(--main-red-color);
 }
 

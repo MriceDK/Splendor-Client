@@ -31,7 +31,7 @@ function displayGame(renderAll = true) {
             document.title = `Splendor ${res.gameName}`;
             document.querySelector(".lobby-name").innerText = res.gameName;
             renderSpectators(res.spectators);
-            renderTimer(res.currentPlayer, res.timeEndTurn, res.gameState);
+            const secondsLeft = renderTimer(res.currentPlayer, res.timeEndTurn, res.gameState);
             let ownPlayer = getOwnPlayerInfo(res);
             let isSpectating = false;
             if (res.spectators.includes(username)) {
@@ -59,11 +59,12 @@ function displayGame(renderAll = true) {
             renderBuyableCards();
             lastRoundCheck(res.lastRound, res);
 
-            if (res.currentPlayer !== loadFromStorage("playerName") || isSpectating) {
+            if (res.currentPlayer !== loadFromStorage("playerName") || isSpectating || secondsLeft <= 1) {
                 setTimeout(() => displayGame(true), 1000);
             } else {
                 setTimeout(() => displayGame(false), 1000);
             }
+
         })
         .catch(err => {
             closePopUp();
