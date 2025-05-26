@@ -26,7 +26,6 @@ function renderTokenBank(gameInfo) {
         setTokenMarketValues(gameInfo.unclaimedTokens);
     }
     disableTokens();
-    setTokenMarketValues(gameInfo);
 
     handler.hookUpEvents();
 }
@@ -56,8 +55,7 @@ function enableOrDisableBank(playerName) {
         }
     } else {
         document.querySelectorAll(".bank-buttons button").forEach($button => $button.classList.add("hidden"));
-        document.querySelector(".selected-tokens").innerHTML = "";
-        console.log(document.querySelector(".selected-tokens").innerHTML);
+        renderer.removeChosenTokens();
     }
 }
 
