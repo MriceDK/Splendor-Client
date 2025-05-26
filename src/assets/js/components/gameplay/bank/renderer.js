@@ -48,8 +48,11 @@ function toggleCollectGemsButton(boolean) {
 function enableOrDisableBank(playerName) {
     if (playerName === loadFromStorage("playerName")) {
         document.querySelector(".bank-buttons .take-gems-button").classList.remove("hidden");
+
     } else {
-        document.querySelector(".bank-buttons .take-gems-button").classList.add("hidden");
+        document.querySelectorAll(".bank-buttons button").forEach($button => $button.classList.add("hidden"));
+        document.querySelector(".selected-tokens").innerHTML = "";
+        console.log(document.querySelector(".selected-tokens").innerHTML);
     }
 }
 
