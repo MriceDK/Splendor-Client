@@ -3,6 +3,7 @@ import {loadFromStorage} from "../../../data-connector/local-storage-abstractor.
 import {uppercaseFirstLetterOfWord} from "../../../helper/utils.js";
 import {isLegalToken} from "./helper.js";
 import {removeChosenPopupToken} from "../../popup/too-much-gems-popup/handler.js";
+import * as renderer from "./renderer.js";
 
 const chosenBankTokens = {
     Ruby: 0,
@@ -50,8 +51,9 @@ function toggleCollectGemsButton(boolean) {
 
 function enableOrDisableBank(playerName) {
     if (playerName === loadFromStorage("playerName")) {
-        document.querySelector(".bank-buttons .take-gems-button").classList.remove("hidden");
-
+        if (document.querySelector(".bank-buttons .cancel-button").classList.contains("hidden")) {
+            document.querySelector(".bank-buttons .take-gems-button").classList.remove("hidden");
+        }
     } else {
         document.querySelectorAll(".bank-buttons button").forEach($button => $button.classList.add("hidden"));
         document.querySelector(".selected-tokens").innerHTML = "";
