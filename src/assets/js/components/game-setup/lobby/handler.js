@@ -39,10 +39,12 @@ function getGameDetailsForGameId() {
     getGameInfo()
         .then(data => {
             if (data.isPrivate) {
-                const password = loadFromStorage("password");
-                if (password !== null && password !== "") {
-                    renderer.renderPassword(password);
-                    renderer.renderPrivate();
+                if (loadFromStorage("playerName") === data.players[0].name) {
+                    const password = loadFromStorage("password");
+                    if (password !== null && password !== "") {
+                        renderer.renderPassword(password);
+                        renderer.renderPrivate();
+                    }
                 } else {
                     document.querySelector(".password").hidden = true;
                 }
