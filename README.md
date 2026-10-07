@@ -146,10 +146,21 @@ All requests go through the wrapper in [src/assets/js/data-connector/api-communi
 | `POST` | `/games/{gameId}/players/{playerName}/nobles` | Claim a noble. |
 | `PATCH` | `/games/{gameId}/players/{playerName}/tokens` | Update player tokens. |
 
-## 👤 Author
+## 👤 Authors
 
 | Name | GitHub | LinkedIn |
 | --- | --- | --- |
-| Maurice De Kegel | [MriceDK](https://github.com/MriceDK) | <!-- TODO: verify LinkedIn profile URL --> |
+| Maurice De Kegel | [MriceDK](https://github.com/MriceDK) | [LinkedIn](https://www.linkedin.com/in/dekegelmaurice/) |
+| Simon Cornelissis | [SCornelissis](https://github.com/scornelissis) | [LinkedIn](https://www.linkedin.com/in/simon-cornelissis/) |
+| Yoni Furniere | [TODO](https://github.com/MriceDK) | [LinkedIn](https://www.linkedin.com/in/yoni-furniere-30103a34b/) |
+| Ruben Lescouhier | [TODO](https://github.com/MriceDK) | [LinkedIn](https://www.linkedin.com/in/ruben-lescouhier-9840011a2/) |
+| Lars Patrouille | [TODO](https://github.com/MriceDK) | [LinkedIn](https://www.linkedin.com/in/lars-patrouille-4205493aa/) |
+| Rune Mortier | [TODO](https://github.com/MriceDK) | [LinkedIn](https://www.linkedin.com/in/rune-mortier-88ba30395/) |
+
+
+
+
+
+
 
 <!-- TODO: confirm the LinkedIn link before publishing this README externally. -->
